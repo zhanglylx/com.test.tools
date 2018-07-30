@@ -1,0 +1,182 @@
+gitlab项目目录调整
+
+----服务端------------------------------------------------------------------------------------
+
+免费电子书 
+    freebook-server
+	原项目地址：http://git.iwanvi.com/server/cx_www.git
+	新项目地址：http://git.iwanvi.com/freebook-server/iwanvi-freebook-app-web.git
+
+	原项目地址：http://git.iwanvi.com/server/zwsc_app.git 使用分支：*/miandian
+	新项目地址：http://git.iwanvi.com/freebook-server/iwanvi-freebook-app-dubbo.git 使用分支：*/miandian
+
+    freebook-ops
+	原项目地址：http://git.iwanvi.com/server/FreeZwscManage.git
+	新项目地址：http://git.iwanvi.com/freebook-ops/iwanvi-freebook-manage.git
+
+
+广告
+    ad-server
+	原项目地址：http://git.iwanvi.com/server/ad.cread.com.git
+	新项目地址：http://git.iwanvi.com/ad-server/iwanvi-ad-lua.git
+
+
+中文书城
+    bookstore-server
+	原项目地址：http://git.iwanvi.com/server/zwsc-web-tomcat.git
+	新项目地址：http://git.iwanvi.com/bookstore-server/iwanvi-bookstore-app-web.git
+
+	原项目地址：http://git.iwanvi.com/server/zwsc_app.git
+	新项目地址：http://git.iwanvi.com/bookstore-server/iwanvi-bookstore-app-dubbo.git
+
+	原项目地址：http://git.iwanvi.com/server/zwsc_app.git 使用分支：*/usersign
+	新项目地址：http://git.iwanvi.com/bookstore-server/iwanvi-bookstore-app-dubbo-qiandao.git 使用分支：*/usersign
+
+	原项目地址：http://git.iwanvi.com/server/pc-web-tomcat.git	
+	新项目地址：http://git.iwanvi.com/bookstore-server/iwanvi-bookstore-pc-web.git	
+
+	原项目地址：http://git.iwanvi.com/server/zwsc_app-dubbo.git
+	新项目地址：http://git.iwanvi.com/bookstore-server/iwanvi-bookstore-pc-dubbo.git
+
+	原项目地址：http://git.iwanvi.com/server/zwsc-web-tomcat.git
+	新项目地址：http://git.iwanvi.com/bookstore-server/iwanvi-bookstore-single-web.git
+
+	原项目地址：http://git.iwanvi.com/server/zwsc_app.git 使用分支：*/weishucheng
+	新项目地址：http://git.iwanvi.com/bookstore-server/iwanvi-bookstore-single-dubbo.git 使用分支：*/weishucheng
+
+	原项目地址：http://git.iwanvi.com/server/zwsc_old.git
+	新项目地址：http://git.iwanvi.com/bookstore-server/iwanvi-bookstore-zwsc-old.git #zwsc.ikanshu.cn
+
+    bookstore-ops
+	原项目地址：http://git.iwanvi.com/server/MotionManage.git
+	新项目地址：http://git.iwanvi.com/bookstore-ops/iwanvi-bookstore-motion-manage.git
+
+	原项目地址：http://git.iwanvi.com/server/MotionManageV2.git
+	新项目地址：http://git.iwanvi.com/bookstore-ops/iwanvi-bookstore-motion-manage-v2.git
+
+
+直播
+    livecast-server
+	原项目地址：http://git.iwanvi.com/server/wwlive.git
+	新项目地址：http://git.iwanvi.com/livecast-server/iwanvi-livecast-web.git
+	
+	原项目地址：http://git.iwanvi.com/server/zhibo-guanwang.git
+	新项目地址：http://git.iwanvi.com/livecast-server/iwanvi-livecast-guanwang.git
+
+	原项目地址：http://git.iwanvi.com/server/wanvilive.git
+	新项目地址：http://git.iwanvi.com/livecast-server/iwanvi-livecast-spring-wanvilive.git
+	
+	原项目地址：http://git.iwanvi.com/server/apollo.git
+	新项目地址：http://git.iwanvi.com/livecast-server/iwanvi-livecast-apollo.git
+
+	原项目地址：http://git.iwanvi.com/server/nasa.git
+	新项目地址：http://git.iwanvi.com/livecast-server/iwanvi-livecast-nasa.git
+
+
+大数据
+    fishworm-server
+	原项目地址：http://git.iwanvi.com/hadoop/etl_pro.git
+	新项目地址：http://git.iwanvi.com/fishworm-server/iwanvi-fishworm-etl-pro.git
+
+	原项目地址：http://git.iwanvi.com/hadoop/iwanvi-data-analysis.git
+	新项目地址：http://git.iwanvi.com/fishworm-server/iwanvi-fishworm-data-analysis.git
+
+	原项目地址：http://git.iwanvi.com/hadoop/kettleScript.git
+	新项目地址：http://git.iwanvi.com/fishworm-server/iwanvi-fishworm-kettle-script.git
+
+	原项目地址：http://git.iwanvi.com/hadoop/kettle.git
+	新项目地址：http://git.iwanvi.com/fishworm-server/iwanvi-fishworm-kettle.git
+
+	原项目地址：http://git.iwanvi.com/hadoop/SendEmailReport.git
+	新项目地址：http://git.iwanvi.com/fishworm-server/iwanvi-fishworm-send-email-report.git
+
+	原项目地址：http://git.iwanvi.com/hadoop/static_new.git
+	新项目地址：http://git.iwanvi.com/fishworm-server/iwanvi-fishworm-static-new.git
+
+	原项目地址：http://git.iwanvi.com/hadoop/crontab.git
+	新项目地址：http://git.iwanvi.com/fishworm-server/iwanvi-fishworm-crontab.git
+
+
+其他业务
+    other-server
+	原项目地址：http://git.iwanvi.com/server/iwanvi_jiesuan.git
+	新项目地址：http://git.iwanvi.com/other-server/iwanvi-other-jiesuan.git #cp.iwanvi.com
+
+	原项目地址：http://git.iwanvi.com/server/iwanvi_datamanage.git
+	新项目地址：http://git.iwanvi.com/other-server/iwanvi-other-data-manage.git # 对应域名dp.iwanvi.com
+
+	原项目地址：http://git.iwanvi.com/server/iwanvi_oa.git
+	新项目地址：http://git.iwanvi.com/other-server/iwanvi-other-oa.git # 对应域名oa.iwanvi.com
+
+
+-----客户端---------------------------------------------------------------------------------------
+
+gitlab项目目录调整
+
+公共资源
+    common-android
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/client/IwReader.git
+	新项目地址：http://git.iwanvi.com/common-android/iwanvi-common-iw-reader.git
+
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/client/ReadEngine.git
+	新项目地址：http://git.iwanvi.com/common-android/iwanvi-common-read-engine.git
+
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/client/freebook_newengine.git
+	新项目地址：http://git.iwanvi.com/common-android/iwanvi-common-new-engine.git
+	
+
+免费电子书 
+    freebook-ios
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/freebook-ios/freeBook-iOS.git
+	新项目地址：http://git.iwanvi.com/freebook-ios/iwanvi-freebook-ios.git
+
+    freebook-android
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/client/freebook_tool.git
+	新项目地址：http://git.iwanvi.com/freebook-android/iwanvi-freebook-tool.git
+
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/client/freebook.git
+	新项目地址：http://git.iwanvi.com/freebook-android/iwanvi-freebook.git
+
+
+中文书城
+    bookstore-ios
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/Rios/reader-ios.git
+	新项目地址：http://git.iwanvi.com/bookstore-ios/iwanvi-bookstore-reader-ios.git
+	
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/Rios/readerKing-reader-ios.git
+	新项目地址：http://git.iwanvi.com/bookstore-ios/iwanvi-bookstore-reader-king-reader-ios.git
+
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/Rios/gaoQu-Reader-iOS.git
+	新项目地址：http://git.iwanvi.com/bookstore-ios/iwanvi-bookstore-gao-qu-reader-ios.git
+
+
+    bookstore-android
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/client/zwsc.git
+	新项目地址：http://git.iwanvi.com/bookstore-android/iwanvi-bookstore.git
+
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/client/du_dna.git
+	新项目地址：http://git.iwanvi.com/bookstore-android/iwanvi-bookstore-du-dna.git
+
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/client/vbook.git
+	新项目地址：http://git.iwanvi.com/bookstore-android/iwanvi-bookstore-vbook.git
+
+
+直播
+    livecast-ios
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/iOS/wvlive.git
+	新项目地址：http://git.iwanvi.com/livecast-ios/iwanvi-livecast-wvlive.git
+
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/iOS/Live_play.git
+	新项目地址：http://git.iwanvi.com/livecast-ios/iwanvi-livecast-live-play.git
+
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/iOS/Live.git
+	新项目地址：http://git.iwanvi.com/livecast-ios/iwanvi-livecast-live.git
+
+    livecast-android
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/live/custom.git
+	新项目地址：http://git.iwanvi.com/livecast-android/iwanvi-livecast-custom.git
+
+	原项目地址：http://root:TYvQZlDEdrKLzzYVPB@git.iwanvi.com/live/youzi.git
+	新项目地址：http://git.iwanvi.com/livecast-android/iwanvi-livecast-xingyu.git
+
+
