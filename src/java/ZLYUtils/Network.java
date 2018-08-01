@@ -6,7 +6,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Random;
 
-public class network {
+public class Network {
+    public static String sendGet(String url) {
+        return sendGet(url,"");
+    }
+
     /**
      * 发送get请求
      *
@@ -15,10 +19,12 @@ public class network {
      * @return 服务响应内容, null为响应非200
      */
     public static String sendGet(String url, String param) {
-        StringBuffer data = new StringBuffer();
+        StringBuffer data =  new StringBuffer();;
         BufferedReader in = null;
+        String urlStr = url + "?" + param;
+        if(param.equals(""))urlStr = url;
         try {
-            URL realUrl = new URL(url + "?" + param);
+            URL realUrl = new URL(urlStr);
             // 打开和URL之间的连接
             URLConnection connection = realUrl.openConnection();
             // 设置通用的请求属性
@@ -26,11 +32,10 @@ public class network {
             connection.setUseCaches(false);
             // 建立实际的连接
             connection.connect();
-//            int getResponseCode = 0;
-//            getResponseCode = ((HttpURLConnection) connection).getResponseCode();
-//            if (getResponseCode != 200) {// 检查服务器响应
-//                return null;
-//            }
+            int getResponseCode  = ((HttpURLConnection) connection).getResponseCode();
+            if (getResponseCode != 200) {// 检查服务器响应
+                return getResponseCode+"";
+            }
             // 获取所有响应头字段
 //            Map<String, List<String>> map = connection.getHeaderFields();
             // 定义 BufferedReader输入流来读取URL的响应
@@ -41,7 +46,7 @@ public class network {
             }
 
         } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
+            data.append("发送GET请求出现异常！" + e);
             e.printStackTrace();
         }
         // 使用finally块来关闭输入流
@@ -54,7 +59,6 @@ public class network {
                 e2.printStackTrace();
             }
         }
-        if (data == null) return null;
         return data.toString();
 
     }
@@ -181,7 +185,7 @@ public class network {
                 result.append(line);
             }
         } catch (Exception e) {
-            System.out.println("发送 POST 请求出现异常！" + e);
+            result.append("发送 POST 请求出现异常！" + e);
             e.printStackTrace();
         }
         // 使用finally块来关闭输出流、输入流
