@@ -69,13 +69,21 @@ public class ExcelUtils {
         if (workbook != null) {
             Sheet sheet = workbook.createSheet(sheetName);
             Row row0 = sheet.createRow(0);
-            Map<String, String> values;//保存dataMap中的map
-            values = dataMap.get(0);
+            Map<String, String> values = null;//保存dataMap中的map
             int num = 0;
+
+            Map<String,String> titleMap = new LinkedHashMap<>();
+            //读取出所有map的title
+            for(int i = 0;i<dataMap.size();i++){
+                values = dataMap.get(i);
+                for (Map.Entry<String, String> m : values.entrySet()) {
+                    if(!titleMap.containsKey(m.getKey()))titleMap.put(m.getKey(),"");
+                }
+            }
             //记录map中的key，用于在插入数据中，将指定key中的数据插入到相同的表格中
-            String[] key = new String[values.size()];
-            //设置标题
-            for (Map.Entry<String, String> m : values.entrySet()) {
+            String[] key = new String[titleMap.size()];
+            //写入标题
+            for (Map.Entry<String, String> m : titleMap.entrySet()) {
                 Cell cell_1 = row0.createCell(num, Cell.CELL_TYPE_STRING);
                 CellStyle style = getStyle(workbook);
                 cell_1.setCellStyle(style);
@@ -104,9 +112,10 @@ public class ExcelUtils {
             } catch (Exception e) {
                 System.out.println("It cause Error on WRITTING excel workbook: ");
                 e.printStackTrace();
+                TooltipUtil.errTooltip(e.toString());
             }
         }
-        System.out.println(excelPath.getAbsolutePath());
+        TooltipUtil.generalTooltip("保存成功:"+excelPath.getAbsolutePath());
         return isCreateSuccess;
     }
 
@@ -157,7 +166,7 @@ public class ExcelUtils {
             for (int rowIndex = 1; rowIndex <= row; rowIndex++) {
                 valuesMap = new LinkedHashMap<>();
                 for (int columnIndex = 0; columnIndex < Column; columnIndex++) {
-                    valuesMap.put(getSpecifyRowsAndColumns(0, columnIndex).toUpperCase(),
+                    valuesMap.put(getSpecifyRowsAndColumns(0, columnIndex),
                             getSpecifyRowsAndColumns(rowIndex, columnIndex));
                 }
                 rowMap.put(rowIndex - 1, valuesMap);
@@ -165,6 +174,7 @@ public class ExcelUtils {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            TooltipUtil.errTooltip(e.toString());
         } finally {
             if (is != null) {
                 try {
