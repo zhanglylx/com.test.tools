@@ -1,6 +1,6 @@
 package Squirrel;
 
-import SquirrelFrame.Config;
+import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
 import ZLYUtils.WindosUtils;
 
@@ -21,6 +21,9 @@ public class VideoRecordingScreenshot extends JDialog {
     private JButton recordVideo;
     public static final String SCREENSHOT = "截屏";
     public static final String SCREENSHOT_SQUIRREL = "Squirrel.png";//截图保存名称
+    public  Thread threadRefreshTheImage;//截图线程
+    public RefreshTheImage refreshTheImage;
+    private JButton picture;
     public VideoRecordingScreenshot(String title, JDialog jDialog) {
         super(jDialog, false);
         setTitle(title);
@@ -32,9 +35,12 @@ public class VideoRecordingScreenshot extends JDialog {
         add(screenshot);
         setLocationRelativeTo(null);//设置中间显示
         setSize(400, 700);
-        RefreshTheImage refreshTheImage = new RefreshTheImage();
-        Thread t = new Thread(refreshTheImage);
-        t.start();
+        picture = new JButton();
+        picture.setSize(300, 650);  //设置大小
+        picture.setLocation(82, 0);
+        refreshTheImage = RefreshTheImage.getRefreshTheImage(picture);
+        threadRefreshTheImage = new Thread(refreshTheImage);
+        threadRefreshTheImage.start();
         add(refreshTheImage.getjButton());
         setLocation(350, 10);
         addWindowListener(new WindowAdapter() {
@@ -61,7 +67,11 @@ public class VideoRecordingScreenshot extends JDialog {
             String text = f.getText();
             switch (text) {
                 case SCREENSHOT:
-                    WindosUtils.copyFile(this, Config.Screenshot_save_path + SCREENSHOT_SQUIRREL);
+                    refreshTheImage.stopMe();
+                    WindosUtils.copyFile(this, SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
+                    refreshTheImage = RefreshTheImage.getRefreshTheImage(picture);
+                    threadRefreshTheImage = new Thread(refreshTheImage);
+                    threadRefreshTheImage.start();
                     break;
             }
         });
@@ -76,10 +86,18 @@ class RefreshTheImage implements Runnable {
     private boolean stopMe = true;
     private ImageIcon image;
     private JButton jButton;
-    public RefreshTheImage(){
-        jButton = new JButton();
-        jButton.setSize(300, 650);  //设置大小
-        jButton.setLocation(82, 0);
+    private static RefreshTheImage refreshTheImage;
+    private RefreshTheImage(JButton jButton){
+        this.jButton = jButton;
+        image = new ImageIcon("image/wait.png");
+        image.setImage(image.getImage().getScaledInstance(200, 350, Image.SCALE_DEFAULT));
+        jButton.setIcon(image);
+    }
+    public static RefreshTheImage getRefreshTheImage(JButton jButton){
+        if(refreshTheImage == null){
+            refreshTheImage = new RefreshTheImage(jButton);
+        }
+        return refreshTheImage;
     }
     public void stopMe() {
         stopMe = false;
@@ -91,11 +109,8 @@ class RefreshTheImage implements Runnable {
         return this.jButton;
     }
     @Override
-    public void run() {
+    public synchronized void run() {
         String[] adb;
-        image = new ImageIcon("image/wait.png");
-        image.setImage(image.getImage().getScaledInstance(200, 350, Image.SCALE_DEFAULT));
-        jButton.setIcon(image);
         //adb shell screencap -p /sdcard/1.png
         while (stopMe) {
             //设置锁
@@ -103,11 +118,11 @@ class RefreshTheImage implements Runnable {
                 try {
                     adb = AdbUtils.operationAdb("shell screencap -p /sdcard/" + SCREENSHOT_SQUIRREL);
                     System.out.println(Arrays.toString(adb));
-                    adb = AdbUtils.operationAdb("pull  /sdcard/" + SCREENSHOT_SQUIRREL + " " + Config.Screenshot_save_path + SCREENSHOT_SQUIRREL);
+                    adb = AdbUtils.operationAdb("pull  /sdcard/" + SCREENSHOT_SQUIRREL + " " + SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
                     if(!Arrays.toString(adb).contains("100%")){
                         image = new ImageIcon("image/wait.png");
                     }else{
-                        image = new ImageIcon(Config.Screenshot_save_path + SCREENSHOT_SQUIRREL);
+                        image = new ImageIcon(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
                     }
                     System.out.println(Arrays.toString(adb));
                     image.setImage(image.getImage().getScaledInstance(300, 650, Image.SCALE_DEFAULT));
@@ -117,5 +132,6 @@ class RefreshTheImage implements Runnable {
                 }
             }
         }
+        stopMe = true;
     }
 }
