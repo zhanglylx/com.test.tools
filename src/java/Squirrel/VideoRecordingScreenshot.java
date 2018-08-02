@@ -21,9 +21,9 @@ public class VideoRecordingScreenshot extends JDialog {
     private JButton recordVideo;
     public static final String SCREENSHOT = "截屏";
     public static final String SCREENSHOT_SQUIRREL = "Squirrel.png";//截图保存名称
-    public  Thread threadRefreshTheImage;//截图线程
     public RefreshTheImage refreshTheImage;
     private JButton picture;
+    private Thread threadRefreshTheImage;
     public VideoRecordingScreenshot(String title, JDialog jDialog) {
         super(jDialog, false);
         setTitle(title);
@@ -67,11 +67,9 @@ public class VideoRecordingScreenshot extends JDialog {
             String text = f.getText();
             switch (text) {
                 case SCREENSHOT:
-                    refreshTheImage.stopMe();
+                    refreshTheImage.suspend();
                     WindosUtils.copyFile(this, SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
-                    refreshTheImage = RefreshTheImage.getRefreshTheImage(picture);
-                    threadRefreshTheImage = new Thread(refreshTheImage);
-                    threadRefreshTheImage.start();
+                    threadRefreshTheImage.interrupt();
                     break;
             }
         });
@@ -83,31 +81,44 @@ public class VideoRecordingScreenshot extends JDialog {
  */
 class RefreshTheImage implements Runnable {
     // 用于停止线程
-    private boolean stopMe = true;
+    private boolean stopMe;
     private ImageIcon image;
     private JButton jButton;
     private static RefreshTheImage refreshTheImage;
-    private RefreshTheImage(JButton jButton){
+    private boolean suspend;//暂停
+
+    private RefreshTheImage(JButton jButton) {
         this.jButton = jButton;
+        stopMe = true;
+        suspend = true;
         image = new ImageIcon("image/wait.png");
         image.setImage(image.getImage().getScaledInstance(200, 350, Image.SCALE_DEFAULT));
         jButton.setIcon(image);
     }
-    public static RefreshTheImage getRefreshTheImage(JButton jButton){
-        if(refreshTheImage == null){
+
+    public static RefreshTheImage getRefreshTheImage(JButton jButton) {
+        if (refreshTheImage == null) {
             refreshTheImage = new RefreshTheImage(jButton);
         }
         return refreshTheImage;
     }
+
+    public void suspend() {
+        this.suspend = false;
+    }
+
     public void stopMe() {
         stopMe = false;
     }
-    public ImageIcon getImage(){
+
+    public ImageIcon getImage() {
         return this.image;
     }
-    public JButton getjButton(){
+
+    public JButton getjButton() {
         return this.jButton;
     }
+
     @Override
     public synchronized void run() {
         String[] adb;
@@ -119,14 +130,24 @@ class RefreshTheImage implements Runnable {
                     adb = AdbUtils.operationAdb("shell screencap -p /sdcard/" + SCREENSHOT_SQUIRREL);
                     System.out.println(Arrays.toString(adb));
                     adb = AdbUtils.operationAdb("pull  /sdcard/" + SCREENSHOT_SQUIRREL + " " + SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
-                    if(!Arrays.toString(adb).contains("100%")){
+                    if (!Arrays.toString(adb).contains("100%")) {
                         image = new ImageIcon("image/wait.png");
-                    }else{
+                    } else {
                         image = new ImageIcon(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
                     }
                     System.out.println(Arrays.toString(adb));
                     image.setImage(image.getImage().getScaledInstance(300, 650, Image.SCALE_DEFAULT));
                     jButton.setIcon(image);
+                    if (!this.suspend) {
+                        try {
+                            Thread.sleep(100000);
+                        } catch (InterruptedException e) {
+                            System.out.println("睡眠中断");
+                        }
+                        this.suspend = true;
+
+                    }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
