@@ -18,7 +18,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static Squirrel.Backpack_gift.refresh;
 import static Squirrel.Backpack_gift.refreshEndTherad;
 import static Squirrel.ZhiBo.backpack_gift;
 
@@ -34,6 +33,7 @@ public class ZhiBo extends FrameSqiorrel {
     }
 
     public ZhiBo(String title, JDialog jdialog) {
+
         super(title, jdialog);
         addJButton(zhiboArrays);
         addWindowListener(new WindowAdapter() {
@@ -70,19 +70,21 @@ class Backpack_gift extends JDialog {
     private JButton all;
     private String userID;
     private ZhiBoDataBase zbdb;
-    public static JButton refresh;//刷新按钮
     public static volatile boolean refreshEndTherad;//判断线程是否结束,true为关闭刷新线程
     private JButton clear;//清空按钮
     private JButton automationRefresh;//自定刷新
     private boolean automationRefreshThread;//判断自动刷新是否在执行,false为关闭自动刷新线程
     private boolean automationRefreshThreadClose;//确认刷新线程关闭,false为正在执行，true为关闭
-
+    public JButton refresh;//刷新按钮
+    private Refresh refreshClass;
     static {
         refreshEndTherad = false;
     }
 
     public Backpack_gift(JDialog jDialog) {
         super(jDialog, true);
+        refresh = new JButton();
+        refreshClass = new Refresh(refresh);
         automationRefreshThread = false;
         automationRefreshThreadClose = true;
         setTitle(backpack_gift);
@@ -119,8 +121,8 @@ class Backpack_gift extends JDialog {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                refreshEndTherad=true;//关闭刷新图标
-                automationRefreshThread=false;//关闭自动刷新线程
+                refreshEndTherad = true;//关闭刷新图标
+                automationRefreshThread = false;//关闭自动刷新线程
                 jDialog.setDefaultCloseOperation(2);
 
 
@@ -176,10 +178,10 @@ class Backpack_gift extends JDialog {
                 opt.setText("");
             } else if (j == automationRefresh) {
                 //判断自动刷新是否在执行
-                if (!automationRefreshThread) {
-                    Thread th = new Thread(new Refresh());
-                    th.start();
+                if ("自动刷新".equals(j.getText())) {
                     automationRefreshThread = true;
+                    Thread th = new Thread(refreshClass);
+                    th.start();
                     Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -193,14 +195,6 @@ class Backpack_gift extends JDialog {
                 } else {
                     automationRefreshThread = false;
                     refreshEndTherad = true;
-                    while (true) {
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }
-                        if (automationRefreshThreadClose) break;
-                    }
                     submit.setEnabled(true);
                     all.setEnabled(true);
                     automationRefresh.setText("自动刷新");
@@ -233,7 +227,7 @@ class Backpack_gift extends JDialog {
         submit.setEnabled(false);
         all.setEnabled(false);
         automationRefresh.setEnabled(false);
-        Thread t = new Thread(new Refresh());
+        Thread t = new Thread();
         t.start();
         Thread se = new Thread(new Runnable() {
             @Override
@@ -355,15 +349,15 @@ class Backpack_gift extends JDialog {
     /**
      * 自动刷新
      */
-    public void automationRefreshSelectData() {
+    public synchronized void automationRefreshSelectData() {
         automationRefreshThreadClose = false;//打开线程状态
         ResultSet rs;
         ArrayList<String> recordList = new ArrayList<>();//记录已经打印的数据
         //检测输入用户是否输入了id，没有输入或者不合法给默认值
         if (useridText.getText().matches("\\d+")) {
             this.userID = useridText.getText();
-        }else{
-            this.userID ="*";
+        } else {
+            this.userID = "*";
         }
         int sqlPrint = 0;//判断SQL语句是否已经打印
         int logPrint = 2;//记录正在刷新log
@@ -372,11 +366,11 @@ class Backpack_gift extends JDialog {
             try {
                 if (userID == null || ("*").equals(userID)) {
                     rs = zbdb.getCdb().selectSql("select * from biz_backpack_gift");
-                    if(sqlPrint==1)opt.addText("select * from biz_backpack_gift\n");
+                    if (sqlPrint == 1) opt.addText("select * from biz_backpack_gift\n");
 
                 } else {
                     rs = zbdb.getCdb().selectSql("select * from biz_backpack_gift where user_id = " + userID);
-                    if(sqlPrint==1)opt.addText("select * from biz_backpack_gift where user_id = " + userID + "\n");
+                    if (sqlPrint == 1) opt.addText("select * from biz_backpack_gift where user_id = " + userID + "\n");
                 }
                 sqlPrint++;
                 ResultSetMetaData data = rs.getMetaData();
@@ -432,10 +426,10 @@ class Backpack_gift extends JDialog {
                 }
                 recordList = list;
                 //打印正在刷新
-                if(resultList.size()==0){
-                    if(sqlPrint>logPrint){
-                        opt.addText(".",false);
-                        logPrint = sqlPrint+10;
+                if (resultList.size() == 0) {
+                    if (sqlPrint > logPrint) {
+                        opt.addText(".", false);
+                        logPrint = sqlPrint + 10;
                     }
 
                 }
@@ -457,8 +451,8 @@ class Backpack_gift extends JDialog {
                 e.printStackTrace();
             }
         }
-        opt.addText("自动刷新结束:"+WindosUtils.getDate());
-        automationRefreshThreadClose = true;
+        opt.addText("自动刷新结束:" + WindosUtils.getDate());
+        refreshClass.stop();
     }
 
 
@@ -470,6 +464,17 @@ class Backpack_gift extends JDialog {
 }
 
 class Refresh implements Runnable {
+    private boolean stop;
+    private JButton jButton;
+
+    public Refresh(JButton jButton) {
+        this.stop = false;
+        this.jButton = jButton;
+    }
+
+    public void stop() {
+        this.stop = true;
+    }
 
     @Override
     public void run() {
@@ -478,12 +483,9 @@ class Refresh implements Runnable {
             String[] arr = new String[0];
             arr = ZLYUtils.FrameUtils.addFilesShiftArrays(ZLYUtils.WindosUtils.getDirectoryFilesName("image/refresh"), arr);
             if (index >= arr.length) index = 0;
-            refresh.setIcon(new ImageIcon("image/refresh/" + arr[index]));
+            jButton.setIcon(new ImageIcon("image/refresh/" + arr[index]));
             index++;
-            if (refreshEndTherad) {
-                refreshEndTherad = false;
-                break;
-            }
+            if (stop) break;
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
