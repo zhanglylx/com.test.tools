@@ -96,7 +96,7 @@ public class WindowsText extends JDialog implements ActionListener{
             case Menubar.regards:
                 jta.setEnabled(false);
                 jta.setBackground(Color.DARK_GRAY);
-                jta.setText(Config.guanyu);
+                jta.setText(SquirrelConfig.guanyu);
                 break;
             default:
 //                jta.setText(GetADLog.list.toString());

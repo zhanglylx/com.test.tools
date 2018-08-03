@@ -117,11 +117,7 @@ public class Pane extends JDialog {
         }
         int height =len.length*50;
         if(len.length==1)height=100;
-        if(max<10){
-            setSize(max*45, height);
-        }else{
-            setSize(max*25, height);
-        }
+        setSize(600, height);
     }
 
     /**

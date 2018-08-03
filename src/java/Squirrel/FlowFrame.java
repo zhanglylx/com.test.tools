@@ -1,7 +1,7 @@
 package Squirrel;
 
 import SquirrelFrame.*;
-import SquirrelFrame.Config;
+import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.FrameUtils;
 import ZLYUtils.WindosUtils;
 
@@ -69,7 +69,7 @@ public class FlowFrame extends Pane {
             }else{
                 f.setEnabled(false);
                 ZLYUtils.WindosUtils.openFile(FlowConfig.fileSit + getTitle() + File.separator + f.getText());
-                f.setText(Config.OPENWAIT);
+                f.setText(SquirrelConfig.OPENWAIT);
             }
 
         });

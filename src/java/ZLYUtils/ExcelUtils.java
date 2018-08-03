@@ -98,7 +98,23 @@ public class ExcelUtils {
                     Row row = sheet.createRow(index+1);
                    for (int i = 0; i < key.length; i++) {
                         Cell cell = row.createCell(i, Cell.CELL_TYPE_STRING);
-                        cell.setCellValue(values.get(key[i]));
+                        if(values.get(key[i])!=null &&values.get(key[i]).startsWith("false:")) {
+                            CellStyle style = workbook.createCellStyle();
+                            // 设置单元格字体
+                            Font headerFont = workbook.createFont(); // 字体
+                            headerFont.setFontHeightInPoints((short) 14);
+                            headerFont.setColor(HSSFColor.RED.index);
+                            headerFont.setFontName("宋体");
+                            style.setFont(headerFont);
+                            style.setWrapText(false);
+                            cell.setCellStyle(style);
+                        }
+                        if(values.get(key[i])==null){
+                            cell.setCellValue("");
+                        }else {
+                            cell.setCellValue(values.get(key[i]));
+                        }
+
                    }
 
             }
@@ -113,6 +129,7 @@ public class ExcelUtils {
                 System.out.println("It cause Error on WRITTING excel workbook: ");
                 e.printStackTrace();
                 TooltipUtil.errTooltip(e.toString());
+                return isCreateSuccess;
             }
         }
         TooltipUtil.generalTooltip("保存成功:"+excelPath.getAbsolutePath());

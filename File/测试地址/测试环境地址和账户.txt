@@ -15,3 +15,5 @@ WIFI密码:Iwanvi.Iyuedu
 
 http://keepass-sys.cread.com/qa/    张连宇的用户名:zhangly@cread.com     Jia60951327
 http://ldap-sys.cread.com/self-service-password/ 重置密码链接
+
+http://personal-center-bookstore-qa.cread.com/swagger-ui.html#/  中文书城接口说明地址

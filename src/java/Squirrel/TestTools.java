@@ -1,5 +1,7 @@
 package Squirrel;
 
+import InterfaceTesting.SquirrelUi;
+
 import javax.swing.*;
 
 public class TestTools {
@@ -16,7 +18,9 @@ public class TestTools {
                 break;
             case Video_RECORDING_AND_SCREENSHOT:
                 new VideoRecordingScreenshot(Video_RECORDING_AND_SCREENSHOT,jdialog);
-
+                break;
+            case InterfaceTesting:
+                new SquirrelUi(InterfaceTesting,jdialog);
                 break;
         }
     }
@@ -25,7 +29,8 @@ public class TestTools {
     public static final String leaveBug = "版本遗留bug";
     public static final String ZhiBoTools = "直播工具";
     public static final String Video_RECORDING_AND_SCREENSHOT = "录屏与截图";
+    public static final String InterfaceTesting = "接口测试工具";
     public static String[] testTools = new String[]{getADLog, leaveBug, ZhiBoTools,
-            Video_RECORDING_AND_SCREENSHOT};
+            Video_RECORDING_AND_SCREENSHOT,InterfaceTesting};
     ;
 }

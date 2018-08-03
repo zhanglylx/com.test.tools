@@ -1,55 +1,68 @@
 package InterfaceTesting;
 
 import SquirrelFrame.SquirrelConfig;
+import ZLYUtils.ExcelUtils;
+import ZLYUtils.Network;
+import ZLYUtils.TooltipUtil;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * 松鼠工具接口测试页面
  */
 public class SquirrelUi extends JDialog {
-    public SquirrelUi(JDialog jDialog) {
+    public SquirrelUi(String title, JDialog jDialog) {
         super(jDialog, true);
-        setTitle("接口测试工具");
+        setTitle(title);
         setLayout(null);
-        setSize(750, 500);
+        setSize(750, 700);
         add(new Case(this));
         setVisible(true);
 
     }
-
-    public static void main(String[] args) {
-        new SquirrelUi(new JDialog());
-    }
-
 
 }
 
 class Case extends JPanel {
     private JTextArea path;//路径
     private JTextArea urlArguments;//get参数
-    private JTextArea bodyArguments;//get参数
+    private JTextArea bodyArguments;//body参数
+    private JTextArea testPurpose;//测试目的
     private JRadioButton agreement;//协议
     private ButtonGroup group;//唯一按钮点击限制
     private JDialog jDialog; //父面板
     private JRadioButton method;//方法
     private JButton submit;//提交按钮
     private JButton saveCase;//保存用例按钮
+    private SendRequest sendRequest;//发送请求
+    private JTextArea resultRequest;//结果请求面板
+    private JTextArea resultResponse;//结果面板
+    private JButton runCaseExcel;//执行Excel按钮
+    private JRadioButton matchingRule;//匹配规则
 
     public Case(JDialog jDialog) {
         this.jDialog = jDialog;
+        sendRequest = new SendRequest();
         setLayout(null);
-        setAgreementAndMethod("http");
-        setAgreementAndMethod("https");
+        setAgreementAndMethod(InterfaceConfig.URL_HTTP_AGREEMENT);
+        setAgreementAndMethod(InterfaceConfig.URL_HTTPS_AGREEMENT);
         setJTextArea();//设置路径
-        setAgreementAndMethod("get");
-        setAgreementAndMethod("post");
+        setAgreementAndMethod(InterfaceConfig.URL_GET_NAME);
+        setAgreementAndMethod(InterfaceConfig.URL_POST_NAME);
+        setAgreementAndMethod(InterfaceConfig.EQUALS);
+        setAgreementAndMethod(InterfaceConfig.CONTAINS);
         setSubmit();//设置提交按钮
         setSaveCase();//设置保存用例按钮
         setParameter();//设置参数
+        setTestPurpose();//设置测试目的
+        setRunCaseExcel();//设置运行Excel按钮
         setSize(jDialog.getWidth(), jDialog.getHeight());
         setVisible(true);
     }
@@ -71,35 +84,35 @@ class Case extends JPanel {
      * @param title
      */
     private void setAgreementAndMethod(String title) {
-        if ("http".equals(title)) {
-            setText("协议:", 100, 100, 5, -20);
+        if (InterfaceConfig.URL_HTTP_AGREEMENT.equals(title)) {
+            setText("协议:", 100, 100, 5, -35);
             group = new ButtonGroup();
             agreement = new JRadioButton(title);
             agreement.setSize(50, 20);
-            agreement.setLocation(40, 20);
+            agreement.setLocation(40, 7);
             jRadioButtonMouseListener(agreement);
             add(agreement);
             group.add(agreement);
-        } else if ("https".equals(title)) {
+        } else if (InterfaceConfig.URL_HTTPS_AGREEMENT.equals(title)) {
             agreement = new JRadioButton(title);
             agreement.setSize(60, 20);
-            agreement.setLocation(90, 20);
+            agreement.setLocation(90, 7);
             jRadioButtonMouseListener(agreement);
             add(agreement);
             group.add(agreement);
-        } else if ("get".equals(title)) {
+        } else if (InterfaceConfig.URL_GET_NAME.equals(title)) {
             group = new ButtonGroup();
-            setText("方法:", 50, 50, 250, 5);
+            setText("方法:", 50, 50, 5, 15);
             method = new JRadioButton(title);
             method.setSize(45, 20);
-            method.setLocation(285, 22);
+            method.setLocation(40, 33);
             jRadioButtonMouseListener(method);
             add(method);
             group.add(method);
-        } else if ("post".equals(title)) {
+        } else if (InterfaceConfig.URL_POST_NAME.equals(title)) {
             method = new JRadioButton(title);
             method.setSize(70, 20);
-            method.setLocation(330, 22);
+            method.setLocation(90, 33);
             jRadioButtonMouseListener(method);
             add(method);
             group.add(method);
@@ -116,8 +129,14 @@ class Case extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String text = f.getText();
-                if ("http".equals(text)) {
-                    System.out.println(text);
+                if (agreement.getText().contains(text)) {
+                    sendRequest.setAgreementValues(text);
+                } else if (InterfaceConfig.URL_GET_NAME.equals(text) ||
+                        InterfaceConfig.URL_POST_NAME.equals(text)) {
+                    sendRequest.setMethod(text);
+                } else if(InterfaceConfig.EQUALS.equals(text) ||
+                        InterfaceConfig.CONTAINS.equals(text)){
+                    sendRequest.setMatchingRule(text);
                 }
             }
         });
@@ -133,26 +152,95 @@ class Case extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String text = f.getText();
-                if ("http".equals(text)) {
-                    System.out.println(text);
+                if (f == submit) {
+                    sendRequest.setPath(path.getText());
+                    sendRequest.setUrlValues(urlArguments.getText());
+                    sendRequest.setBody(bodyArguments.getText());
+                    if (!checkValues()) return;
+                    String reposen = sendRequest.sendRequest();
+                    resultRequest.setText(Network.networkUrl);
+                    if (InterfaceConfig.URL_POST_NAME.equals(sendRequest.getMethod()))
+                        resultRequest.append("\nbody:" + sendRequest.getBody());
+                    resultResponse.setText(reposen);
+                } else if (f == saveCase) {//保存用例
+                    if(sendRequest.getMatchingRule() == null){
+                        TooltipUtil.errTooltip("请选择一个匹配规则");
+                        return;
+                    }
+                    Map<Integer, Map<String, String>> saveMap;
+                    File file = new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH);
+                    try {
+                        saveMap = ExcelUtils.getExcelXlsx(file);
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                        saveMap = new LinkedHashMap<>();
+                    }
+                    Map<String, String> caseMap = new LinkedHashMap<>();
+                    caseMap.put(InterfaceConfig.AGREEMENT, sendRequest.getAgreementValues());
+                    caseMap.put(InterfaceConfig.PATH, sendRequest.getPath());
+                    caseMap.put(InterfaceConfig.METHOD, sendRequest.getMethod());
+                    caseMap.put(InterfaceConfig.BODY, sendRequest.getBody());
+                    caseMap.put(InterfaceConfig.FORM_DATA, sendRequest.getUrlValues());
+                    caseMap.put(InterfaceConfig.ENPECTED_RESULT, resultResponse.getText());
+                    caseMap.put(InterfaceConfig.MATCHING_RULE, sendRequest.getMatchingRule());
+                    caseMap.put(InterfaceConfig.TEST_PURPOSE, testPurpose.getText());
+                    saveMap.put(saveMap.size(), caseMap);
+                    ExcelUtils.createExcelFile(file, "test", saveMap);
+                } else if (f == runCaseExcel) {
+                    try {
+                        RunExcelCase runExcelCase = new RunExcelCase(ExcelUtils.getExcelXlsx(new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH)));
+                        runExcelCase.runCase();
+                        ExcelUtils.createExcelFile(new File(InterfaceConfig.RUN_EXCEL_CASE_SAVE_PATH), "test", runExcelCase.getCaseMap());
+                    } catch (FileNotFoundException e1) {
+                        TooltipUtil.errTooltip(e1.toString());
+                    }
                 }
             }
         });
     }
 
     /**
+     * 检查参数
+     */
+    private boolean checkValues() {
+        if (sendRequest.getAgreementValues() == null) {
+            TooltipUtil.errTooltip("请选择一个协议");
+            return false;
+        }
+        if (sendRequest.getMethod() == null) {
+            TooltipUtil.errTooltip("请选择一个方法");
+            return false;
+        }
+        if (sendRequest.getPath() == null || "".equals(sendRequest.getPath())) {
+            TooltipUtil.errTooltip("请输入路径");
+            return false;
+        }
+
+        return true;
+    }
+
+
+    /**
      * 设置提交按钮
      */
     private void setSubmit() {
-        this.submit = setJButton("提交", 60, 40, 400, 12);
+        this.submit = setJButton(InterfaceConfig.SUBMIT, 60, 40, 180, 12);
         add(this.submit);
+    }
+
+    /**
+     * 设置运行Excel按钮
+     */
+    private void setRunCaseExcel() {
+        this.runCaseExcel = setJButton(InterfaceConfig.RUN_CASE, 85, 40, 645, 12);
+        add(this.runCaseExcel);
     }
 
     /**
      * 设置保存用例按钮
      */
-    private void setSaveCase(){
-        this.saveCase = setJButton("保存用例", 90, 40, 500, 12);
+    private void setSaveCase() {
+        this.saveCase = setJButton(InterfaceConfig.SAVE_CASE_JBUTTON, 60, 40, 580, 12);
         add(this.saveCase);
     }
 
@@ -162,8 +250,8 @@ class Case extends JPanel {
     private void setParameter() {
         JTabbedPane sele = new JTabbedPane();
         sele.addTab("Parameter", setParameters());
-        sele.addTab("sdf", new JPanel());
-        sele.setSize(this.jDialog.getWidth() - 35, 550);
+        sele.addTab("result", setResult());
+        sele.setSize(this.jDialog.getWidth() - 35, 560);
         sele.setLocation(10, 100);
         add(sele);
 
@@ -179,14 +267,61 @@ class Case extends JPanel {
         String title = "同请求一起发送的参数";
         jPanel.add(setJLbael(title, 200, 100,
                 this.jDialog.getWidth() / 2 - title.length() - 55, -30));
-        jPanel.add(setJLbael("url中的参数:", 100, 100, 5, 15));
+        jPanel.add(setJLbael("url参数:", 100, 100, 5, 70));
         this.urlArguments = setJTextArea(this.urlArguments);
-        jPanel.add(setJScrollPane(this.urlArguments, 600, 60, 100, 40));
-        jPanel.add(setJLbael("body中的参数:", 100, 100, 5, 176));
+        jPanel.add(setJScrollPane(this.urlArguments, 600, 160, 100, 40));
+        jPanel.add(setJLbael("body参数:", 100, 100, 5, 310));
         this.bodyArguments = setJTextArea(this.bodyArguments);
-        jPanel.add(setJScrollPane(this.bodyArguments, 600, 170, 100, 150));
+        jPanel.add(setJScrollPane(this.bodyArguments, 600, 320, 100, 205));
         return jPanel;
     }
+
+    /**
+     * 设置测试目的
+     */
+    private void setTestPurpose() {
+        add(setJLbael("测试目的", 70, 70, 350, 0));
+        this.testPurpose = setJTextArea(this.testPurpose);
+        add(setJScrollPane(this.testPurpose, 300, 50, 280, 10));
+    }
+
+    /**
+     * 设置结果面板
+     *
+     * @return
+     */
+    private JPanel setResult() {
+        JPanel jPanel = new JPanel();
+        jPanel.setLayout(null);
+        jPanel.add(setJLbael("请求内容:", 100, 100, 5, 0));
+        this.resultRequest = setJTextArea(this.resultRequest);
+        jPanel.add(setJScrollPane(this.resultRequest, 600, 100, 100, 10));
+        jPanel.add(setJLbael("响应内容:", 100, 100, 5, 250));
+        this.resultResponse = setJTextArea(this.resultResponse);
+        this.resultResponse.setFont(new Font("标楷体", Font.BOLD, 13));
+        jPanel.add(setJScrollPane(this.resultResponse, 600, 400, 100, 110));
+        jPanel.add(setJLbael("请求内容:", 100, 100, 5, 0));
+        jPanel.add(setJLbael("匹配规则:", 100, 100, 5, 470));
+        group = new ButtonGroup();
+        this.matchingRule = new JRadioButton(InterfaceConfig.EQUALS);
+        matchingRule.setSize(80, 20);
+        matchingRule.setLocation(95, 510);
+        jRadioButtonMouseListener(matchingRule);
+        add(matchingRule);
+        group.add(matchingRule);
+        jPanel.add(this.matchingRule);
+        matchingRule = new JRadioButton(InterfaceConfig.CONTAINS);
+        matchingRule.setSize(100, 20);
+        matchingRule.setLocation(180, 510);
+        jRadioButtonMouseListener(matchingRule);
+        add(matchingRule);
+        group.add(matchingRule);
+        jPanel.add(this.matchingRule);
+        return jPanel;
+
+
+    }
+
 
     /**
      * 设置按钮
@@ -196,7 +331,9 @@ class Case extends JPanel {
         JButton jbutton = new JButton(textTitle);
         jbutton.setSize(width, height);
         jbutton.setLocation(x, y);
+        jbutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButtonMouseListener(jbutton);
+
         return jbutton;
     }
 
@@ -225,6 +362,7 @@ class Case extends JPanel {
         JLabel jLabel = new JLabel(text);
         jLabel.setLocation(x, y);
         jLabel.setSize(width, height);
+        jLabel.setFont(new Font("华为隶书", Font.BOLD, 15));
         return jLabel;
 
     }

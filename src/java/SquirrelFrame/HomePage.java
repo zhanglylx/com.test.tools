@@ -26,7 +26,7 @@ public class HomePage extends JFrame {
     public static final String clearIphone = "清理手机环境";
     public static final String worm = "贪食蛇";
     public static final String getLocalIP = "获取本机IP地址";
-    public static final String workFlow = "工作流程";
+    public static final String workFlow = "帮助文档";
     public static final String testTools = "测试工具";
     private JButton clearIphoneButtpm;
     private JButton getLocalIPButton;
@@ -38,7 +38,7 @@ public class HomePage extends JFrame {
     public static JButton cartoon;
 
     private HomePage() {
-        super(Config.TOOLSTITLE);
+        super(SquirrelConfig.TOOLSTITLE);
         setLayout(null);
         setSize(700, 500);
         setIconImage(
@@ -420,7 +420,7 @@ class Cartoon implements Runnable {
         int y = 250;
         boolean xBoolean = true;
         boolean yBoolean = true;
-        HomePage.cartoonLog.setText(Config.TOOLSTITLE);
+        HomePage.cartoonLog.setText(SquirrelConfig.TOOLSTITLE);
         while (true) {
 
             if (xBoolean) {
@@ -442,7 +442,7 @@ class Cartoon implements Runnable {
                 if (new Random().nextInt(2) == 1) {
                     HomePage.cartoonLog.setText("中文万维");
                 } else {
-                    HomePage.cartoonLog.setText(Config.TOOLSTITLE);
+                    HomePage.cartoonLog.setText(SquirrelConfig.TOOLSTITLE);
                 }
             }
             if (i == colors.length - 1) i = 0;

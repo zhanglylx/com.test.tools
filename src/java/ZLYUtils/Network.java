@@ -7,7 +7,9 @@ import java.net.URLConnection;
 import java.util.Random;
 
 public class Network {
+    public static String networkUrl;
     public static String sendGet(String url) {
+        if(url==null)throw new IllegalArgumentException("url参数为空");
         return sendGet(url,"");
     }
 
@@ -19,11 +21,14 @@ public class Network {
      * @return 服务响应内容, null为响应非200
      */
     public static String sendGet(String url, String param) {
+        if(url==null)throw new IllegalArgumentException("url参数为空");
+        if(param==null)throw new IllegalArgumentException("param参数为空");
         StringBuffer data =  new StringBuffer();;
         BufferedReader in = null;
         String urlStr = url + "?" + param;
         if(param.equals(""))urlStr = url;
         try {
+            networkUrl = url;
             URL realUrl = new URL(urlStr);
             // 打开和URL之间的连接
             URLConnection connection = realUrl.openConnection();
@@ -69,72 +74,22 @@ public class Network {
      *
      * @param url    发送请求的 URL
      * @param param  请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
-     * @param userId 用户标识
-     * @param cnid   渠道号
-     * @param encoder  转码格式
      * @return 所代表远程资源的响应结果
      * @author ZhangLianYu
      */
-
-    public static String post(String url, String param, String userId, String cnid, String version,String encoder) {
-        if (url == null) throw new IllegalArgumentException("url为空");
-        if (param == null) throw new IllegalArgumentException("param为空");
-        if (userId == null) throw new IllegalArgumentException("userId为空");
-        if (cnid == null) throw new IllegalArgumentException("cnid为空");
-        if (version == null) throw new IllegalArgumentException("version为空");
-        if(encoder == null)throw new IllegalArgumentException("encoder为空");
-        return post(url,getEncoderString(param,encoder),userId,cnid,version);
-    }
-    /**
-     * 向指定 URL 发送POST方法的请求
-     * 本方法暂不支持GZIP解压，所以没有设置Accept-Encoding
-     * 默认为创新版
-     *
-     * @param url    发送请求的 URL
-     * @param param  请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
-     * @param userId 用户标识
-     * @param cnid   渠道号
-     * @return 所代表远程资源的响应结果
-     * @author ZhangLianYu
-     */
-    public static String post(String url, String param, String userId, String cnid, String version) {
-        if (url == null) throw new IllegalArgumentException("url为空");
-        if (param == null) throw new IllegalArgumentException("param为空");
-        if (userId == null) throw new IllegalArgumentException("userId为空");
-        if (cnid == null) throw new IllegalArgumentException("cnid为空");
-        if (version == null) throw new IllegalArgumentException("version为空");
+    public static String sendPost(String url, String param) {
+        if(url==null)throw new IllegalArgumentException("url参数为空");
+        if(param==null)throw new IllegalArgumentException("param参数为空");
         PrintWriter out = null;
         BufferedReader in = null;
         StringBuffer result = new StringBuffer();
+        networkUrl = url;
         try {
             URL realUrl = new URL(url);
             // 打开和URL之间的连接
             URLConnection conn = realUrl.openConnection();
             // 设置通用的请求属性
             ((HttpURLConnection) conn).setInstanceFollowRedirects(false);// 302重定向
-            conn.setRequestProperty("userId", userId);
-            conn.setRequestProperty("uid", userId);
-            conn.setRequestProperty("cnid", cnid);
-            conn.setRequestProperty("channelId", cnid);
-            conn.setRequestProperty("accept", "*/*");// 接受类型，*/*代表任何类型
-            conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.setRequestProperty("user-agent", "zhongWenWanWei");
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-            // 可接受内容编码，服务器会返回相对应的编码
-            conn.setRequestProperty("Accept-Encoding", "chunked");
-            conn.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.8");// 指定一种自然语言,浏览器支持的语言分别是中文和简体中文，优先支持简体中文。
-            conn.setRequestProperty("appname", "cxb");
-            conn.setRequestProperty("version", version);
-            conn.setRequestProperty("mac", String.valueOf(System.currentTimeMillis()) + new Random().nextInt(10000));
-            conn.setRequestProperty("platform", "android");
-            conn.setRequestProperty("imei", String.valueOf(System.currentTimeMillis()) + new Random().nextInt(1000));
-            conn.setRequestProperty("brand", "zhongWenWanWei");
-            conn.setRequestProperty("umeng", "test_test");
-            conn.setRequestProperty("packname", "com.mianfeia.book");
-            conn.setRequestProperty("oscode", "21");
-            conn.setRequestProperty("imsi", String.valueOf(System.currentTimeMillis()) + new Random().nextInt(100));
-            conn.setRequestProperty("model", "zhangLianYuScript");
-            conn.setRequestProperty("commentId", "28682567729283072");
             // 发送POST请求必须设置如下两行
             conn.setDoOutput(true);
             conn.setDoInput(true);
@@ -154,12 +109,10 @@ public class Network {
             //System.out.println(conn.getHeaderField("Set-Cookie"));
             //setCookies(map);
             // }
-//            int getResponseCode = 0;
-//            // 获取响应是否成功
-//            getResponseCode = ((HttpURLConnection) conn).getResponseCode();
-//            if (getResponseCode != 200) {// 检查服务器响应
-//                System.out.println("服务器响应不是200" + "；响应：" + getResponseCode);
-//            }
+            int getResponseCode  = ((HttpURLConnection) conn).getResponseCode();
+            if (getResponseCode != 200) {// 检查服务器响应
+                return getResponseCode+"";
+            }
 //            if (getResponseCode == 302) {
 //                // 如果会重定向，保存302重定向地址，以及Cookies,然后重新发送请求(模拟请求)
 //                String location = conn.getHeaderField("Location");

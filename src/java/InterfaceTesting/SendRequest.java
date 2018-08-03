@@ -11,7 +11,7 @@ public class SendRequest {
     private String path;//路径
     private String urlValues;//url中的参数
     private String body;//body
-
+    private String matchingRule;//匹配规则
     public SendRequest() {
     }
 
@@ -23,6 +23,10 @@ public class SendRequest {
      * @return
      */
     public String sendRequest() {
+        if((agreementValues == null || "".equals(agreementValues)) &&
+                (method == null || "".equals(method)) &&
+                (path == null || "".equals(path))
+                ) return "";
         if (InterfaceConfig.URL_GET_NAME.equals(this.method)) {
             return (Network.sendGet(agreementValues + "://" + path, urlValues));
         } else if (InterfaceConfig.URL_POST_NAME.equals(this.method)) {
@@ -90,4 +94,11 @@ public class SendRequest {
         this.body = body;
     }
 
+    public String getMatchingRule() {
+        return matchingRule;
+    }
+
+    public void setMatchingRule(String matchingRule) {
+        this.matchingRule = matchingRule;
+    }
 }

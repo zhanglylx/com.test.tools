@@ -28,7 +28,7 @@ public class AdbUtils {
         try {
             String dev = " ";
             if (devices != null) dev = " -s " + devices + " ";
-//            Process pro = Runtime.getRuntime().exec(AppiumMethod.Config.ADB_PUTH +dev+ code);
+//            Process pro = Runtime.getRuntime().exec(AppiumMethod.SquirrelConfig.ADB_PUTH +dev+ code);
             Process pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
             BufferedReader br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("utf-8")));
             String msg = null;
@@ -121,7 +121,7 @@ public class AdbUtils {
      * @param code
      * @return
      */
-    public static String[] operationAdb(String code) {
+    public synchronized static String[] operationAdb(String code) {
         //检查是否连接设备
         if (!checkDevices()) return null;
         return runAdb(code);
