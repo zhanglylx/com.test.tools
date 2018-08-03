@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -161,7 +163,12 @@ class Case extends JPanel {
                     resultRequest.setText(Network.networkUrl);
                     if (InterfaceConfig.URL_POST_NAME.equals(sendRequest.getMethod()))
                         resultRequest.append("\nbody:" + sendRequest.getBody());
-                    resultResponse.setText(reposen);
+                    try {
+                        resultResponse.setText(new String(reposen.getBytes( "GBK")));
+                    } catch (UnsupportedEncodingException e1) {
+                        e1.printStackTrace();
+                        TooltipUtil.errTooltip(e1.toString());
+                    }
                 } else if (f == saveCase) {//保存用例
                     if(sendRequest.getMatchingRule() == null){
                         TooltipUtil.errTooltip("请选择一个匹配规则");
