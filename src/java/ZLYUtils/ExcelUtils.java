@@ -57,7 +57,7 @@ public class ExcelUtils {
      * @param excelPath 文件路径
      * @return
      */
-    public static boolean createExcelFile(File excelPath, String sheetName, Map<Integer, Map<String, String>> dataMap) {
+    public synchronized static boolean createExcelFile(File excelPath, String sheetName, Map<Integer, Map<String, String>> dataMap) {
         boolean isCreateSuccess = false;
         Workbook workbook = null;
         try {
