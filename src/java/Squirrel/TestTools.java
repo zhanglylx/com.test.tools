@@ -3,9 +3,14 @@ package Squirrel;
 import InterfaceTesting.SquirrelUi;
 
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TestTools {
-    public static void invokingTestFrame(String testFrame, JDialog jdialog) {
+    private static Map<String,JButton> jButtonMap = new HashMap<>();
+    public static void invokingTestFrame(String testFrame, JDialog jdialog,JButton jButton) {
+        jButtonMap.put(jButton.getText(),jButton);
+        jButton.setEnabled(false);
         switch (testFrame) {
             case getADLog:
                 new GetADLog(testFrame, jdialog);
@@ -20,11 +25,13 @@ public class TestTools {
                 new VideoRecordingScreenshot(Video_RECORDING_AND_SCREENSHOT,jdialog);
                 break;
             case InterfaceTesting:
-                new SquirrelUi(InterfaceTesting,jdialog);
+                new SquirrelUi(InterfaceTesting);
                 break;
         }
     }
-
+    public static void setJButtonEnabled(String title){
+        jButtonMap.get(title).setEnabled(true);
+    }
     public static final String getADLog = "获取广告日志";
     public static final String leaveBug = "版本遗留bug";
     public static final String ZhiBoTools = "直播工具";

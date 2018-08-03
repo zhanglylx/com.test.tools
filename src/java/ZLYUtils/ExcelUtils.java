@@ -21,29 +21,30 @@ public class ExcelUtils {
     private static XSSFSheet xssfSheet;
     private static XSSFRow xssfRow;
     private static XSSFCell xssfCell;
+
     public static void main(String[] args) throws Exception {
-        Map<Integer, Map<String, String>> dataMap =  new LinkedHashMap<>();
+        Map<Integer, Map<String, String>> dataMap = new LinkedHashMap<>();
         Map<String, String> m = new LinkedHashMap<>();
-        m.put("测试1","zhi1");
-        m.put("测试2","zhi2");
-        m.put("测试3","zhi3");
-        m.put("测试4","zhi4");
-        m.put("测试5","zhi5");
-        m.put("测试6","zhi6");
-        dataMap.put(0,m);
-        dataMap.put(1,m);
-        if (createExcelFile(new File("x.xlsx"),"测试",dataMap
+        m.put("测试1", "zhi1");
+        m.put("测试2", "zhi2");
+        m.put("测试3", "zhi3");
+        m.put("测试4", "zhi4");
+        m.put("测试5", "zhi5");
+        m.put("测试6", "zhi6");
+        dataMap.put(0, m);
+        dataMap.put(1, m);
+        if (createExcelFile(new File("x.xlsx"), "测试", dataMap
 
         )) {
             System.out.println("data.xlsx is created successfully.");
         }
-        Map<Integer,Map<String,String>> S ;
+        Map<Integer, Map<String, String>> S;
         S = getExcelXlsx(new File("x.xlsx"));
-        Map<String,String> map;
-        for(int i=0;i<S.size();i++){
+        Map<String, String> map;
+        for (int i = 0; i < S.size(); i++) {
             map = S.get(i);
-            for(Map.Entry<String,String> values: map.entrySet()){
-                System.out.println("Key:"+values.getKey()+" 值:"+values.getValue());
+            for (Map.Entry<String, String> values : map.entrySet()) {
+                System.out.println("Key:" + values.getKey() + " 值:" + values.getValue());
             }
         }
 
@@ -72,12 +73,12 @@ public class ExcelUtils {
             Map<String, String> values = null;//保存dataMap中的map
             int num = 0;
 
-            Map<String,String> titleMap = new LinkedHashMap<>();
+            Map<String, String> titleMap = new LinkedHashMap<>();
             //读取出所有map的title
-            for(int i = 0;i<dataMap.size();i++){
+            for (int i = 0; i < dataMap.size(); i++) {
                 values = dataMap.get(i);
                 for (Map.Entry<String, String> m : values.entrySet()) {
-                    if(!titleMap.containsKey(m.getKey()))titleMap.put(m.getKey(),"");
+                    if (!titleMap.containsKey(m.getKey())) titleMap.put(m.getKey(), "");
                 }
             }
             //记录map中的key，用于在插入数据中，将指定key中的数据插入到相同的表格中
@@ -95,27 +96,33 @@ public class ExcelUtils {
             for (int index = 0; index < dataMap.size(); index++) {
                 values = dataMap.get(index);//获取每一个data中的map
                 //插入数据
-                    Row row = sheet.createRow(index+1);
-                   for (int i = 0; i < key.length; i++) {
-                        Cell cell = row.createCell(i, Cell.CELL_TYPE_STRING);
-                        if(values.get(key[i])!=null &&values.get(key[i]).startsWith("false:")) {
-                            CellStyle style = workbook.createCellStyle();
-                            // 设置单元格字体
-                            Font headerFont = workbook.createFont(); // 字体
-                            headerFont.setFontHeightInPoints((short) 14);
+                Row row = sheet.createRow(index + 1);
+                for (int i = 0; i < key.length; i++) {
+                    Cell cell = row.createCell(i, Cell.CELL_TYPE_STRING);
+                    //单独对松鼠接口测试工具中的自动化用例结果进行颜色设置
+                    if (values.get(key[i]) != null &&
+                            (values.get(key[i]).startsWith("false:") || "true".equals(values.get(key[i])))) {
+                        CellStyle style = workbook.createCellStyle();
+                        // 设置单元格字体
+                        Font headerFont = workbook.createFont(); // 字体
+                        headerFont.setFontHeightInPoints((short) 14);
+                        if ("true".equals(values.get(key[i]))) {
+                            headerFont.setColor(HSSFColor.GREEN.index);
+                        } else {
                             headerFont.setColor(HSSFColor.RED.index);
-                            headerFont.setFontName("宋体");
-                            style.setFont(headerFont);
-                            style.setWrapText(false);
-                            cell.setCellStyle(style);
                         }
-                        if(values.get(key[i])==null){
-                            cell.setCellValue("");
-                        }else {
-                            cell.setCellValue(values.get(key[i]));
-                        }
+                        headerFont.setFontName("宋体");
+                        style.setFont(headerFont);
+                        style.setWrapText(false);
+                        cell.setCellStyle(style);
+                    }
+                    if (values.get(key[i]) == null) {
+                        cell.setCellValue("");
+                    } else {
+                        cell.setCellValue(values.get(key[i]));
+                    }
 
-                   }
+                }
 
             }
 
@@ -132,7 +139,7 @@ public class ExcelUtils {
                 return isCreateSuccess;
             }
         }
-        TooltipUtil.generalTooltip("保存成功:"+excelPath.getAbsolutePath());
+        TooltipUtil.generalTooltip("保存成功:" + excelPath.getAbsolutePath());
         return isCreateSuccess;
     }
 
@@ -216,7 +223,7 @@ public class ExcelUtils {
             xssfRow = xssfSheet.getRow(row);
             xssfCell = xssfRow.getCell(colum);
             xssfCell.setCellType(org.apache.poi.ss.usermodel.Cell.CELL_TYPE_STRING);// 将小数转换成整数
-            return xssfCell.toString() != null ? xssfCell.toString().trim() : "";
+            return xssfCell.toString() != null ? xssfCell.toString() : "";
         } catch (Exception e) {
             e.printStackTrace();
             return "";

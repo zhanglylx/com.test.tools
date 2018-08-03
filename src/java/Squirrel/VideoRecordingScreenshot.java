@@ -49,6 +49,7 @@ public class VideoRecordingScreenshot extends JDialog {
                 super.windowClosing(e);
                 //关闭刷新线程
                 refreshTheImage.stopMe();
+                TestTools.setJButtonEnabled(getTitle());
                 jDialog.setDefaultCloseOperation(2);
 
             }

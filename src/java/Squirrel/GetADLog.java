@@ -66,6 +66,7 @@ public class GetADLog extends Pane {
             public void windowClosing(WindowEvent e) {
                 windowsClose = true;
                 super.windowClosing(e);
+                TestTools.setJButtonEnabled(getTitle());
                 setDefaultCloseOperation(2);
             }
         });

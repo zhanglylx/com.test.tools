@@ -1,5 +1,6 @@
 package InterfaceTesting;
 
+import Squirrel.TestTools;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.ExcelUtils;
 import ZLYUtils.Network;
@@ -9,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -19,13 +22,20 @@ import java.util.Map;
 /**
  * 松鼠工具接口测试页面
  */
-public class SquirrelUi extends JDialog {
-    public SquirrelUi(String title, JDialog jDialog) {
-        super(jDialog, true);
+public class SquirrelUi extends JFrame {
+    public SquirrelUi(String title) {
         setTitle(title);
         setLayout(null);
         setSize(750, 700);
         add(new Case(this));
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) { //设置退出监听器
+                super.windowClosing(e);
+                setDefaultCloseOperation(2);
+                TestTools.setJButtonEnabled(getTitle());
+            }
+        });
         setVisible(true);
 
     }
@@ -39,7 +49,7 @@ class Case extends JPanel {
     private JTextArea testPurpose;//测试目的
     private JRadioButton agreement;//协议
     private ButtonGroup group;//唯一按钮点击限制
-    private JDialog jDialog; //父面板
+    private JFrame jDialog; //父面板
     private JRadioButton method;//方法
     private JButton submit;//提交按钮
     private JButton saveCase;//保存用例按钮
@@ -49,7 +59,7 @@ class Case extends JPanel {
     private JButton runCaseExcel;//执行Excel按钮
     private JRadioButton matchingRule;//匹配规则
 
-    public Case(JDialog jDialog) {
+    public Case(JFrame jDialog) {
         this.jDialog = jDialog;
         sendRequest = new SendRequest();
         setLayout(null);
@@ -136,8 +146,8 @@ class Case extends JPanel {
                 } else if (InterfaceConfig.URL_GET_NAME.equals(text) ||
                         InterfaceConfig.URL_POST_NAME.equals(text)) {
                     sendRequest.setMethod(text);
-                } else if(InterfaceConfig.EQUALS.equals(text) ||
-                        InterfaceConfig.CONTAINS.equals(text)){
+                } else if (InterfaceConfig.EQUALS.equals(text) ||
+                        InterfaceConfig.CONTAINS.equals(text)) {
                     sendRequest.setMatchingRule(text);
                 }
             }
@@ -163,14 +173,9 @@ class Case extends JPanel {
                     resultRequest.setText(Network.networkUrl);
                     if (InterfaceConfig.URL_POST_NAME.equals(sendRequest.getMethod()))
                         resultRequest.append("\nbody:" + sendRequest.getBody());
-                    try {
-                        resultResponse.setText(new String(reposen.getBytes( "GBK")));
-                    } catch (UnsupportedEncodingException e1) {
-                        e1.printStackTrace();
-                        TooltipUtil.errTooltip(e1.toString());
-                    }
+                    resultResponse.setText(reposen);
                 } else if (f == saveCase) {//保存用例
-                    if(sendRequest.getMatchingRule() == null){
+                    if (sendRequest.getMatchingRule() == null) {
                         TooltipUtil.errTooltip("请选择一个匹配规则");
                         return;
                     }

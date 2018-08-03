@@ -36,6 +36,14 @@ public class ZhiBo extends FrameSqiorrel {
     public ZhiBo(String title, JDialog jdialog) {
         super(title, jdialog);
         addJButton(zhiboArrays);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) { //设置退出监听器
+                super.windowClosing(e);
+                setDefaultCloseOperation(2);
+                TestTools.setJButtonEnabled(getTitle());
+            }
+        });
         setVisible(true);
     }
 

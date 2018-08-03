@@ -32,7 +32,7 @@ public class Pane extends JDialog {
 
 
     public Pane(String buttonText, JDialog frame) {
-        super(frame, true);
+        super(frame, false);
         setTitle(buttonText);
 
     }
@@ -79,7 +79,8 @@ public class Pane extends JDialog {
             if(checkArraysContainText(flow,text)){
                 new FlowFrame(f.getText(), this);
             }else if (checkArraysContainText(testTools,text)){
-                invokingTestFrame(text,this);
+                invokingTestFrame(text,this,f);
+
             }
         });
     }
