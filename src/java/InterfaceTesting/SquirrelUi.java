@@ -28,6 +28,9 @@ public class SquirrelUi extends JFrame {
         setLayout(null);
         setSize(750, 700);
         add(new Case(this));
+        setIconImage(
+                Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
+        );
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) { //设置退出监听器
@@ -200,9 +203,10 @@ class Case extends JPanel {
                     ExcelUtils.createExcelFile(file, "test", saveMap);
                 } else if (f == runCaseExcel) {
                     try {
-                        RunExcelCase runExcelCase = new RunExcelCase(ExcelUtils.getExcelXlsx(new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH)));
-                        runExcelCase.runCase();
-                        ExcelUtils.createExcelFile(new File(InterfaceConfig.RUN_EXCEL_CASE_SAVE_PATH), "test", runExcelCase.getCaseMap());
+                        RunExcelCase runExcelCase = new RunExcelCase(
+                                ExcelUtils.getExcelXlsx(new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH)),runCaseExcel);
+                        Thread t = new Thread(runExcelCase);
+                        t.start();
                     } catch (FileNotFoundException e1) {
                         TooltipUtil.errTooltip(e1.toString());
                     }

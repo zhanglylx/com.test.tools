@@ -1,24 +1,33 @@
 package InterfaceTesting;
 
+import ZLYUtils.ExcelUtils;
 import ZLYUtils.WindosUtils;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import sun.dc.pr.PRError;
 
+import javax.swing.*;
 import java.io.File;
 import java.util.Map;
 
 /**
  * 执行Excel中的用例
  */
-public class RunExcelCase {
+public class RunExcelCase implements Runnable {
     private Map<Integer, Map<String, String>> caseMap;
     private SendRequest sendRequest;
-
-    public RunExcelCase(Map<Integer, Map<String, String>> caseMap) {
+    private JButton jButton;
+    public RunExcelCase(Map<Integer, Map<String, String>> caseMap, JButton jButton) {
+        this.jButton = jButton;
         this.caseMap = caseMap;
         sendRequest = new SendRequest();
-    }
 
+    }
+    public void run(){
+        jButton.setEnabled(false);
+        runCase();
+        ExcelUtils.createExcelFile(new File(InterfaceConfig.RUN_EXCEL_CASE_SAVE_PATH), "test", this.caseMap);
+        jButton.setEnabled(true);
+    }
     /**
      * 运行case
      */
@@ -59,5 +68,6 @@ public class RunExcelCase {
     public Map<Integer, Map<String, String>> getCaseMap() {
         return this.caseMap;
     }
+
 
 }
