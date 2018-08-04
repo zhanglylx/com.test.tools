@@ -25,5 +25,6 @@ public class InterfaceConfig {
     public static final String CONTAINS = "contains";
     public static final String EQUALS = "equals";
     public static final String MATCHING_RULE = "matching rule";
+    public static final String TRANSCODING_TEXT = "Transcoding text";//转码文本
 
 }

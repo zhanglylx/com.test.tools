@@ -12,9 +12,13 @@ public class SendRequest {
     private String urlValues;//url中的参数
     private String body;//body
     private String matchingRule;//匹配规则
+    private String transcoding;//转码文本
+    private String beginTranscoding;//转码文本开始正则
+    private String endTranscoding;//转码文本开始正则
+    private String url;
+
     public SendRequest() {
     }
-
 
 
     /**
@@ -23,11 +27,26 @@ public class SendRequest {
      * @return
      */
     public String sendRequest() {
-        if((agreementValues == null || "".equals(agreementValues)) &&
+        if (this.transcoding != null && !"".equals(this.transcoding)) {
+            String encoderStr = beginTranscoding + transcoding + endTranscoding;//转码前
+            //转码后
+            String encoderText = beginTranscoding +
+                    Network.getEncoderString(transcoding, "UTF-8") + endTranscoding;
+            urlValues = urlValues.replace(encoderStr, encoderText);
+            body = body.replace(encoderStr, encoderText);
+        }
+        if ((agreementValues == null || "".equals(agreementValues)) &&
                 (method == null || "".equals(method)) &&
                 (path == null || "".equals(path))
                 ) return "";
+        //给url赋值
+        if (!"".equals(urlValues)) {
+            this.url = agreementValues + "://" + path + "?" + urlValues;
+        } else {
+            this.url = agreementValues + "://" + path;
+        }
         if (InterfaceConfig.URL_GET_NAME.equals(this.method)) {
+
             return (Network.sendGet(agreementValues + "://" + path, urlValues));
         } else if (InterfaceConfig.URL_POST_NAME.equals(this.method)) {
             if ("".equals(urlValues)) {
@@ -100,5 +119,37 @@ public class SendRequest {
 
     public void setMatchingRule(String matchingRule) {
         this.matchingRule = matchingRule;
+    }
+
+    public String getTranscoding() {
+        return transcoding;
+    }
+
+    public void setTranscoding(String transcoding) {
+        this.transcoding = transcoding;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getBeginTranscoding() {
+        return beginTranscoding;
+    }
+
+    public void setBeginTranscoding(String beginTranscoding) {
+        this.beginTranscoding = beginTranscoding;
+    }
+
+    public String getEndTranscoding() {
+        return endTranscoding;
+    }
+
+    public void setEndTranscoding(String endTranscoding) {
+        this.endTranscoding = endTranscoding;
     }
 }

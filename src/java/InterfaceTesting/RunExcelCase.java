@@ -26,6 +26,7 @@ public class RunExcelCase implements Runnable {
         jButton.setEnabled(false);
         runCase();
         ExcelUtils.createExcelFile(new File(InterfaceConfig.RUN_EXCEL_CASE_SAVE_PATH), "test", this.caseMap);
+        jButton.setText(InterfaceConfig.RUN_CASE);
         jButton.setEnabled(true);
     }
     /**
@@ -34,6 +35,7 @@ public class RunExcelCase implements Runnable {
     public void runCase() {
         String date = WindosUtils.getDate();
         for (int i = 0; i < this.caseMap.size(); i++) {
+            jButton.setText(i+1+"");
             Map<String, String> values = this.caseMap.get(i);
             sendRequest.setPath(values.get(InterfaceConfig.PATH));
             sendRequest.setBody(values.get(InterfaceConfig.BODY));
@@ -62,6 +64,7 @@ public class RunExcelCase implements Runnable {
             }
             caseMap.put(i, values);
         }
+        jButton.setText("完成");
     }
 
 

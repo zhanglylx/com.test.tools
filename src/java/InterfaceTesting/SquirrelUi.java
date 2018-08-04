@@ -49,6 +49,9 @@ class Case extends JPanel {
     private JTextArea path;//路径
     private JTextArea urlArguments;//get参数
     private JTextArea bodyArguments;//body参数
+    private JTextArea transcoding;//转码参数
+    private JTextArea beginTranscoding;//转码文本开始正则
+    private JTextArea endTranscoding;//转码文本开始正则
     private JTextArea testPurpose;//测试目的
     private JRadioButton agreement;//协议
     private ButtonGroup group;//唯一按钮点击限制
@@ -171,9 +174,12 @@ class Case extends JPanel {
                     sendRequest.setPath(path.getText());
                     sendRequest.setUrlValues(urlArguments.getText());
                     sendRequest.setBody(bodyArguments.getText());
+                    sendRequest.setTranscoding(transcoding.getText());
+                    sendRequest.setBeginTranscoding(beginTranscoding.getText());
+                    sendRequest.setEndTranscoding(endTranscoding.getText());
                     if (!checkValues()) return;
                     String reposen = sendRequest.sendRequest();
-                    resultRequest.setText(Network.networkUrl);
+                    resultRequest.setText(sendRequest.getUrl());
                     if (InterfaceConfig.URL_POST_NAME.equals(sendRequest.getMethod()))
                         resultRequest.append("\nbody:" + sendRequest.getBody());
                     resultResponse.setText(reposen);
@@ -194,17 +200,18 @@ class Case extends JPanel {
                     caseMap.put(InterfaceConfig.AGREEMENT, sendRequest.getAgreementValues());
                     caseMap.put(InterfaceConfig.PATH, sendRequest.getPath());
                     caseMap.put(InterfaceConfig.METHOD, sendRequest.getMethod());
-                    caseMap.put(InterfaceConfig.BODY, sendRequest.getBody());
+                    caseMap.put(InterfaceConfig.BODY, bodyArguments.getText());
                     caseMap.put(InterfaceConfig.FORM_DATA, sendRequest.getUrlValues());
                     caseMap.put(InterfaceConfig.ENPECTED_RESULT, resultResponse.getText());
                     caseMap.put(InterfaceConfig.MATCHING_RULE, sendRequest.getMatchingRule());
+                    caseMap.put(InterfaceConfig.TRANSCODING_TEXT, transcoding.getText());
                     caseMap.put(InterfaceConfig.TEST_PURPOSE, testPurpose.getText());
                     saveMap.put(saveMap.size(), caseMap);
                     ExcelUtils.createExcelFile(file, "test", saveMap);
                 } else if (f == runCaseExcel) {
                     try {
                         RunExcelCase runExcelCase = new RunExcelCase(
-                                ExcelUtils.getExcelXlsx(new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH)),runCaseExcel);
+                                ExcelUtils.getExcelXlsx(new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH)), runCaseExcel);
                         Thread t = new Thread(runExcelCase);
                         t.start();
                     } catch (FileNotFoundException e1) {
@@ -283,12 +290,20 @@ class Case extends JPanel {
         String title = "同请求一起发送的参数";
         jPanel.add(setJLbael(title, 200, 100,
                 this.jDialog.getWidth() / 2 - title.length() - 55, -30));
-        jPanel.add(setJLbael("url参数:", 100, 100, 5, 70));
-        this.urlArguments = setJTextArea(this.urlArguments);
-        jPanel.add(setJScrollPane(this.urlArguments, 600, 160, 100, 40));
-        jPanel.add(setJLbael("body参数:", 100, 100, 5, 310));
-        this.bodyArguments = setJTextArea(this.bodyArguments);
-        jPanel.add(setJScrollPane(this.bodyArguments, 600, 320, 100, 205));
+        jPanel.add(setJLbael("url参数:", 100, 50, 5, 70));
+        jPanel.add(setJScrollPane(this.urlArguments = setJTextArea(this.urlArguments), 600, 100, 100, 40));
+
+        jPanel.add(setJLbael("参数转码:", 100, 50, 5, 480));
+        jPanel.add(setJLbael("起始:", 100, 50, 100, 480));
+        jPanel.add(setJScrollPane(this.beginTranscoding = setJTextArea(this.beginTranscoding), 60, 50, 140, 480));
+        jPanel.add(setJLbael("结束:", 100, 50, 210, 480));
+        jPanel.add(setJScrollPane(this.endTranscoding = setJTextArea(this.endTranscoding), 60, 50, 250, 480));
+        jPanel.add(setJLbael("转码文本:", 100, 50, 330, 480));
+        jPanel.add(setJScrollPane(this.transcoding = setJTextArea(this.transcoding), 200, 50, 420, 480));
+
+
+        jPanel.add(setJLbael("body参数:", 100, 100, 5, 230));
+        jPanel.add(setJScrollPane(this.bodyArguments = setJTextArea(this.bodyArguments), 600, 320, 100, 150));
         return jPanel;
     }
 
