@@ -53,7 +53,7 @@ public class AdbUtils {
                 int p = -1;
                 if ((p = WindosUtils.selectNetstatPid(5037)) != -1) {
                     pid = WindosUtils.getPIDName(p);
-                    if (pid == null || pid.contains("adb.exe")) return;
+                    if (pid == null || pid.toLowerCase().contains("adb.exe") || pid.toLowerCase().contains("java")) return;
                 }
             } else {
                 return;
