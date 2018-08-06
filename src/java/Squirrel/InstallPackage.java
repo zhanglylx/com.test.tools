@@ -113,23 +113,30 @@ public class InstallPackage extends JFrame implements ActionListener {
         }
         @Override
         public void run() {
-            String jButtonText = this.jButton.getText();
-            this.jButton.setText("正在安装");
-            String[] adb = AdbUtils.operationAdb("install -r " + textField.getText());
-            if (adb == null) return;
-            boolean success = false;
-            for (int i = 0; i < adb.length; i++) {
-                if ("success".equals(adb[i].trim().toLowerCase())) {
-                    TooltipUtil.generalTooltip("安装成功");
-                    success = true;
-                    break;
+            synchronized (this) {
+                String jButtonText = this.jButton.getText();
+                this.jButton.setText("正在安装");
+                String[] adb = AdbUtils.operationAdb("install -r " + textField.getText());
+                if (adb == null) {
+                    this.jButton.setEnabled(true);
+                    this.jButton.setText(jButtonText);
+                    return;
                 }
+
+                boolean success = false;
+                for (int i = 0; i < adb.length; i++) {
+                    if ("success".equals(adb[i].trim().toLowerCase())) {
+                        TooltipUtil.generalTooltip("安装成功");
+                        success = true;
+                        break;
+                    }
+                }
+                if (!success) {
+                    TooltipUtil.errTooltip("安装失败，具体原因自己查查吧");
+                }
+                jButton.setEnabled(true);
+                this.jButton.setText(jButtonText);
             }
-            if(!success){
-                TooltipUtil.errTooltip("安装失败，具体原因自己查查吧");
-            }
-            jButton.setEnabled(true);
-            this.jButton.setText(jButtonText);
         }
     }
 }

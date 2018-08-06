@@ -31,4 +31,9 @@ public class TooltipUtil {
                message+":\n", "提示",
                JOptionPane.PLAIN_MESSAGE, new ImageIcon("icon.png"), list,list[0]);
     }
+
+    public static int yesNoTooltip(String text){
+        return JOptionPane.showConfirmDialog(null, text, "松鼠",JOptionPane.YES_NO_OPTION); //返回值为0或1
+    }
+
 }

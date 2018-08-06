@@ -2,11 +2,10 @@ package InterfaceTesting;
 
 import ZLYUtils.ExcelUtils;
 import ZLYUtils.WindosUtils;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-import sun.dc.pr.PRError;
 
 import javax.swing.*;
 import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -16,15 +15,16 @@ public class RunExcelCase implements Runnable {
     private Map<Integer, Map<String, String>> caseMap;
     private SendRequest sendRequest;
     private JButton jButton;
-    private boolean runExcelCaseStop;
+    private boolean excelCaseClosed;//线程是否是关闭状态
     private boolean stopRun;
     private static RunExcelCase runExcelCase;
 
     private RunExcelCase() {
+        jButton = new JButton();
         sendRequest = new SendRequest();
         stopRun = false;
-        runExcelCaseStop = true;
-
+        excelCaseClosed = true;
+        caseMap = new LinkedHashMap<>();
     }
 
 
@@ -35,8 +35,8 @@ public class RunExcelCase implements Runnable {
         return runExcelCase;
     }
 
-    public boolean getRunExcelCaseStop() {
-        return runExcelCaseStop;
+    public boolean getExcelCaseClosed() {
+        return excelCaseClosed;
     }
 
     ;
@@ -48,15 +48,15 @@ public class RunExcelCase implements Runnable {
     }
 
     public void run() {
-        runExcelCaseStop = false;
+        excelCaseClosed = false;//
         synchronized (this) {
             jButton.setEnabled(false);
             runCase();
             ExcelUtils.createExcelFile(new File(InterfaceConfig.RUN_EXCEL_CASE_SAVE_PATH), "test", this.caseMap);
             jButton.setText(InterfaceConfig.RUN_CASE);
             jButton.setEnabled(true);
-            runExcelCaseStop = true;
-            stopRun = false;
+            excelCaseClosed = true;//状态置为默认
+            stopRun = false;//状态置为默认
         }
     }
 
@@ -67,7 +67,7 @@ public class RunExcelCase implements Runnable {
         String date = WindosUtils.getDate();
         for (int i = 0; i < this.caseMap.size(); i++) {
             if (stopRun) break;
-            jButton.setText(i + 1 + "");
+            jButton.setText("第"+(i + 1) + "条");
             Map<String, String> values = this.caseMap.get(i);
             sendRequest.setPath(values.get(InterfaceConfig.PATH));
             sendRequest.setBody(values.get(InterfaceConfig.BODY));

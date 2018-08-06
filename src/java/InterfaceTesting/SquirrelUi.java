@@ -3,7 +3,6 @@ package InterfaceTesting;
 import Squirrel.TestTools;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.ExcelUtils;
-import ZLYUtils.Network;
 import ZLYUtils.TooltipUtil;
 
 import javax.swing.*;
@@ -14,8 +13,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -35,7 +32,7 @@ public class SquirrelUi extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) { //设置退出监听器
-                if (!RunExcelCase.getRunExcelCase().getRunExcelCaseStop()) {
+                if (!RunExcelCase.getRunExcelCase().getExcelCaseClosed()) {
                     if (0 == TooltipUtil.yesNoTooltip("用例正在执行,是否正在执行的用例")) {
                         RunExcelCase.getRunExcelCase().setRunExcelCaseStop();
                         return;

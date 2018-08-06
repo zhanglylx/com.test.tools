@@ -28,7 +28,9 @@ public class SendRequest {
      */
     public String sendRequest() {
         if (this.transcoding != null && !"".equals(this.transcoding)) {
+
             String encoderStr = beginTranscoding + transcoding + endTranscoding;//转码前
+            if(!urlValues.contains(encoderStr) && !body.contains(encoderStr))return "转码文本未找到:"+transcoding;
             //转码后
             String encoderText = beginTranscoding +
                     Network.getEncoderString(transcoding, "UTF-8") + endTranscoding;

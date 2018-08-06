@@ -1,8 +1,13 @@
 package ZLYUtils;
 
+import InterfaceTesting.RunExcelCase;
+import Squirrel.TestTools;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -87,7 +92,7 @@ public class FrameUtils {
     /**
      * 各种方法
      */
-    public static void method(){
+    public static void method() {
         /**
          * JButton方法
          */
@@ -96,11 +101,45 @@ public class FrameUtils {
         jbutton.setBorderPainted(false);// 不绘制边框
         jbutton.setContentAreaFilled(false);//透明的设置
         jbutton.setToolTipText("保存");//鼠标悬停文字
-        jbutton.setFont(new Font("Arial",Font.BOLD,0));//设置字体
+        jbutton.setFont(new Font("Arial", Font.BOLD, 0));//设置字体
+
+
+     //   setIconImage(Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)); 设置Frame图标
+
 
         //image.setImage(image.getImage().getScaledInstance(300, 500, Image.SCALE_DEFAULT));设置图片大小
-    }
 
+        /**
+         * 设置窗体点击X按钮是否关闭
+         */
+//        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+//        addWindowListener(new WindowAdapter() {
+//            @Override
+//            public void windowClosing(WindowEvent e) { //设置退出监听器
+//                if(RunExcelCase.getRunExceling()){
+//                    TooltipUtil.errTooltip("自动化用例正在执行");
+//                    return;}
+//                System.out.println("===");
+//                super.windowClosing(e);
+//                setDefaultCloseOperation(2);
+//                TestTools.setJButtonEnabled(getTitle());
+//            }
+//        });
+
+
+
+
+    }
+    /**
+     * 设置按钮监听器
+     */
+    private void jButtonMouseListener(JButton jb) {
+        jb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+    }
 
 
 }

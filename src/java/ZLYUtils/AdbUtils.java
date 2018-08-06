@@ -124,7 +124,7 @@ public class AdbUtils {
     public synchronized static String[] operationAdb(String code) {
         //检查是否连接设备
         if (!checkDevices()) return null;
-        return runAdb(code);
+            return runAdb(code);
     }
 
     /**
@@ -133,8 +133,8 @@ public class AdbUtils {
     public static boolean checkDevices() {
         String[] deivcesInfo = checkdevicesInfo();
         for (int i = 0; i < 2; i++) {
-            if (deivcesInfo.length == 0 && i == 1  && errTime <System.currentTimeMillis()) {
-                TooltipUtil.errTooltip("请至少将一台设备连接到电脑");
+            if (deivcesInfo.length == 0 && i == 1 ) {
+                if(errTime <System.currentTimeMillis())TooltipUtil.errTooltip("请至少将一台设备连接到电脑");
                 errTime = System.currentTimeMillis()+(10*1000);
                 return false;
             }
@@ -148,11 +148,9 @@ public class AdbUtils {
                 if (s.contains(devices)) dev = true;
             }
             if (!dev) {
-                if(errTime <System.currentTimeMillis()){
-                    TooltipUtil.errTooltip("当前设备未找到，请重新选择设备");
-                    errTime = System.currentTimeMillis()+(10*1000);
-                }
+                    TooltipUtil.errTooltip("当前设备:"+HomePage.textArea.getText()+" 已更换，设备刷新后请重试");
                 setDevices();
+                return false;
             }
         }
         return true;
