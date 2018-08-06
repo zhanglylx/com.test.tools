@@ -1,7 +1,9 @@
 package SquirrelFrame;
 
+import Squirrel.InstallPackage;
 import ZLYUtils.AdbUtils;
 import ZLYUtils.FrameUtils;
+import ZLYUtils.JavaUtils;
 import ZLYUtils.WindosUtils;
 import com.worm.StratWorm;
 
@@ -12,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.Random;
 
 /**
@@ -25,12 +28,14 @@ public class HomePage extends JFrame {
     public static final String CXB = "免费电子书";
     public static final String ZHIBO = "直播";
     public static final String clearIphone = "清理手机环境";
+    public static final String installPackage = "安装apk";
     public static final String worm = "贪食蛇";
     public static final String getLocalIP = "获取本机IP地址";
     public static final String workFlow = "帮助文档";
     public static final String testTools = "测试工具";
     private JButton clearIphoneButtpm;
     private JButton getLocalIPButton;
+    private JButton installPackageButton;
     private static HomePage homePage;
     public static JTextField textArea;
     public static JButton cartoonLog;
@@ -43,7 +48,7 @@ public class HomePage extends JFrame {
         setLayout(null);
         setSize(700, 500);
         setIconImage(
-                Toolkit.getDefaultToolkit().getImage("image/logo.png")
+                Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
         );
         //检查adb端口是否被占用
         Thread adbNetstat = new Thread(new Runnable() {
@@ -71,11 +76,12 @@ public class HomePage extends JFrame {
             }
         });
         add(addCartoon());
+//        add(panelLogo());
 //        pack();//自适应
-
-        setVisible(true);//设置窗口可见
         Thread t = new Thread(new Cartoon());
         t.start();
+        setVisible(true);//设置窗口可见
+
 
     }
 
@@ -129,7 +135,7 @@ public class HomePage extends JFrame {
                             refresh.setEnabled(false);
                             AdbUtils.setDevices();
                             if (i > 4) i = 0;
-                            if( !textArea.getText().contains("正在刷新")){
+                            if (!textArea.getText().contains("正在刷新")) {
                                 refresh.setEnabled(true);
                                 break;
                             }
@@ -174,6 +180,9 @@ public class HomePage extends JFrame {
                 case testTools:
                     new Pane(text, this);
                     break;
+                case installPackage:
+                    handleClickEvents(f);
+                    break;
                 default:
                     new WindowsText(text, this);
 
@@ -194,25 +203,28 @@ public class HomePage extends JFrame {
                 if (clearIphone.equals(text)) {
                     new ClearIphone(projectName, clearProjectName);
                     clearIphoneButtpm.setEnabled(true);
+                }else if(installPackage.equals(text)){
+                    new InstallPackage(f);
+
                 }
             }
         });
         t.start();
     }
 
-//    /**
-//     * logo面板
-//     *
-//     * @return
-//     */
-//    private JButton panelLogo() {
-//        cartoon = new JButton();
-//        cartoon.setBorderPainted(false);// 不绘制边框
-//        cartoon.setContentAreaFilled(false);//透明的设置
-//        cartoon.setLocation(this.getX()-350,250);
-//        cartoon.setSize(this.getWidth(),200);
-//        return cartoon;
-//    }
+    /**
+     * logo面板
+     *
+     * @return
+     */
+    private JButton panelLogo() {
+        cartoon = new JButton();
+        cartoon.setBorderPainted(false);// 不绘制边框
+        cartoon.setContentAreaFilled(false);//透明的设置
+        cartoon.setLocation(this.getX() - 350, 250);
+        cartoon.setSize(this.getWidth(), 200);
+        return cartoon;
+    }
 
     /**
      * 添加动画
@@ -270,7 +282,7 @@ public class HomePage extends JFrame {
         Project.setLayout(new FlowLayout(0));
         Project.add(new JLabel("当前设备名称:"));
         textArea = new JTextField(15);
-        textArea.setFont(new Font("黑体",Font.BOLD,15));
+        textArea.setFont(new Font("黑体", Font.BOLD, 15));
         AdbUtils.setDevices();
         setRefresh();
         Project.add(refresh);
@@ -299,6 +311,9 @@ public class HomePage extends JFrame {
         clearIphoneButtpm.setEnabled(false);
         buttonMouseListener(clearIphoneButtpm);
         clearJPanel.add(clearIphoneButtpm);
+        installPackageButton = new JButton(installPackage);
+        buttonMouseListener(installPackageButton);
+        clearJPanel.add(installPackageButton);
         p1.add(clearJPanel);
 
         //设置大小
@@ -380,7 +395,7 @@ class Cartoon implements Runnable {
     int i = 0;
     int tab = 1;
 
-    //    @Override
+    //        @Override
 //    public void run() {
 //        HomePage.cartoon.setIcon(new ImageIcon("image/test.png"));
 //        try {
