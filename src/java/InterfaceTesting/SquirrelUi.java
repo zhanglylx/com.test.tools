@@ -31,9 +31,18 @@ public class SquirrelUi extends JFrame {
         setIconImage(
                 Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
         );
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) { //设置退出监听器
+                if (!RunExcelCase.getRunExcelCase().getRunExcelCaseStop()) {
+                    if (0 == TooltipUtil.yesNoTooltip("用例正在执行,是否正在执行的用例")) {
+                        RunExcelCase.getRunExcelCase().setRunExcelCaseStop();
+                        return;
+                    } else {
+                        return;
+                    }
+                }
                 super.windowClosing(e);
                 setDefaultCloseOperation(2);
                 TestTools.setJButtonEnabled(getTitle());
@@ -210,8 +219,9 @@ class Case extends JPanel {
                     ExcelUtils.createExcelFile(file, "test", saveMap);
                 } else if (f == runCaseExcel) {
                     try {
-                        RunExcelCase runExcelCase = new RunExcelCase(
-                                ExcelUtils.getExcelXlsx(new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH)), runCaseExcel);
+                        RunExcelCase runExcelCase = RunExcelCase.getRunExcelCase();
+                        runExcelCase.setCaseMap(ExcelUtils.getExcelXlsx(new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH)));
+                        runExcelCase.setjButton(runCaseExcel);
                         Thread t = new Thread(runExcelCase);
                         t.start();
                     } catch (FileNotFoundException e1) {
