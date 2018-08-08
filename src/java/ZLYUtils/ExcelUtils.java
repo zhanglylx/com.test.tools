@@ -80,7 +80,7 @@ public class ExcelUtils {
                 title = it.next();
                 values = title.getValue();
                 for (Map.Entry<String, String> m : values.entrySet()) {
-                    if (!titleMap.containsKey(m.getKey())) titleMap.put(m.getKey(), "");
+                    if (!titleMap.containsKey(m.getKey().toLowerCase())) titleMap.put(m.getKey().toLowerCase(), "");
                 }
             }
             //记录map中的key，用于在插入数据中，将指定key中的数据插入到相同的表格中
@@ -194,7 +194,7 @@ public class ExcelUtils {
             for (int rowIndex = 1; rowIndex <= row; rowIndex++) {
                 valuesMap = new LinkedHashMap<>();
                 for (int columnIndex = 0; columnIndex < Column; columnIndex++) {
-                    valuesMap.put(getSpecifyRowsAndColumns(0, columnIndex),
+                    valuesMap.put(getSpecifyRowsAndColumns(0, columnIndex).toLowerCase(),
                             getSpecifyRowsAndColumns(rowIndex, columnIndex));
                 }
                 rowMap.put(rowIndex - 1, valuesMap);
