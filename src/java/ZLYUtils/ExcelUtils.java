@@ -8,7 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -75,8 +75,10 @@ public class ExcelUtils {
 
             Map<String, String> titleMap = new LinkedHashMap<>();
             //读取出所有map的title
-            for (int i = 0; i < dataMap.size(); i++) {
-                values = dataMap.get(i);
+            Map.Entry<Integer,Map<String,String>> title;
+            for (Iterator<Map.Entry<Integer,Map<String,String>>> it = dataMap.entrySet().iterator(); ((Iterator) it).hasNext();){
+                title = it.next();
+                values = title.getValue();
                 for (Map.Entry<String, String> m : values.entrySet()) {
                     if (!titleMap.containsKey(m.getKey())) titleMap.put(m.getKey(), "");
                 }
@@ -93,10 +95,12 @@ public class ExcelUtils {
                 key[num] = m.getKey();
                 num++;
             }
-            for (int index = 0; index < dataMap.size(); index++) {
-                values = dataMap.get(index);//获取每一个data中的map
+            int index=1;
+            for (Iterator<Map.Entry<Integer,Map<String,String>>> it = dataMap.entrySet().iterator(); ((Iterator) it).hasNext();){
+                title = it.next();//获取每一个data中的map
+                values = title.getValue();
                 //插入数据
-                Row row = sheet.createRow(index + 1);
+                Row row = sheet.createRow(index);
                 for (int i = 0; i < key.length; i++) {
                     Cell cell = row.createCell(i, Cell.CELL_TYPE_STRING);
                     //单独对松鼠接口测试工具中的自动化用例结果进行颜色设置
@@ -123,7 +127,7 @@ public class ExcelUtils {
                     }
 
                 }
-
+                index++;
             }
 
             try {
