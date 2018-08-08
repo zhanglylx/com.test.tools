@@ -123,7 +123,13 @@ public class ExcelUtils {
                     if (values.get(key[i]) == null) {
                         cell.setCellValue("");
                     } else {
-                        cell.setCellValue(values.get(key[i]));
+                        try {
+                            cell.setCellValue(values.get(key[i]));
+                        }catch (Exception e){
+                            TooltipUtil.errTooltip(e.toString());
+                            return isCreateSuccess;
+                        }
+
                     }
 
                 }
