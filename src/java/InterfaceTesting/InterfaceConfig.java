@@ -21,10 +21,12 @@ public class InterfaceConfig {
     public static final String FORM_DATA = "form data";
     public static final String TEST_PURPOSE = "test purpose";
     public static final String SAVE_EXCEL_CASE_PATH = "result.xlsx";
-    public static final String RUN_EXCEL_CASE_SAVE_PATH = "runResult.xlsx";
+    public static final String RUN_EXCEL_CASE_SAVE_PATH = "runResult";
     public static final String CONTAINS = "contains";
     public static final String EQUALS = "equals";
     public static final String MATCHING_RULE = "matching rule";
-    public static final String TRANSCODING_TEXT = "Transcoding text";//转码文本
-
+    public static final String TRANSCODING_TEXT = "transcoding text";//转码文本
+    public static final String BEGIN_TRANSCODING = "begin transcoding text";//转码起始文本
+    public static final String END_TRANSCODING = "end transcoding text";//转码结束文本
+    public static final String RUN_EXCEL_CASE_FINISH = "完成";//转码文本
 }

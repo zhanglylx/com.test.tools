@@ -42,7 +42,10 @@ public class RunExcelCase implements Runnable {
     ;
 
     public void setRunExcelCaseStop() {
-        if("关闭中".equals(jButton.getText()))return;
+        if("关闭中".equals(jButton.getText()) ||
+                InterfaceConfig.RUN_CASE.equals(jButton.getText()) ||
+                InterfaceConfig.RUN_EXCEL_CASE_FINISH.equals(jButton.getText())
+                )return;
         stopRun = true;
         this.jButton.setText("关闭中");
     }
@@ -52,7 +55,7 @@ public class RunExcelCase implements Runnable {
         synchronized (this) {
             jButton.setEnabled(false);
             runCase();
-            ExcelUtils.createExcelFile(new File(InterfaceConfig.RUN_EXCEL_CASE_SAVE_PATH), "test", this.caseMap);
+            ExcelUtils.createExcelFile(new File(InterfaceConfig.RUN_EXCEL_CASE_SAVE_PATH+WindosUtils.getDate("MM-dd HH-mm-ss")+".xlsx"), "test", this.caseMap);
             jButton.setText(InterfaceConfig.RUN_CASE);
             jButton.setEnabled(true);
             excelCaseClosed = true;//状态置为默认
@@ -69,13 +72,16 @@ public class RunExcelCase implements Runnable {
             if (stopRun) break;
             jButton.setText("第"+(i + 1) + "条");
             Map<String, String> values = this.caseMap.get(i);
-            sendRequest.setPath(values.get(InterfaceConfig.PATH));
-            sendRequest.setBody(values.get(InterfaceConfig.BODY));
-            sendRequest.setMethod(values.get(InterfaceConfig.METHOD));
-            sendRequest.setUrlValues(values.get(InterfaceConfig.FORM_DATA));
-            sendRequest.setAgreementValues(values.get(InterfaceConfig.AGREEMENT));
-            sendRequest.setMatchingRule(values.get(InterfaceConfig.MATCHING_RULE));
-            if (values.get(InterfaceConfig.ENPECTED_RESULT) == null) {
+            sendRequest.setPath(values.get(InterfaceConfig.PATH.toLowerCase()));
+            sendRequest.setBody(values.get(InterfaceConfig.BODY.toLowerCase()));
+            sendRequest.setMethod(values.get(InterfaceConfig.METHOD.toLowerCase()));
+            sendRequest.setUrlValues(values.get(InterfaceConfig.FORM_DATA.toLowerCase()));
+            sendRequest.setAgreementValues(values.get(InterfaceConfig.AGREEMENT.toLowerCase()));
+            sendRequest.setMatchingRule(values.get(InterfaceConfig.MATCHING_RULE.toLowerCase()));
+            sendRequest.setTranscoding(values.get(InterfaceConfig.TRANSCODING_TEXT.toLowerCase()));
+            sendRequest.setBeginTranscoding(values.get(InterfaceConfig.BEGIN_TRANSCODING.toLowerCase()));
+            sendRequest.setEndTranscoding(values.get(InterfaceConfig.END_TRANSCODING.toLowerCase()));
+            if (values.get(InterfaceConfig.ENPECTED_RESULT.toLowerCase()) == null) {
                 values.put(date, "false:enpected result为空");
                 continue;
             } else {
@@ -87,7 +93,7 @@ public class RunExcelCase implements Runnable {
                         values.put(date, "true");
                     }
                 } else {
-                    if (!repose.contains(values.get(InterfaceConfig.ENPECTED_RESULT))) {
+                    if (!repose.contains(values.get(InterfaceConfig.ENPECTED_RESULT.toLowerCase()))) {
                         values.put(date, "false:实际结果:" + repose);
                     } else {
                         values.put(date, "true");
@@ -96,7 +102,7 @@ public class RunExcelCase implements Runnable {
             }
             caseMap.put(i, values);
         }
-        jButton.setText("完成");
+        jButton.setText(InterfaceConfig.RUN_EXCEL_CASE_FINISH);
     }
 
 

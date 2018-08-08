@@ -28,7 +28,6 @@ public class SendRequest {
      */
     public String sendRequest() {
         if (this.transcoding != null && !"".equals(this.transcoding)) {
-
             String encoderStr = beginTranscoding + transcoding + endTranscoding;//转码前
             if(!urlValues.contains(encoderStr) && !body.contains(encoderStr))return "转码文本未找到:"+transcoding;
             //转码后
@@ -48,7 +47,6 @@ public class SendRequest {
             this.url = agreementValues + "://" + path;
         }
         if (InterfaceConfig.URL_GET_NAME.equals(this.method)) {
-
             return (Network.sendGet(agreementValues + "://" + path, urlValues));
         } else if (InterfaceConfig.URL_POST_NAME.equals(this.method)) {
             if ("".equals(urlValues)) {

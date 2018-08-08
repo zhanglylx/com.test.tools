@@ -33,7 +33,7 @@ public class SquirrelUi extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) { //设置退出监听器
                 if (!RunExcelCase.getRunExcelCase().getExcelCaseClosed()) {
-                    if (0 == TooltipUtil.yesNoTooltip("用例正在执行,是否正在执行的用例")) {
+                    if (0 == TooltipUtil.yesNoTooltip("用例正在执行 , 是否关闭?")) {
                         RunExcelCase.getRunExcelCase().setRunExcelCaseStop();
                         return;
                     } else {
@@ -207,10 +207,12 @@ class Case extends JPanel {
                     caseMap.put(InterfaceConfig.PATH, sendRequest.getPath());
                     caseMap.put(InterfaceConfig.METHOD, sendRequest.getMethod());
                     caseMap.put(InterfaceConfig.BODY, bodyArguments.getText());
-                    caseMap.put(InterfaceConfig.FORM_DATA, sendRequest.getUrlValues());
+                    caseMap.put(InterfaceConfig.FORM_DATA, urlArguments.getText());
                     caseMap.put(InterfaceConfig.ENPECTED_RESULT, resultResponse.getText());
                     caseMap.put(InterfaceConfig.MATCHING_RULE, sendRequest.getMatchingRule());
+                    caseMap.put(InterfaceConfig.BEGIN_TRANSCODING, beginTranscoding.getText());
                     caseMap.put(InterfaceConfig.TRANSCODING_TEXT, transcoding.getText());
+                    caseMap.put(InterfaceConfig.END_TRANSCODING, endTranscoding.getText());
                     caseMap.put(InterfaceConfig.TEST_PURPOSE, testPurpose.getText());
                     saveMap.put(saveMap.size(), caseMap);
                     ExcelUtils.createExcelFile(file, "test", saveMap);
