@@ -69,6 +69,7 @@ public class InstallPackage extends JFrame implements ActionListener {
                 if (f == installPackage) {
                     if (!checkInsatllPath()) return;
                     f.setEnabled(false);
+
                     Thread t = new Thread(new installPackageRun(f));
                     t.start();
                 }
@@ -89,6 +90,10 @@ public class InstallPackage extends JFrame implements ActionListener {
         }
         if (!text.endsWith(".apk")) {
             TooltipUtil.errTooltip("请选择一个.apk后缀文件");
+            return false;
+        }
+        if(!new File(text).exists()){
+            TooltipUtil.errTooltip("文件不存在");
             return false;
         }
         return true;
@@ -118,6 +123,7 @@ public class InstallPackage extends JFrame implements ActionListener {
                 this.jButton.setText("正在安装");
                 String[] adb = AdbUtils.operationAdb("install -r " + textField.getText());
                 if (adb == null) {
+                    TooltipUtil.errTooltip("安装失败:失败原因不知道" );
                     this.jButton.setEnabled(true);
                     this.jButton.setText(jButtonText);
                     return;
@@ -125,6 +131,7 @@ public class InstallPackage extends JFrame implements ActionListener {
 
                 boolean success = false;
                 for (int i = 0; i < adb.length; i++) {
+                    System.out.println(adb[i]);
                     if ("success".equals(adb[i].trim().toLowerCase())) {
                         TooltipUtil.generalTooltip("安装成功");
                         success = true;
@@ -132,7 +139,11 @@ public class InstallPackage extends JFrame implements ActionListener {
                     }
                 }
                 if (!success) {
-                    TooltipUtil.errTooltip("安装失败，具体原因自己查查吧");
+                    if(Arrays.toString(adb).toLowerCase().contains("failed to stat")) {
+                        TooltipUtil.errTooltip("文件名称不支持:" + Arrays.toString(adb));
+                    }else {
+                        TooltipUtil.errTooltip("安装失败:" + Arrays.toString(adb));
+                    }
                 }
                 jButton.setEnabled(true);
                 this.jButton.setText(jButtonText);

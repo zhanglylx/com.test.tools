@@ -23,18 +23,38 @@ public class AdbUtils {
         killNetStatAdb = -1;
     }
 
-    private static String[] runAdb(String code) {
-        String[] str = new String[0];
+    /**
+     * 获取错误
+     * @param code
+     * @return
+     */
+    private static String[] errRunAdb(String code) {
+        String[] str = null;
         try {
             String dev = " ";
             if (devices != null) dev = " -s " + devices + " ";
 //            Process pro = Runtime.getRuntime().exec(AppiumMethod.SquirrelConfig.ADB_PUTH +dev+ code);
             Process pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
-            BufferedReader br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("utf-8")));
-            String msg = null;
-            while ((msg = br.readLine()) != null) {
-                str = Arrays.copyOf(str, str.length + 1);
-                str[str.length - 1] = msg;
+            BufferedReader br;
+            br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
+            str = adbBufferedReader(br,str);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+    private static String[] runAdb(String code) {
+        String[] str = null;
+        try {
+            String dev = " ";
+            if (devices != null) dev = " -s " + devices + " ";
+//            Process pro = Runtime.getRuntime().exec(AppiumMethod.SquirrelConfig.ADB_PUTH +dev+ code);
+            Process pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
+            BufferedReader br;
+            br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("utf-8")));
+            str = adbBufferedReader(br,str);
+            if(str==null){
+                str = errRunAdb(code);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,6 +62,21 @@ public class AdbUtils {
         return str;
     }
 
+    /**
+     * 读取adb缓冲流
+     * @return
+     */
+    private static String[] adbBufferedReader( BufferedReader br,String[] str) throws IOException {
+        String msg ;
+        int index=0;
+        while ((msg = br.readLine()) != null) {
+            if(index==0)str = new String[0];
+            str = Arrays.copyOf(str, str.length + 1);
+            str[str.length - 1] = msg;
+            index++;
+        }
+        return str;
+    }
 
     /**
      * 杀死占用5037端口应用
