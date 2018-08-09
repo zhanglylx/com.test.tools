@@ -220,7 +220,7 @@ class Case extends JPanel implements ActionListener {
                 } else if (f == runCaseExcel) {
                     try {
                         RunExcelCase runExcelCase = RunExcelCase.getRunExcelCase();
-                        runExcelCase.setCaseMap(ExcelUtils.getExcelXlsx(new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH)));
+                        runExcelCase.setCaseMap(ExcelUtils.getExcelXlsx(new File(runExcelPath)));
                         runExcelCase.setjButton(runCaseExcel);
                         runExcelCase.setRunExcelPath(runExcelPath);
                         Thread t = new Thread(runExcelCase);

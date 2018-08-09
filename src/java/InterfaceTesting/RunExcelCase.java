@@ -64,7 +64,8 @@ public class RunExcelCase implements Runnable {
         synchronized (this) {
             jButton.setEnabled(false);
             runCase();
-            ExcelUtils.createExcelFile(new File(InterfaceConfig.RUN_EXCEL_CASE_SAVE_PATH+WindosUtils.getDate("MM-dd HH-mm-ss")+".xlsx"), "test", this.caseMap);
+            ExcelUtils.createExcelFile(new File(this.runExcelPath.substring(0,this.runExcelPath.lastIndexOf("."))+
+                    WindosUtils.getDate("MM-dd HH-mm-ss")+".xlsx"), "test", this.caseMap);
             jButton.setText(InterfaceConfig.RUN_CASE);
             jButton.setEnabled(true);
             excelCaseClosed = true;//状态置为默认
