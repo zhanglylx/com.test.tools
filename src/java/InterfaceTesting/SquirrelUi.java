@@ -6,6 +6,7 @@ import ZLYUtils.ExcelUtils;
 import ZLYUtils.TooltipUtil;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,7 +52,7 @@ public class SquirrelUi extends JFrame {
 
 }
 
-class Case extends JPanel {
+class Case extends JPanel implements ActionListener {
     private JTextArea path;//路径
     private JTextArea urlArguments;//get参数
     private JTextArea bodyArguments;//body参数
@@ -70,7 +71,7 @@ class Case extends JPanel {
     private JTextArea resultResponse;//结果面板
     private JButton runCaseExcel;//执行Excel按钮
     private JRadioButton matchingRule;//匹配规则
-
+    private String runExcelPath;
     public Case(JFrame jDialog) {
         this.jDialog = jDialog;
         sendRequest = new SendRequest();
@@ -221,6 +222,7 @@ class Case extends JPanel {
                         RunExcelCase runExcelCase = RunExcelCase.getRunExcelCase();
                         runExcelCase.setCaseMap(ExcelUtils.getExcelXlsx(new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH)));
                         runExcelCase.setjButton(runCaseExcel);
+                        runExcelCase.setRunExcelPath(runExcelPath);
                         Thread t = new Thread(runExcelCase);
                         t.start();
                     } catch (FileNotFoundException e1) {
@@ -231,6 +233,21 @@ class Case extends JPanel {
         });
     }
 
+    /**
+     * runcase选择路径
+     * @param e
+     */
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JFileChooser chooser = new JFileChooser();
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        chooser.setCurrentDirectory(new File("."));//默认松鼠页面
+        chooser.showDialog(new JLabel(), "选择");
+        File file = chooser.getSelectedFile();
+        runExcelPath = (file.getAbsoluteFile().toString());
+
+    }
     /**
      * 检查参数
      */
@@ -265,7 +282,9 @@ class Case extends JPanel {
      */
     private void setRunCaseExcel() {
         this.runCaseExcel = setJButton(InterfaceConfig.RUN_CASE, 85, 40, 645, 12);
+        this.runCaseExcel.addActionListener(this);
         add(this.runCaseExcel);
+
     }
 
     /**

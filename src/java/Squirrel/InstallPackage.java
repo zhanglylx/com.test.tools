@@ -23,9 +23,8 @@ public class InstallPackage extends JFrame implements ActionListener {
 
     JButton btn;
     JTextField textField;
-    JButton jButton;
     JButton installPackage;
-
+    private  static final String installPackageText = "正在安装";
     public InstallPackage(JButton jButton) {
         this.setTitle(jButton.getText());
         setIconImage(
@@ -41,10 +40,15 @@ public class InstallPackage extends JFrame implements ActionListener {
         this.setBounds(400, 200, 600, 70);
         this.setVisible(true);
         this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
+                if(installPackageText.equals(installPackage.getText())){
+                    TooltipUtil.errTooltip("正在安装包，请安装完毕后退出");
+                    return;
+                }
                 setDefaultCloseOperation(2);
             }
         });
@@ -131,7 +135,6 @@ public class InstallPackage extends JFrame implements ActionListener {
 
                 boolean success = false;
                 for (int i = 0; i < adb.length; i++) {
-                    System.out.println(adb[i]);
                     if ("success".equals(adb[i].trim().toLowerCase())) {
                         TooltipUtil.generalTooltip("安装成功");
                         success = true;

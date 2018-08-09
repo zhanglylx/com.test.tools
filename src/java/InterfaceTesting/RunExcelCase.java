@@ -1,9 +1,13 @@
 package InterfaceTesting;
 
 import ZLYUtils.ExcelUtils;
+import ZLYUtils.TooltipUtil;
 import ZLYUtils.WindosUtils;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,13 +22,14 @@ public class RunExcelCase implements Runnable {
     private boolean excelCaseClosed;//线程是否是关闭状态
     private boolean stopRun;
     private static RunExcelCase runExcelCase;
-
+    private String runExcelPath;
     private RunExcelCase() {
         jButton = new JButton();
         sendRequest = new SendRequest();
         stopRun = false;
         excelCaseClosed = true;
         caseMap = new LinkedHashMap<>();
+
     }
 
 
@@ -51,6 +56,10 @@ public class RunExcelCase implements Runnable {
     }
 
     public void run() {
+        if(runExcelPath==null || !new File(runExcelPath).exists() || !runExcelPath.endsWith(".xlsx")){
+            TooltipUtil.errTooltip("请选择正确的路径和文件");
+            return;
+        }
         excelCaseClosed = false;//
         synchronized (this) {
             jButton.setEnabled(false);
@@ -117,5 +126,9 @@ public class RunExcelCase implements Runnable {
 
     public void setjButton(JButton jButton) {
         this.jButton = jButton;
+    }
+
+    public void setRunExcelPath(String runExcelPath) {
+        this.runExcelPath = runExcelPath;
     }
 }
