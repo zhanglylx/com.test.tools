@@ -21,6 +21,8 @@ public class ExcelUtils {
     private static XSSFSheet xssfSheet;
     private static XSSFRow xssfRow;
     private static XSSFCell xssfCell;
+    private static CellStyle style;
+    private static Font headerFont;
 
     public static void main(String[] args) throws Exception {
         Map<Integer, Map<String, String>> dataMap = new LinkedHashMap<>();
@@ -63,6 +65,7 @@ public class ExcelUtils {
         try {
             // XSSFWork used for .xslx (>= 2007), HSSWorkbook for 03 .xsl
             workbook = new XSSFWorkbook();//HSSFWorkbook();//WorkbookFactory.create(inputStream);
+            setStyle_Font(workbook);
         } catch (Exception e) {
             System.out.println("It cause Error on CREATING excel workbook: ");
             e.printStackTrace();
@@ -72,64 +75,60 @@ public class ExcelUtils {
             Row row0 = sheet.createRow(0);
             Map<String, String> values = null;//保存dataMap中的map
             int num = 0;
-
             Map<String, String> titleMap = new LinkedHashMap<>();
             //读取出所有map的title
-            Map.Entry<Integer,Map<String,String>> title;
-            for (Iterator<Map.Entry<Integer,Map<String,String>>> it = dataMap.entrySet().iterator(); ((Iterator) it).hasNext();){
+            Map.Entry<Integer, Map<String, String>> title;
+            for (Iterator<Map.Entry<Integer, Map<String, String>>> it = dataMap.entrySet().iterator(); ((Iterator) it).hasNext(); ) {
                 title = it.next();
                 values = title.getValue();
                 for (Map.Entry<String, String> m : values.entrySet()) {
-                    if (!titleMap.containsKey(m.getKey().toLowerCase())) titleMap.put(m.getKey().toLowerCase(), "");
+                    if (!titleMap.containsKey(m.getKey())) titleMap.put(m.getKey(), "");
                 }
             }
             //记录map中的key，用于在插入数据中，将指定key中的数据插入到相同的表格中
             String[] key = new String[titleMap.size()];
+            Cell cell;
             //写入标题
             for (Map.Entry<String, String> m : titleMap.entrySet()) {
-                Cell cell_1 = row0.createCell(num, Cell.CELL_TYPE_STRING);
-                CellStyle style = getStyle(workbook);
-                cell_1.setCellStyle(style);
-                cell_1.setCellValue(m.getKey());
+                cell = row0.createCell(num, Cell.CELL_TYPE_STRING);
+                cell.setCellStyle(style);
+                cell.setCellValue(m.getKey());
                 sheet.autoSizeColumn(num);
                 key[num] = m.getKey();
                 num++;
             }
-            int index=1;
-            for (Iterator<Map.Entry<Integer,Map<String,String>>> it = dataMap.entrySet().iterator(); ((Iterator) it).hasNext();){
+            int index = 1;
+            Row row;
+            CellStyle style;
+            Font font;
+            for (Iterator<Map.Entry<Integer, Map<String, String>>> it = dataMap.entrySet().iterator(); ((Iterator) it).hasNext(); ) {
                 title = it.next();//获取每一个data中的map
                 values = title.getValue();
                 //插入数据
-                Row row = sheet.createRow(index);
+                row = sheet.createRow(index);
                 for (int i = 0; i < key.length; i++) {
-                    Cell cell = row.createCell(i, Cell.CELL_TYPE_STRING);
+                    cell = row.createCell(i, Cell.CELL_TYPE_STRING);
                     //单独对松鼠接口测试工具中的自动化用例结果进行颜色设置
                     if (values.get(key[i]) != null &&
-                            (values.get(key[i]).startsWith("false:") || "true".equals(values.get(key[i])))) {
-                        CellStyle style = workbook.createCellStyle();
-                        // 设置单元格字体
-                        Font headerFont = workbook.createFont(); // 字体
-                        headerFont.setFontHeightInPoints((short) 14);
+                            (values.get(key[i]).startsWith("false") || "true".equals(values.get(key[i])))) {
+                        style = workbook.createCellStyle();
+                        font = workbook.createFont(); // 字体
+                        font.setFontHeightInPoints((short) 14);
+                        font.setColor(HSSFColor.RED.index);
+                        font.setFontName("宋体");
                         if ("true".equals(values.get(key[i]))) {
-                            headerFont.setColor(HSSFColor.GREEN.index);
+                            font.setColor(HSSFColor.GREEN.index);
                         } else {
-                            headerFont.setColor(HSSFColor.RED.index);
+                            font.setColor(HSSFColor.RED.index);
                         }
-                        headerFont.setFontName("宋体");
-                        style.setFont(headerFont);
+                        style.setFont(font);
                         style.setWrapText(false);
                         cell.setCellStyle(style);
                     }
                     if (values.get(key[i]) == null) {
                         cell.setCellValue("");
                     } else {
-                        try {
-                            cell.setCellValue(values.get(key[i]));
-                        }catch (Exception e){
-                            TooltipUtil.errTooltip(e.toString());
-                            return isCreateSuccess;
-                        }
-
+                        cell.setCellValue(values.get(key[i]));
                     }
 
                 }
@@ -142,6 +141,8 @@ public class ExcelUtils {
                 outputStream.flush();
                 outputStream.close();
                 isCreateSuccess = true;
+                TooltipUtil.generalTooltip("保存成功:" + excelPath.getAbsolutePath());
+                workbook.close();
             } catch (Exception e) {
                 System.out.println("It cause Error on WRITTING excel workbook: ");
                 e.printStackTrace();
@@ -149,28 +150,25 @@ public class ExcelUtils {
                 return isCreateSuccess;
             }
         }
-        TooltipUtil.generalTooltip("保存成功:" + excelPath.getAbsolutePath());
+
         return isCreateSuccess;
     }
 
-    private static CellStyle getStyle(Workbook workbook) {
-        CellStyle style = workbook.createCellStyle();
+    private static void setStyle_Font(Workbook workbook) {
+        style = workbook.createCellStyle();
         // 设置单元格字体
-        Font headerFont = workbook.createFont(); // 字体
+        headerFont = workbook.createFont(); // 字体
         headerFont.setFontHeightInPoints((short) 14);
         headerFont.setColor(HSSFColor.RED.index);
         headerFont.setFontName("宋体");
         style.setFont(headerFont);
         style.setWrapText(true);
-
         // 设置单元格边框及颜色
         style.setBorderBottom(BorderStyle.valueOf((short) 1));
         style.setBorderLeft(BorderStyle.valueOf((short) 1));
         style.setBorderRight(BorderStyle.valueOf((short) 1));
         style.setBorderTop(BorderStyle.valueOf((short) 1));
         style.setWrapText(true);
-        return style;
-
     }
 
 
