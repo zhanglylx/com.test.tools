@@ -2,10 +2,7 @@ package ZLYUtils;
 
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.*;
 
 import java.io.*;
 import java.util.Iterator;
@@ -99,8 +96,16 @@ public class ExcelUtils {
             }
             int index = 1;
             Row row;
-            CellStyle style;
-            Font font;
+            //文本中如果存在false开头，使用false样式风格
+            CellStyle falsestyle = workbook.createCellStyle();
+            falsestyle.setFont(headerFont);
+            falsestyle.setWrapText(false);
+            //文本中如果存在true开头，true样式风格
+            CellStyle trueStyle = workbook.createCellStyle();
+            Font trueFont = workbook.createFont();
+            trueStyle.setWrapText(false);
+            trueFont.setColor(HSSFColor.GREEN.index);//设置为绿色
+            trueStyle.setFont(trueFont);
             for (Iterator<Map.Entry<Integer, Map<String, String>>> it = dataMap.entrySet().iterator(); ((Iterator) it).hasNext(); ) {
                 title = it.next();//获取每一个data中的map
                 values = title.getValue();
@@ -110,20 +115,12 @@ public class ExcelUtils {
                     cell = row.createCell(i, Cell.CELL_TYPE_STRING);
                     //单独对松鼠接口测试工具中的自动化用例结果进行颜色设置
                     if (values.get(key[i]) != null &&
-                            (values.get(key[i]).startsWith("false") || "true".equals(values.get(key[i])))) {
-                        style = workbook.createCellStyle();
-                        font = workbook.createFont(); // 字体
-                        font.setFontHeightInPoints((short) 14);
-                        font.setColor(HSSFColor.RED.index);
-                        font.setFontName("宋体");
-                        if ("true".equals(values.get(key[i]))) {
-                            font.setColor(HSSFColor.GREEN.index);
-                        } else {
-                            font.setColor(HSSFColor.RED.index);
-                        }
-                        style.setFont(font);
-                        style.setWrapText(false);
-                        cell.setCellStyle(style);
+                            (values.get(key[i]).startsWith("false"))) {
+                        cell.setCellStyle(falsestyle);
+                    }
+                    if (values.get(key[i]) != null &&
+                            (values.get(key[i]).startsWith("true"))) {
+                        cell.setCellStyle(trueStyle);
                     }
                     if (values.get(key[i]) == null) {
                         cell.setCellValue("");
