@@ -2,12 +2,14 @@ package Squirrel;
 
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
+import ZLYUtils.FrameUtils;
 import ZLYUtils.WindosUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.Arrays;
 
 import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_SQUIRREL;
@@ -19,8 +21,10 @@ import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_SQUIRREL;
 public class VideoRecordingScreenshot extends JDialog {
     private JButton screenshot;
     private JButton recordVideo;
+    private JButton videoSwitch;
     public static final String SCREENSHOT = "截屏";
     public static final String SCREENSHOT_SQUIRREL = "Squirrel.png";//截图保存名称
+    public static final String VIDEOSWITCH = "VS";
     public RefreshTheImage refreshTheImage;
     private JButton picture;
     private Thread threadRefreshTheImage;
@@ -28,11 +32,22 @@ public class VideoRecordingScreenshot extends JDialog {
         super(jDialog, false);
         setTitle(title);
         setLayout(null);
+
         screenshot = new JButton(SCREENSHOT);
         screenshot.setSize(60, 40);
         screenshot.setLocation(5, 0);
         buttonMouseListener(screenshot);
         add(screenshot);
+
+        videoSwitch = new JButton(VIDEOSWITCH);
+        videoSwitch.setSize(60, 40);
+        videoSwitch.setLocation(5, 50);
+        buttonMouseListener(videoSwitch);
+        add(videoSwitch);
+
+
+
+
         setLocationRelativeTo(null);//设置中间显示
         setSize(400, 700);
         picture = new JButton();
@@ -69,9 +84,15 @@ public class VideoRecordingScreenshot extends JDialog {
             switch (text) {
                 case SCREENSHOT:
                     refreshTheImage.suspend();
-                    WindosUtils.copyFile(this, SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
+                    String saveFile =  FrameUtils.saveFileFrame(this,
+                        new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL));
+                    if(!saveFile.endsWith(".png"))saveFile+=".png";
+                    WindosUtils.copyFile(new File(saveFile),
+                            new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL));
                     threadRefreshTheImage.interrupt();
                     break;
+                case VIDEOSWITCH:
+                    System.out.println(FrameUtils.selectFile());
             }
         });
     }
@@ -157,3 +178,5 @@ class RefreshTheImage implements Runnable {
         stopMe = true;
     }
 }
+
+

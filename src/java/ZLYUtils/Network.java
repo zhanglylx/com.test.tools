@@ -136,7 +136,7 @@ public class Network {
 //                //	setCookies(map);
 //            }
             // 定义BufferedReader输入流来读取URL的响应
-            in = new BufferedReader(new InputStreamReader(conn.getInputStream(),"utf-8"));
+            in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
             String line;
             while ((line = in.readLine()) != null) {
                 result.append(line);
@@ -158,8 +158,8 @@ public class Network {
                 ex.printStackTrace();
             }
         }
-            //用新的字符编码生成字符串
-            return result.toString();
+        //用新的字符编码生成字符串
+        return result.toString();
 
     }
 
@@ -186,5 +186,61 @@ public class Network {
             e.printStackTrace();
         }
         return param;
+    }
+
+    /**
+     * URL 解码
+     *
+     * @return StringText
+     * @author zhanglianyu
+     * @date 2017.7.23
+     */
+    public static String getURLDecoderString(String str, String encodingName) {
+        String result = "";
+        if (null == str) {
+            return "";
+        }
+        try {
+            str = str.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
+            str = str.replaceAll("\\+", "%2B");
+            if(str.indexOf("%",str.length()-1)!=-1)str = str.substring(0,str.length()-1);
+            result = java.net.URLDecoder.decode(str, encodingName);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    //判断是否为16进制数
+    private static boolean isHex(char c) {
+        if (((c >= '0') && (c <= '9')) ||
+                ((c >= 'a') && (c <= 'f')) ||
+                ((c >= 'A') && (c <= 'F')))
+            return true;
+        else
+            return false;
+    }
+
+    private static String convertPercent(String str) {
+        StringBuilder sb = new StringBuilder(str);
+
+        for (int i = 0; i < sb.length(); i++) {
+            char c = sb.charAt(i);
+            //判断是否为转码符号%
+            if (c == '%') {
+                if (((i + 1) < sb.length() - 1) && ((i + 2) < sb.length() - 1)) {
+                    char first = sb.charAt(i + 1);
+                    char second = sb.charAt(i + 2);
+                    //如只是普通的%则转为%25
+                    if (!(isHex(first) && isHex(second)))
+                        sb.insert(i + 1, "25");
+                } else {//如只是普通的%则转为%25
+                    sb.insert(i + 1, "25");
+                }
+
+            }
+        }
+
+        return sb.toString();
     }
 }

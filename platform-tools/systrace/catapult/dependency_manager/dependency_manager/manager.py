@@ -81,7 +81,7 @@ class DependencyManager(object):
             remote file.
         CloudStorageError: If another error occured while downloading the remote
             path.
-        FileNotFoundError: If an attempted download was otherwise unsuccessful.
+        FileNotFoundError: If an attempted download was otherwise unessful.
 
     """
     dependency_info = self._GetDependencyInfo(dependency, platform)

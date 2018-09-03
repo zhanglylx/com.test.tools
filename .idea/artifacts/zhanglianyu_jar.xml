@@ -21,6 +21,7 @@
         <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
         <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
         <element id="file-copy" path="$PROJECT_DIR$/lib/wormy.jar" />
+        <element id="dir-copy" path="$PROJECT_DIR$/lib/ffmpeg" />
       </element>
       <element id="directory" name="File">
         <element id="dir-copy" path="$PROJECT_DIR$/File" />

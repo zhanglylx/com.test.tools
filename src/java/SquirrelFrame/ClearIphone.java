@@ -78,7 +78,7 @@ public class ClearIphone {
                 String [] adb = AdbUtils.operationAdb("shell rm -r " + r);
                 if(adb==null)return;
                 if (Arrays.toString(adb).contains("Is a directory")) {
-                    TooltipUtil.errTooltip("本地目录删除失败了，具体原因您查看下日志，然后自己删吧");
+                    TooltipUtil.errTooltip("本地目录删除失败了:"+Arrays.toString(adb));
                 }
             }
             TooltipUtil.generalTooltip(packageName+":完成");
@@ -88,7 +88,7 @@ public class ClearIphone {
             if(!Arrays.toString(
                     adb).contains("Success")
                     ){
-                TooltipUtil.errTooltip("应用缓存删除失败了，具体原因您查看下日志，然后自己删吧");
+                TooltipUtil.errTooltip("应用缓存删除失败:"+Arrays.toString(adb));
                 return;
             }
             TooltipUtil.generalTooltip(packageName+":完成");

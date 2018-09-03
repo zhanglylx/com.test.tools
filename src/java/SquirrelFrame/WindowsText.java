@@ -1,14 +1,18 @@
 package SquirrelFrame;
 
+import ZLYUtils.FrameUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 
 /***
  * 窗口，弹出可编辑的窗体
+ * 通过传入的buttonText判断进行相关功能的文案展示
  */
 public class WindowsText extends JDialog implements ActionListener{
 
@@ -39,11 +43,9 @@ public class WindowsText extends JDialog implements ActionListener{
         jta.setFont(new Font("标楷体", Font.BOLD, 16));
         jta.setLineWrap(true);// 激活自动换行功能
         jta.setWrapStyleWord(true);// 激活断行不断字功能
-        button(buttonText);
         jscrollPane = new JScrollPane(jta);
         jpanel = new JPanel();
         jpanel.setLayout(new GridLayout(1, 3));
-
         jb1 = new JButton("复制");
         jb1.addActionListener(this);
         jb2 = new JButton("粘贴");
@@ -65,9 +67,10 @@ public class WindowsText extends JDialog implements ActionListener{
                 windowsClose = true;
             }
         });
+        setLocationRelativeTo(null);
         setSize(400, 300);
         setLocation(400, 200);
-        setLocationRelativeTo(null);
+        button(buttonText);
         setVisible(true);
     }
     // 覆盖接口ActionListener的方法actionPerformed
@@ -83,7 +86,7 @@ public class WindowsText extends JDialog implements ActionListener{
     }
 
     /**
-     *
+     * 通过按钮点击后进行相应内容展示
      * @param text
      */
     public void button(String text){
@@ -97,6 +100,11 @@ public class WindowsText extends JDialog implements ActionListener{
                 jta.setEnabled(false);
                 jta.setBackground(Color.DARK_GRAY);
                 jta.setText(SquirrelConfig.guanyu);
+                break;
+            case HomePage.VIDEOSWICTH:
+                setSize(600, 600);
+                setLocation(400, 100);
+                new VideoSwitch(new File(FrameUtils.selectFile()),".mp4",jta).start();
                 break;
             default:
 //                jta.setText(GetADLog.list.toString());
@@ -112,4 +120,8 @@ public class WindowsText extends JDialog implements ActionListener{
     public void setText(String text){
         jta.setText(text);
     }
+    public JTextArea getJta() {
+        return jta;
+    }
+
 }

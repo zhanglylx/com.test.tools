@@ -7,9 +7,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0bfae92-6287-4d15-b853-6e14d672c61e" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/VideoSwitch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/ZLYUtils/DoubleOperation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/image_comparison/ImageComparison.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/image_comparison/Image_comparison_config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/package_inspection/CheckFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/zhanglianyu_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/zhanglianyu_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/File/测试设备/直播常用设备汇总.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试设备/直播常用设备汇总.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/screen/Squirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/screen/Squirrel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/直播常用设备汇总.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/直播常用设备汇总.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/screen/Squirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/screen/Squirrel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/src/main/java/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -41,11 +65,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SquirrelUi.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java">
+      <file leaf-file-name="VideoSwitch.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/VideoSwitch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="222" column="93" selection-start-line="222" selection-start-column="93" selection-end-line="222" selection-end-column="93" />
+            <state relative-caret-position="324">
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,67 +77,85 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JFileChooser.java" pinned="false" current-in-tab="false">
-        <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JFileChooser.java">
+      <file leaf-file-name="Uiautomator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="574" column="16" selection-start-line="574" selection-start-column="16" selection-end-line="574" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InterfaceConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstallPackage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="20" column="68" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="68" />
+            <state relative-caret-position="456">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1272#1479#0" expanded="true" />
-                <element signature="e#1478#1479#0" expanded="true" />
-                <element signature="e#3306#3307#0" expanded="true" />
-                <element signature="e#3352#3353#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExcelUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java">
+      <file leaf-file-name="HomePage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="181" column="65" selection-start-line="181" selection-start-column="65" selection-end-line="181" selection-end-column="65" />
+            <state relative-caret-position="243">
+              <caret line="187" column="33" selection-start-line="187" selection-start-column="33" selection-end-line="187" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunExcelCase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java">
+      <file leaf-file-name="WindowsText.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+            <state relative-caret-position="162">
+              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1117#1118#0" expanded="true" />
-                <element signature="e#1155#1156#0" expanded="true" />
-                <element signature="e#4231#4232#0" expanded="true" />
-                <element signature="e#4266#4267#0" expanded="true" />
-                <element signature="e#4340#4341#0" expanded="true" />
-                <element signature="e#4378#4379#0" expanded="true" />
-                <element signature="e#4426#4427#0" expanded="true" />
-                <element signature="e#4464#4465#0" expanded="true" />
-                <element signature="e#4484#4485#0" expanded="true" />
-                <element signature="e#4532#4533#0" expanded="true" />
+                <element signature="e#3442#3443#0" expanded="true" />
+                <element signature="e#3468#3469#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JTextComponent.java" pinned="false" current-in-tab="false">
+        <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/text/JTextComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="1421" column="16" selection-start-line="1421" selection-start-column="16" selection-end-line="1421" selection-end-column="16" />
+              <folding>
+                <element signature="e#52247#52248#0" expanded="true" />
+                <element signature="e#52316#52317#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetADLog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Squirrel/GetADLog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="192" column="9" selection-start-line="192" selection-start-column="9" selection-end-line="192" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SquirrelConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WindosUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="71">
+              <caret line="383" column="35" selection-start-line="383" selection-start-column="35" selection-end-line="383" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Menubar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Menubar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -121,39 +163,8 @@
       <file leaf-file-name="FrameUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="114" column="63" lean-forward="true" selection-start-line="114" selection-start-column="10" selection-end-line="114" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SendRequest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-              <folding>
-                <element signature="e#2751#2752#0" expanded="true" />
-                <element signature="e#2787#2788#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlowFrame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Squirrel/FlowFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Network.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Network.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="33" column="35" lean-forward="true" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+            <state relative-caret-position="162">
+              <caret line="81" column="27" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -189,6 +200,8 @@
       <find>to</find>
       <find>toL</find>
       <find>toLowerCase</find>
+      <find>success</find>
+      <find>System.out.pr</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -200,20 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/java/com/tools/ZLYUtils/AdbUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/com/tools/ZLYUtils/SaveCrash.java" />
-        <option value="$PROJECT_DIR$/src/java/com/tools/ZLYUtils/test.java" />
-        <option value="$PROJECT_DIR$/src/java/com/tools/ZLYUtils/TooltipUtil.java" />
-        <option value="$PROJECT_DIR$/src/java/com/tools/ZLYUtils/WindosUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/SaveCrash.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/test.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/com/tools/SquirrelFrame/FrameSqiorrel.java" />
-        <option value="$PROJECT_DIR$/src/java/com/tools/SquirrelFrame/Config.java" />
-        <option value="$PROJECT_DIR$/src/java/com/tools/SquirrelFrame/ClearIphone.java" />
-        <option value="$PROJECT_DIR$/src/java/com/tools/SquirrelFrame/HomePage.java" />
-        <option value="$PROJECT_DIR$/src/java/com/tools/Squirrel/VideoRecordingScreenshot.java" />
         <option value="$PROJECT_DIR$/src/java/com/tools/Squirrel/FlowConfig.java" />
         <option value="$PROJECT_DIR$/src/java/com/tools/Squirrel/FlowFrame.java" />
         <option value="$PROJECT_DIR$/src/java/com/tools/Squirrel/GetADLog.java" />
@@ -227,30 +226,44 @@
         <option value="$PROJECT_DIR$/src/java/DataBase/text.java" />
         <option value="$PROJECT_DIR$/src/java/Squirrel/ZhiBoDataBase.java" />
         <option value="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SaveExcelCase.java" />
         <option value="$PROJECT_DIR$/src/java/SquirrelFrame/Config.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/network.java" />
         <option value="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" />
         <option value="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" />
         <option value="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" />
         <option value="$PROJECT_DIR$/src/java/Squirrel/ZhiBo.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" />
         <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java" />
         <option value="$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" />
         <option value="$PROJECT_DIR$/src/java/DataBase/test1.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
         <option value="$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java" />
         <option value="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" />
         <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" />
+        <option value="$PROJECT_DIR$/src/test/test.java" />
+        <option value="$PROJECT_DIR$/src/java/image/ImageComparison.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/java/image_comparison/image_comparison/Config.java" />
+        <option value="$PROJECT_DIR$/src/java/image_comparison/image_comparison/image_comparison.java" />
+        <option value="$PROJECT_DIR$/src/java/image_comparison/Image_comparison_config.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/image_comparison/ImageComparison.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/DoubleOperation.java" />
+        <option value="$PROJECT_DIR$/src/java/package_inspection/CheckFile.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/VideoSwitch.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java" />
       </list>
     </option>
   </component>
@@ -296,10 +309,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
-    <option name="y" value="-8" />
-    <option name="width" value="1456" />
-    <option name="height" value="876" />
+    <option name="x" value="1635" />
+    <option name="y" value="91" />
+    <option name="width" value="1038" />
+    <option name="height" value="920" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -307,9 +320,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -333,7 +344,7 @@
               <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="DataBase" type="462c0819:PsiDirectoryNode" />
+              <item name="image_comparison" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
@@ -341,14 +352,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="InterfaceTesting" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="InterfaceTesting" type="462c0819:PsiDirectoryNode" />
-              <item name="SquirrelUi.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
             <path>
               <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
@@ -362,21 +365,36 @@
               <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="SquirrelFrame" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ZLYUtils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/ffmpeg" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
@@ -406,13 +424,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.HomePage">
-    <configuration name="ExcelUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ZLYUtils.ExcelUtils" />
+    <configuration name="CheckFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="package_inspection.CheckFile" />
       <module name="zhanglianyu" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ZLYUtils.*" />
+          <option name="PATTERN" value="package_inspection.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -428,13 +446,24 @@
         </pattern>
       </extension>
     </configuration>
-    <configuration name="SquirrelUi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="InterfaceTesting.SquirrelUi" />
+    <configuration name="ImageComparison" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="image_comparison.ImageComparison" />
       <module name="zhanglianyu" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="InterfaceTesting.*" />
+          <option name="PATTERN" value="image_comparison.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="Uiautomator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ZLYUtils.Uiautomator" />
+      <module name="zhanglianyu" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ZLYUtils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -442,16 +471,10 @@
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="test1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DataBase.test1" />
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
       <module name="zhanglianyu" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DataBase.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -493,16 +516,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.HomePage" />
-      <item itemvalue="Application.ExcelUtils" />
-      <item itemvalue="Application.SquirrelUi" />
-      <item itemvalue="Application.test1" />
+      <item itemvalue="Application.test" />
+      <item itemvalue="Application.ImageComparison" />
+      <item itemvalue="Application.CheckFile" />
+      <item itemvalue="Application.Uiautomator" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HomePage" />
-        <item itemvalue="Application.test1" />
-        <item itemvalue="Application.SquirrelUi" />
-        <item itemvalue="Application.ExcelUtils" />
+        <item itemvalue="Application.Uiautomator" />
+        <item itemvalue="Application.CheckFile" />
+        <item itemvalue="Application.ImageComparison" />
+        <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
   </component>
@@ -530,7 +555,24 @@
       <workItem from="1533519677409" duration="22590000" />
       <workItem from="1533612862916" duration="898000" />
       <workItem from="1533694248962" duration="897000" />
-      <workItem from="1533695999613" duration="12430000" />
+      <workItem from="1533695999613" duration="13237000" />
+      <workItem from="1533959097141" duration="29000" />
+      <workItem from="1534149344303" duration="2287000" />
+      <workItem from="1534211409006" duration="611000" />
+      <workItem from="1534474044758" duration="617000" />
+      <workItem from="1534492764868" duration="1000" />
+      <workItem from="1534602665404" duration="11000" />
+      <workItem from="1534836081536" duration="5246000" />
+      <workItem from="1534908057857" duration="630000" />
+      <workItem from="1534908765425" duration="22636000" />
+      <workItem from="1535027956215" duration="38000" />
+      <workItem from="1535079455220" duration="599000" />
+      <workItem from="1535080603262" duration="1996000" />
+      <workItem from="1535112916275" duration="599000" />
+      <workItem from="1535165775253" duration="12000" />
+      <workItem from="1535513961699" duration="3521000" />
+      <workItem from="1535593501827" duration="2619000" />
+      <workItem from="1535963209813" duration="7539000" />
     </task>
     <task id="LOCAL-00001" summary="添加项目">
       <created>1532672592785</created>
@@ -735,11 +777,32 @@
       <option name="project" value="LOCAL" />
       <updated>1533798701774</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="接口工具runcase结果文件保存到获取文件路径中">
+      <created>1533799136530</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1533799136530</updated>
+    </task>
+    <task id="LOCAL-00031" summary="修改创建Excel时变量在循环中导致内存溢出">
+      <created>1535027990676</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1535027990676</updated>
+    </task>
+    <task id="LOCAL-00032" summary="修改创建Excel时变量在循环中导致内存溢出">
+      <created>1535081718467</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1535081718467</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147330000" />
+    <option name="totallyTimeSpent" value="197128000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -765,17 +828,17 @@
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="10" weight="0.39770868" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.39703903" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.3289689" />
-      <window_info anchor="bottom" id="Messages" order="2" weight="0.12651414" />
+      <window_info anchor="bottom" id="Messages" order="2" weight="0.12516823" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="1" />
       <window_info anchor="bottom" id="Java Enterprise" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="bottom" id="Version Control" order="5" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="9" visible="true" weight="0.29475102" />
+      <window_info anchor="bottom" id="Version Control" order="5" weight="0.32839838" />
+      <window_info anchor="bottom" id="Run" order="9" visible="true" weight="0.2745626" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.3289689" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.25071633" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.29512894" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -821,8 +884,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="更改松鼠config名称" />
-    <MESSAGE value="加入接口测试" />
     <MESSAGE value="增加get请求重载方法,可只填写url" />
     <MESSAGE value="添加接口工具发送请求类" />
     <MESSAGE value="修改正在截屏时，暂停抓取手机页面" />
@@ -846,302 +907,12 @@
     <MESSAGE value="将标题转化为小写" />
     <MESSAGE value="更新adb获取错误流" />
     <MESSAGE value="接口工具runCase支持用户自定义选取文件路径" />
-    <option name="LAST_COMMIT_MESSAGE" value="接口工具runCase支持用户自定义选取文件路径" />
+    <MESSAGE value="接口工具runcase结果文件保存到获取文件路径中" />
+    <MESSAGE value="修改创建Excel时变量在循环中导致内存溢出" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改创建Excel时变量在循环中导致内存溢出" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2160">
-          <caret line="115" column="11" selection-start-line="115" selection-start-column="11" selection-end-line="115" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/text/JTextComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44928">
-          <caret line="1664" column="16" selection-start-line="1664" selection-start-column="16" selection-end-line="1664" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Menubar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-351">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/FrameSqiorrel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/apache/poi/poi/3.17/poi-3.17.jar!/org/apache/poi/ss/usermodel/Cell.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/LogPaint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JRadioButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="143" column="11" selection-start-line="143" selection-start-column="11" selection-end-line="143" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/FlowConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="91" column="57" lean-forward="true" selection-start-line="91" selection-start-column="57" selection-end-line="91" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/apache/poi/poi/3.17/poi-3.17.jar!/org/apache/poi/hssf/util/HSSFColor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="957" column="34" selection-start-line="957" selection-start-column="34" selection-end-line="957" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBoDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/LeaveBug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/TestTools.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/GetADLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SaveExcelCase.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3996">
-          <caret line="181" column="51" selection-start-line="181" selection-start-column="51" selection-end-line="181" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="535" column="12" selection-start-line="535" selection-start-column="12" selection-end-line="535" selection-end-column="12" />
-          <folding>
-            <element signature="e#74817#74818#0" expanded="true" />
-            <element signature="e#74854#74855#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="1758" column="14" lean-forward="true" selection-start-line="1758" selection-start-column="14" selection-end-line="1758" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/WindowConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/ImageIcon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="184" column="11" selection-start-line="184" selection-start-column="11" selection-end-line="184" selection-end-column="11" />
-          <folding>
-            <element signature="e#5677#5678#0" expanded="true" />
-            <element signature="e#5717#5718#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="698" column="29" selection-start-line="698" selection-start-column="29" selection-end-line="698" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/AbstractButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="2086" column="16" selection-start-line="2086" selection-start-column="16" selection-end-line="2086" selection-end-column="16" />
-          <folding>
-            <element signature="e#68197#68198#0" expanded="true" />
-            <element signature="e#68254#68255#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-313">
-          <caret line="6" selection-start-line="6" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="135" column="28" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="82" selection-start-line="82" selection-end-line="82" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/plaf/basic/BasicButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="251" selection-start-line="251" selection-end-line="251" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Toolkit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <caret line="851" column="39" selection-start-line="851" selection-start-column="39" selection-end-line="851" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="62" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5103">
-          <caret line="206" column="28" selection-start-line="206" selection-start-column="28" selection-end-line="206" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10530">
-          <caret line="398" column="25" selection-start-line="398" selection-start-column="25" selection-end-line="398" selection-end-column="25" />
-          <folding>
-            <element signature="e#11969#11970#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1971">
-          <caret line="73" column="17" selection-start-line="69" selection-start-column="3" selection-end-line="73" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/test1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/DataBase/text.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/DataBase/test1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/DataBase/test1.java" />
     <entry file="file://$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1149,99 +920,372 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/FlowFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="114" column="63" lean-forward="true" selection-start-line="114" selection-start-column="10" selection-end-line="114" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Network.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="33" column="35" lean-forward="true" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="20" column="68" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1272#1479#0" expanded="true" />
-            <element signature="e#1478#1479#0" expanded="true" />
-            <element signature="e#3306#3307#0" expanded="true" />
-            <element signature="e#3352#3353#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-          <folding>
-            <element signature="e#2751#2752#0" expanded="true" />
-            <element signature="e#2787#2788#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1890">
+          <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JFileChooser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
+        <state relative-caret-position="13824">
           <caret line="574" column="16" selection-start-line="574" selection-start-column="16" selection-end-line="574" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java">
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+        <state relative-caret-position="1647">
+          <caret line="68" column="59" selection-start-line="68" selection-start-column="59" selection-end-line="68" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/DataBase/text.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/SaveCrash.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/net/URLDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2916">
+          <caret line="131" column="25" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Network.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5373">
+          <caret line="205" column="89" selection-start-line="205" selection-start-column="12" selection-end-line="205" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/imageio/ImageIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="1511" column="26" selection-start-line="1511" selection-start-column="26" selection-end-line="1511" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/image_comparison/image_comparison/Config.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/image_comparison/image_comparison/image_comparison.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/image/Raster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="125" column="13" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/image/ColorModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="881" column="15" selection-start-line="881" selection-start-column="15" selection-end-line="881" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/image/BufferedImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-909">
+          <caret line="1048" column="16" selection-start-line="1048" selection-start-column="16" selection-end-line="1048" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="79" column="20" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/TextArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24948">
+          <caret line="965" column="16" selection-start-line="965" selection-start-column="16" selection-end-line="965" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/math/BigDecimal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40716">
+          <caret line="1555" column="47" selection-start-line="1555" selection-start-column="40" selection-end-line="1555" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81972">
+          <caret line="3139" column="25" selection-start-line="3139" selection-start-column="25" selection-end-line="3139" selection-end-column="25" />
+          <folding>
+            <element signature="e#123115#123116#0" expanded="true" />
+            <element signature="e#123156#123157#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/DoubleOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1701">
+          <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/package_inspection/CheckFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1117#1118#0" expanded="true" />
-            <element signature="e#1155#1156#0" expanded="true" />
-            <element signature="e#4231#4232#0" expanded="true" />
-            <element signature="e#4266#4267#0" expanded="true" />
-            <element signature="e#4340#4341#0" expanded="true" />
-            <element signature="e#4378#4379#0" expanded="true" />
-            <element signature="e#4426#4427#0" expanded="true" />
-            <element signature="e#4464#4465#0" expanded="true" />
-            <element signature="e#4484#4485#0" expanded="true" />
-            <element signature="e#4532#4533#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/image_comparison/Image_comparison_config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/image_comparison/ImageComparison.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2052">
+          <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="181" column="65" selection-start-line="181" selection-start-column="65" selection-end-line="181" selection-end-column="65" />
+        <state relative-caret-position="420">
+          <caret line="158" column="43" lean-forward="true" selection-start-line="158" selection-start-column="43" selection-end-line="158" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="3239" column="16" selection-start-line="3239" selection-start-column="16" selection-end-line="3239" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="116" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBoDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="222" column="93" selection-start-line="222" selection-start-column="93" selection-end-line="222" selection-end-column="93" />
+        <state relative-caret-position="453">
+          <caret line="224" column="62" selection-start-line="224" selection-start-column="62" selection-end-line="224" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+          <folding>
+            <element signature="e#4742#4743#0" expanded="true" />
+            <element signature="e#4790#4791#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="182" selection-start-line="182" selection-end-line="182" />
+          <folding>
+            <element signature="e#1546#1886#0" expanded="true" />
+            <element signature="e#1885#1886#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/FlowConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/FlowFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="69" column="27" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="698" column="29" selection-start-line="698" selection-start-column="29" selection-end-line="698" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JTextField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="196" column="11" selection-start-line="196" selection-start-column="11" selection-end-line="196" selection-end-column="11" />
+          <folding>
+            <element signature="e#6952#6953#0" expanded="true" />
+            <element signature="e#6993#6994#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="115" column="11" selection-start-line="115" selection-start-column="8" selection-end-line="115" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Menubar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="187" column="33" selection-start-line="187" selection-start-column="33" selection-end-line="187" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/GetADLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="192" column="9" selection-start-line="192" selection-start-column="9" selection-end-line="192" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/text/JTextComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="1421" column="16" selection-start-line="1421" selection-start-column="16" selection-end-line="1421" selection-end-column="16" />
+          <folding>
+            <element signature="e#52247#52248#0" expanded="true" />
+            <element signature="e#52316#52317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="81" column="27" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="383" column="35" selection-start-line="383" selection-start-column="35" selection-end-line="383" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/VideoSwitch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <folding>
+            <element signature="e#3442#3443#0" expanded="true" />
+            <element signature="e#3468#3469#0" expanded="true" />
           </folding>
         </state>
       </provider>

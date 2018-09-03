@@ -33,6 +33,7 @@ public class HomePage extends JFrame {
     public static final String getLocalIP = "获取本机IP地址";
     public static final String workFlow = "帮助文档";
     public static final String testTools = "测试工具";
+    public static final String VIDEOSWICTH = "视频压缩";
     private JButton clearIphoneButtpm;
     private JButton getLocalIPButton;
     private JButton installPackageButton;
@@ -183,6 +184,9 @@ public class HomePage extends JFrame {
                 case installPackage:
                     handleClickEvents(f);
                     break;
+                case VIDEOSWICTH:
+                    new WindowsText(text, this);
+                    break;
                 default:
                     new WindowsText(text, this);
 
@@ -203,7 +207,7 @@ public class HomePage extends JFrame {
                 if (clearIphone.equals(text)) {
                     new ClearIphone(projectName, clearProjectName);
                     clearIphoneButtpm.setEnabled(true);
-                }else if(installPackage.equals(text)){
+                } else if (installPackage.equals(text)) {
                     new InstallPackage(f);
 
                 }
@@ -356,6 +360,9 @@ public class HomePage extends JFrame {
         JButton work = new JButton(workFlow);
         buttonMouseListener(work);
         p2.add(work);
+        JButton videoSwitch = new JButton(VIDEOSWICTH);
+        buttonMouseListener(videoSwitch);
+        p2.add(videoSwitch);
         p2.setLayout(new GridLayout(1, 2));
         p2.setSize(400, 45);
         p2.setLocation(this.getX() + 70, 153);

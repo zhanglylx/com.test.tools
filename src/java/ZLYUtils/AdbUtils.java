@@ -2,10 +2,7 @@ package ZLYUtils;
 
 import SquirrelFrame.HomePage;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
@@ -19,12 +16,14 @@ public class AdbUtils {
     public static String devices;
     private static int killNetStatAdb;
     public static long errTime = 0;
+
     static {
         killNetStatAdb = -1;
     }
 
     /**
      * 获取错误
+     *
      * @param code
      * @return
      */
@@ -37,13 +36,14 @@ public class AdbUtils {
             Process pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
             BufferedReader br;
             br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
-            str = adbBufferedReader(br,str);
+            str = adbBufferedReader(br, str);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return str;
     }
-    private static String[] runAdb(String code) {
+
+    public static String[] runAdb(String code) {
         String[] str = null;
         try {
             String dev = " ";
@@ -52,8 +52,8 @@ public class AdbUtils {
             Process pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
             BufferedReader br;
             br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("utf-8")));
-            str = adbBufferedReader(br,str);
-            if(str==null){
+            str = adbBufferedReader(br, str);
+            if (str == null) {
                 str = errRunAdb(code);
             }
         } catch (IOException e) {
@@ -64,13 +64,14 @@ public class AdbUtils {
 
     /**
      * 读取adb缓冲流
+     *
      * @return
      */
-    private static String[] adbBufferedReader( BufferedReader br,String[] str) throws IOException {
-        String msg ;
-        int index=0;
+    public static String[] adbBufferedReader(BufferedReader br, String[] str) throws IOException {
+        String msg;
+        int index = 0;
         while ((msg = br.readLine()) != null) {
-            if(index==0)str = new String[0];
+            if (index == 0) str = new String[0];
             str = Arrays.copyOf(str, str.length + 1);
             str[str.length - 1] = msg;
             index++;
@@ -88,7 +89,8 @@ public class AdbUtils {
                 int p = -1;
                 if ((p = WindosUtils.selectNetstatPid(5037)) != -1) {
                     pid = WindosUtils.getPIDName(p);
-                    if (pid == null || pid.toLowerCase().contains("adb.exe") || pid.toLowerCase().contains("java")) return;
+                    if (pid == null || pid.toLowerCase().contains("adb.exe") || pid.toLowerCase().contains("java"))
+                        return;
                 }
             } else {
                 return;
@@ -134,6 +136,7 @@ public class AdbUtils {
         }
         return devicesArr;
     }
+
     /**
      * 查看设备相信信息
      *
@@ -150,6 +153,7 @@ public class AdbUtils {
         }
         return devicesArr;
     }
+
     /**
      * 执行adb命令
      *
@@ -159,8 +163,15 @@ public class AdbUtils {
     public synchronized static String[] operationAdb(String code) {
         //检查是否连接设备
         if (!checkDevices()) return null;
-            return runAdb(code);
+        return runAdb(code);
     }
+
+
+
+
+
+
+
 
     /**
      * 检查设备
@@ -168,9 +179,9 @@ public class AdbUtils {
     public static boolean checkDevices() {
         String[] deivcesInfo = checkdevicesInfo();
         for (int i = 0; i < 2; i++) {
-            if (deivcesInfo.length == 0 && i == 1 ) {
-                if(errTime <System.currentTimeMillis())TooltipUtil.errTooltip("请至少将一台设备连接到电脑");
-                errTime = System.currentTimeMillis()+(10*1000);
+            if (deivcesInfo.length == 0 && i == 1) {
+                if (errTime < System.currentTimeMillis()) TooltipUtil.errTooltip("请至少将一台设备连接到电脑");
+                errTime = System.currentTimeMillis() + (10 * 1000);
                 return false;
             }
             deivcesInfo = devicesInfo();
@@ -183,7 +194,7 @@ public class AdbUtils {
                 if (s.contains(devices)) dev = true;
             }
             if (!dev) {
-                    TooltipUtil.errTooltip("当前设备:"+HomePage.textArea.getText()+" 已更换，设备刷新后请重试");
+                TooltipUtil.errTooltip("当前设备:" + HomePage.textArea.getText() + " 已更换，设备刷新后请重试");
                 setDevices();
                 return false;
             }
@@ -191,13 +202,19 @@ public class AdbUtils {
         return true;
     }
 
+
+
+
+
+
+
     /**
      * 指定设备
      */
     public static void setDevices() {
         Thread t = new Thread(new Runnable() {
             public void run() {
-                    setDevices(devicesInfo());
+                setDevices(devicesInfo());
             }
         }, "setDevices");
         t.start();

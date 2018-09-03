@@ -52,12 +52,13 @@ public class FrameUtils {
 //        fileChooser.setAcceptAllFileFilterUsed(false);//去掉所有文件选项
         int ch = fileChooser.showDialog(parent, "保存文件");
         if (JFileChooser.APPROVE_OPTION == ch) {
-            String path = fileChooser.getSelectedFile().getPath();
-            path = path.substring(0,path.lastIndexOf(File.separator)+1);
-            return path;
+//            path = path.substring(0,path.lastIndexOf(File.separator)+1);
+            return fileChooser.getSelectedFile().getPath();
         }
         return null;
     }
+
+
 
     /**
      * 将file中文件名称转换成数组
@@ -67,12 +68,32 @@ public class FrameUtils {
      */
     public static String[] addFilesShiftArrays(File[] files,String[] arrays){
         if(arrays==null)arrays=new String[0];
+        if(files == null)throw new IllegalArgumentException("files为空");
         for (File file : files) {
             arrays = Arrays.copyOf(arrays, arrays.length + 1);
             arrays[arrays.length-1]=file.getName();
         }
         return arrays;
     }
+
+    /**
+     * 选择文件框
+     */
+    public static String   selectFile( ) {
+        JFileChooser chooser = new JFileChooser();
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
+        chooser.showDialog(new JLabel(), "选择");
+        File file = chooser.getSelectedFile();
+        return (file.getAbsoluteFile().toString());
+
+    }
+
+
+
+
+
 
     /**
      * 添加JDialog窗口关闭监听器

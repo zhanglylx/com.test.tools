@@ -106,9 +106,6 @@ public class WindosUtils {
             return false;
         }
         fe = new File(filePath);
-        //文件名称
-        String fileName = filePath.substring(filePath.lastIndexOf(File.separator) + 1, filePath.length());
-        System.out.println(fileName);
         String copyPath = null;
         try {
             copyPath = FrameUtils.saveFileFrame(jdialog, new File(filePath));
@@ -117,7 +114,6 @@ public class WindosUtils {
             SaveCrash.save(e.toString());
         }
         if (copyPath == null) return false;
-        copyPath += fileName;
         //文件如果存在，重新名称
         if (new File(copyPath).exists()) {
             int filePathIndex =copyPath.lastIndexOf(".");
@@ -161,6 +157,63 @@ public class WindosUtils {
     }
 
     /**
+     * 复制文件
+     *
+     */
+    public static boolean copyFile(File savePath,File copyPath) {
+
+        if(savePath == null || copyPath ==null)
+            throw new IllegalArgumentException("复制或保存地址为空");
+       if(!copyPath.exists())TooltipUtil.errTooltip("没有找到复制文件地址");
+        //文件如果存在，重新名称
+        if (savePath.exists()) {
+            int filePathIndex =savePath.getPath().lastIndexOf(".");
+            StringBuffer sb = new StringBuffer(savePath.getPath());
+            if(filePathIndex!=-1){
+                sb.insert(filePathIndex,WindosUtils.getDate(" MM-dd-HH-mm-ss"));
+            }else{
+                sb.append(WindosUtils.getDate(" MM-dd-HH-mm-ss"));
+            }
+            savePath = new File(sb.toString());
+        }
+        InputStream ips = null;
+        OutputStream ops = null;
+        try {
+            ips = new FileInputStream(copyPath);
+            byte[] ipsBuffer = new byte[ips.available()];
+            ips.read(ipsBuffer);
+            ops = new FileOutputStream(savePath);
+            ops.write(ipsBuffer);
+            ops.flush();
+            TooltipUtil.generalTooltip("保存成功:" + savePath);
+            return true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (ops != null) {
+                try {
+                    ops.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ips != null) {
+                try {
+                    ips.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
+    /**
      * 选中文件
      *
      * @param File
@@ -187,6 +240,7 @@ public class WindosUtils {
             while ((str = br.readLine()) != null) {
                 arr = Arrays.copyOf(arr, arr.length + 1);
                 arr[arr.length - 1] = new String(str.getBytes(), "GBK");
+
             }
         } finally {
             if (br != null) {
@@ -303,6 +357,58 @@ public class WindosUtils {
         }
         return null;
     }
+
+    /**
+     * 运行本地exe程序
+     * @param code
+     * @return
+     */
+    public static String[] runLocalhostExe(String code) {
+        String[] str = null;
+        try {
+            Process pro = Runtime.getRuntime().exec(code);
+            BufferedReader br;
+            br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
+            str = AdbUtils.adbBufferedReader(br,str);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    /**
+     * 运行本地exe程序
+     * @param code
+     * @return
+     */
+    public static String[] runLocalhostExe(String code,JTextArea jTextArea) {
+        if(jTextArea == null)throw  new IllegalArgumentException("jTextArea为空");
+        String[] str = null;
+        try {
+            Process pro = Runtime.getRuntime().exec(code);
+            BufferedReader br;
+            br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
+            String msg;
+            int index = 0;
+            while ((msg = br.readLine()) != null) {
+                if (index == 0) str = new String[0];
+                str = Arrays.copyOf(str, str.length + 1);
+                str[str.length - 1] = msg;
+                index++;
+                jTextArea.append(msg+"\n");
+                jTextArea.selectAll();
+                if (jTextArea.getSelectedText() != null && jTextArea != null) {
+                    jTextArea.setCaretPosition(jTextArea.getSelectedText().length());
+                    jTextArea.requestFocus();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+
 
     /**
      * 获取指定进程的pid
