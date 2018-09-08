@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Arrays;
 
+import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_LEADING;
 import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_SQUIRREL;
 
 
@@ -24,10 +25,12 @@ public class VideoRecordingScreenshot extends JDialog {
     private JButton videoSwitch;
     public static final String SCREENSHOT = "截屏";
     public static final String SCREENSHOT_SQUIRREL = "Squirrel.png";//截图保存名称
+    public static final String SCREENSHOT_LEADING = "copySquirrel.png";//前端展示获取的图片
     public static final String VIDEOSWITCH = "VS";
     public RefreshTheImage refreshTheImage;
     private JButton picture;
     private Thread threadRefreshTheImage;
+
     public VideoRecordingScreenshot(String title, JDialog jDialog) {
         super(jDialog, false);
         setTitle(title);
@@ -44,8 +47,6 @@ public class VideoRecordingScreenshot extends JDialog {
         videoSwitch.setLocation(5, 50);
         buttonMouseListener(videoSwitch);
         add(videoSwitch);
-
-
 
 
         setLocationRelativeTo(null);//设置中间显示
@@ -84,11 +85,13 @@ public class VideoRecordingScreenshot extends JDialog {
             switch (text) {
                 case SCREENSHOT:
                     refreshTheImage.suspend();
-                    String saveFile =  FrameUtils.saveFileFrame(this,
-                        new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL));
-                    if(!saveFile.endsWith(".png"))saveFile+=".png";
-                    WindosUtils.copyFile(new File(saveFile),
+                    String saveFile = FrameUtils.saveFileFrame(this,
                             new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL));
+                    if (saveFile != null) {
+                        if (!saveFile.endsWith(".png")) saveFile += ".png";
+                        WindosUtils.copyFile(new File(saveFile),
+                                new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING));
+                    }
                     threadRefreshTheImage.interrupt();
                     break;
                 case VIDEOSWITCH:
@@ -149,15 +152,20 @@ class RefreshTheImage implements Runnable {
             //设置锁
             synchronized (RefreshTheImage.class) {
                 try {
-                    adb = AdbUtils.operationAdb("shell screencap -p /sdcard/" + SCREENSHOT_SQUIRREL);
+                    AdbUtils.operationAdb("shell screencap -p /sdcard/" + SCREENSHOT_SQUIRREL);
+                    adb = AdbUtils.operationAdb("pull  /sdcard/" + SCREENSHOT_SQUIRREL + " "+
+                            SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
                     System.out.println(Arrays.toString(adb));
-                    adb = AdbUtils.operationAdb("pull  /sdcard/" + SCREENSHOT_SQUIRREL + " " + SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
                     if (!Arrays.toString(adb).contains("100%")) {
                         image = new ImageIcon("image/wait.png");
                     } else {
-                        image = new ImageIcon(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
+                        if (this.suspend) {
+                            WindosUtils.copyFile(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING,
+                                    new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL));
+                        }
+                        image = new ImageIcon(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING);
                     }
-                    System.out.println(Arrays.toString(adb));
+
                     image.setImage(image.getImage().getScaledInstance(300, 650, Image.SCALE_DEFAULT));
                     jButton.setIcon(image);
                     if (!this.suspend) {

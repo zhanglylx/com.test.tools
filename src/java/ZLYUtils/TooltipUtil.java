@@ -16,7 +16,14 @@ public class TooltipUtil {
     public static void generalTooltip(String generalText){
         JOptionPane.showMessageDialog(null, generalText);
     }
-
+    public static void setUIManager(){
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
+            ((Throwable) e).printStackTrace();
+        }
+    }
     /**
      * 选择框
      * @param message
@@ -33,6 +40,7 @@ public class TooltipUtil {
     }
 
     public static int yesNoTooltip(String text){
+        setUIManager();
         return JOptionPane.showConfirmDialog(null, text, "松鼠",JOptionPane.YES_NO_OPTION); //返回值为0或1
     }
 

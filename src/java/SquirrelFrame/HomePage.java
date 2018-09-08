@@ -30,7 +30,7 @@ public class HomePage extends JFrame {
     public static final String clearIphone = "清理手机环境";
     public static final String installPackage = "安装apk";
     public static final String worm = "贪食蛇";
-    public static final String getLocalIP = "获取本机IP地址";
+    public static final String getLocalIP = "IP Address ";
     public static final String workFlow = "帮助文档";
     public static final String testTools = "测试工具";
     public static final String VIDEOSWICTH = "视频压缩";
@@ -43,6 +43,18 @@ public class HomePage extends JFrame {
     private JButton refresh;
     //动画
     public static JButton cartoon;
+
+    /**
+     * 设置风格
+     */
+    static{
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
+            ((Throwable) e).printStackTrace();
+        }
+    }
 
     private HomePage() {
         super(SquirrelConfig.TOOLSTITLE);

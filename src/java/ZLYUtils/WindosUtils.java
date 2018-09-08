@@ -210,6 +210,46 @@ public class WindosUtils {
         return false;
     }
 
+    /**
+     * 复制文件
+     *
+     */
+    public static boolean copyFile(String savePath,File copyPath) {
+        if(savePath == null || copyPath ==null)
+            throw new IllegalArgumentException("复制或保存地址为空");
+        if(!copyPath.exists())TooltipUtil.errTooltip("没有找到复制文件地址");
+        InputStream ips = null;
+        OutputStream ops = null;
+        try {
+            ips = new FileInputStream(copyPath);
+            byte[] ipsBuffer = new byte[ips.available()];
+            ips.read(ipsBuffer);
+            ops = new FileOutputStream(savePath);
+            ops.write(ipsBuffer);
+            ops.flush();
+            return true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (ops != null) {
+                try {
+                    ops.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ips != null) {
+                try {
+                    ips.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
 
 
 
@@ -404,6 +444,7 @@ public class WindosUtils {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            jTextArea.append(e.toString()+"\n");
         }
         return str;
     }
