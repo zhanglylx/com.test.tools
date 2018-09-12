@@ -11,25 +11,20 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
 public class GetADLog extends Pane {
     public static String[] AD;
-    //广告id
-    public static String adId = null;
-    public WindowsText windowsText;
-    public static ArrayList<String> list;
-    Thread t;
+    Thread threadAdLog;
     JTextArea logPaint = null;
+    private JButton clear;
     //判断线程是否在运行
     private boolean runT = false;
-    //用于判断广告的长度，两次长度不一样打印到页面
-    private int GGlen = 0;
     //判断是否打印了没有获取日志的错误信息,禁止重复打印
     boolean getLog = false;
+    private Log log;
 
     /**
      * 设置广告位
@@ -40,7 +35,6 @@ public class GetADLog extends Pane {
             AD = Arrays.copyOf(AD, AD.length + 1);
             AD[AD.length - 1] = "GG-" + i;
         }
-        list = new ArrayList<>();
     }
 
     public GetADLog(String buttonText, JDialog frame) {
@@ -53,8 +47,14 @@ public class GetADLog extends Pane {
             jPa.add(jb);
             setButton(jb);
         }
+        this.clear = new JButton("清空");
+        jPa.add(this.clear);
+        setButton(clear);
         add(jPa);
         setJDialog();
+        this.log = new Log();
+        threadAdLog = new Thread(log);
+        threadAdLog.setDaemon(true);
     }
 
     /**
@@ -64,8 +64,9 @@ public class GetADLog extends Pane {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                windowsClose = true;
                 super.windowClosing(e);
+                threadAdLog.interrupt();
+                log.closeLog();
                 TestTools.setJButtonEnabled(getTitle());
                 setDefaultCloseOperation(2);
             }
@@ -91,90 +92,108 @@ public class GetADLog extends Pane {
      */
     public void buttonMouseListener(JButton f) {
         f.addActionListener((ActionEvent e) -> {
+            if (f == this.clear) {
+                logPaint.setText("");
+                return;
+            }
             f.setBackground(Color.magenta);
-            adId = f.getText();
-            GGlen = 0;
+            log.restoreColor();
             logPaint.setText("请等待，正在刷新:" + f.getText() + "\n");
-            t = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    if (!runT) {
-                        log();
-
-                    }
-                }
-            });
-            t.start();
-            getLog = false;
+            if (threadAdLog.isInterrupted()) threadAdLog.interrupt();
+            log.setAdIdRecord(f.getText());
+            if (!threadAdLog.isAlive()) threadAdLog.start();
+            log.setjButton(f);
         });
 
     }
 
-    public void log() {
-        runT = true;
-        String[] GG;
-        int n = 0;
-        String date = date();
-        String adIdRecord = "";//记录广告是否被切换
-        while (true) {
-            if (logPaint == null) continue;
-            if (windowsClose) {
-                windowsClose = false;
-                break;
-            }
-            //切换广告后，置为默认值
-            if (!adIdRecord.equals(adId)) {
-                GGlen = 0;
-                adIdRecord = adId;
-            }
-            boolean bl = false;
-            GG = AdbUtils.operationAdb(" shell cat /sdcard/FreeBook/ad/" + date + "/" + adId + ".txt");
-            System.out.println(" shell cat /sdcard/FreeBook/ad/" + date + "/" + adId + ".txt");
-            if (Arrays.toString(GG).contains("errdevices")) break;
-            if (Arrays.toString(GG).equals("[]") && !getLog) {
-                getLog = true;
-                addText("没有获取到日志:" + adId + Arrays.toString(GG));
-            }
-            if (GG == null || GG.length < 1) continue;
-            if (GG.length > GGlen) {
-                for (int i = GGlen; i < GG.length; i++) {
-                    if (GG[i].equals("")) continue;
-                    addText(date + "  " + GG[i]);
-                    if ((GG[i].contains("返回广告") && !GG[i].contains("服务端返回广告"))
-                            || GG[i].contains("服务端返回广告---没有广告") ||
-                            GG[i].contains("请求失败")) bl = true;
-                }
-                GGlen = GG.length;
-            }
+    class Log implements Runnable {
 
-            if (bl) {
-                switch (n) {
-                    case (0):
-                        addText("=========");
-                        n = 1;
-                        break;
-                    case (1):
-                        addText("==================");
-                        n = 2;
-                        break;
-                    case (2):
-                        addText("====================================");
-                        n = 3;
-                        break;
-                    case (3):
-                        addText("======================================================");
-                        n = 0;
-                        break;
-                }
+        private String[] GG;
+        private int n;
+        private String date;
+        private String adIdRecord;//记录广告是否被切换
+        private boolean stopLog;
+        private JButton jButton;
+        //用于判断广告的长度，两次长度不一样打印到页面
+        private int GGlen = 0;
 
-            }
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        public Log() {
+            this.date = date();
+            this.n = 0;
+            this.adIdRecord = "";
+            this.stopLog = true;
+            this.jButton = new JButton();
+        }
+
+        public void setAdIdRecord(String adIdRecord) {
+            this.adIdRecord = adIdRecord;
+            this.GGlen = 0;
+        }
+
+        public void setjButton(JButton jButton) {
+            this.jButton = jButton;
+        }
+
+        public void restoreColor() {
+            this.jButton.setBackground(Color.orange);
+        }
+
+        public void closeLog() {
+            this.stopLog = false;
+        }
+
+        public String getAdIdRecord() {
+            return this.adIdRecord;
+        }
+
+        @Override
+        public void run() {
+            boolean bl;
+            while (this.stopLog) {
+                bl = false;
+                GG = AdbUtils.operationAdb(" shell cat /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
+                System.out.println(" shell cat /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
+                if (this.GG == null) addText("获取失败，重试");
+                if (GG.length > GGlen) {
+                    for (int i = GGlen; i < GG.length; i++) {
+                        if (GG[i].equals("")) continue;
+                        if (logPaint.getText().endsWith(".")) logPaint.append("\n");
+                        addText(date + "  " + GG[i]);
+                        if ((GG[i].contains("返回广告") && !GG[i].contains("服务端返回广告"))
+                                || GG[i].contains("服务端返回广告---没有广告") ||
+                                GG[i].contains("请求失败") || GG[i].contains("No such file or directory")) bl = true;
+                    }
+                    GGlen = GG.length;
+                }
+                if (bl) {
+                    switch (n) {
+                        case (0):
+                            addText("=========");
+                            n = 1;
+                            break;
+                        case (1):
+                            addText("==================");
+                            n = 2;
+                            break;
+                        case (2):
+                            addText("====================================");
+                            n = 3;
+                            break;
+                        case (3):
+                            addText("======================================================");
+                            n = 0;
+                            break;
+                    }
+
+                }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                }
+                if(bl)logPaint.append(".");
             }
         }
-        runT = false;
     }
 
     /**
@@ -183,7 +202,7 @@ public class GetADLog extends Pane {
      * @param text
      */
     public void addText(String text) {
-        if (text.contains("=")) text += "     " + adId;
+        if (text.contains("=")) text += "     " + log.getAdIdRecord();
         logPaint.append(text + "\n");
 //        //下面的代码就是移动到文本域的最后面
         logPaint.selectAll();
@@ -208,7 +227,7 @@ public class GetADLog extends Pane {
                     }
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
