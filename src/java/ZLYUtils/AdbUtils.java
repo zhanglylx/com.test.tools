@@ -162,15 +162,13 @@ public class AdbUtils {
      */
     public synchronized static String[] operationAdb(String code) {
         //检查是否连接设备
-        if (!checkDevices()) return null;
+        if (!checkDevices()) {
+            if (!checkDevices()) {
+                return null;
+            }
+        }
         return runAdb(code);
     }
-
-
-
-
-
-
 
 
     /**
@@ -203,21 +201,17 @@ public class AdbUtils {
     }
 
 
-
-
-
-
-
     /**
      * 指定设备
      */
     public static void setDevices() {
-        Thread t = new Thread(new Runnable() {
-            public void run() {
-                setDevices(devicesInfo());
-            }
-        }, "setDevices");
-        t.start();
+//        Thread t = new Thread(new Runnable() {
+//            public void run() {
+//                setDevices(devicesInfo());
+//            }
+//        }, "setDevices");
+//        t.start();
+        setDevices(devicesInfo());
     }
 
     /**
