@@ -43,7 +43,6 @@ public class SquirrelUi extends JFrame {
                 }
                 super.windowClosing(e);
                 setDefaultCloseOperation(2);
-                TestTools.setJButtonEnabled(getTitle());
             }
         });
         setVisible(true);

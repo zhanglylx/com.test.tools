@@ -1,19 +1,19 @@
 package Squirrel;
 
-import SquirrelFrame.*;
 import SquirrelFrame.Pane;
 import ZLYUtils.AdbUtils;
+import sun.awt.windows.ThemeReader;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
 public class GetADLog extends Pane {
     public static String[] AD;
@@ -22,10 +22,8 @@ public class GetADLog extends Pane {
     private JButton clear;
     //判断线程是否在运行
     private boolean runT = false;
-    //判断是否打印了没有获取日志的错误信息,禁止重复打印
-    boolean getLog = false;
     private Log log;
-
+    private List<JButton> jButtonsAd;
     /**
      * 设置广告位
      */
@@ -42,10 +40,13 @@ public class GetADLog extends Pane {
         setLayout(new GridLayout(2, 10));
         JPanel jPa = new JPanel();
         jPa.setLayout(new GridLayout(10, 10));
+        JButton jb;
+        this.jButtonsAd = new ArrayList<>();
         for (int i = 0; i < AD.length; i++) {
-            JButton jb = new JButton(AD[i]);
+            jb = new JButton(AD[i]);
             jPa.add(jb);
             setButton(jb);
+            this.jButtonsAd.add(jb);
         }
         this.clear = new JButton("清空");
         jPa.add(this.clear);
@@ -54,7 +55,6 @@ public class GetADLog extends Pane {
         setJDialog();
         this.log = new Log();
         threadAdLog = new Thread(log);
-        threadAdLog.setDaemon(true);
     }
 
     /**
@@ -86,6 +86,24 @@ public class GetADLog extends Pane {
     }
 
     /**
+     * 限制每个按钮间快速切换
+     */
+    public void limitButtonClick(){
+        for(JButton jButton : this.jButtonsAd){
+                jButton.setEnabled(false);
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        for(JButton jButton : this.jButtonsAd){
+            jButton.setEnabled(true);
+        }
+
+    }
+
+    /**
      * 设置按钮监听器
      *
      * @param f
@@ -93,30 +111,43 @@ public class GetADLog extends Pane {
     public void buttonMouseListener(JButton f) {
         f.addActionListener((ActionEvent e) -> {
             if (f == this.clear) {
-                logPaint.setText("");
+                setLogPaint("");
                 return;
             }
-            f.setBackground(Color.magenta);
-            log.restoreColor();
-            logPaint.setText("请等待，正在刷新:" + f.getText() + "\n");
-            if (threadAdLog.isInterrupted()) threadAdLog.interrupt();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    limitButtonClick();
+                }
+            }).start();
+
             log.setAdIdRecord(f.getText());
-            if (!threadAdLog.isAlive()) threadAdLog.start();
+            f.setBackground(Color.magenta);
+            if (f != log.jButton) log.restoreColor();
+            log.clearStringBuffer();
+            if (!threadAdLog.isAlive()) {
+                threadAdLog = new Thread(log);
+                threadAdLog.start();
+            }else{
+                threadAdLog.interrupt();
+            }
+            this.setLogPaint("正在刷新，请稍后:"+f.getText());
             log.setjButton(f);
         });
 
     }
 
-    class Log implements Runnable {
 
-        private String[] GG;
+
+
+    class Log implements Runnable {
         private int n;
         private String date;
         private String adIdRecord;//记录广告是否被切换
         private boolean stopLog;
         private JButton jButton;
-        //用于判断广告的长度，两次长度不一样打印到页面
-        private int GGlen = 0;
+        private String getErrText = "获取失败，重试中,可能是没有连接手机";
+        private StringBuffer stringBuffer;
 
         public Log() {
             this.date = date();
@@ -124,11 +155,15 @@ public class GetADLog extends Pane {
             this.adIdRecord = "";
             this.stopLog = true;
             this.jButton = new JButton();
+            this.stringBuffer = new StringBuffer();
+        }
+
+        public void clearStringBuffer() {
+            this.stringBuffer = new StringBuffer();
         }
 
         public void setAdIdRecord(String adIdRecord) {
             this.adIdRecord = adIdRecord;
-            this.GGlen = 0;
         }
 
         public void setjButton(JButton jButton) {
@@ -149,49 +184,53 @@ public class GetADLog extends Pane {
 
         @Override
         public void run() {
-            boolean bl;
+            boolean err = false;
+            boolean errSucceed = false;
+            boolean b = false; //用于在每次正在刷新打印-时，有新结果换行显示
+            String ggStr = this.adIdRecord;
+            String[] GG;
             while (this.stopLog) {
-                bl = false;
-                GG = AdbUtils.operationAdb(" shell cat /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
+                logPaintAppend("==");
+                GG = AdbUtils.runAdb(" shell cat /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
                 System.out.println(" shell cat /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
-                if (this.GG == null) addText("获取失败，重试");
-                if (GG.length > GGlen) {
-                    for (int i = GGlen; i < GG.length; i++) {
-                        if (GG[i].equals("")) continue;
-                        if (logPaint.getText().endsWith(".")) logPaint.append("\n");
-                        addText(date + "  " + GG[i]);
-                        if ((GG[i].contains("返回广告") && !GG[i].contains("服务端返回广告"))
-                                || GG[i].contains("服务端返回广告---没有广告") ||
-                                GG[i].contains("请求失败") || GG[i].contains("No such file or directory")) bl = true;
-                    }
-                    GGlen = GG.length;
+                if (GG == null) {
+                    if (!err) addText(this.getErrText);
+                    logPaintAppend(".");
+                    err = true;
+                    errSucceed = true;
+                    continue;
                 }
-                if (bl) {
-                    switch (n) {
-                        case (0):
-                            addText("=========");
-                            n = 1;
+                err = false;
+                if (errSucceed) addText("重试成功");
+                errSucceed = false;
+                b = true;
+                for (String gg : GG) {
+                    if (!stringBuffer.toString().contains(date + "  " + gg)) {
+                        //判断是否切换广告，如果切换，当前取消打印
+                        if (ggStr.equals(this.adIdRecord)) {
+                            if (b) {
+                                addText("");
+                                b = false;
+                            }
+                            if (gg.contains("No such file or directory")) {
+                                if (!stringBuffer.toString().contains(date)) {
+                                    stringBuffer.append(date + "  " + gg);
+                                }
+                            }
+                            stringBuffer.append(date + "  " + gg);
+                            addText(date + "  " + gg);
+                        } else {
                             break;
-                        case (1):
-                            addText("==================");
-                            n = 2;
-                            break;
-                        case (2):
-                            addText("====================================");
-                            n = 3;
-                            break;
-                        case (3):
-                            addText("======================================================");
-                            n = 0;
-                            break;
+                        }
                     }
-
                 }
+                AdbUtils.runAdb(" shell rm -r /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
+                ggStr = this.adIdRecord;
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                if(bl)logPaint.append(".");
             }
         }
     }
@@ -201,7 +240,7 @@ public class GetADLog extends Pane {
      *
      * @param text
      */
-    public void addText(String text) {
+    public synchronized void addText(String text) {
         if (text.contains("=")) text += "     " + log.getAdIdRecord();
         logPaint.append(text + "\n");
 //        //下面的代码就是移动到文本域的最后面
@@ -212,24 +251,36 @@ public class GetADLog extends Pane {
         }
     }
 
+    public synchronized void logPaintAppend(String text) {
+        logPaint.append(text);
+    }
+
+    public synchronized String getLogPaintText() {
+        return logPaint.getText();
+    }
+
+    public synchronized void setLogPaint(String text) {
+        logPaint.setText(text);
+    }
+
     private static String date() {
-        //因通过手机过滤时间时发现日志转换不正确，所以采用获取点击方式
-        try {
-            for (String s : AdbUtils.operationAdb(" shell date")) {
-                if (s.matches(".+\\d{2}:\\d{2}:\\d{2}.+")) {
-                    s = s.replace("CST", "");
-                    SimpleDateFormat sfEnd = new SimpleDateFormat("yyyy-MM-dd");
-                    SimpleDateFormat sfStart = new SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale.ENGLISH);
-                    try {
-                        return sfEnd.format(sfStart.parse(s));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        //因通过手机过滤时间时发现日志转换不正确，所以采用获取电脑时间方式
+//        try {
+//            for (String s : AdbUtils.operationAdb(" shell date")) {
+//                if (s.matches(".+\\d{2}:\\d{2}:\\d{2}.+")) {
+//                    s = s.replace("CST", "");
+//                    SimpleDateFormat sfEnd = new SimpleDateFormat("yyyy-MM-dd");
+//                    SimpleDateFormat sfStart = new SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale.ENGLISH);
+//                    try {
+//                        return sfEnd.format(sfStart.parse(s));
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     }
 

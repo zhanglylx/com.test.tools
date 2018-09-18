@@ -160,12 +160,10 @@ public class AdbUtils {
      * @param code
      * @return
      */
-    public synchronized static String[] operationAdb(String code) {
+    public  static String[] operationAdb(String code) {
         //检查是否连接设备
         if (!checkDevices()) {
-            if (!checkDevices()) {
                 return null;
-            }
         }
         return runAdb(code);
     }
@@ -180,6 +178,7 @@ public class AdbUtils {
             if (deivcesInfo.length == 0 && i == 1) {
                 if (errTime < System.currentTimeMillis()) TooltipUtil.errTooltip("请至少将一台设备连接到电脑");
                 errTime = System.currentTimeMillis() + (10 * 1000);
+                System.out.println(Arrays.toString(deivcesInfo));
                 return false;
             }
             deivcesInfo = devicesInfo();

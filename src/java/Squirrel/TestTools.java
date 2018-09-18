@@ -7,10 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TestTools {
-    private static Map<String,JButton> jButtonMap = new HashMap<>();
+    public  static  Map<String,JButton> jButtonMap = new HashMap<>();
+    private static Map<String,Boolean> jButtonMapEnabled = new HashMap<>();
     public static void invokingTestFrame(String testFrame, JDialog jdialog,JButton jButton) {
-        jButtonMap.put(jButton.getText(),jButton);
-        jButton.setEnabled(false);
+        //InterfaceTesting可以多开
+        if(!InterfaceTesting.equals(jButton.getText()))setjButtonEnabledFalse(jButton);
         switch (testFrame) {
             case getADLog:
                 new GetADLog(testFrame, jdialog);
@@ -29,9 +30,22 @@ public class TestTools {
                 break;
         }
     }
-    public static void setJButtonEnabled(String title){
-        jButtonMap.get(title).setEnabled(true);
+
+    public synchronized static void setjButtonEnabledFalse(JButton jButton){
+        jButtonMap.put(jButton.getText(),jButton);
+        jButtonMapEnabled.put(jButton.getText(),false);
+        jButton.setEnabled(false);
     }
+
+    public synchronized static void setJButtonEnabled(String title){
+        jButtonMap.get(title).setEnabled(true);
+        jButtonMapEnabled.put(title,true);
+    }
+
+    public  static Map<String,Boolean> getJButtonMapEnabled(){
+        return jButtonMapEnabled;
+    }
+
     public static final String getADLog = "获取广告日志";
     public static final String leaveBug = "版本遗留bug";
     public static final String ZhiBoTools = "直播工具";

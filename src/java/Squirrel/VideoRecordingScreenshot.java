@@ -1,5 +1,6 @@
 package Squirrel;
 
+import SquirrelFrame.Pane;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
 import ZLYUtils.FrameUtils;
@@ -19,7 +20,7 @@ import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_SQUIRREL;
 /**
  * 录屏与截图
  */
-public class VideoRecordingScreenshot extends JDialog {
+public class VideoRecordingScreenshot extends Pane {
     private JButton screenshot;
     private JButton recordVideo;
     private JButton videoSwitch;
@@ -32,7 +33,7 @@ public class VideoRecordingScreenshot extends JDialog {
     private Thread threadRefreshTheImage;
 
     public VideoRecordingScreenshot(String title, JDialog jDialog) {
-        super(jDialog, false);
+        super(title, jDialog);
         setTitle(title);
         setLayout(null);
 
