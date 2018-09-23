@@ -67,7 +67,7 @@ public class VideoRecordingScreenshot extends Pane {
                 //关闭刷新线程
                 refreshTheImage.stopMe();
                 TestTools.setJButtonEnabled(getTitle());
-                jDialog.setDefaultCloseOperation(2);
+
 
             }
         });

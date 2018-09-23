@@ -2,6 +2,7 @@ package Squirrel;
 
 import SquirrelFrame.Pane;
 import ZLYUtils.AdbUtils;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import sun.awt.windows.ThemeReader;
 
 import javax.swing.*;
@@ -147,7 +148,7 @@ public class GetADLog extends Pane {
         private boolean stopLog;
         private JButton jButton;
         private String getErrText = "获取失败，重试中,可能是没有连接手机";
-        private StringBuffer stringBuffer;
+        private StringBuffer stringBuffer;//记录显示台已经显示的信息
 
         public Log() {
             this.date = date();
@@ -204,27 +205,32 @@ public class GetADLog extends Pane {
                 if (errSucceed) addText("重试成功");
                 errSucceed = false;
                 b = true;
-                for (String gg : GG) {
-                    if (!stringBuffer.toString().contains(date + "  " + gg)) {
+                for (int i=0;i<GG.length;i++) {
+                    //判断显示台是否已经显示当前信息
+                    if (!stringBuffer.toString().contains(date + "  " + GG[i])) {
                         //判断是否切换广告，如果切换，当前取消打印
                         if (ggStr.equals(this.adIdRecord)) {
                             if (b) {
                                 addText("");
                                 b = false;
                             }
-                            if (gg.contains("No such file or directory")) {
+                            //判断是否已经显示过错误信息，如果没有，则将显示信息添加
+                            if (GG[i].contains("No such file or directory")) {
                                 if (!stringBuffer.toString().contains(date)) {
-                                    stringBuffer.append(date + "  " + gg);
+                                    stringBuffer.append(date + "  " + GG[i]);
                                 }
                             }
-                            stringBuffer.append(date + "  " + gg);
-                            addText(date + "  " + gg);
+                            stringBuffer.append(date + "  " + GG[i]);
+                            addText(date + "  " + GG[i]);
                         } else {
                             break;
                         }
                     }
+                    if(i==GG.length-1 && !GG[i].contains("No such file or directory")){
+                        System.out.println("---");
+                        AdbUtils.runAdb(" shell rm -r /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
+                    }
                 }
-                AdbUtils.runAdb(" shell rm -r /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
                 ggStr = this.adIdRecord;
                 try {
                     Thread.sleep(2000);
