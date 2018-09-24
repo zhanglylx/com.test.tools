@@ -2,10 +2,7 @@ package AdConfiguration;
 
 import javax.swing.*;
 import java.rmi.ServerException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * 获取广告类型
@@ -14,8 +11,19 @@ public class GetAppType implements Runnable {
     private AdUi adUi;
     private Loging loging;
     private Thread threadLoging;
+
+    public Vector getVector() {
+        return vector;
+    }
+
     private Vector vector;
-    private Map<String,String> adNoMap;
+
+    public Map<String, String> getAdNoMap() {
+        return adNoMap;
+    }
+
+    private Map<String, String> adNoMap;
+
     public String getAppName() {
         return appName;
     }
@@ -46,14 +54,29 @@ public class GetAppType implements Runnable {
         this.vector.clear();
         if (!sendAppTypeAdNo()) {
             this.closeLoging();
-            this.vector.add("获取失败:"+appName);
+            this.vector.add("获取失败:" + appName);
             this.adUi.getAppType().setModel(
                     new DefaultComboBoxModel(this.vector));
-        }else{
+            this.adUi.getBuiltInAppType().setModel(
+                    new DefaultComboBoxModel(this.vector));
+        } else {
             this.closeLoging();
-            for(Map.Entry<String,String> entry : this.adNoMap.entrySet()){
+            for (Map.Entry<String, String> entry : this.adNoMap.entrySet()) {
                 this.vector.add(entry.getKey());
             }
+            //内置广告
+            Vector builtInAppType = new Vector();
+            builtInAppType.add("请选择一条内置广告");
+            for (String s : AdSendConfig.BUILT_IN_APP_TYPE) {
+                if (this.adNoMap.containsKey(s)) builtInAppType.add(s);
+            }
+            if (builtInAppType.size() == 1) {
+                builtInAppType.add("未找到内置类型:" +
+                        Arrays.toString(AdSendConfig.BUILT_IN_APP_TYPE));
+                this.adUi.getBuiltInAppType().setEnabled(false);
+            }
+            this.adUi.getBuiltInAppType().setModel(
+                    new DefaultComboBoxModel(builtInAppType));
             this.adUi.getAppType().setModel(
                     new DefaultComboBoxModel(this.vector));
             adUi.getSb().setEnabled(true);
@@ -68,9 +91,9 @@ public class GetAppType implements Runnable {
      */
     private boolean sendAppTypeAdNo() {
         this.adNoMap.clear();
-        this.adNoMap.put("广点通","15154564564654");
-        this.adNoMap.put("头条","33334245");
-        if(this.adNoMap.size()>0)return true;
+        this.adNoMap.put("广点通1", "15154564564654");
+        this.adNoMap.put("头条", "33334245");
+        if (this.adNoMap.size() > 0) return true;
         return false;
     }
 
@@ -103,6 +126,7 @@ public class GetAppType implements Runnable {
             StringBuffer stringBuffer = new StringBuffer();
             adUi.getAppType().setEnabled(false);
             adUi.getAppName().setEnabled(false);
+            adUi.getBuiltInAppType().setEnabled(false);
             adUi.getSb().setEnabled(false);
             while (this.stop) {
                 //大于指定次数，重新计算.
@@ -131,6 +155,7 @@ public class GetAppType implements Runnable {
             adUi.getAppType().setEnabled(true);
             adUi.getAppName().setEnabled(true);
             adUi.getSb().setEnabled(true);
+            adUi.getBuiltInAppType().setEnabled(true);
             this.stop = true;
         }
     }

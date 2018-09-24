@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class SendAdConfiguration {
     private List<Integer> ads;//广告位
-    private int dayTotalClickNum;//单天总单机
+    private int dayTotalClickNum;//单天总点击机
     private int singleExposureNum;//单人曝光
     private int totalClickNum;//总点击
     private int totalExposureNum;//总曝光
@@ -76,11 +76,14 @@ public class SendAdConfiguration {
      * @return true 发送成功
      */
     public String sendAd() throws IllegalArgumentException {
-        if (this.ads.size() == 0) throw new IllegalArgumentException("广告位为空");
+        if (this.ads.size() == 0 ||
+                this.ads.toString().equals("[]")) throw new IllegalArgumentException("广告位为空");
         if (this.relStartDate == null) throw new IllegalArgumentException("起始时间为空");
         if (this.relEndDate == null) throw new IllegalArgumentException("结束时间为空");
-        if (this.version.size() == 0) throw new IllegalArgumentException("版本为空");
-        if (this.channelid.size() == 0) throw new IllegalArgumentException("渠道为空");
+        if (this.version.size() == 0 ||
+                this.version.toString().equals("[]")) throw new IllegalArgumentException("版本为空");
+        if (this.channelid.size() == 0 ||
+                this.channelid.toString().equals("[]")) throw new IllegalArgumentException("渠道为空");
         if (this.appname == null) throw new IllegalArgumentException("APP名称为空");
         if (this.adNo == 0l) throw new IllegalArgumentException("adNo参数不正确:" + this.adNo);
         if (!this.relStartDate.matches(
@@ -96,14 +99,14 @@ public class SendAdConfiguration {
         stitchingParameters(AdSendConfig.APPNAME, this.appname);
         stitchingParameters(AdSendConfig.AD_NO, this.adNo);
         for (int advSingNo : this.ads) {
-            stitchingParameters(AdSendConfig.ADV_SING_NO, "GG-"+advSingNo);
+            stitchingParameters(AdSendConfig.ADV_SING_NO, "GG-" + advSingNo);
         }
         stitchingParameters(AdSendConfig.RES_START_DATE,
                 ZLYUtils.Network.getEncoderString(this.relStartDate, AdSendConfig.ENCODER));
         stitchingParameters(AdSendConfig.REL_END_DATE,
                 ZLYUtils.Network.getEncoderString(this.relEndDate, AdSendConfig.ENCODER));
         stitchingParameters(AdSendConfig.IS_CIRCLEAD, this.iscirclead);
-        stitchingParameters(AdSendConfig.QA, this.qz);
+        stitchingParameters(AdSendConfig.QZ, this.qz);
         stitchingParameters(AdSendConfig.TK_TIME, this.tkTime);
         stitchingParameters(AdSendConfig.CYCP_NUM, this.cycpNum);
         stitchingParameters(AdSendConfig.LB_TIME, this.lbtime);
@@ -112,8 +115,11 @@ public class SendAdConfiguration {
         stitchingParameters(AdSendConfig.WIFI_STATE, this.wifiState);
         stitchingParameters(AdSendConfig.SB,
                 ZLYUtils.Network.getEncoderString(this.sb, AdSendConfig.ENCODER));
+        String response = Network.sendGet(AdSendConfig.URL_HOST, this.urlValue.toString());
         System.out.println(this.urlValue);
-        return Network.sendGet(AdSendConfig.URL_HOST, this.urlValue.toString());
+        this.urlValue.delete(0,this.urlValue.length());
+
+        return response;
     }
 
     /**
@@ -170,11 +176,12 @@ public class SendAdConfiguration {
     public synchronized void setAds(List<Integer> ads) {
         this.ads = ads;
     }
+
     public synchronized void addAds(int ads) {
         this.ads.add(ads);
     }
 
-    public synchronized boolean deleteAds(Integer ads){
+    public synchronized boolean deleteAds(Integer ads) {
         return this.ads.remove(ads);
     }
 
@@ -185,7 +192,6 @@ public class SendAdConfiguration {
     public void setDayTotalClickNum(int dayTotalClickNum) {
         this.dayTotalClickNum = dayTotalClickNum;
     }
-
 
 
     public int getSingleExposureNum() {
@@ -251,6 +257,7 @@ public class SendAdConfiguration {
     public void setVersion(List<String> version) {
         this.version = version;
     }
+
     public void addVersion(String version) {
         this.version.add(version);
     }
@@ -263,8 +270,9 @@ public class SendAdConfiguration {
     public void setChannelid(List<String> channelid) {
         this.channelid = channelid;
     }
+
     public void addChannelid(String channelid) {
-        this.channelid.add(channelid) ;
+        this.channelid.add(channelid);
     }
 
 

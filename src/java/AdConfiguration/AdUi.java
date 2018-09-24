@@ -1,19 +1,14 @@
 package AdConfiguration;
 
 import SquirrelFrame.FrontPanel;
-import SquirrelFrame.HomePage;
-import SquirrelFrame.Pane;
-import SquirrelFrame.SquirrelConfig;
-import ZLYUtils.FrameUtils;
-import org.jdatepicker.JDatePicker;
-import org.jdesktop.swingx.JXDatePicker;
+import ZLYUtils.TooltipUtil;
 import com.eltima.components.ui.DatePicker;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.*;
 import java.util.List;
 
@@ -22,19 +17,38 @@ public class AdUi extends FrontPanel {
 
     private JButton sb;
     private JButton jButton;
-    private JPanel adsJPanel;//广告位面板
     private SendAdConfiguration sendAdConfiguration;
     private List<JButton> adsList;
+    private JPanel adsJPanel;//广告位面板
     private JPanel adConfigJPanel;//广告配置面板
+    private JPanel jPanel;//通用面板
     private JTextField adsJTextField;//已选择广告显示
     private JTextField channelidJTextField;//渠道
-    private JComboBox appName;
-    private JPanel jPanel;
-    private GetAppType getAppType;
-    private int listUpBoundary;//下拉列表上边界
-    private JScrollPane jScrollPane;
-    private JComboBox appType;//app类型
     private JTextField appVersion;//app版本
+    private JTextField lbTime;//轮播时间
+    private JTextField qz;//权重
+    private JTextField singleExposureNum;//单人曝光
+    private JTextField singleClickNum;//单人点击
+    private JTextField totalExposureNum;//总曝光
+    private JTextField totalClickNum;//总点击
+    private JTextField dayTotalExposureNum;//单日曝光
+    private JTextField dayTotalClickNum;//单日单击
+    private GetAppType getAppType;
+    private JScrollPane jScrollPane;
+    private JComboBox appName;
+    private JComboBox appType;//app类型
+    private JComboBox status;//上架状态
+    private JComboBox wifiState;//WIFI状态
+    private JComboBox builtInAppType;//内置广告类型
+    private DatePicker startDate;//起始时间
+    private DatePicker endDate;//结束时间
+    private int listUpBoundary;//下拉列表上边界
+    private int listLeftMargin;//下拉列表左边界
+    private int jTextFieldLeftMargin;//输入框左边界
+    private int jTextFieldYMargin;//输入框上边界
+    private int jTextFieldWidth;//输入框宽度
+    private int jTextFieldHight;//输入框高度
+    private int appTypeWidth;//广告类型宽度
     public AdUi(String title) {
         super(title);
         setLayout(new GridLayout(1, 2));
@@ -46,16 +60,21 @@ public class AdUi extends FrontPanel {
         this.jPanel = newJPanel();
         this.jPanel.setLayout(null);
         this.listUpBoundary = 1;
+        this.listLeftMargin = 75;
+        this.jTextFieldLeftMargin = this.listLeftMargin;
+        this.jTextFieldYMargin = -3;
+        this.jTextFieldWidth = 580;
+        this.jTextFieldHight = 40;
+        this.appTypeWidth = 566;
         //设置广告位面板
         setAdsJPanel();
         //设置广告配置面板
         setAdConfigJPanel();
         add(this.adConfigJPanel);
         add(this.adsJPanel);
-
-
+        this.getAppType = new GetAppType(this);
+        new Thread(this.getAppType).start();
         setVisible(true);
-
     }
 
     /**
@@ -76,71 +95,206 @@ public class AdUi extends FrontPanel {
         setVersion();
         //设置起始与终止时间
         setTime();
+        //设置上架状态
+        setStatus();
+        //设置轮播时间
+        setLbTime();
+        //设置WIFI状态
+        setWifi();
+        //设置权重
+        setQz();
+        //设置曝光和点击
+        setBgDj();
+        //设置内容广告类型
+        setBuiltInAppType();
+    }
+
+    /**
+     * 设置内容广告类型
+     */
+    public void setBuiltInAppType() {
+        setJPanel();
+        this.jPanel.add(newJLabel("内置广告:"));
+        this.jPanel.add(this.builtInAppType =
+                newJComboBox(new String[]{""}, this.appTypeWidth));
+        this.builtInAppType.setLocation(this.listLeftMargin, this.listUpBoundary);
+        this.builtInAppType.setEnabled(false);
+        this.adConfigJPanel.add(this.jPanel);
+    }
+
+
+    /**
+     * 设置曝光和点击
+     */
+    public void setBgDj() {
+        JTextField[] jTextFields =
+                setAdLimitedNumber("单人曝光:", "单人点击:");
+        this.singleExposureNum = jTextFields[0];
+        this.singleExposureNum.setToolTipText("默认500");
+
+        this.singleExposureNum.setText("500");
+        this.singleClickNum = jTextFields[1];
+
+        jTextFields = setAdLimitedNumber("总曝光    :",
+                "总点击    :");
+        this.totalExposureNum = jTextFields[0];
+        this.totalClickNum = jTextFields[1];
+        this.totalClickNum.setToolTipText("默认1000");
+        this.totalClickNum.setText("10000");
+        jTextFields = setAdLimitedNumber("单日曝光:",
+                "单日点击:");
+        this.dayTotalExposureNum = jTextFields[0];
+        this.dayTotalClickNum = jTextFields[1];
+        checkBgDj();
+
+    }
+
+    /**
+     * 设置一个面板中加入两个提示和对应的文本框
+     *
+     * @param aStr
+     * @param bStr
+     * @return [0]=a,[1]=b
+     */
+    public JTextField[] setAdLimitedNumber(String aStr, String bStr) {
+        setJPanel();
+        JTextField a = setJTextField();
+        JTextField b = setJTextField();
+        int jScrollPaneWidth = 230;
+        int jLabelX = 355;
+        int jScrollPaneX = 425;
+        this.jPanel.add(setJLabel(aStr));
+        this.jPanel.add(setJScrollPane(a = setJTextField()));
+        this.jScrollPane.setSize(jScrollPaneWidth, this.jTextFieldHight);
+        JLabel jLabel = newJLabel(bStr);
+        jLabel.setLocation(jLabelX, this.listUpBoundary);
+        this.jPanel.add(jLabel);
+        this.jPanel.add(setJScrollPane(b = setJTextField()));
+        this.jScrollPane.setSize(jScrollPaneWidth, this.jTextFieldHight);
+        this.jScrollPane.setLocation(jScrollPaneX, this.jTextFieldYMargin);
+        this.adConfigJPanel.add(this.jPanel);
+        a.setToolTipText("默认0,禁止限制请输入:0");
+        b.setToolTipText("默认0,禁止限制请输入:");
+        return new JTextField[]{a, b};
+    }
+
+    public void setWifi() {
+        setJPanel();
+        this.jPanel.add(setJLabel("wifi开启  :"));
+        this.jPanel.add(this.wifiState = setJComboBox(
+                new String[]{"否", "是"}, this.listLeftMargin, 49));
+        this.adConfigJPanel.add(this.jPanel);
+    }
+
+    public void setQz() {
+        setJPanel();
+        this.jPanel.add(setJLabel("权重占比:"));
+        this.jPanel.add(setJScrollPane(this.qz = setJTextField()));
+        this.qz.setText(AdSendConfig.QZ_HINT);
+        this.qz.setToolTipText(AdSendConfig.QZ_HINT);
+        this.adConfigJPanel.add(this.jPanel);
+    }
+
+    public void setLbTime() {
+        setJPanel();
+        this.jPanel.add(setJLabel("轮播时间:"));
+        this.jPanel.add(setJScrollPane(this.lbTime = setJTextField()));
+        this.lbTime.setText("0");
+        this.adConfigJPanel.add(this.jPanel);
+    }
+
+
+    /**
+     * 设置下拉列表
+     *
+     * @param arr
+     * @param x
+     * @param width
+     * @return
+     */
+    public JComboBox setJComboBox(String[] arr, int x, int width) {
+        JComboBox jComboBox = newJComboBox(arr, width);
+        jComboBox.setLocation(x, this.listUpBoundary);
+        jComboBox.setOpaque(false);
+        jComboBox.setEditable(false);
+        return jComboBox;
+    }
+
+    public void setStatus() {
+        setJPanel();
+        this.jPanel.add(setJLabel("是否上架:"));
+        this.jPanel.add(this.status = setJComboBox(
+                new String[]{"否", "是"}, this.listLeftMargin, 49));
+        this.status.setSelectedIndex(1);
+        this.adConfigJPanel.add(this.jPanel);
+
     }
 
     /**
      * 设置起始与终止时间
      */
-    public void setTime(){
+    public void setTime() {
         setJPanel();
         this.jPanel.add(setJLabel("起始时间:"));
-        this.jPanel.add(getDatePicker(new Date(),87,0,200,31));
+        this.jPanel.add(this.startDate = getDatePicker(new Date(), 77, 0, 200, 31));
         JLabel jLabel = setJLabel("终止时间:");
         Date date = new Date();
-        date.setTime(date.getTime()+31536000000l);//加1年
-        DatePicker datePicker = getDatePicker(date,400,0,200,31);
-        this.jPanel.add(datePicker);
-        jLabel.setLocation(320,this.listUpBoundary);
+        date.setTime(date.getTime() + 31536000000l);//加1年
+        this.endDate = getDatePicker(date, 400, 0, 200, 31);
+        this.jPanel.add(this.endDate);
+        jLabel.setLocation(320, this.listUpBoundary);
         this.jPanel.add(jLabel);
+
         this.adConfigJPanel.add(this.jPanel);
     }
-
 
 
     /**
      * 设置版本
      */
-    public void setVersion(){
+    public void setVersion() {
         setJPanel();
-        this.jPanel.add(setJLabel("版本(分隔符\",\"):"));
+        this.jPanel.add(setJLabel("应用版本:"));
         this.jPanel.add(setJScrollPane(this.appVersion = setJTextField()));
+        this.appVersion.setToolTipText("多个渠道使用\",\"(支持中文\"，\")");
         this.adConfigJPanel.add(this.jPanel);
     }
 
     /**
      * 重置面板
      */
-    public void setJPanel(){
+    public void setJPanel() {
         this.jPanel = newJPanel();
         this.jPanel.setLayout(null);
     }
 
-    public JLabel setJLabel(String title){
+    public JLabel setJLabel(String title) {
         JLabel jLabel = newJLabel(title);
         jLabel.setLocation(AdSendConfig.LFET_MARGIN, this.listUpBoundary);
         return jLabel;
     }
 
-    public JTextField setJTextField(){
+    public JTextField setJTextField() {
         JTextField jTextField = newJTextField();
-        jTextField.setBackground(Color.CYAN);
         return jTextField;
     }
 
-    public JScrollPane setJScrollPane(JTextField jTextField){
+    public JScrollPane setJScrollPane(JTextField jTextField) {
         this.jScrollPane = new JScrollPane(jTextField);
-        this.jScrollPane.setLocation(125, -5);
-        this.jScrollPane.setSize(521, 40);
+        this.jScrollPane.setLocation(this.jTextFieldLeftMargin, this.jTextFieldYMargin);
+        this.jScrollPane.setSize(this.jTextFieldWidth, this.jTextFieldHight);
         this.jScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         return this.jScrollPane;
     }
+
     /**
      * 设置渠道
      */
     public void setChannelid() {
         setJPanel();
-        this.jPanel.add(setJLabel("渠道(分割符\",\"):"));
-        this.jPanel.add(setJScrollPane(this.channelidJTextField=setJTextField()));
+        this.jPanel.add(setJLabel("所属渠道:"));
+        this.jPanel.add(setJScrollPane(this.channelidJTextField = setJTextField()));
+        this.channelidJTextField.setToolTipText("多个渠道使用\",\"(支持中文\"，\")");
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -149,14 +303,12 @@ public class AdUi extends FrontPanel {
      * 设置广告类型
      */
     public void setAdType() {
+        setJPanel();
         this.jPanel.add(setJLabel("广告类型:"));
-        this.appType = newJComboBox(new String[]{""}, 566);
-        this.appType.setLocation(74, this.listUpBoundary);
+        this.appType = newJComboBox(new String[]{""}, this.appTypeWidth);
+        this.appType.setLocation(this.listLeftMargin, this.listUpBoundary);
         this.jPanel.add(this.appType);
-        this.getAppType = new GetAppType(this);
-        new Thread(this.getAppType).start();
-
-        this.adConfigJPanel.add(jPanel);
+        this.adConfigJPanel.add(this.jPanel);
     }
 
     public JComboBox getAppType() {
@@ -167,18 +319,12 @@ public class AdUi extends FrontPanel {
      * 设置所属应用
      */
     private void setAppname() {
-        JPanel jPanelAppname = newJPanel();
-        jPanelAppname.setLayout(null);
-        this.appName = newJComboBox(new String[]{
-                AdSendConfig.MFDZS, AdSendConfig.MFZS
-        }, 30);
-        jPanelAppname.add(setJLabel("所属应用:"));
-        this.appName.setOpaque(false);
-        this.appName.setEditable(false);
-        this.appName.setLocation(74, this.listUpBoundary);
-        this.appName.setSize(120, 30);
-        jPanelAppname.add(this.appName);
-        this.adConfigJPanel.add(jPanelAppname);
+        setJPanel();
+        this.jPanel.add(setJLabel("所属应用:"));
+        this.jPanel.add(this.appName = setJComboBox(
+                new String[]{
+                        AdSendConfig.MFDZS, AdSendConfig.MFZS}, this.listLeftMargin, 120));
+        this.adConfigJPanel.add(this.jPanel);
     }
 
     /**
@@ -202,20 +348,20 @@ public class AdUi extends FrontPanel {
      * 设置广告位显示面板
      */
     private void setAdsSoaceDisplay() {
-        JPanel adsDisplay = newJPanel();
-        adsDisplay.setLayout(null);
-        adsDisplay.add(setJLabel("GG:"));
+        setJPanel();
+        this.jPanel.add(setJLabel("GG:"));
         this.adsJTextField = newJTextField();
         this.adsJTextField.setEditable(false);
         this.jScrollPane = new JScrollPane(adsJTextField);
+        this.adsJTextField.setToolTipText("不支持输入,请从右侧选取");
         this.jScrollPane.setLocation(35, -4);
         this.jScrollPane.setSize(620, 41);
         this.jScrollPane.setPreferredSize(new Dimension(1, 1));
         this.jScrollPane.setOpaque(false);
         this.jScrollPane.getViewport().setOpaque(false);
         this.jScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        adsDisplay.add(this.jScrollPane);
-        this.adConfigJPanel.add(adsDisplay);
+        this.jPanel.add(this.jScrollPane);
+        this.adConfigJPanel.add(this.jPanel);
 
     }
 
@@ -236,16 +382,195 @@ public class AdUi extends FrontPanel {
     }
 
     @Override
+    public void jTextFieldEnteredEvent(JTextField jTextField) {
+        if (jTextField == this.qz) {
+            if (this.qz.getText().equals(AdSendConfig.QZ_HINT)) jTextField.setText("");
+        }
+    }
+
+    @Override
+    public void jTextFieldReleasedEvent(JTextField jTextField) {
+    }
+
+    @Override
+    public void jTextFieldExitedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldInputEvent(JTextField jTextField, KeyEvent e) {
+        if (jTextField != this.appVersion ||
+                jTextField == this.channelidJTextField) {
+            String text = jTextField.getText();
+            if (text.length() > 9) jTextField.setText(
+                    text.substring(0, 10));
+            int keyChar = e.getKeyChar();
+            //限制输入非数字字符
+            if (keyChar < 48 || keyChar > 57) {
+                e.consume();
+            }
+            //限制输入空格
+            if (KeyEvent.VK_SPACE == keyChar) {
+                e.consume();
+            }
+            setBgDjRestrict(jTextField, e);
+        }
+
+    }
+
+
+    @Override
+    public void jTextFieldPressedEvent(JTextField jTextField) {
+        if (jTextField != this.appVersion ||
+                jTextField == this.channelidJTextField) {
+            if (jTextField.getText().equals("0")) jTextField.setText("");
+        }
+    }
+
+    /**
+     * 制约曝光和点击
+     *
+     * @param jTextField
+     */
+    public void setBgDjRestrict(JTextField jTextField, KeyEvent e) {
+        if ((int) e.getKeyChar() == 48) return;
+        if (this.totalExposureNum == jTextField) {
+            this.totalClickNum.setText("0");
+        } else if (this.totalClickNum == jTextField) {
+            this.totalExposureNum.setText("0");
+        } else if (this.singleExposureNum == jTextField) {
+            this.singleClickNum.setText("0");
+            this.dayTotalExposureNum.setText("0");
+            this.dayTotalClickNum.setText("0");
+        } else if (this.singleClickNum == jTextField) {
+            this.singleExposureNum.setText("0");
+            this.dayTotalExposureNum.setText("0");
+            this.dayTotalClickNum.setText("0");
+        } else if (this.dayTotalExposureNum == jTextField) {
+            this.dayTotalClickNum.setText("0");
+            this.singleClickNum.setText("0");
+            this.singleExposureNum.setText("0");
+        } else if (this.dayTotalClickNum == jTextField) {
+            this.dayTotalExposureNum.setText("0");
+            this.singleClickNum.setText("0");
+            this.singleExposureNum.setText("0");
+        }
+    }
+
+    @Override
+    public void jTextFieldClickEvent(JTextField jTextField) {
+
+    }
+
+
+    @Override
     public void buttonClickEvent(JButton f) {
         if (this.sb == f) {
+            this.sb.setEnabled(false);
+            try {
+                checkValues();
+                if (this.appName.getSelectedItem().toString().equals(AdSendConfig.MFDZS)) {
+                    this.sendAdConfiguration.setAppname(AdSendConfig.MFDZS_CODE);
+                } else {
+                    this.sendAdConfiguration.setAppname(AdSendConfig.MFZS_CODE);
+                }
+                this.sendAdConfiguration.setAdNo(Long.parseLong(
+                        this.getAppType.getAdNoMap().get(
+                                this.appType.getSelectedItem().toString())));
+                this.sendAdConfiguration.setSb(this.sb.getText());
+                this.sendAdConfiguration.setChannelid(
+                        analysisSeparator(
+                                this.channelidJTextField.getText()));
+                this.sendAdConfiguration.setVersion(
+                        analysisSeparator(
+                                this.appVersion.getText())
+                );
+                this.sendAdConfiguration.setRelStartDate(
+                        this.startDate.getText()
+                );
+                this.sendAdConfiguration.setRelEndDate(
+                        this.endDate.getText()
+                );
+                this.sendAdConfiguration.setStatus((byte) (this.status.getSelectedIndex()));
+
+                this.sendAdConfiguration.setLbtime(
+                        Integer.parseInt(this.lbTime.getText())
+                );
+                this.sendAdConfiguration.setWifiState((byte) (this.wifiState.getSelectedIndex()));
+
+                this.sendAdConfiguration.setQz(Integer.parseInt(this.qz.getText()));
+
+                this.sendAdConfiguration.sendAd();
+            } catch (Exception e) {
+                TooltipUtil.errTooltip(e.toString());
+            }
             this.sb.setBackground(Color.ORANGE);
             this.sb.setForeground(this.defaultFontColor);
-            System.out.println("222");
+            this.sb.setEnabled(true);
+
         } else if (this.adsList.contains(f)) {
             setAds(f);
         }
     }
 
+    /**
+     * 检查参数合法性
+     */
+    public void checkValues() {
+        if (this.qz.getText().equals("")) this.qz.setText("10");
+        if (this.lbTime.getText().equals("")) this.lbTime.setText("0");
+        checkBgDj();
+    }
+
+    /**
+     * 检查曝光和点击合法性
+     */
+    public void checkBgDj() {
+        setBgDjDefault(this.dayTotalClickNum);
+        setBgDjDefault(this.dayTotalExposureNum);
+        setBgDjDefault(this.singleClickNum);
+        setBgDjDefault(this.singleExposureNum);
+        setBgDjDefault(this.totalExposureNum);
+        setBgDjDefault(this.totalClickNum);
+        System.out.println(Integer.parseInt(this.totalClickNum.getText()));
+        if (Integer.parseInt(this.singleClickNum.getText()) >
+                Integer.parseInt(this.totalClickNum.getText())) {
+            if (Integer.parseInt(this.totalClickNum.getText()) != 0)
+                throw new IllegalArgumentException("单人点击不能大于总点击");
+        } else if (Integer.parseInt(this.singleExposureNum.getText()) >
+                Integer.parseInt(this.totalExposureNum.getText())) {
+            if (Integer.parseInt(this.totalExposureNum.getText()) != 0)
+                throw new IllegalArgumentException("单人曝光不能大于总曝光");
+        }
+    }
+
+    /**
+     * 设置曝光和点击默认值
+     */
+    public void setBgDjDefault(JTextField jTextField) {
+        if (jTextField.getText().equals("")) jTextField.setText("0");
+    }
+
+
+    /**
+     * 解析分割符"，"
+     *
+     * @return
+     */
+    public List<String> analysisSeparator(String str) {
+        if (str == null) throw new IllegalArgumentException("字符串为空");
+        List<String> list = new ArrayList<>();
+        if (str.indexOf(",") == -1) {
+            list.add(str);
+        } else {
+            str = str.replace("，", ",");
+            for (String s : str.split(",")) {
+                s = s.trim();
+                list.add(s);
+            }
+        }
+        return list;
+    }
 
     @Override
     public void buttonPressEvent(JButton f) {
@@ -263,6 +588,15 @@ public class AdUi extends FrontPanel {
             )) return;
             this.getAppType.setAppName(this.appName.getSelectedItem().toString());
             new Thread(this.getAppType).start();
+        }else if(this.builtInAppType == jComboBox){
+            String text = this.builtInAppType.getSelectedItem().toString();
+            for(int i=0;i<this.getAppType.getVector().size();i++){
+                if(text.equals(this.getAppType.getVector().get(i))){
+                    this.appType.setSelectedIndex(i);
+                    break;
+                }
+            }
+
         }
     }
 
@@ -330,6 +664,9 @@ public class AdUi extends FrontPanel {
         this.appType = appType;
     }
 
+    public JComboBox getBuiltInAppType() {
+        return builtInAppType;
+    }
     public static void main(String[] args) {
         new AdUi("测试");
     }

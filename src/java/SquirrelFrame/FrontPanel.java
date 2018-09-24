@@ -4,6 +4,8 @@ import com.eltima.components.ui.DatePicker;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import javax.swing.filechooser.FileSystemView;
@@ -186,13 +188,87 @@ public abstract class FrontPanel extends JFrame {
      * @return
      */
     public JTextField newJTextField() {
-        JTextField adsJTextField = new JTextField();
-        adsJTextField.setFont(SquirrelConfig.typeface);
-        adsJTextField.setBorder(newLineBorder());
-        adsJTextField.setBackground(Color.white);
-        return adsJTextField;
+        JTextField jTextField = new JTextField();
+        jTextField.setFont(SquirrelConfig.typeface);
+        jTextField.setBorder(newLineBorder());
+        jTextField.setBackground(Color.WHITE);
+        jTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                jTextFieldInputEvent(jTextField,e);
+            }
+        });
+        jTextField.addMouseListener(new MouseListener(){
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jTextFieldClickEvent(jTextField);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                jTextFieldPressedEvent(jTextField);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                jTextFieldReleasedEvent(jTextField);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                jTextField.setBackground(Color.CYAN);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        jTextFieldEnteredEvent(jTextField);
+                    }
+                }).start();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                jTextField.setBackground(Color.WHITE);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        jTextFieldExitedEvent(jTextField);
+                    }
+                }).start();
+            }
+        });
+        return jTextField;
     }
 
+    public abstract void jTextFieldEnteredEvent(JTextField jTextField);
+    /**
+     * 单行释放
+     */
+    public abstract void jTextFieldReleasedEvent(JTextField jTextField);
+
+
+    /**
+     * 单行离开事件
+     * @param jTextField
+     */
+    public abstract void jTextFieldExitedEvent(JTextField jTextField);
+    /**
+     * 单行输入事件
+     * @param jTextField
+     */
+    public abstract void jTextFieldInputEvent(JTextField jTextField,KeyEvent e);
+
+    /**
+     * 按下事件
+     * @param jTextField
+     */
+    public abstract void jTextFieldPressedEvent(JTextField jTextField);
+    /**
+     * 单行输入点击事件
+     * @param jTextField
+     */
+    public abstract void jTextFieldClickEvent(JTextField jTextField);
     /**
      * 边框
      *
@@ -237,7 +313,7 @@ public abstract class FrontPanel extends JFrame {
      *
      * @return
      */
-    public DatePicker getDatePicker(Date date,int x, int y, int width, int height) {
+    public DatePicker getDatePicker(Date date, int x, int y, int width, int height) {
         final DatePicker datepick;
         // 格式
         String DefaultFormat = "yyyy-MM-dd HH:mm:ss";
@@ -262,7 +338,8 @@ public abstract class FrontPanel extends JFrame {
         datepick.setFont(font);
         datepick.setBackground(Color.ORANGE);
         datepick.setForeground(Color.ORANGE);
-        datepick.setBorder(newLineBorder());;
+        datepick.setBorder(newLineBorder());
+        ;
         return datepick;
     }
 
