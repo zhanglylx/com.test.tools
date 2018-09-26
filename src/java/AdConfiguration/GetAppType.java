@@ -1,5 +1,13 @@
 package AdConfiguration;
 
+import ZLYUtils.JavaUtils;
+import ZLYUtils.Network;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import javax.swing.*;
 import java.rmi.ServerException;
 import java.util.*;
@@ -67,12 +75,16 @@ public class GetAppType implements Runnable {
             //内置广告
             Vector builtInAppType = new Vector();
             builtInAppType.add("请选择一条内置广告");
-            for (String s : AdSendConfig.BUILT_IN_APP_TYPE) {
-                if (this.adNoMap.containsKey(s)) builtInAppType.add(s);
+            for (String s : AdSendConfig.getBuiltInAppType(this.appName)) {
+                if (this.adNoMap.containsKey(s)) {
+                    builtInAppType.add(s);
+                } else if (s.equals(AdSendConfig.ZHI_TOU)) {
+                    builtInAppType.add(s);
+                }
             }
             if (builtInAppType.size() == 1) {
                 builtInAppType.add("未找到内置类型:" +
-                        Arrays.toString(AdSendConfig.BUILT_IN_APP_TYPE));
+                        Arrays.toString(AdSendConfig.getBuiltInAppType(this.appName)));
                 this.adUi.getBuiltInAppType().setEnabled(false);
             }
             this.adUi.getBuiltInAppType().setModel(
@@ -91,11 +103,30 @@ public class GetAppType implements Runnable {
      */
     private boolean sendAppTypeAdNo() {
         this.adNoMap.clear();
-        this.adNoMap.put("广点通1", "15154564564654");
-        this.adNoMap.put("头条", "33334245");
-        if (this.adNoMap.size() > 0) return true;
+        //发送获取广告类型请求
+        String response = Network.sendPost(
+                AdSendConfig.HOST_TEST + AdSendConfig.GET_APP_TYPE_PATH
+                        + "?ran=" + Math.random()
+                , "appname=" + AdSendConfig.getAppNameCode(this.appName)
+                , AdSendConfig.HEADERS);
+        try {
+            Document doc = Jsoup.parse(response);
+            Elements elements = doc.select("option");
+            for (int i = 0; i < elements.size(); i++) {
+                this.adNoMap.put(elements.get(i).text(),
+                        elements.get(i).attributes().get("value"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        if (this.adNoMap.size() > 0) {
+            return true;
+        }
         return false;
+
     }
+
 
     public void closeLoging() {
         this.loging.close();

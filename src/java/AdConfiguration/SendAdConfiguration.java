@@ -26,17 +26,11 @@ public class SendAdConfiguration {
     private byte iscirclead;//时间配置策略  0:固定时间   1:按天循环时间
     private int lbtime;//轮播时间
     private byte wifiState;//WIFI状态 0:否  1:是
-    private String advNo;
-    private int currentPage;
-
-
     private Long adNo;//广告类型对应的编号
-    private String tkTime;
-    private String cycpNum;
-    private int sxdisNum;
-    private String isSpecial;
-
-
+    private int tkTime; //显示时间GG-1
+    private int cycpNum; //插页间隔张数
+    private int sxdisNum; //书型广告位置
+    private int isSpecial; //是否特殊配置
     private String sb;
     StringBuffer urlValue;//请求参数
 
@@ -60,13 +54,11 @@ public class SendAdConfiguration {
         this.lbtime = 0;//轮播时间
         this.wifiState = 0;//WIFI状态 0:否  1:是
         this.urlValue = new StringBuffer();
-        this.advNo = "";
-        this.currentPage = 1;
         this.adNo = 0l;
-        this.tkTime = "";
-        this.cycpNum = "";
+        this.tkTime = 0;
+        this.cycpNum = 0;
         this.sxdisNum = 0;
-        this.isSpecial = "";
+        this.isSpecial = 0;
         this.sb = "";
     }
 
@@ -95,7 +87,9 @@ public class SendAdConfiguration {
         if (this.sb.equals("")) throw new IllegalArgumentException("sb参数不正确:" + this.sb);
         //拼接事件
         setSel();
-        stitchingParameters(AdSendConfig.CURRENT_PAGE, this.currentPage);
+        stitchingParameters(AdSendConfig.VERSION, jointValues(this.version, ","));
+        stitchingParameters(AdSendConfig.CHANNELID, jointValues(this.channelid, ","));
+        stitchingParameters(AdSendConfig.CURRENT_PAGE, "1");
         stitchingParameters(AdSendConfig.APPNAME, this.appname);
         stitchingParameters(AdSendConfig.AD_NO, this.adNo);
         for (int advSingNo : this.ads) {
@@ -113,14 +107,27 @@ public class SendAdConfiguration {
         stitchingParameters(AdSendConfig.SXDIS_NUM, this.sxdisNum);
         stitchingParameters(AdSendConfig.IS_SPECIAL, this.isSpecial);
         stitchingParameters(AdSendConfig.WIFI_STATE, this.wifiState);
+        stitchingParameters(AdSendConfig.STATUS, this.status);
         stitchingParameters(AdSendConfig.SB,
                 ZLYUtils.Network.getEncoderString(this.sb, AdSendConfig.ENCODER));
-        String response = Network.sendGet(AdSendConfig.URL_HOST, this.urlValue.toString());
+        setBgDj();
+        String response = Network.sendPost(AdSendConfig.HOST_TEST + AdSendConfig.ADD_AD_RELEASE,
+                this.urlValue.toString(),
+                AdSendConfig.HEADERS);
         System.out.println(this.urlValue);
-        this.urlValue.delete(0,this.urlValue.length());
-
+        System.out.println(response);
         return response;
     }
+
+    private void setBgDj() {
+        stitchingParameters(AdSendConfig.SINGLE_CLICK_Num, this.singleClickNum);
+        stitchingParameters(AdSendConfig.SINGLE_EXPOSURE_NUM, this.singleExposureNum);
+        stitchingParameters(AdSendConfig.DAY_TOTAL_CLICK_NUM, this.dayTotalClickNum);
+        stitchingParameters(AdSendConfig.DAY_TOTAL_EXPOSURE_NUM, this.dayTotalExposureNum);
+        stitchingParameters(AdSendConfig.TOTAL_CLICK_NUM, this.totalClickNum);
+        stitchingParameters(AdSendConfig.TOTAL_EXPOSURE_NUM, this.totalExposureNum);
+    }
+
 
     /**
      * 设置事件
@@ -128,13 +135,13 @@ public class SendAdConfiguration {
      * @return
      */
     private void setSel() {
-        stitchingParameters(AdSendConfig.SEL_APPNAME, this.appname);
-        stitchingParameters(AdSendConfig.SEL_VERSION,
-                jointValues(this.version, ","));
-        stitchingParameters(AdSendConfig.SEL_CHANNELID,
-                jointValues(this.channelid, ","));
-        stitchingParameters(AdSendConfig.SEL_AD_NO, this.advNo);
-        stitchingParameters(AdSendConfig.SEL_STATUS, this.status);
+        stitchingParameters(AdSendConfig.SEL_APPNAME, "cxb");
+        stitchingParameters(AdSendConfig.SEL_VERSION, "");
+        stitchingParameters(AdSendConfig.SEL_CHANNELID, "");
+        stitchingParameters(AdSendConfig.SEL_AD_NO, "");
+        stitchingParameters(AdSendConfig.SEL_STATUS, "1");
+        stitchingParameters(AdSendConfig.RDO_SINGLE, "0");
+        stitchingParameters(AdSendConfig.RDO_TOTAL, "0");
     }
 
     /**
@@ -339,6 +346,11 @@ public class SendAdConfiguration {
     public void setSb(String sb) {
         this.sb = sb;
     }
+
+    public void setTkTime(int tkTime) {
+        this.tkTime = tkTime;
+    }
+
 
     public static void main(String[] args) {
         SendAdConfiguration sendAdConfiguration = new SendAdConfiguration();

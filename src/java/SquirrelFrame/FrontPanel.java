@@ -1,5 +1,6 @@
 package SquirrelFrame;
 
+import InterfaceTesting.InterfaceConfig;
 import com.eltima.components.ui.DatePicker;
 
 import javax.swing.*;
@@ -30,16 +31,14 @@ public abstract class FrontPanel extends JFrame {
     public FrontPanel(String title) {
         if (title == null) throw new IllegalArgumentException("title为空");
         setTitle(title);
+        setIconImage(
+                Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
+        );
         this.click_pressColor = Color.red;
         this.enterIntoColor = Color.CYAN;
         this.defaultColor = Color.lightGray;
         this.defaultFontColor = Color.DARK_GRAY;
     }
-
-    public FrontPanel() {
-        setTitle(SquirrelConfig.TOOLSTITLE);
-    }
-
     /**
      * 设置关闭
      */
@@ -72,7 +71,7 @@ public abstract class FrontPanel extends JFrame {
     }
 
     /**
-     * 设置字体点击颜色
+     * 设置点击颜色
      *
      * @param jButton
      */
@@ -102,11 +101,6 @@ public abstract class FrontPanel extends JFrame {
         jButton.addMouseListener(new MouseListener() {
             //点击按钮
             public void mouseClicked(MouseEvent e) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                    }
-                }).start();
 
             }
 
@@ -151,6 +145,48 @@ public abstract class FrontPanel extends JFrame {
 
     }
 
+    public JRadioButton newJRadioButton(String title) {
+        return newJRadioButton(title,30);
+    }
+
+    /**
+     * 新建单选按钮
+     * @param title
+     * @return
+     */
+    public JRadioButton newJRadioButton(String title,int height) {
+        JRadioButton jRadioButton = new JRadioButton(title);
+        jRadioButton.setSize(title.length() * 22,height);
+        jRadioButton.setFont(SquirrelConfig.typeface);
+        jRadioButton.setBorder(newLineBorder());
+        jRadioButton.setOpaque(false);
+        jRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        jRadioButtonClickEvent(jRadioButton);
+                    }
+                });
+            }
+        });
+        return jRadioButton;
+    }
+
+    /**
+     * 单选按钮点击事件
+     */
+    public abstract void jRadioButtonClickEvent(JRadioButton jRadioButton);
+
+    /**
+     * 设置单选按钮容器
+     *
+     * @return
+     */
+    public ButtonGroup buttonGroup() {
+        return new ButtonGroup();
+    }
 
     public JButton newJButton(String title) {
         JButton jButton = new JButton(title);
@@ -172,13 +208,20 @@ public abstract class FrontPanel extends JFrame {
     }
 
     /**
-     *
+     *新建显示文本
      */
     public JLabel newJLabel(String title) {
+        return newJLabel(title,30);
+    }
+
+    /**
+     *新建显示文本
+     */
+    public JLabel newJLabel(String title,int height) {
         JLabel jLabel = new JLabel(title);
         jLabel.setFont(SquirrelConfig.typeface);
         jLabel.setBackground(Color.LIGHT_GRAY);
-        jLabel.setSize(title.length() * 14, 30);
+        jLabel.setSize(title.length() * 14, height);
         return jLabel;
     }
 
@@ -196,10 +239,10 @@ public abstract class FrontPanel extends JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
-                jTextFieldInputEvent(jTextField,e);
+                jTextFieldInputEvent(jTextField, e);
             }
         });
-        jTextField.addMouseListener(new MouseListener(){
+        jTextField.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -242,6 +285,7 @@ public abstract class FrontPanel extends JFrame {
     }
 
     public abstract void jTextFieldEnteredEvent(JTextField jTextField);
+
     /**
      * 单行释放
      */
@@ -250,25 +294,32 @@ public abstract class FrontPanel extends JFrame {
 
     /**
      * 单行离开事件
+     *
      * @param jTextField
      */
     public abstract void jTextFieldExitedEvent(JTextField jTextField);
+
     /**
      * 单行输入事件
+     *
      * @param jTextField
      */
-    public abstract void jTextFieldInputEvent(JTextField jTextField,KeyEvent e);
+    public abstract void jTextFieldInputEvent(JTextField jTextField, KeyEvent e);
 
     /**
      * 按下事件
+     *
      * @param jTextField
      */
     public abstract void jTextFieldPressedEvent(JTextField jTextField);
+
     /**
      * 单行输入点击事件
+     *
      * @param jTextField
      */
     public abstract void jTextFieldClickEvent(JTextField jTextField);
+
     /**
      * 边框
      *

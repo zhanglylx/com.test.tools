@@ -4,16 +4,16 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 public class Network {
     public static String networkUrl;
-
-    public static String sendGet(String url) {
+    public static String sendGet(String url,String param,Map<String,String> headers) {
         if (url == null) throw new IllegalArgumentException("url参数为空");
-        return sendGet(url, "");
+        return sendGet(url, "",headers,null);
     }
 
     /**
@@ -23,7 +23,8 @@ public class Network {
      * @param param
      * @return 服务响应内容, null为响应非200
      */
-    public static String sendGet(String url, String param) {
+    public static String sendGet(String url, String param,Map<String,String> headers,
+                                 NetworkHeaders networkHeaders) {
         LocalProxy();
         if (url == null) throw new IllegalArgumentException("url参数为空");
         if (param == null) throw new IllegalArgumentException("param参数为空");
@@ -40,10 +41,17 @@ public class Network {
             // 设置通用的请求属性
             connection.setRequestProperty("Accept-Encoding", "chunked");
             connection.setRequestProperty("Charset", "utf-8");
+            if(headers!=null && headers.size()!=0){
+                for(Map.Entry<String,String> entry : headers.entrySet()){
+                    connection.setRequestProperty(entry.getKey(), entry.getValue());
+                }
+            }
             // 不能使用缓存
             connection.setUseCaches(false);
             // 建立实际的连接
             connection.connect();
+            if(networkHeaders!=null)  networkHeaders.setHeaders(connection.getHeaderFields());
+
             int getResponseCode = ((HttpURLConnection) connection).getResponseCode();
             if (getResponseCode != 200) {// 检查服务器响应
                 return getResponseCode + "";
@@ -72,6 +80,12 @@ public class Network {
         return data.toString();
     }
 
+
+    public static String sendPost(String url, String param,Map<String,String> headers) {
+        return sendPost(url,param,headers,null);
+    }
+
+
     /**
      * 向指定 URL 发送POST方法的请求
      * 本方法暂不支持GZIP解压，所以没有设置Accept-Encoding
@@ -82,7 +96,8 @@ public class Network {
      * @return 所代表远程资源的响应结果
      * @author ZhangLianYu
      */
-    public static String sendPost(String url, String param) {
+    public static String sendPost(String url, String param,Map<String,String> headers,
+                                  NetworkHeaders networkHeaders) {
         LocalProxy();
         if (url == null) throw new IllegalArgumentException("url参数为空");
         if (param == null) throw new IllegalArgumentException("param参数为空");
@@ -99,6 +114,12 @@ public class Network {
             conn.setRequestProperty("Content-Length", String.valueOf(param.length()));
             conn.setRequestProperty("Accept-Encoding", "chunked");
             conn.setRequestProperty("Charset", "utf-8");
+            if(headers!=null && headers.size()!=0){
+                for(Map.Entry<String,String> entry : headers.entrySet()){
+                    conn.setRequestProperty(entry.getKey(), entry.getValue());
+                }
+            }
+      //      conn.setRequestProperty("Cookie", "Hm_lvt_a1e24e560b068c813bc6544a78bb2892=1531294797,1531361048; wwa=puq7a30kQSa6xGga6OVw+w==; JSESSIONID=2949BABDF401BB459A69D16229711F6A");
             // 发送POST请求必须设置如下两行
             conn.setDoOutput(true);
             conn.setDoInput(true);
@@ -113,6 +134,7 @@ public class Network {
 //            Map<String, List<String>> map = conn.getHeaderFields();
 ////            遍历所有的响应头字段
 //            System.out.println(map.get("Charset"));
+            if(networkHeaders!=null)  networkHeaders.setHeaders(conn.getHeaderFields());
             int getResponseCode = ((HttpURLConnection) conn).getResponseCode();
             if (getResponseCode != 200) {// 检查服务器响应
                 return getResponseCode + "";

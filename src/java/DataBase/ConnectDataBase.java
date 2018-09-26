@@ -4,11 +4,13 @@ package DataBase;
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 import java.sql.*;
+import java.util.*;
 
 public class ConnectDataBase {
     private Connection con;
     private Statement stmt;
-    private ResultSet rs ;
+    private ResultSet rs;
+
     public ConnectDataBase(String DataBaseType) throws IllegalArgumentException, ClassNotFoundException {
         if (!"mysql".toUpperCase().equals(DataBaseType.toUpperCase())) {
             throw new IllegalArgumentException("\"暂时只支持mysql数据库\"");
@@ -27,43 +29,66 @@ public class ConnectDataBase {
     /**
      * 连接数据库
      *
-     * @param url   ip地址:端口/库
+     * @param url      ip地址:端口/库
      * @param username
      * @param password
      * @return
      */
-    public void coonnect(String url, String username, String password) throws IllegalArgumentException, SQLException ,
+    public void coonnect(String url, String username, String password) throws IllegalArgumentException, SQLException,
             CommunicationsException {
         if (url == null) throw new IllegalArgumentException("url为空");
         if (username == null) throw new IllegalArgumentException("username为空");
         if (password == null) throw new IllegalArgumentException("password为空");
         if (!url.matches("^\\d+\\.\\d+\\.\\d+\\.\\d+:\\d+/.+$"))
             throw new IllegalArgumentException("url格式不正确:" + url);
-        con = DriverManager.getConnection("jdbc:mysql://"+url,username, password);
+        con = DriverManager.getConnection("jdbc:mysql://" + url, username, password);
         stmt = con.createStatement();
-        if(!con.isClosed()) System.out.println("数据库连接成功");
+        if (!con.isClosed()) System.out.println("数据库连接成功");
+    }
 
-        }
-    public Connection getCon(){return con;}
+    public Connection getCon() {
+        return con;
+    }
+
     /**
      * 查询select
+     *
      * @param sql
      * @return
      * @throws SQLException
      */
-    public ResultSet selectSql(String sql) throws SQLException{
-        rs = stmt.executeQuery(sql);
-        return rs;
+    public ResultSet selectSql(String sql) throws SQLException {
+        return stmt.executeQuery(sql);
     }
-    public void closeDatabase(){
-        if(rs!=null) {
+
+    public Map<String, List<String>> selectSqlMap(String sql) throws SQLException {
+        ResultSetMetaData data = stmt.executeQuery(sql).getMetaData();
+        Map<String, List<String>> dataMap = new LinkedHashMap<>();
+        List<String> list = new ArrayList<>();
+        while (rs.next()) {
+            for (int i = 0; i < data.getColumnCount(); i++) {
+                if (dataMap.containsKey(data.getColumnName(i))) {
+                    list = dataMap.get(data.getColumnName(i));
+                    list.add(rs.getString(i));
+                } else {
+                    list = new ArrayList<>();
+                    list.add(rs.getString(i));
+                    dataMap.put(data.getColumnName(i), list);
+                }
+            }
+        }
+        return dataMap;
+    }
+
+    public void closeDatabase() {
+        if (rs != null) {
             try {
                 rs.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        if(con!=null) {
+        if (con != null) {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -72,7 +97,7 @@ public class ConnectDataBase {
         }
 
     }
-    
+
 
     public static void main(String[] args) {
         //声明Connection对象

@@ -47,12 +47,12 @@ public class SendRequest {
             this.url = agreementValues + "://" + path;
         }
         if (InterfaceConfig.URL_GET_NAME.equals(this.method)) {
-            return (Network.sendGet(agreementValues + "://" + path, urlValues));
+            return (Network.sendGet(agreementValues + "://" + path, urlValues,null));
         } else if (InterfaceConfig.URL_POST_NAME.equals(this.method)) {
             if ("".equals(urlValues)) {
-                return (Network.sendPost(agreementValues + "://" + path, body));
+                return (Network.sendPost(agreementValues + "://" + path, body,null));
             } else {
-                return (Network.sendPost(agreementValues + "://" + path + "?" + urlValues, body));
+                return (Network.sendPost(agreementValues + "://" + path + "?" + urlValues, body,null));
             }
 
         }
