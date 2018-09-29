@@ -35,7 +35,7 @@ public class ConnectDataBase {
      * @return
      */
     public boolean coonnect(String url, String username, String password) throws IllegalArgumentException, SQLException,
-            CommunicationsException {
+            CommunicationsException,NullPointerException {
         if (url == null) throw new IllegalArgumentException("url为空");
         if (username == null) throw new IllegalArgumentException("username为空");
         if (password == null) throw new IllegalArgumentException("password为空");

@@ -26,7 +26,8 @@ public abstract class FrontPanel extends JFrame {
     public Color click_pressColor;//点击颜色
     public Color enterIntoColor;//鼠标悬停颜色颜色
     public Color defaultColor;//默认颜色
-    public Color defaultFontColor;
+    public Color defaultFontColor;//默认字体颜色
+    public Color click_Foreground;//点击字体颜色
 
     public FrontPanel(String title) {
         if (title == null) throw new IllegalArgumentException("title为空");
@@ -38,6 +39,7 @@ public abstract class FrontPanel extends JFrame {
         this.enterIntoColor = Color.CYAN;
         this.defaultColor = Color.lightGray;
         this.defaultFontColor = Color.DARK_GRAY;
+        this.click_Foreground = Color.GREEN;
         addWindowListener();
     }
 
@@ -78,7 +80,7 @@ public abstract class FrontPanel extends JFrame {
      */
     public void setJButtonClickColor(JButton jButton) {
         setJButtonBackground(jButton, click_pressColor);
-        jButton.setForeground(Color.GREEN);
+        jButton.setForeground( this.click_Foreground);
     }
 
     /**

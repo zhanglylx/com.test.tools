@@ -67,9 +67,6 @@ public class AdUi extends FrontPanel {
     private boolean runing;//是否正在执行提交广告
     private int defaultCloseOperation;
     private AdDataBse adDataBse;
-    private Thread tiJiao;
-    private Thread startAd;
-
     public ExecutorService getThreadPoint() {
         return threadPoint;
     }
@@ -88,7 +85,6 @@ public class AdUi extends FrontPanel {
         this.jScrollPane = new JScrollPane();
         this.jPanel = newJPanel();
         this.jPanel.setLayout(null);
-        this.adDataBse = AdDataBse.getAdDataBse();
         this.listUpBoundary = 1;
         this.listLeftMargin = 75;
         this.jTextFieldLeftMargin = this.listLeftMargin;
@@ -106,7 +102,6 @@ public class AdUi extends FrontPanel {
         this.threadPoint.execute(this.getAppType);
         this.runing = false;
         this.defaultCloseOperation = 2;
-
         setVisible(true);
     }
 
@@ -291,7 +286,7 @@ public class AdUi extends FrontPanel {
      */
     public void setBuiltInAppType() {
         setJPanel();
-        this.jPanel.add(newJLabel("内置广告:"));
+        this.jPanel.add(setJLabel("内置广告:"));
         this.jPanel.add(this.builtInAppType =
                 newJComboBox(new String[]{""}, this.appTypeWidth));
         this.builtInAppType.setLocation(this.listLeftMargin, this.listUpBoundary);
@@ -401,10 +396,8 @@ public class AdUi extends FrontPanel {
     public void setStatus() {
         setJPanel();
         this.jPanel.add(setJLabel("是否上架:"));
-
         this.jPanel.add(this.status = setJComboBox(
-                new String[]{"否", "是"}, this.listLeftMargin, appTypeWidth));
-        this.status.setSelectedIndex(1);
+                new String[]{"正在连接数据库中..."}, this.listLeftMargin, appTypeWidth));
         this.threadPoint.execute(new connAdDataBse());
         this.status.setEnabled(false);
         this.adConfigJPanel.add(this.jPanel);
@@ -574,7 +567,7 @@ public class AdUi extends FrontPanel {
                 e.printStackTrace();
                 this.threadPoint.shutdownNow();
             }
-            this.sendAdConfiguration.getAdDataBse().close();
+            AdDataBse.getAdDataBse().close();
         }
     }
 
@@ -718,7 +711,16 @@ public class AdUi extends FrontPanel {
             Thread.sleep(1200);
             setAdValues();
             sendAd(f);
-        } catch (Exception e) {
+        }catch (java.lang.NullPointerException e){
+            e.printStackTrace();
+            this.output.setText("发生异常,检查网络:" + e.toString());
+            this.output.setForeground(Color.red);
+        }catch (java.lang.NumberFormatException e){
+            e.printStackTrace();
+            this.output.setText("发生异常,检查网络:" + e.toString());
+            this.output.setForeground(Color.red);
+        }
+        catch (Exception e) {
             e.printStackTrace();
             this.output.setText("发生异常,提交失败:" + e.toString());
             this.output.setForeground(Color.red);
@@ -890,6 +892,31 @@ public class AdUi extends FrontPanel {
                 setAppBuiltInAds(AdSendConfig.ZHI_TOU);
             }
 
+        }else if (this.adAnnotation == jComboBox){
+            String str = jComboBox.getSelectedItem().toString();
+            try {
+                int n = Integer.parseInt(str.substring(str.indexOf("GG-") + "GG-".length(),
+                        str.indexOf(":")));
+                for(JButton j : this.adsList){
+                    if(Integer.parseInt(j.getText())==n){
+                        if(!this.sendAdConfiguration.getAds().contains(n)){
+                            this.sendAdConfiguration.addAds(n);
+                            j.setBackground(this.click_pressColor);
+                            j.setForeground(this.click_Foreground);
+                            setAdsGG();
+                        }else{
+                            this.output.setText("[GG-"+n+"]广告已选择");
+                            this.output.setForeground(Color.RED);
+                        }
+
+                        break;
+                    }
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -996,7 +1023,6 @@ public class AdUi extends FrontPanel {
         return builtInAppType;
     }
 
-
     public JButton getShelves() {
         return shelves;
     }
@@ -1035,29 +1061,30 @@ public class AdUi extends FrontPanel {
             vector.add("否");
             vector.add("是");
             Vector<String> vectorErr = new Vector<>();
-            vectorErr.add("数据库获取失败,默认下架");
+            vectorErr.add("数据库获取失败,重试中,默认下架");
             while (true) {
                 try {
-                    if ((sendAdConfiguration.getAdDataBse().isClosed())) {
+                    adDataBse = AdDataBse.getAdDataBse();
+                    if ((adDataBse.isClosed())) {
                         status.setModel(new DefaultComboBoxModel(vectorErr));
                         status.setEnabled(false);
-                        adDataBse = AdDataBse.getAdDataBse();
+                        adDataBse.setAdDataBseNull();
                     } else {
-                        status.setModel(new DefaultComboBoxModel(vector));
-                        status.setEnabled(true);
-                        status.setSelectedIndex(1);
+                        if (!vector.contains(status.getSelectedItem().toString())) {
+                            status.setModel(new DefaultComboBoxModel(vector));
+                            status.setEnabled(true);
+                            status.setSelectedIndex(1);
+                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                     status.setModel(new DefaultComboBoxModel(vectorErr));
                     status.setEnabled(false);
-                    adDataBse = AdDataBse.getAdDataBse();
                 }
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    break;
                 }
             }
         }

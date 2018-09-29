@@ -58,6 +58,7 @@ public class AdSendConfig {
     public static final String DATABASE_AD_TABLE_NAME = "freeadrelease";
     private static final String GDTXXL = "广点通信息流Banner";
     public static final String[] AD_ANNOTATION = new String[]{
+            "广告在应用中的位置",
             "GG-1:启动页全屏", "GG-2:书架公告", "GG-3:书架顶部通栏",
             "GG-6:精品页顶部通栏", "GG-10:排行(书库)顶部通栏",
             "GG-14:详情页顶部通栏", "GG-17:搜索顶部通栏",

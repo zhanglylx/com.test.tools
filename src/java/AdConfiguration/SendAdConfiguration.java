@@ -5,10 +5,8 @@ import ZLYUtils.NetworkHeaders;
 import ZLYUtils.TooltipUtil;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 发送Ad配置
@@ -41,14 +39,13 @@ public class SendAdConfiguration {
     StringBuffer urlValue;//请求参数
     private NetworkHeaders networkHeaders;
     private String repetition;//是否是重复数据
-    private AdDataBse adDataBse;
     private int channelidShelves;//渠道下架
     private int versionShelves;//版本下架
     private int timeShelves;//时间下架
     private int lbtimeShelves;//轮播下架
     private int wifiShelves;//wifi下架
     private int bgdjShelves;//曝光点击下架
-
+    private String createDate;//创建时间
 
     public SendAdConfiguration() {
         this.ads = new ArrayList<>();//广告位
@@ -75,7 +72,6 @@ public class SendAdConfiguration {
         this.sxdisNum = 0;
         this.isSpecial = 0;
         this.sb = "";
-        this.adDataBse = AdDataBse.getAdDataBse();
         this.separator = ",";
         this.networkHeaders = new NetworkHeaders();
         this.repetition = "";
@@ -85,6 +81,7 @@ public class SendAdConfiguration {
         this.lbtimeShelves = -1;
         this.wifiShelves = -1;
         this.bgdjShelves = -1;
+        this.createDate = null;
 
     }
 
@@ -94,7 +91,7 @@ public class SendAdConfiguration {
      * @return
      */
     public int sendUpdateStaus() {
-        return this.adDataBse.updateStatusOnTheShelf(
+        return AdDataBse.getAdDataBse().updateStatusOnTheShelf(
                 this.appname, jointValues(this.version, this.separator),
                 jointValues(this.channelid, this.separator),
                 this.relStartDate, this.relEndDate, this.qz, this.iscirclead,
@@ -126,8 +123,6 @@ public class SendAdConfiguration {
                 "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}"))
             throw new IllegalArgumentException("relEndDate参数不正确:" + this.relEndDate);
         if (this.sb.equals("")) throw new IllegalArgumentException("sb参数不正确:" + this.sb);
-
-
     }
 
     /**
@@ -143,7 +138,7 @@ public class SendAdConfiguration {
         if (this.lbtimeShelves == -1) throw new IllegalArgumentException("轮播时间下架未配置");
         if (this.wifiShelves == -1) throw new IllegalArgumentException("wifi下架未配置");
         if (this.bgdjShelves == -1) throw new IllegalArgumentException("曝光点击下架未配置");
-        return this.adDataBse.updateShelves(
+        return AdDataBse.getAdDataBse().updateShelves(
                 this.appname, jointValues(this.version, this.separator),
                 jointValues(this.channelid, this.separator),
                 this.relStartDate, this.relEndDate, this.qz, this.iscirclead,
@@ -189,15 +184,29 @@ public class SendAdConfiguration {
         stitchingParameters(AdSendConfig.SB,
                 ZLYUtils.Network.getEncoderString(this.sb, AdSendConfig.ENCODER));
         setBgDj();
-        if (this.repetition.equals(this.urlValue.toString())) {
+        String urlValues = this.urlValue.toString();
+        if (this.repetition.equals(urlValues)) {
             if (TooltipUtil.yesNoTooltip("数据已提交，是否重复提交?") == 1) {
-                this.repetition = this.urlValue.toString();
                 return false;
+            }else{
+                String time =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                urlValues = urlValues.replace(ZLYUtils.Network.getEncoderString(this.relStartDate, AdSendConfig.ENCODER),
+                        time);
+                this.repetition =this.urlValue.toString();
+                this.relStartDate = time;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        TooltipUtil.generalTooltip("起始时间更改为:"+time);
+                    }
+                }).start();
             }
+        }else{
+            this.repetition =this.urlValue.toString();
         }
-        this.repetition = this.urlValue.toString();
+
         String response = Network.sendPost(AdSendConfig.HOST_TEST + AdSendConfig.ADD_AD_RELEASE,
-                this.urlValue.toString(),
+                urlValues,
                 AdSendConfig.HEADERS, this.networkHeaders);
         if (this.networkHeaders.getHeaders().get("Location").toString().contains(
                 AdSendConfig.HOST_TEST + "/fm/listadrelease"
@@ -271,6 +280,7 @@ public class SendAdConfiguration {
     }
 
     public synchronized void addAds(int ads) {
+
         this.ads.add(ads);
     }
 
@@ -437,9 +447,6 @@ public class SendAdConfiguration {
         this.tkTime = tkTime;
     }
 
-    public AdDataBse getAdDataBse() {
-        return adDataBse;
-    }
 
     public void setChannelidShelves(int channelidShelves) {
         this.channelidShelves = channelidShelves;

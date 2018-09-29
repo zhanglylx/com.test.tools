@@ -13,23 +13,24 @@ import java.util.List;
 import java.util.Map;
 
 public class AdDataBse {
+    public ConnectDataBase getConnectDataBase() {
+        return connectDataBase;
+    }
+
     private ConnectDataBase connectDataBase;
     private static AdDataBse adDataBse;
 
     private AdDataBse() {
         try {
-            if (this.connectDataBase == null) {
-                this.connectDataBase = new ConnectDataBase("mysql");
-                if (this.connectDataBase.getCon() == null || this.connectDataBase.getCon().isClosed()) {
-                    this.connectDataBase.coonnect(AdSendConfig.DATABASE_HOST,
-                            AdSendConfig.DATABASE_USERNAME, AdSendConfig.DATABASE_PASSWORD);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-
+            this.connectDataBase = new ConnectDataBase("mysql");
+            this.connectDataBase.coonnect(AdSendConfig.DATABASE_HOST,
+                    AdSendConfig.DATABASE_USERNAME, AdSendConfig.DATABASE_PASSWORD);
+        } catch (CommunicationsException e1) {
+            e1.printStackTrace();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,18 +51,21 @@ public class AdDataBse {
         return true;
     }
 
+    public static void setAdDataBseNull() {
+        try {
+            adDataBse.connectDataBase.closeDatabase();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            adDataBse = null;
+        }
+
+    }
+
     public static AdDataBse getAdDataBse() {
         if (adDataBse == null) {
             adDataBse = new AdDataBse();
-        } else {
-            try {
-                if (adDataBse.connectDataBase.getCon() == null ||
-                        adDataBse.connectDataBase.getCon().isClosed()) {
-                    adDataBse = new AdDataBse();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return adDataBse;
     }
@@ -191,6 +195,7 @@ public class AdDataBse {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            setAdDataBseNull();
         }
         return i;
 
@@ -256,6 +261,7 @@ public class AdDataBse {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            setAdDataBseNull();
         }
         return i;
     }
