@@ -51,7 +51,6 @@ public class Network {
             // 建立实际的连接
             connection.connect();
             if(networkHeaders!=null)  networkHeaders.setHeaders(connection.getHeaderFields());
-
             int getResponseCode = ((HttpURLConnection) connection).getResponseCode();
             if (getResponseCode != 200) {// 检查服务器响应
                 return getResponseCode + "";

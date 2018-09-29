@@ -1,5 +1,6 @@
 package Squirrel;
 
+import AdConfiguration.AdUi;
 import InterfaceTesting.SquirrelUi;
 
 import javax.swing.*;
@@ -28,18 +29,25 @@ public class TestTools {
             case InterfaceTesting:
                 new SquirrelUi(InterfaceTesting);
                 break;
+            case AD_TEXT_CONFIG:
+                new AdUi(testFrame);
+                break;
         }
     }
 
-    public synchronized static void setjButtonEnabledFalse(JButton jButton){
+    private synchronized static void setjButtonEnabledFalse(JButton jButton){
         jButtonMap.put(jButton.getText(),jButton);
         jButtonMapEnabled.put(jButton.getText(),false);
         jButton.setEnabled(false);
     }
 
     public synchronized static void setJButtonEnabled(String title){
-        jButtonMap.get(title).setEnabled(true);
-        jButtonMapEnabled.put(title,true);
+        try {
+            jButtonMap.get(title).setEnabled(true);
+            jButtonMapEnabled.put(title, true);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public  static Map<String,Boolean> getJButtonMapEnabled(){
@@ -49,9 +57,10 @@ public class TestTools {
     public static final String getADLog = "获取广告日志";
     public static final String leaveBug = "版本遗留bug";
     public static final String ZhiBoTools = "直播工具";
+    public static final String AD_TEXT_CONFIG = "测试环境广告配置";
     public static final String Video_RECORDING_AND_SCREENSHOT = "录屏与截图";
     public static final String InterfaceTesting = "接口测试工具";
     public static String[] testTools = new String[]{getADLog, leaveBug, ZhiBoTools,
-            Video_RECORDING_AND_SCREENSHOT,InterfaceTesting};
+            Video_RECORDING_AND_SCREENSHOT,InterfaceTesting,AD_TEXT_CONFIG};
     ;
 }

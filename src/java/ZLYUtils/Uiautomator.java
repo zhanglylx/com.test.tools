@@ -21,7 +21,7 @@ public class Uiautomator {
                 " shell uiautomator dump /data/local/tmp/" + xmlName);
         if (uiautomator == null ||
                 !Arrays.toString(uiautomator).contains(
-                        "UI hierchary dumped to: /data/local/tmp/" + xmlName)) {
+                        "knowledge hierchary dumped to: /data/local/tmp/" + xmlName)) {
             return "没有获取到手机XML元素文件";
         }
         uiautomator = AdbUtils.runAdb(

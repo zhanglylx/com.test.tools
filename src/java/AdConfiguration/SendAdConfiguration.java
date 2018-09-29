@@ -1,9 +1,14 @@
 package AdConfiguration;
 
 import ZLYUtils.Network;
+import ZLYUtils.NetworkHeaders;
+import ZLYUtils.TooltipUtil;
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 发送Ad配置
@@ -32,7 +37,17 @@ public class SendAdConfiguration {
     private int sxdisNum; //书型广告位置
     private int isSpecial; //是否特殊配置
     private String sb;
+    private String separator;
     StringBuffer urlValue;//请求参数
+    private NetworkHeaders networkHeaders;
+    private String repetition;//是否是重复数据
+    private AdDataBse adDataBse;
+    private int channelidShelves;//渠道下架
+    private int versionShelves;//版本下架
+    private int timeShelves;//时间下架
+    private int lbtimeShelves;//轮播下架
+    private int wifiShelves;//wifi下架
+    private int bgdjShelves;//曝光点击下架
 
 
     public SendAdConfiguration() {
@@ -60,16 +75,42 @@ public class SendAdConfiguration {
         this.sxdisNum = 0;
         this.isSpecial = 0;
         this.sb = "";
+        this.adDataBse = AdDataBse.getAdDataBse();
+        this.separator = ",";
+        this.networkHeaders = new NetworkHeaders();
+        this.repetition = "";
+        this.channelidShelves = -1;
+        this.versionShelves = -1;
+        this.timeShelves = -1;
+        this.lbtimeShelves = -1;
+        this.wifiShelves = -1;
+        this.bgdjShelves = -1;
+
     }
 
     /**
-     * 发送广告
+     * 发送更新状态数据库
      *
-     * @return true 发送成功
+     * @return
      */
-    public String sendAd() throws IllegalArgumentException {
+    public int sendUpdateStaus() {
+        return this.adDataBse.updateStatusOnTheShelf(
+                this.appname, jointValues(this.version, this.separator),
+                jointValues(this.channelid, this.separator),
+                this.relStartDate, this.relEndDate, this.qz, this.iscirclead,
+                this.lbtime, this.dayTotalClickNum, this.dayTotalExposureNum,
+                this.totalClickNum, this.totalExposureNum, this.singleClickNum,
+                this.singleExposureNum, this.adNo, this.ads, this.wifiState
+        );
+    }
+
+    /**
+     * 检查参数
+     */
+    public void checkValues() {
         if (this.ads.size() == 0 ||
                 this.ads.toString().equals("[]")) throw new IllegalArgumentException("广告位为空");
+        if (this.adNo == 0l) throw new IllegalArgumentException("广告类型adNo未选择");
         if (this.relStartDate == null) throw new IllegalArgumentException("起始时间为空");
         if (this.relEndDate == null) throw new IllegalArgumentException("结束时间为空");
         if (this.version.size() == 0 ||
@@ -77,7 +118,7 @@ public class SendAdConfiguration {
         if (this.channelid.size() == 0 ||
                 this.channelid.toString().equals("[]")) throw new IllegalArgumentException("渠道为空");
         if (this.appname == null) throw new IllegalArgumentException("APP名称为空");
-        if (this.adNo == 0l) throw new IllegalArgumentException("adNo参数不正确:" + this.adNo);
+
         if (!this.relStartDate.matches(
                 "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}"))
             throw new IllegalArgumentException("relStartDate参数不正确:" + this.relStartDate);
@@ -85,10 +126,47 @@ public class SendAdConfiguration {
                 "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}"))
             throw new IllegalArgumentException("relEndDate参数不正确:" + this.relEndDate);
         if (this.sb.equals("")) throw new IllegalArgumentException("sb参数不正确:" + this.sb);
+
+
+    }
+
+    /**
+     * 发送下架
+     *
+     * @return
+     */
+    public int sendShelves() {
+        checkValues();
+        if (this.channelidShelves == -1) throw new IllegalArgumentException("渠道下架未配置");
+        if (this.versionShelves == -1) throw new IllegalArgumentException("版本下架未配置");
+        if (this.timeShelves == -1) throw new IllegalArgumentException("时间下架未配置");
+        if (this.lbtimeShelves == -1) throw new IllegalArgumentException("轮播时间下架未配置");
+        if (this.wifiShelves == -1) throw new IllegalArgumentException("wifi下架未配置");
+        if (this.bgdjShelves == -1) throw new IllegalArgumentException("曝光点击下架未配置");
+        return this.adDataBse.updateShelves(
+                this.appname, jointValues(this.version, this.separator),
+                jointValues(this.channelid, this.separator),
+                this.relStartDate, this.relEndDate, this.qz, this.iscirclead,
+                this.lbtime, this.dayTotalClickNum, this.dayTotalExposureNum,
+                this.totalClickNum, this.totalExposureNum, this.singleClickNum,
+                this.singleExposureNum, this.adNo, this.ads, this.wifiState,
+                this.channelidShelves, this.versionShelves, this.timeShelves,
+                this.lbtimeShelves, this.wifiShelves, this.bgdjShelves
+        );
+    }
+
+    /**
+     * 发送广告
+     *
+     * @return true 发送成功
+     */
+    public boolean sendAd() throws IllegalArgumentException {
+        checkValues();
+        this.urlValue.delete(0, this.urlValue.length());
         //拼接事件
         setSel();
-        stitchingParameters(AdSendConfig.VERSION, jointValues(this.version, ","));
-        stitchingParameters(AdSendConfig.CHANNELID, jointValues(this.channelid, ","));
+        stitchingParameters(AdSendConfig.VERSION, jointValues(this.version, this.separator));
+        stitchingParameters(AdSendConfig.CHANNELID, jointValues(this.channelid, this.separator));
         stitchingParameters(AdSendConfig.CURRENT_PAGE, "1");
         stitchingParameters(AdSendConfig.APPNAME, this.appname);
         stitchingParameters(AdSendConfig.AD_NO, this.adNo);
@@ -111,16 +189,24 @@ public class SendAdConfiguration {
         stitchingParameters(AdSendConfig.SB,
                 ZLYUtils.Network.getEncoderString(this.sb, AdSendConfig.ENCODER));
         setBgDj();
+        if (this.repetition.equals(this.urlValue.toString())) {
+            if (TooltipUtil.yesNoTooltip("数据已提交，是否重复提交?") == 1) {
+                this.repetition = this.urlValue.toString();
+                return false;
+            }
+        }
+        this.repetition = this.urlValue.toString();
         String response = Network.sendPost(AdSendConfig.HOST_TEST + AdSendConfig.ADD_AD_RELEASE,
                 this.urlValue.toString(),
-                AdSendConfig.HEADERS);
-        System.out.println(this.urlValue);
-        System.out.println(response);
-        return response;
+                AdSendConfig.HEADERS, this.networkHeaders);
+        if (this.networkHeaders.getHeaders().get("Location").toString().contains(
+                AdSendConfig.HOST_TEST + "/fm/listadrelease"
+        ) && response.equals("302")) return true;
+        return false;
     }
 
     private void setBgDj() {
-        stitchingParameters(AdSendConfig.SINGLE_CLICK_Num, this.singleClickNum);
+        stitchingParameters(AdSendConfig.SINGLE_CLICK_NUM, this.singleClickNum);
         stitchingParameters(AdSendConfig.SINGLE_EXPOSURE_NUM, this.singleExposureNum);
         stitchingParameters(AdSendConfig.DAY_TOTAL_CLICK_NUM, this.dayTotalClickNum);
         stitchingParameters(AdSendConfig.DAY_TOTAL_EXPOSURE_NUM, this.dayTotalExposureNum);
@@ -139,7 +225,7 @@ public class SendAdConfiguration {
         stitchingParameters(AdSendConfig.SEL_VERSION, "");
         stitchingParameters(AdSendConfig.SEL_CHANNELID, "");
         stitchingParameters(AdSendConfig.SEL_AD_NO, "");
-        stitchingParameters(AdSendConfig.SEL_STATUS, "1");
+        stitchingParameters(AdSendConfig.SEL_STATUS, "-1");
         stitchingParameters(AdSendConfig.RDO_SINGLE, "0");
         stitchingParameters(AdSendConfig.RDO_TOTAL, "0");
     }
@@ -351,6 +437,33 @@ public class SendAdConfiguration {
         this.tkTime = tkTime;
     }
 
+    public AdDataBse getAdDataBse() {
+        return adDataBse;
+    }
+
+    public void setChannelidShelves(int channelidShelves) {
+        this.channelidShelves = channelidShelves;
+    }
+
+    public void setVersionShelves(int versionShelves) {
+        this.versionShelves = versionShelves;
+    }
+
+    public void setTimeShelves(int timeShelves) {
+        this.timeShelves = timeShelves;
+    }
+
+    public void setLbtimeShelves(int lbtimeShelves) {
+        this.lbtimeShelves = lbtimeShelves;
+    }
+
+    public void setWifiShelves(int wifiShelves) {
+        this.wifiShelves = wifiShelves;
+    }
+
+    public void setBgdjShelves(int bgdjShelves) {
+        this.bgdjShelves = bgdjShelves;
+    }
 
     public static void main(String[] args) {
         SendAdConfiguration sendAdConfiguration = new SendAdConfiguration();

@@ -38,7 +38,9 @@ public abstract class FrontPanel extends JFrame {
         this.enterIntoColor = Color.CYAN;
         this.defaultColor = Color.lightGray;
         this.defaultFontColor = Color.DARK_GRAY;
+        addWindowListener();
     }
+
     /**
      * 设置关闭
      */
@@ -47,8 +49,9 @@ public abstract class FrontPanel extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
+
                 setClose();
-                setDefaultCloseOperation();
+                setDefaultCloseOperation(setDefaultCloseOperation());
 
             }
         });
@@ -66,9 +69,7 @@ public abstract class FrontPanel extends JFrame {
      * 默认为JFrame.DISPOSE_ON_CLOSE隐藏当前窗口，并释放窗体占有的其他资源
      * JFrame.EXIT_ON_CLOSE 结束窗口所在的应用程序。在窗口被关闭的时候会退出JVM。
      */
-    public void setDefaultCloseOperation() {
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }
+    public abstract int setDefaultCloseOperation();
 
     /**
      * 设置点击颜色
@@ -146,17 +147,18 @@ public abstract class FrontPanel extends JFrame {
     }
 
     public JRadioButton newJRadioButton(String title) {
-        return newJRadioButton(title,30);
+        return newJRadioButton(title, 30);
     }
 
     /**
      * 新建单选按钮
+     *
      * @param title
      * @return
      */
-    public JRadioButton newJRadioButton(String title,int height) {
+    public JRadioButton newJRadioButton(String title, int height) {
         JRadioButton jRadioButton = new JRadioButton(title);
-        jRadioButton.setSize(title.length() * 22,height);
+        jRadioButton.setSize(title.length() * 22, height);
         jRadioButton.setFont(SquirrelConfig.typeface);
         jRadioButton.setBorder(newLineBorder());
         jRadioButton.setOpaque(false);
@@ -168,7 +170,7 @@ public abstract class FrontPanel extends JFrame {
                     public void run() {
                         jRadioButtonClickEvent(jRadioButton);
                     }
-                });
+                }).start();
             }
         });
         return jRadioButton;
@@ -186,6 +188,15 @@ public abstract class FrontPanel extends JFrame {
      */
     public ButtonGroup buttonGroup() {
         return new ButtonGroup();
+    }
+
+    /**
+     * 设置鼠标为小手
+     *
+     * @param jButton
+     */
+    public void setJButtonCursor(JButton jButton) {
+        jButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//设置鼠标变为小手
     }
 
     public JButton newJButton(String title) {
@@ -208,16 +219,16 @@ public abstract class FrontPanel extends JFrame {
     }
 
     /**
-     *新建显示文本
+     * 新建显示文本
      */
     public JLabel newJLabel(String title) {
-        return newJLabel(title,30);
+        return newJLabel(title, 30);
     }
 
     /**
-     *新建显示文本
+     * 新建显示文本
      */
-    public JLabel newJLabel(String title,int height) {
+    public JLabel newJLabel(String title, int height) {
         JLabel jLabel = new JLabel(title);
         jLabel.setFont(SquirrelConfig.typeface);
         jLabel.setBackground(Color.LIGHT_GRAY);

@@ -83,7 +83,7 @@ public class HomePage extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) { //设置退出监听器
                 super.windowClosing(e);
-//               WindosUtils.closeProcess("adb.exe");
+                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 System.exit(0);
             }
         });
@@ -99,7 +99,6 @@ public class HomePage extends JFrame {
 
     public static HomePage getHomePage() {
         if (homePage == null) homePage = new HomePage();
-
         return homePage;
     }
 

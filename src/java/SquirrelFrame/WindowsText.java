@@ -40,7 +40,7 @@ public class WindowsText extends JDialog implements ActionListener{
         setLayout(new BorderLayout());
         jta = new JTextArea(10, 15);
         jta.setTabSize(4);
-        jta.setFont(new Font("标楷体", Font.BOLD, 16));
+        jta.setFont(SquirrelConfig.typeface);
         jta.setLineWrap(true);// 激活自动换行功能
         jta.setWrapStyleWord(true);// 激活断行不断字功能
         jscrollPane = new JScrollPane(jta);
@@ -97,8 +97,8 @@ public class WindowsText extends JDialog implements ActionListener{
                 jta.setForeground(Color.white);
                 break;
             case Menubar.regards:
-                jta.setEnabled(false);
                 jta.setBackground(Color.DARK_GRAY);
+                jta.setForeground(Color.white);
                 jta.setText(SquirrelConfig.guanyu);
                 break;
             case HomePage.VIDEOSWICTH:

@@ -159,6 +159,7 @@ public class GetAppType implements Runnable {
             adUi.getAppName().setEnabled(false);
             adUi.getBuiltInAppType().setEnabled(false);
             adUi.getSb().setEnabled(false);
+            adUi.getShelves().setEnabled(false);
             while (this.stop) {
                 //大于指定次数，重新计算.
                 if (i > 30) {
@@ -187,6 +188,7 @@ public class GetAppType implements Runnable {
             adUi.getAppName().setEnabled(true);
             adUi.getSb().setEnabled(true);
             adUi.getBuiltInAppType().setEnabled(true);
+            adUi.getShelves().setEnabled(true);
             this.stop = true;
         }
     }

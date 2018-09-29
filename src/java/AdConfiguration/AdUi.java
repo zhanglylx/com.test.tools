@@ -1,21 +1,28 @@
 package AdConfiguration;
 
+import Squirrel.TestTools;
 import SquirrelFrame.FrontPanel;
+import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.TooltipUtil;
 import com.eltima.components.ui.DatePicker;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class AdUi extends FrontPanel {
 
 
-    private JButton sb, jButton, clearJButton;
+    private JButton sb;
+    private JButton jButton;
+    private JButton clearJButton;
+    private JButton shelves; //下架
     private SendAdConfiguration sendAdConfiguration;
     private List<JButton> adsList;
     private JPanel adsJPanel, adConfigJPanel, jPanel;//广告位面板,广告配置面板,通用面板
@@ -31,13 +38,21 @@ public class AdUi extends FrontPanel {
     private JTextField dayTotalExposureNum;//单日曝光
     private JTextField dayTotalClickNum;//单日单击
     private JTextField displayTime;//显示时间
+    private JTextField output;//输出台
     private GetAppType getAppType;
     private JScrollPane jScrollPane;
     private JComboBox appName;
     private JComboBox appType;//app类型
     private JComboBox status;//上架状态
+    private JComboBox adAnnotation;//广告注解
     private JComboBox wifiState;//WIFI状态
     private JComboBox builtInAppType;//内置广告类型
+    private JComboBox channelidShelves;//渠道下架
+    private JComboBox versionShelves;//版本下架
+    private JComboBox timeShelves;//时间下架
+    private JComboBox lbtimeShelves;//轮播下架
+    private JComboBox wifiShelves;//wifi下架
+    private JComboBox bgdjShelves;//曝光点击下架
     private DatePicker startDate;//起始时间
     private DatePicker endDate;//结束时间
     private int listUpBoundary;//下拉列表上边界
@@ -49,23 +64,36 @@ public class AdUi extends FrontPanel {
     private int appTypeWidth;//广告类型宽度
     private JRadioButton fixedTime;//固定时间
     private JRadioButton cycleDayTime;//按天循环时间
+    private boolean runing;//是否正在执行提交广告
+    private int defaultCloseOperation;
+    private AdDataBse adDataBse;
+    private Thread tiJiao;
+    private Thread startAd;
 
+    public ExecutorService getThreadPoint() {
+        return threadPoint;
+    }
+
+    private ExecutorService threadPoint;
+    final long awaitTime = 10;
 
     public AdUi(String title) {
         super(title);
+        this.threadPoint = Executors.newFixedThreadPool(10);
+        startLoging();
         setLayout(new GridLayout(1, 2));
         setSize(1300, 700);
         this.sendAdConfiguration = new SendAdConfiguration();
         this.adsList = new ArrayList<>();
-        this.sb = newJButton(AdSendConfig.SB_JBUTTON);
         this.jScrollPane = new JScrollPane();
         this.jPanel = newJPanel();
         this.jPanel.setLayout(null);
+        this.adDataBse = AdDataBse.getAdDataBse();
         this.listUpBoundary = 1;
         this.listLeftMargin = 75;
         this.jTextFieldLeftMargin = this.listLeftMargin;
         this.jTextFieldYMargin = -3;
-        this.jTextFieldWidth = 580;
+        this.jTextFieldWidth = 568;
         this.jTextFieldHight = 40;
         this.appTypeWidth = 566;
         //设置广告位面板
@@ -75,7 +103,10 @@ public class AdUi extends FrontPanel {
         add(this.adConfigJPanel);
         add(this.adsJPanel);
         this.getAppType = new GetAppType(this);
-        new Thread(this.getAppType).start();
+        this.threadPoint.execute(this.getAppType);
+        this.runing = false;
+        this.defaultCloseOperation = 2;
+
         setVisible(true);
     }
 
@@ -91,10 +122,10 @@ public class AdUi extends FrontPanel {
         setAppname();
         //设置广告类型
         setAdType();
-        //设置渠道
-        setChannelid();
         //设置版本
         setVersion();
+        //设置渠道
+        setChannelid();
         //设置起始与终止时间
         setTime();
         //设置时间配置策略
@@ -109,11 +140,115 @@ public class AdUi extends FrontPanel {
         setQz();
         //设置曝光和点击
         setBgDj();
-        //设置显示时间
+//        //设置显示时间
         setDisplayTime();
         //设置内容广告类型
         setBuiltInAppType();
+        //设置广告注解
+        setAdAnnotation();
+        //设置快速下架
+        setQuicklyShelves();
+        //设置输出台
+        setOutput();
+//        //内置表格
+        setTable();
+    }
 
+    public void setQuicklyShelves() {
+        int jComboBoxWidth = 65;
+        int jComboBoxX = 35;
+        int jLabelX = this.listLeftMargin + 10;
+        int jLabelXS2 = 170;//文本与文本之间的间隔距离
+        String[] listValues = new String[]{"包含", "匹配"};
+        String[] listValues2 = new String[]{"禁止", "匹配"};
+        JPanel quicklyShelvesJPanel = new JPanel();
+        JPanel quicklyShelvesJPanel2 = new JPanel();
+        quicklyShelvesJPanel.setLayout(null);
+        quicklyShelvesJPanel2.setLayout(null);
+        quicklyShelvesJPanel.setBackground(Color.PINK);
+        quicklyShelvesJPanel2.setBackground(Color.PINK);
+        quicklyShelvesJPanel.add(setJLabel("快速下架:"));
+        JLabel jLabel = setShelves("渠道:", jLabelX, 0, quicklyShelvesJPanel);
+//        private JComboBox channelidShelves;//渠道下架
+//        private JComboBox versionShelves;//版本下架
+//        private JComboBox timeShelves;//时间下架
+//        private JComboBox lbtimeShelves;//轮播下架
+//        private JComboBox wifiShelves;//wifi下架
+//        private JComboBox bgdjShelves;//曝光点击下架
+        this.channelidShelves = setJComboBox(listValues
+                , 120, jComboBoxWidth);
+        quicklyShelvesJPanel.add(this.channelidShelves);
+        jLabel = setShelves("版本:", jLabel.getX(), jLabelXS2, quicklyShelvesJPanel);
+        this.versionShelves = setJComboBox(listValues
+                , jLabel.getX() + jComboBoxX, jComboBoxWidth);
+        quicklyShelvesJPanel.add(this.versionShelves);
+        jLabel = setShelves("时间:", jLabel.getX(), jLabelXS2, quicklyShelvesJPanel);
+        this.timeShelves = setJComboBox(listValues2
+                , jLabel.getX() + jComboBoxX, jComboBoxWidth);
+        quicklyShelvesJPanel.add(this.timeShelves);
+        jLabel = setShelves("轮播:", jLabelX, 0, quicklyShelvesJPanel2);
+        this.lbtimeShelves = setJComboBox(listValues2
+                , jLabel.getX() + jComboBoxX, jComboBoxWidth);
+        quicklyShelvesJPanel2.add(this.lbtimeShelves);
+        jLabel = setShelves("wifi  :", jLabel.getX(), jLabelXS2, quicklyShelvesJPanel2);
+        this.wifiShelves = setJComboBox(listValues2
+                , jLabel.getX() + jComboBoxX, jComboBoxWidth);
+        quicklyShelvesJPanel2.add(this.wifiShelves);
+        jLabel = setShelves("bgdj:", jLabel.getX(), jLabelXS2, quicklyShelvesJPanel2);
+        this.bgdjShelves = setJComboBox(listValues2
+                , jLabel.getX() + jComboBoxX, jComboBoxWidth);
+        quicklyShelvesJPanel2.add(this.bgdjShelves);
+        this.shelves = newJButton("下架");
+        this.shelves.setSize(80, this.jTextFieldHight - 10);
+        this.shelves.setLocation(550, this.listUpBoundary);
+        this.shelves.setBackground(Color.ORANGE);
+        this.shelves.setFont(SquirrelConfig.typeface);
+        setJButtonCursor(this.shelves);
+        quicklyShelvesJPanel2.add(this.shelves);
+        this.adConfigJPanel.add(quicklyShelvesJPanel);
+        this.adConfigJPanel.add(quicklyShelvesJPanel2);
+
+    }
+
+    private JLabel setShelves(String title, int jLabelXS, int jLabelXS2, JPanel jPanel) {
+        JLabel jLabel = newJLabel(title);
+        jLabel.setLocation(jLabelXS + jLabelXS2, this.listUpBoundary);
+        jPanel.add(jLabel);
+        return jLabel;
+    }
+
+    /**
+     * 设置广告注解
+     */
+    public void setAdAnnotation() {
+        setJPanel();
+        this.jPanel.add(setJLabel("广告注解:"));
+        this.adAnnotation = newJComboBox(AdSendConfig.AD_ANNOTATION, this.appTypeWidth);
+        this.adAnnotation.setLocation(this.listLeftMargin, this.listUpBoundary);
+        this.adAnnotation.setBackground(Color.magenta);
+        this.jPanel.add(this.adAnnotation);
+        this.adConfigJPanel.add(this.jPanel);
+
+    }
+
+
+    /**
+     * 设置空表格，为了美观
+     */
+    public void setTable() {
+        setJPanel();
+        this.adConfigJPanel.add(this.jPanel);
+    }
+
+    /**
+     * 设置输出台
+     */
+    public void setOutput() {
+        setJPanel();
+        this.jPanel.add(setJLabel("执行结果:"));
+        this.jPanel.add(setJScrollPane(this.output = newJTextField()));
+        this.output.setEditable(false);
+        this.adConfigJPanel.add(this.jPanel);
     }
 
     /**
@@ -121,11 +256,13 @@ public class AdUi extends FrontPanel {
      */
     public void setDisplayTime() {
         setJPanel();
-        this.jPanel.add(setJLabel("显示时间:"));
-        this.jPanel.add(setJScrollPane(this.displayTime = setJTextField()));
-        this.displayTime.setToolTipText("默认0,仅GG-1开屏有效,单位\"s\"");
+
+        this.displayTime = setJTextField();
+//        this.jPanel.add(setJLabel("显示时间:"));
+//        this.jPanel.add(setJScrollPane(this.displayTime = setJTextField()));
+//        this.displayTime.setToolTipText("默认0,仅GG-1开屏有效,单位\"s\",");
         this.displayTime.setText("0");
-        this.adConfigJPanel.add(this.jPanel);
+//        this.adConfigJPanel.add(this.jPanel);
     }
 
     /**
@@ -222,7 +359,7 @@ public class AdUi extends FrontPanel {
         setJPanel();
         this.jPanel.add(setJLabel("wifi开启  :"));
         this.jPanel.add(this.wifiState = setJComboBox(
-                new String[]{"否", "是"}, this.listLeftMargin, 49));
+                new String[]{"否", "是"}, this.listLeftMargin, appTypeWidth));
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -264,9 +401,12 @@ public class AdUi extends FrontPanel {
     public void setStatus() {
         setJPanel();
         this.jPanel.add(setJLabel("是否上架:"));
+
         this.jPanel.add(this.status = setJComboBox(
-                new String[]{"否", "是"}, this.listLeftMargin, 49));
+                new String[]{"否", "是"}, this.listLeftMargin, appTypeWidth));
         this.status.setSelectedIndex(1);
+        this.threadPoint.execute(new connAdDataBse());
+        this.status.setEnabled(false);
         this.adConfigJPanel.add(this.jPanel);
 
     }
@@ -364,7 +504,7 @@ public class AdUi extends FrontPanel {
         this.jPanel.add(setJLabel("所属应用:"));
         this.jPanel.add(this.appName = setJComboBox(
                 new String[]{
-                        AdSendConfig.MFDZS, AdSendConfig.MFZS}, this.listLeftMargin, 120));
+                        AdSendConfig.MFDZS, AdSendConfig.MFZS}, this.listLeftMargin, appTypeWidth));
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -380,6 +520,7 @@ public class AdUi extends FrontPanel {
         this.adsJPanel.add(this.clearJButton);
         setAds();
         this.adsJPanel.add(this.sb = newJButton("提交"));
+        this.sb.setFont(SquirrelConfig.typeface);
         this.sb.setBorder(BorderFactory.createRaisedBevelBorder());
         this.sb.setBackground(Color.ORANGE);
         this.sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -394,18 +535,11 @@ public class AdUi extends FrontPanel {
      */
     private void setAdsSoaceDisplay() {
         setJPanel();
-        this.jPanel.add(setJLabel("GG:"));
-        this.adsJTextField = newJTextField();
+        this.jPanel.add(setJLabel("已选广告:"));
+        this.jPanel.add(setJScrollPane(this.adsJTextField = setJTextField()));
         this.adsJTextField.setEditable(false);
-        this.jScrollPane = new JScrollPane(adsJTextField);
         this.adsJTextField.setToolTipText("不支持输入,请从右侧选取");
-        this.jScrollPane.setLocation(35, -4);
-        this.jScrollPane.setSize(610, 41);
-        this.jScrollPane.setPreferredSize(new Dimension(1, 1));
-        this.jScrollPane.setOpaque(false);
-        this.jScrollPane.getViewport().setOpaque(false);
-        this.jScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        this.jPanel.add(this.jScrollPane);
+        this.adsJTextField.setText("不支持输入,请从右侧选取");
         this.adConfigJPanel.add(this.jPanel);
 
 
@@ -425,7 +559,30 @@ public class AdUi extends FrontPanel {
 
     @Override
     public void setClose() {
+        if (this.runing) {
+            this.defaultCloseOperation = 0;
+            TooltipUtil.errTooltip("正在提交数据中，请稍后关闭");
+        } else {
+            this.defaultCloseOperation = 2;
+            TestTools.setJButtonEnabled(this.getTitle());
+            this.threadPoint.shutdown();
+            try {
+                if (!this.threadPoint.awaitTermination(awaitTime, TimeUnit.MILLISECONDS)) {
+                    this.threadPoint.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                this.threadPoint.shutdownNow();
+            }
+            this.sendAdConfiguration.getAdDataBse().close();
+        }
     }
+
+    @Override
+    public int setDefaultCloseOperation() {
+        return this.defaultCloseOperation;
+    }
+
 
     @Override
     public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
@@ -521,48 +678,70 @@ public class AdUi extends FrontPanel {
 
     }
 
+    public void setAdValues() {
+        checkValues();
+        this.sendAdConfiguration.setAppname(
+                AdSendConfig.getAppNameCode(this.appName.getSelectedItem().toString()));
+        this.sendAdConfiguration.setAdNo(Long.parseLong(
+                this.getAppType.getAdNoMap().get(
+                        this.appType.getSelectedItem().toString())));
+        this.sendAdConfiguration.setSb(this.sb.getText());
+        this.sendAdConfiguration.setChannelid(analysisSeparator(this.channelidJTextField.getText()));
+        this.sendAdConfiguration.setVersion(analysisSeparator(this.appVersion.getText()));
+        this.sendAdConfiguration.setRelStartDate(this.startDate.getText());
+        this.sendAdConfiguration.setRelEndDate(this.endDate.getText());
+        this.sendAdConfiguration.setStatus((byte) (this.status.getSelectedIndex()));
+        this.sendAdConfiguration.setTkTime(Integer.parseInt(this.displayTime.getText()));
+        this.sendAdConfiguration.setLbtime(Integer.parseInt(this.lbTime.getText()));
+        this.sendAdConfiguration.setWifiState((byte) (this.wifiState.getSelectedIndex()));
+        this.sendAdConfiguration.setSingleClickNum(Integer.parseInt(this.singleClickNum.getText()));
+        this.sendAdConfiguration.setSingleExposureNum(Integer.parseInt(this.singleExposureNum.getText()));
+        this.sendAdConfiguration.setTotalClickNum(Integer.parseInt(this.totalClickNum.getText()));
+        this.sendAdConfiguration.setTotalExposureNum(Integer.parseInt(this.totalExposureNum.getText()));
+        this.sendAdConfiguration.setDayTotalClickNum(Integer.parseInt(this.dayTotalClickNum.getText()));
+        this.sendAdConfiguration.setDayTotalExposureNum(Integer.parseInt(this.dayTotalExposureNum.getText()));
+        if (this.qz.getText().equals(AdSendConfig.QZ_HINT)) {
+            this.sendAdConfiguration.setQz(10);
+        } else {
+            this.sendAdConfiguration.setQz(Integer.parseInt(this.qz.getText()));
+        }
+        this.sendAdConfiguration.setVersionShelves(this.versionShelves.getSelectedIndex());
+        this.sendAdConfiguration.setChannelidShelves(this.channelidShelves.getSelectedIndex());
+        this.sendAdConfiguration.setLbtimeShelves(this.lbtimeShelves.getSelectedIndex());
+        this.sendAdConfiguration.setBgdjShelves(this.bgdjShelves.getSelectedIndex());
+        this.sendAdConfiguration.setTimeShelves(this.timeShelves.getSelectedIndex());
+        this.sendAdConfiguration.setWifiShelves(this.wifiShelves.getSelectedIndex());
+    }
+
+    public void startAd(JButton f) {
+        try {
+            Thread.sleep(1200);
+            setAdValues();
+            sendAd(f);
+        } catch (Exception e) {
+            e.printStackTrace();
+            this.output.setText("发生异常,提交失败:" + e.toString());
+            this.output.setForeground(Color.red);
+        }
+
+    }
 
     @Override
     public void buttonClickEvent(JButton f) {
-        if (this.sb == f) {
-            this.sb.setEnabled(false);
-            try {
-                checkValues();
-                this.sendAdConfiguration.setAppname(
-                        AdSendConfig.getAppNameCode(this.appName.getSelectedItem().toString()));
-                this.sendAdConfiguration.setAdNo(Long.parseLong(
-                        this.getAppType.getAdNoMap().get(
-                                this.appType.getSelectedItem().toString())));
-                this.sendAdConfiguration.setSb(this.sb.getText());
-                this.sendAdConfiguration.setChannelid(analysisSeparator(this.channelidJTextField.getText()));
-                this.sendAdConfiguration.setVersion(analysisSeparator(this.appVersion.getText()));
-                this.sendAdConfiguration.setRelStartDate(this.startDate.getText());
-                this.sendAdConfiguration.setRelEndDate(this.endDate.getText());
-                this.sendAdConfiguration.setStatus((byte) (this.status.getSelectedIndex()));
-                this.sendAdConfiguration.setTkTime(Integer.parseInt(this.displayTime.getText()));
-                this.sendAdConfiguration.setLbtime(Integer.parseInt(this.lbTime.getText()));
-                this.sendAdConfiguration.setWifiState((byte) (this.wifiState.getSelectedIndex()));
-                this.sendAdConfiguration.setSingleClickNum(Integer.parseInt(this.singleClickNum.getText()));
-                this.sendAdConfiguration.setSingleExposureNum(Integer.parseInt(this.singleExposureNum.getText()));
-                this.sendAdConfiguration.setTotalClickNum(Integer.parseInt(this.totalClickNum.getText()));
-                this.sendAdConfiguration.setTotalExposureNum(Integer.parseInt(this.totalExposureNum.getText()));
-                this.sendAdConfiguration.setDayTotalClickNum(Integer.parseInt(this.dayTotalClickNum.getText()));
-                this.sendAdConfiguration.setDayTotalExposureNum(Integer.parseInt(this.dayTotalExposureNum.getText()));
-                if (this.qz.getText().equals(AdSendConfig.QZ_HINT)) {
-                    this.sendAdConfiguration.setQz(10);
-                } else {
-                    this.sendAdConfiguration.setQz(Integer.parseInt(this.qz.getText()));
-                }
-
-                this.sendAdConfiguration.sendAd();
-            } catch (Exception e) {
-                e.printStackTrace();
-                TooltipUtil.errTooltip(e.toString());
-            }
+        if (this.sb == f || this.shelves == f) {
+            this.runing = true;
+            output.setText("正在提交中，请等待");
+            output.setForeground(Color.DARK_GRAY);
+            sb.setEnabled(false);
+            shelves.setEnabled(false);
+            startAd(f);
             this.sb.setBackground(Color.ORANGE);
-            this.sb.setForeground(this.defaultFontColor);
+            this.sb.setForeground(defaultFontColor);
             this.sb.setEnabled(true);
-
+            this.shelves.setEnabled(true);
+            this.shelves.setBackground(Color.ORANGE);
+            this.shelves.setForeground(defaultFontColor);
+            this.runing = false;
         } else if (this.adsList.contains(f)) {
             setAds(f);
         } else if (this.clearJButton == f) {
@@ -581,6 +760,45 @@ public class AdUi extends FrontPanel {
             }
             this.clearJButton.setBackground(this.enterIntoColor);
             this.clearJButton.setForeground(this.defaultFontColor);
+        }
+    }
+
+
+    /**
+     * 发送广告请求
+     */
+    public void sendAd(JButton f) {
+        if (this.sb == f) {
+            boolean b = this.sendAdConfiguration.sendAd();
+            if (!b) {
+                this.output.setText("新建广告失败");
+                this.output.setForeground(Color.red);
+            } else {
+                this.output.setText("新建广告成功");
+                this.output.setForeground(Color.GREEN);
+            }
+            if (this.status.getSelectedIndex() == 1 && b) {
+                int index = this.sendAdConfiguration.sendUpdateStaus();
+                if (index >=
+                        this.sendAdConfiguration.getAds().size()) {
+                    this.output.setText(this.output.getText() + ",更新上架成功");
+                    this.output.setForeground(Color.GREEN);
+                } else if (index > 0) {
+                    this.output.setText(this.output.getText() + ",更新上架部分成功:" + index);
+                    this.output.setForeground(Color.red);
+                } else {
+                    this.output.setText(this.output.getText() + ",更新上架状态失败，请到后台手动更新");
+                    this.output.setForeground(Color.red);
+                }
+            }
+        } else if (this.shelves == f) {
+            this.output.setText("共下架广告[ " +
+                    this.sendAdConfiguration.sendShelves()
+                    + " ]条");
+            this.output.setForeground(Color.GREEN);
+        } else {
+            this.output.setText("未知错误");
+            this.output.setForeground(Color.red);
         }
     }
 
@@ -654,9 +872,8 @@ public class AdUi extends FrontPanel {
      */
     public void jComboBoxClickEvent(JComboBox jComboBox) {
         if (this.appName == jComboBox) {
-            if (this.appName.getSelectedItem().toString().equals(
-                    this.getAppType.getAppName()
-            )) return;
+            if (AdSendConfig.HEADERS.get("Cookie") == null ||
+                    AdSendConfig.HEADERS.get("Cookie").length() < 1) AdSendConfig.loging();
             this.getAppType.setAppName(this.appName.getSelectedItem().toString());
             new Thread(this.getAppType).start();
         } else if (this.builtInAppType == jComboBox) {
@@ -779,23 +996,71 @@ public class AdUi extends FrontPanel {
         return builtInAppType;
     }
 
-    public static void main(String[] args) {
-        new AdUi("测试");
+
+    public JButton getShelves() {
+        return shelves;
     }
 
-    static {
-        new Thread(new Runnable() {
+    public void startLoging() {
+        this.threadPoint.execute(new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
-                    AdSendConfig.loging();
+                    try {
+                        AdSendConfig.loging();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     try {
                         Thread.sleep(1000 * 5 * 60);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        break;
                     }
                 }
             }
-        }).start();
+        }));
     }
+
+    public static void main(String[] args) {
+        new AdUi("测试");
+    }
+
+
+    class connAdDataBse implements Runnable {
+
+        @Override
+        public void run() {
+            Vector<String> vector = new Vector<>();
+            vector.add("否");
+            vector.add("是");
+            Vector<String> vectorErr = new Vector<>();
+            vectorErr.add("数据库获取失败,默认下架");
+            while (true) {
+                try {
+                    if ((sendAdConfiguration.getAdDataBse().isClosed())) {
+                        status.setModel(new DefaultComboBoxModel(vectorErr));
+                        status.setEnabled(false);
+                        adDataBse = AdDataBse.getAdDataBse();
+                    } else {
+                        status.setModel(new DefaultComboBoxModel(vector));
+                        status.setEnabled(true);
+                        status.setSelectedIndex(1);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    status.setModel(new DefaultComboBoxModel(vectorErr));
+                    status.setEnabled(false);
+                    adDataBse = AdDataBse.getAdDataBse();
+                }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    break;
+                }
+            }
+        }
+    }
+
 }

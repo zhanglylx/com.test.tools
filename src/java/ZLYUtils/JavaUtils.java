@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 
 public class JavaUtils {
@@ -36,6 +37,22 @@ public class JavaUtils {
                 new IllegalArgumentException("不是一个文件:" + file.getName());
         return file.getName().substring(
                 file.getName().lastIndexOf(".") + 1, file.getName().length());
+    }
+
+    public static boolean isDateString(String datevalue, String dateFormat) {
+        if(datevalue==null || dateFormat==null)return false;
+        if(datevalue.equals("") || dateFormat.equals(""))return false;
+        try {
+            SimpleDateFormat fmt = new SimpleDateFormat(dateFormat);
+            java.util.Date dd = fmt.parse(datevalue);
+            if (datevalue.equals(fmt.format(dd))) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 
@@ -74,6 +91,9 @@ public class JavaUtils {
 
 
     }
+
+
+
 
     /**
      * 解析html标签

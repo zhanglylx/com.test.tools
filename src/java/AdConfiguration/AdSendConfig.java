@@ -6,6 +6,8 @@ import ZLYUtils.NetworkHeaders;
 import sun.dc.pr.PRError;
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class AdSendConfig {
     public static final String SEL_APPNAME = "sel_appname";
@@ -44,7 +46,7 @@ public class AdSendConfig {
     public static final String ADD_AD_RELEASE = "/fm/addadrelease";
     public static Map<String, String> HEADERS;
     public static final String ZHI_TOU = "直投(请在广告类型中选取直投广告)";
-    public static final String SINGLE_CLICK_Num = "singleClickNum";
+    public static final String SINGLE_CLICK_NUM = "singleClickNum";
     public static final String DAY_TOTAL_CLICK_NUM = "dayTotalClickNum";
     public static final String TOTAL_CLICK_NUM = "totalClickNum";
     public static final String TOTAL_EXPOSURE_NUM = "totalExposureNum";
@@ -53,9 +55,26 @@ public class AdSendConfig {
     public static final String DATABASE_HOST = "192.168.1.246:3306/freezwsc";
     public static final String DATABASE_USERNAME = "root_rw";
     public static final String DATABASE_PASSWORD = "loto5522";
-
-
+    public static final String DATABASE_AD_TABLE_NAME = "freeadrelease";
     private static final String GDTXXL = "广点通信息流Banner";
+    public static final String[] AD_ANNOTATION = new String[]{
+            "GG-1:启动页全屏", "GG-2:书架公告", "GG-3:书架顶部通栏",
+            "GG-6:精品页顶部通栏", "GG-10:排行(书库)顶部通栏",
+            "GG-14:详情页顶部通栏", "GG-17:搜索顶部通栏",
+            "GG-26:详情页下载弹出", "GG-27:目录页顶部通栏",
+            "GG-30:阅读页底部通栏", "GG-31:阅读页插页",
+            "GG-32:书架封面", "GG-37:图书详情(H5)",
+            "GG-39:今日推荐(H5)", "GG-43:书架右下角悬浮",
+            "GG-45:精品榜单1和2之间", "GG-46:精品右下角悬浮",
+            "GG-55:赚钱顶部通栏", "GG-56:今日推荐底部通栏",
+            "GG-57:精品榜单2和3之间", "GG-58:男频榜单1和2之间",
+            "GG-59:男频榜单2和3之间", "GG-60:女频榜单1和2之间",
+            "GG-61:女频榜单2和3之间", "GG-62:精品顶部轮播banner位置2",
+            "GG-63:精品顶部轮播banner位置3", "GG-64:精品顶部轮播banner位置5",
+            "GG-65:详情页公告", "GG-66:搜索公告", "GG-67:阅读页公告",
+            "GG-69:精品页12榜间大banner", "GG-70:精品页23榜间大banner",
+            "GG-71:精品页34榜间大banner"
+    };
 
     /**
      * 获取内置广告位支持的广告类型
@@ -153,7 +172,7 @@ public class AdSendConfig {
         }
     }
 
-    public static void loging() {
+    public static synchronized void loging() {
         synchronized (AdSendConfig.class) {
             HEADERS = new HashMap<>();
             NetworkHeaders networkHeaders = new NetworkHeaders();

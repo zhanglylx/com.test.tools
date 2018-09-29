@@ -5,12 +5,12 @@ import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
 
 public class ConnectDataBase {
     private Connection con;
     private Statement stmt;
     private ResultSet rs;
-
     public ConnectDataBase(String DataBaseType) throws IllegalArgumentException, ClassNotFoundException {
         if (!"mysql".toUpperCase().equals(DataBaseType.toUpperCase())) {
             throw new IllegalArgumentException("\"暂时只支持mysql数据库\"");
@@ -34,16 +34,26 @@ public class ConnectDataBase {
      * @param password
      * @return
      */
-    public void coonnect(String url, String username, String password) throws IllegalArgumentException, SQLException,
+    public boolean coonnect(String url, String username, String password) throws IllegalArgumentException, SQLException,
             CommunicationsException {
         if (url == null) throw new IllegalArgumentException("url为空");
         if (username == null) throw new IllegalArgumentException("username为空");
         if (password == null) throw new IllegalArgumentException("password为空");
         if (!url.matches("^\\d+\\.\\d+\\.\\d+\\.\\d+:\\d+/.+$"))
             throw new IllegalArgumentException("url格式不正确:" + url);
-        con = DriverManager.getConnection("jdbc:mysql://" + url, username, password);
-        stmt = con.createStatement();
-        if (!con.isClosed()) System.out.println("数据库连接成功");
+        try {
+            this.con = DriverManager.getConnection("jdbc:mysql://" + url, username, password);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        this.stmt = con.createStatement();
+        if (!con.isClosed()) {
+            System.out.println("数据库连接成功");
+            return true;
+        }else {
+            return false;
+        }
+
     }
 
     public Connection getCon() {
@@ -60,6 +70,38 @@ public class ConnectDataBase {
     public ResultSet selectSql(String sql) throws SQLException {
         return stmt.executeQuery(sql);
     }
+
+    /**
+     * 增删改
+     *
+     * @param sql
+     * @param mapStatement key:编号  value:数据类型，值
+     * @return
+     * @throws SQLException
+     */
+    public int operationSql(String sql, Map<Integer, String> mapStatement) throws SQLException {
+        if (sql == null) throw new IllegalArgumentException("sql为空");
+        if (mapStatement == null || mapStatement.size() == 0)
+            throw new IllegalArgumentException("mapStatement为空或无内容");
+        PreparedStatement preparedStatement = con.prepareStatement(sql);
+        for(Map.Entry<Integer,String> entry : mapStatement.entrySet()){
+            preparedStatement.setString(entry.getKey(),entry.getValue());
+        }
+        return preparedStatement.executeUpdate();
+    }
+
+    public PreparedStatement getPreparedStatement(String sql,Map<Integer, String> mapStatement) throws SQLException {
+        if (sql == null) throw new IllegalArgumentException("sql为空");
+        if (mapStatement == null || mapStatement.size() == 0)
+            throw new IllegalArgumentException("mapStatement为空或无内容");
+        PreparedStatement preparedStatement = con.prepareStatement(sql);
+        for(Map.Entry<Integer,String> entry : mapStatement.entrySet()){
+            preparedStatement.setString(entry.getKey(),entry.getValue());
+        }
+        return preparedStatement;
+    }
+
+
 
     public Map<String, List<String>> selectSqlMap(String sql) throws SQLException {
         ResultSetMetaData data = stmt.executeQuery(sql).getMetaData();

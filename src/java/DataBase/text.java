@@ -15,18 +15,7 @@ public class text {
             String id = null;
             while (rs.next()) {
                 //获取stuname这列数据
-                job = rs.getString("adNo");
-                //获取stuid这列数据
-                id = rs.getString("id");
-                //输出结果
-                System.out.println(id + "\t" + job);
-            }
-            rs =  c.selectSql("select * from freeadrelease");
-             job = null;
-             id = null;
-            while (rs.next()) {
-                //获取stuname这列数据
-                job = rs.getString("adNo");
+                job = rs.getString("appname");
                 //获取stuid这列数据
                 id = rs.getString("id");
                 //输出结果
