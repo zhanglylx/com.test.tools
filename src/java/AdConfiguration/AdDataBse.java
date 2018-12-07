@@ -129,15 +129,23 @@ public class AdDataBse {
             sql = sqlLikeAdd(sql, AdSendConfig.SINGLE_CLICK_NUM);
             sql = sqlLikeAdd(sql, AdSendConfig.SINGLE_EXPOSURE_NUM);
         }
-        sql = sqlEqualAdd(sql, AdSendConfig.AD_NO);
+        if(adNo==0){
+            sql = sqlLikeAdd(sql, AdSendConfig.AD_NO);
+        }else{
+            sql = sqlEqualAdd(sql, AdSendConfig.AD_NO);
+        }
+
         if (wifiShelves == 1) {
             sql = sqlEqualAdd(sql, AdSendConfig.WIFI_STATE);
         } else {
             sql = sqlLikeAdd(sql, AdSendConfig.WIFI_STATE);
-
-
         }
-        sql = sqlEqualAdd(sql, AdSendConfig.ADV_SING_NO);
+        if(ads.size()==0){
+            sql = sqlLikeAdd(sql, AdSendConfig.ADV_SING_NO);
+        }else {
+            sql = sqlEqualAdd(sql, AdSendConfig.ADV_SING_NO);
+        }
+
         int i = 0;
         try {
             PreparedStatement preparedStatement = this.connectDataBase.getCon().prepareStatement(sql);
@@ -182,16 +190,27 @@ public class AdDataBse {
                 preparedStatement.setString(13, "%");
                 preparedStatement.setString(14, "%");
             }
-            preparedStatement.setString(15, String.valueOf(adNo));
+            if(adNo==0){
+                preparedStatement.setString(15, "%");
+            }else{
+                preparedStatement.setString(15, String.valueOf(adNo));
+            }
+
             if (wifiShelves == 1) {
                 preparedStatement.setInt(16, wifi);
             } else {
                 preparedStatement.setString(16, "%");
             }
-            for (int ad : ads) {
-                preparedStatement.setString(17, "GG-" + ad);
+            if(ads.size()==0){
+                preparedStatement.setString(17, "%");
                 System.out.println(preparedStatement.toString());
                 i += preparedStatement.executeUpdate();
+            }else {
+                for (int ad : ads) {
+                    preparedStatement.setString(17, "GG-" + ad);
+                    System.out.println(preparedStatement.toString());
+                    i += preparedStatement.executeUpdate();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

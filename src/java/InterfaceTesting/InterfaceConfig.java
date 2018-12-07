@@ -19,7 +19,7 @@ public class InterfaceConfig {
     public static final String BODY = "body";
     public static final String ENPECTED_RESULT = "enpected result";//预期结果
     public static final String FORM_DATA = "form data";
-    public static final String TEST_PURPOSE = "test purpose";
+    public static final String TEST_PURPOSE = "RunMainPerformance purpose";
     public static final String SAVE_EXCEL_CASE_PATH = "result.xlsx";
     public static final String RUN_EXCEL_CASE_SAVE_PATH = "runResult";
     public static final String CONTAINS = "contains";

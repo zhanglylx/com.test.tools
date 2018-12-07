@@ -7,23 +7,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0bfae92-6287-4d15-b853-6e14d672c61e" name="Default" comment="更新">
-      <change afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/Squirrel/VideoRecording.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/ZLYUtils/test123.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/performanceTest/GetIphoneData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/performanceTest/RunMainPerformance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/performanceTest/Statistical.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/performanceTest/avg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/zhanglianyu_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/zhanglianyu_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/File/测试地址/免费电子书配置地址.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试地址/免费电子书配置地址.xmind" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/File/测试模板/测试进度模板.eml" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试模板/测试进度模板.eml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/File/测试流程/软件测试规范.doc" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试流程/软件测试规范.doc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/screen/Squirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/screen/Squirrel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/screen/copySquirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/screen/copySquirrel.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/免费电子书配置地址.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/免费电子书配置地址.xmind" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试报告模板.doc" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试报告模板.doc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试进度模板.eml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试进度模板.eml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/软件测试规范.doc" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/软件测试规范.doc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/中文万维手机统计.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/中文万维手机统计.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/screen/Squirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/screen/Squirrel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info_unittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info_unittest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info_unittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info_unittest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/test1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/src/main/java/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,13 +76,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/com_test_tools$HomePage.ic" NAME="HomePage Coverage Results" MODIFIED="1536394815661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/com_test_tools$HomePage.ic" NAME="HomePage Coverage Results" MODIFIED="1539252028551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>SquirrelFrame.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/com_test_tools$SquirrelUi.ic" NAME="SquirrelUi Coverage Results" MODIFIED="1533212516220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>InterfaceTesting.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/com_test_tools$AdUi.ic" NAME="AdUi Coverage Results" MODIFIED="1537717896117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/com_test_tools$AdUi.ic" NAME="AdUi Coverage Results" MODIFIED="1538197317533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>AdConfiguration.*</FILTER>
     </SUITE>
   </component>
@@ -61,123 +102,66 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="FrameUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2943">
+              <caret line="121" column="25" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpUtils.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="466" column="37" lean-forward="true" selection-start-line="466" selection-start-column="37" selection-end-line="466" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#6909#6910#0" expanded="true" />
+                <element signature="e#6954#6955#0" expanded="true" />
+                <element signature="e#7860#7861#0" expanded="true" />
+                <element signature="e#7908#7909#0" expanded="true" />
+                <element signature="e#12963#12964#0" expanded="true" />
+                <element signature="e#13016#13017#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="log4j.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/log4j.properties">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1404">
+              <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pane.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1890">
+              <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AdUi.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-611">
-              <caret line="534" column="70" selection-start-line="534" selection-start-column="70" selection-end-line="534" selection-end-column="70" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#17858#17859#0" expanded="true" />
-                <element signature="e#17908#17909#0" expanded="true" />
-                <element signature="e#19828#19829#0" expanded="true" />
-                <element signature="e#19904#19905#0" expanded="true" />
-                <element signature="e#23659#23660#0" expanded="true" />
-                <element signature="e#23689#23690#0" expanded="true" />
-                <element signature="e#23738#23739#0" expanded="true" />
-                <element signature="e#23776#23777#0" expanded="true" />
-                <element signature="e#23806#23807#0" expanded="true" />
-                <element signature="e#23836#23837#0" expanded="true" />
-                <element signature="e#23885#23886#0" expanded="true" />
-                <element signature="e#23923#23924#0" expanded="true" />
-                <element signature="e#23967#23968#0" expanded="true" />
-                <element signature="e#24004#24005#0" expanded="true" />
-                <element signature="e#24050#24051#0" expanded="true" />
-                <element signature="e#24080#24081#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SendAdConfiguration.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="141" column="54" selection-start-line="141" selection-start-column="54" selection-end-line="141" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#6331#6332#0" expanded="true" />
-                <element signature="e#6357#6358#0" expanded="true" />
-                <element signature="e#6584#6585#0" expanded="true" />
-                <element signature="e#6627#6628#0" expanded="true" />
-                <element signature="e#9795#9796#0" expanded="true" />
-                <element signature="e#9831#9832#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectDataBase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="83" column="25" lean-forward="true" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1606#1607#0" expanded="true" />
-                <element signature="e#1632#1633#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DriverManager.java" pinned="false" current-in-tab="false">
-        <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/sql/DriverManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Class.java" pinned="false" current-in-tab="false">
-        <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Class.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="260" column="27" selection-start-line="260" selection-start-column="27" selection-end-line="260" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdDataBse.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/DataBase/text.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="23" column="61" lean-forward="true" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ZhiBoDataBase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBoDataBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1853">
-              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ZhiBo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="405" column="60" selection-start-line="405" selection-start-column="45" selection-end-line="405" selection-end-column="60" />
-              <folding>
-                <element signature="e#4245#4246#0" expanded="true" />
-                <element signature="e#4319#4320#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="27486">
+              <caret line="1065" column="43" selection-start-line="1065" selection-start-column="35" selection-end-line="1065" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -185,11 +169,26 @@
       <file leaf-file-name="AdSendConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="4968">
+              <caret line="191" selection-start-line="191" selection-end-line="191" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetAppType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2457">
+              <caret line="110" column="40" selection-start-line="110" selection-start-column="40" selection-end-line="110" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExcelUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1323">
+              <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -208,22 +207,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ZLYUtils.</find>
-      <find>提交</find>
-      <find>保存用例</find>
-      <find>Colo</find>
-      <find>su</find>
-      <find>utf-8</find>
-      <find>buff</find>
-      <find>请选择一个</find>
-      <find>System.e</find>
-      <find>请至少将</find>
-      <find>5037</find>
-      <find>监听</find>
-      <find>用例正在</find>
-      <find>监听器</find>
-      <find>to</find>
-      <find>toL</find>
       <find>toLowerCase</find>
       <find>success</find>
       <find>System.out.pr</find>
@@ -233,6 +216,27 @@
       <find>wifi</find>
       <find>click</find>
       <find>System</find>
+      <find>sendAd</find>
+      <find>显示时间</find>
+      <find>22222</find>
+      <find>main</find>
+      <find>close</find>
+      <find>=====</find>
+      <find />
+      <find>setclose</find>
+      <find>GG</find>
+      <find>内置广告</find>
+      <find>setClos</find>
+      <find>json</find>
+      <find>数据库连接成</find>
+      <find>数据库</find>
+      <find>数据库连接成功</find>
+      <find>next</find>
+      <find>setClose</find>
+      <find>[</find>
+      <find>SchemeRegistry</find>
+      <find>System.</find>
+      <find>System.getProperty</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -244,57 +248,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java" />
-        <option value="$PROJECT_DIR$/src/java/DataBase/test1.java" />
-        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" />
-        <option value="$PROJECT_DIR$/src/test/test.java" />
-        <option value="$PROJECT_DIR$/src/java/image/ImageComparison.java" />
-        <option value="$PROJECT_DIR$/src/java/image_comparison/image_comparison/Config.java" />
-        <option value="$PROJECT_DIR$/src/java/image_comparison/image_comparison/image_comparison.java" />
-        <option value="$PROJECT_DIR$/src/java/image_comparison/Image_comparison_config.java" />
-        <option value="$PROJECT_DIR$/src/java/image_comparison/ImageComparison.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/DoubleOperation.java" />
-        <option value="$PROJECT_DIR$/src/java/package_inspection/CheckFile.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/VideoSwitch.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java" />
         <option value="$PROJECT_DIR$/src/java/Squirrel/FlowFrame.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" />
         <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdParameter.java" />
         <option value="$PROJECT_DIR$/src/java/UI/下拉列表与滚动条.java" />
         <option value="$PROJECT_DIR$/src/java/UI/按钮常用设置" />
         <option value="$PROJECT_DIR$/src/java/UI/JScrollpane" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/java/UI/日期" />
         <option value="$PROJECT_DIR$/src/java/SquirrelFrame/TestFronPanel.java" />
         <option value="$PROJECT_DIR$/src/java/UI/单行输入行JTextField" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" />
         <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java" />
-        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java" />
+        <option value="$PROJECT_DIR$/src/java/DataBase/text.java" />
+        <option value="$PROJECT_DIR$/src/java/knowledge/mysql数据库操作" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java" />
         <option value="$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" />
         <option value="$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" />
+        <option value="$PROJECT_DIR$/src/java/performanceTest/Cpu.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/DoubleOperation.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/test123.java" />
+        <option value="$PROJECT_DIR$/src/java/performanceTest/Statistical.java" />
+        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" />
+        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" />
+        <option value="$PROJECT_DIR$/src/java/performanceTest/test.java" />
+        <option value="$PROJECT_DIR$/src/java/performanceTest/GetIphoneData.java" />
+        <option value="$PROJECT_DIR$/src/java/performanceTest/RunMainPerformance.java" />
+        <option value="$PROJECT_DIR$/src/java/performanceTest/avg.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" />
         <option value="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" />
         <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" />
+        <option value="$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java" />
+        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecording.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j.properties" />
+        <option value="$PROJECT_DIR$/src/log4j.properties" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" />
       </list>
     </option>
   </component>
@@ -345,10 +349,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1456" />
-    <option name="height" value="876" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -356,9 +360,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -382,44 +386,7 @@
               <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="AdConfiguration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="DataBase" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="InterfaceTesting" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="InterfaceTesting" type="462c0819:PsiDirectoryNode" />
-              <item name="SquirrelUi.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Squirrel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Squirrel" type="462c0819:PsiDirectoryNode" />
-              <item name="ZhiBo.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+              <item name="ZLYUtils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -430,24 +397,31 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/java-study" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.46551725" />
+    <property name="project.structure.side.proportion" value="0.1150748" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ZLYUtils" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\com.test.tools\src\java" />
+      <recent name="E:\com.test.tools\target\classes" />
+      <recent name="E:\com.test.tools\src\main\webapp\WEB-INF" />
+      <recent name="E:\com.test.tools\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\com.test.tools\src" />
+      <recent name="E:\com.test.tools\src\java" />
+      <recent name="E:\com.test.tools\src\java\com\tools" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ZLYUtils" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\com.test.tools\src\java" />
-      <recent name="E:\com.test.tools\src\java\com\tools" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ZLYUtils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -462,40 +436,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AdDataBse">
-    <configuration name="AdDataBse" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AdConfiguration.AdDataBse" />
-      <module name="zhanglianyu" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="AdConfiguration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="AdUi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AdConfiguration.AdUi" />
-      <module name="zhanglianyu" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="AdConfiguration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="ConnectDataBase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DataBase.ConnectDataBase" />
-      <module name="zhanglianyu" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DataBase.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
+  <component name="RunManager" selected="Application.HomePage">
     <configuration name="HomePage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SquirrelFrame.HomePage" />
       <module name="zhanglianyu" />
@@ -507,19 +448,52 @@
         </pattern>
       </extension>
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="text" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DataBase.text" />
+    <configuration name="HttpUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ZLYUtils.HttpUtils" />
       <module name="zhanglianyu" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DataBase.*" />
+          <option name="PATTERN" value="ZLYUtils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+    </configuration>
+    <configuration name="Network" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ZLYUtils.Network" />
+      <module name="zhanglianyu" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ZLYUtils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="Uiautomator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ZLYUtils.Uiautomator" />
+      <module name="zhanglianyu" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ZLYUtils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="VideoRecording" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Squirrel.VideoRecording" />
+      <module name="zhanglianyu" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Squirrel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -561,18 +535,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.HomePage" />
-      <item itemvalue="Application.AdUi" />
-      <item itemvalue="Application.ConnectDataBase" />
-      <item itemvalue="Application.text" />
-      <item itemvalue="Application.AdDataBse" />
+      <item itemvalue="Application.Uiautomator" />
+      <item itemvalue="Application.Network" />
+      <item itemvalue="Application.HttpUtils" />
+      <item itemvalue="Application.VideoRecording" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AdDataBse" />
-        <item itemvalue="Application.text" />
-        <item itemvalue="Application.ConnectDataBase" />
-        <item itemvalue="Application.AdUi" />
         <item itemvalue="Application.HomePage" />
+        <item itemvalue="Application.VideoRecording" />
+        <item itemvalue="Application.HttpUtils" />
+        <item itemvalue="Application.Network" />
+        <item itemvalue="Application.Uiautomator" />
       </list>
     </recent_temporary>
   </component>
@@ -637,7 +611,53 @@
       <workItem from="1537676822554" duration="5920000" />
       <workItem from="1537712748410" duration="7297000" />
       <workItem from="1537755233855" duration="23429000" />
-      <workItem from="1537840165659" duration="40426000" />
+      <workItem from="1537840165659" duration="104151000" />
+      <workItem from="1538210046745" duration="1422000" />
+      <workItem from="1538211486045" duration="2229000" />
+      <workItem from="1538273340571" duration="14000" />
+      <workItem from="1538275743695" duration="99000" />
+      <workItem from="1538795156894" duration="441000" />
+      <workItem from="1538828033460" duration="16000" />
+      <workItem from="1538968778784" duration="2152000" />
+      <workItem from="1539051078134" duration="1698000" />
+      <workItem from="1539071429996" duration="271000" />
+      <workItem from="1539073431896" duration="127000" />
+      <workItem from="1539142326875" duration="650000" />
+      <workItem from="1539222669254" duration="448000" />
+      <workItem from="1539249784354" duration="480000" />
+      <workItem from="1539251640507" duration="413000" />
+      <workItem from="1539677594798" duration="2715000" />
+      <workItem from="1539747708577" duration="14000" />
+      <workItem from="1540177871016" duration="1400000" />
+      <workItem from="1540267012410" duration="905000" />
+      <workItem from="1540882560314" duration="10263000" />
+      <workItem from="1540965681987" duration="599000" />
+      <workItem from="1541038037415" duration="724000" />
+      <workItem from="1541062153715" duration="599000" />
+      <workItem from="1541400815753" duration="9282000" />
+      <workItem from="1541556312843" duration="11191000" />
+      <workItem from="1541578610201" duration="7061000" />
+      <workItem from="1541593249302" duration="2033000" />
+      <workItem from="1541834234396" duration="134000" />
+      <workItem from="1542012654344" duration="1853000" />
+      <workItem from="1542074199328" duration="9772000" />
+      <workItem from="1542259124840" duration="7000" />
+      <workItem from="1542271594211" duration="1242000" />
+      <workItem from="1542599494716" duration="62000" />
+      <workItem from="1542620747141" duration="3219000" />
+      <workItem from="1542764490685" duration="16948000" />
+      <workItem from="1542881920627" duration="7332000" />
+      <workItem from="1543063455443" duration="1478000" />
+      <workItem from="1543197776078" duration="623000" />
+      <workItem from="1543220604510" duration="629000" />
+      <workItem from="1543481058717" duration="220000" />
+      <workItem from="1543483564036" duration="2451000" />
+      <workItem from="1543569059852" duration="3818000" />
+      <workItem from="1543802304897" duration="610000" />
+      <workItem from="1543804575648" duration="184000" />
+      <workItem from="1543838875139" duration="4365000" />
+      <workItem from="1544087591242" duration="13000" />
+      <workItem from="1544165787510" duration="501000" />
     </task>
     <task id="LOCAL-00001" summary="添加项目">
       <created>1532672592785</created>
@@ -926,11 +946,46 @@
       <option name="project" value="LOCAL" />
       <updated>1537794633254</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="更新">
+      <created>1537957736215</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1537957736215</updated>
+    </task>
+    <task id="LOCAL-00043" summary="更新">
+      <created>1537957801885</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1537957801885</updated>
+    </task>
+    <task id="LOCAL-00044" summary="更新">
+      <created>1538197695082</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1538197695082</updated>
+    </task>
+    <task id="LOCAL-00045" summary="更新">
+      <created>1538213106600</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1538213106600</updated>
+    </task>
+    <task id="LOCAL-00046" summary="添加HttpUtils类">
+      <created>1542869734180</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1542869734180</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="374459000" />
+    <option name="totallyTimeSpent" value="550891000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -942,41 +997,41 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="bottom" id="TODO" order="13" weight="0.32839838" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="6" weight="0.32974428" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info id="Image Layers" order="1" />
+      <window_info anchor="bottom" id="Java Enterprise" order="4" sideWeight="0.49928367" weight="0.32974428" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5007163" side_tool="true" weight="0.32974428" />
       <window_info anchor="right" id="Maven Projects" order="0" weight="0.22314675" />
-      <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.7507163" weight="0.32569557" />
+      <window_info anchor="bottom" id="Version Control" order="5" sideWeight="0.49928367" weight="0.32839838" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32839838" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="0" />
-      <window_info anchor="right" id="Database" order="2" weight="0.32980332" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.36384267" />
+      <window_info id="Web" order="4" side_tool="true" />
+      <window_info anchor="right" id="Database" order="6" weight="0.32980332" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="10" weight="0.396072" />
-      <window_info anchor="bottom" id="TODO" order="13" weight="0.3289689" />
-      <window_info anchor="bottom" id="Messages" order="2" weight="0.35935396" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="1" />
-      <window_info anchor="bottom" id="Java Enterprise" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="bottom" id="Version Control" order="5" weight="0.32839838" />
-      <window_info active="true" anchor="bottom" id="Run" order="9" visible="true" weight="0.33647376" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.3289689" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.21633238" />
-      <window_info id="Web" order="4" side_tool="true" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.39434725" />
       <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="2" weight="0.22094926" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="7" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="8" weight="0.32839838" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="8" weight="0.32569557" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1012,7 +1067,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="更改截屏时通过睡眠方式阻塞抓取手机屏幕" />
     <MESSAGE value="修改创建Excel标题时，不能读取所有map的key" />
     <MESSAGE value="解决响应数据显示乱码问题" />
     <MESSAGE value="接受响应时指定utf-8格式" />
@@ -1037,492 +1091,373 @@
     <MESSAGE value="更换主题" />
     <MESSAGE value="重构获取广告" />
     <MESSAGE value="更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新" />
+    <MESSAGE value="添加HttpUtils类" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加HttpUtils类" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JComponent.java">
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/net/URLEncoder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45333">
-          <caret line="1791" column="16" selection-start-line="1791" selection-start-column="16" selection-end-line="1791" selection-end-column="16" />
+        <state relative-caret-position="314">
+          <caret line="199" column="25" selection-start-line="199" selection-start-column="25" selection-end-line="199" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/UI/下拉列表与滚动条.java">
+    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/entity/ContentType.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1157#1158#0" expanded="true" />
-            <element signature="e#1212#1213#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-6411">
+          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/HttpEntity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar!/org/apache/http/client/methods/HttpEntityEnclosingRequestBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/Locale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="579" column="31" selection-start-line="579" selection-start-column="31" selection-end-line="579" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/HttpHost.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Network.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="271" column="24" selection-end-line="623" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar!/org/apache/http/client/utils/URIBuilder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="318" column="22" selection-start-line="318" selection-start-column="22" selection-end-line="318" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/entity/StringEntity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/protocol/HTTP.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19305">
+          <caret line="771" column="35" selection-start-line="771" selection-start-column="35" selection-end-line="771" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5427">
+          <caret line="209" column="81" selection-start-line="209" selection-start-column="81" selection-end-line="209" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/HttpMessage.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="6756" column="22" lean-forward="true" selection-start-line="6756" selection-start-column="22" selection-end-line="6756" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="169" column="13" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
+        <state relative-caret-position="2349">
+          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/FlowLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="201" column="11" selection-start-line="201" selection-start-column="11" selection-end-line="201" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Dimension.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="109" column="11" selection-start-line="109" selection-start-column="11" selection-end-line="109" selection-end-column="11" />
-          <folding>
-            <element signature="e#2565#2566#0" expanded="true" />
-            <element signature="e#2604#2605#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JComboBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
-          <folding>
-            <element signature="e#29417#29418#0" expanded="true" />
-            <element signature="e#29473#29474#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="462" column="11" selection-start-line="462" selection-start-column="11" selection-end-line="462" selection-end-column="11" />
-          <folding>
-            <element signature="e#15704#15705#0" expanded="true" />
-            <element signature="e#15770#15771#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/Vector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3456">
-          <caret line="158" column="11" selection-start-line="158" selection-start-column="11" selection-end-line="158" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2943">
-          <caret line="120" column="84" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/ScrollPaneConstants.java">
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/UI/JScrollpane">
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/DoubleOperation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JLabel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4050">
-          <caret line="192" column="11" selection-start-line="192" selection-start-column="11" selection-end-line="192" selection-end-column="11" />
-          <folding>
-            <element signature="e#6096#6097#0" expanded="true" />
-            <element signature="e#6137#6138#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JScrollPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7587">
-          <caret line="321" column="32" selection-start-line="321" selection-start-column="23" selection-end-line="321" selection-end-column="32" />
-          <folding>
-            <element signature="e#10946#10947#0" expanded="true" />
-            <element signature="e#11034#11035#0" expanded="true" />
-            <element signature="e#15399#15400#0" expanded="true" />
-            <element signature="e#15445#15446#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Font.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13419">
-          <caret line="566" column="11" selection-start-line="566" selection-start-column="11" selection-end-line="566" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/UI/按钮常用设置">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/jdatepicker/jdatepicker/1.3.4/jdatepicker-1.3.4.jar!/org/jdatepicker/JDatePicker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/UI/日期">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/Date.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21951">
-          <caret line="884" column="24" selection-start-line="884" selection-start-column="24" selection-end-line="884" selection-end-column="24" />
-          <folding>
-            <element signature="e#37718#37719#0" expanded="true" />
-            <element signature="e#37754#37755#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Color.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3240">
-          <caret line="147" column="30" selection-start-line="147" selection-start-column="30" selection-end-line="147" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/TestFronPanel.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/UI/单行输入行JTextField">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2484">
-          <caret line="92" column="102" selection-start-line="92" selection-start-column="102" selection-end-line="92" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/event/KeyEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21465">
-          <caret line="823" column="28" selection-start-line="823" selection-start-column="28" selection-end-line="823" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="546" column="22" selection-start-line="546" selection-start-column="15" selection-end-line="546" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="80" column="30" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="189">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="434" column="20" selection-start-line="434" selection-start-column="20" selection-end-line="434" selection-end-column="20" />
-          <folding>
-            <element signature="e#15586#15587#0" expanded="true" />
-            <element signature="e#15631#15632#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="3726">
+          <caret line="164" column="11" selection-start-line="164" selection-start-column="11" selection-end-line="164" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/jsoup/jsoup/1.8.3/jsoup-1.8.3.jar!/org/jsoup/select/Elements.class">
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="337" column="20" selection-start-line="337" selection-start-column="20" selection-end-line="337" selection-end-column="20" />
-          <folding>
-            <element signature="e#7703#7704#0" expanded="true" />
-            <element signature="e#7754#7755#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="4995">
+          <caret line="211" column="6" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java">
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="78" column="15" selection-start-line="78" selection-start-column="15" selection-end-line="78" selection-end-column="15" />
+        <state relative-caret-position="78489">
+          <caret line="2992" column="25" selection-start-line="2992" selection-start-column="25" selection-end-line="2992" selection-end-column="25" />
           <folding>
-            <element signature="e#1077#1078#0" expanded="true" />
-            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#117893#117894#0" expanded="true" />
+            <element signature="e#117955#117956#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/LogPaint.java">
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/io/PrintStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20763">
+          <caret line="820" column="30" selection-start-line="820" selection-start-column="30" selection-end-line="820" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/com-test-tools/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar!/org/apache/commons/lang/StringUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4590">
+          <caret line="193" column="26" selection-start-line="193" selection-start-column="26" selection-end-line="193" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/net/URI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84915">
+          <caret line="3202" column="18" selection-start-line="3202" selection-start-column="18" selection-end-line="3202" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/performanceTest/avg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/package_inspection/CheckFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/image_comparison/Image_comparison_config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Menubar.java">
+    <entry file="file://$PROJECT_DIR$/src/java/image_comparison/ImageComparison.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="135">
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java">
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="51" column="39" lean-forward="true" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+        <state relative-caret-position="5319">
+          <caret line="221" column="25" selection-start-line="221" selection-start-column="25" selection-end-line="221" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java">
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        <state relative-caret-position="23112">
+          <caret line="913" column="16" selection-start-line="913" selection-start-column="16" selection-end-line="913" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java">
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#263#264#0" expanded="true" />
-            <element signature="e#308#309#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#581#582#0" expanded="true" />
-            <element signature="e#646#647#0" expanded="true" />
-            <element signature="e#684#685#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="265">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JFileChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2835">
+          <caret line="153" column="28" selection-start-line="153" selection-start-column="28" selection-end-line="153" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3942">
+          <caret line="150" column="30" selection-start-line="150" selection-start-column="30" selection-end-line="150" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2511">
+          <caret line="112" column="67" selection-start-line="112" selection-start-column="33" selection-end-line="112" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2268">
+          <caret line="98" column="43" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69444">
+          <caret line="2700" column="16" selection-start-line="2700" selection-start-column="16" selection-end-line="2700" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="61" selection-start-line="61" selection-end-line="63" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="11556">
+          <caret line="461" selection-start-line="461" selection-end-line="461" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java">
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="139" column="30" lean-forward="true" selection-start-line="139" selection-start-column="30" selection-end-line="139" selection-end-column="30" />
+          <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Component.java">
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="2171" column="45" selection-start-line="2171" selection-start-column="39" selection-end-line="2171" selection-end-column="45" />
-          <folding>
-            <element signature="e#74817#74818#0" expanded="true" />
-            <element signature="e#74854#74855#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="5157">
+          <caret line="198" column="26" selection-start-line="198" selection-start-column="26" selection-end-line="198" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecording.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="212" column="18" selection-start-line="212" selection-start-column="18" selection-end-line="212" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2440#2441#0" expanded="true" />
-            <element signature="e#2505#2506#0" expanded="true" />
-            <element signature="e#2958#2959#0" expanded="true" />
-            <element signature="e#3031#3032#0" expanded="true" />
-            <element signature="e#3932#3933#0" expanded="true" />
-            <element signature="e#3972#3973#0" expanded="true" />
-            <element signature="e#4456#4457#0" expanded="true" />
-            <element signature="e#4540#4541#0" expanded="true" />
-            <element signature="e#4886#4887#0" expanded="true" />
-            <element signature="e#4926#4927#0" expanded="true" />
-            <element signature="e#5804#5805#0" expanded="true" />
-            <element signature="e#5846#5847#0" expanded="true" />
-            <element signature="e#7383#7384#0" expanded="true" />
-            <element signature="e#7465#7466#0" expanded="true" />
-            <element signature="e#7751#7752#0" expanded="true" />
-            <element signature="e#7832#7833#0" expanded="true" />
-            <element signature="e#11257#11258#0" expanded="true" />
-            <element signature="e#11319#11320#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="459">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Network.java">
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+        <state relative-caret-position="1323">
+          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java">
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="117" column="13" selection-start-line="111" selection-start-column="1" selection-end-line="121" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#280#281#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2943">
+          <caret line="121" column="25" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-611">
-          <caret line="534" column="70" selection-start-line="534" selection-start-column="70" selection-end-line="534" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#17858#17859#0" expanded="true" />
-            <element signature="e#17908#17909#0" expanded="true" />
-            <element signature="e#19828#19829#0" expanded="true" />
-            <element signature="e#19904#19905#0" expanded="true" />
-            <element signature="e#23659#23660#0" expanded="true" />
-            <element signature="e#23689#23690#0" expanded="true" />
-            <element signature="e#23738#23739#0" expanded="true" />
-            <element signature="e#23776#23777#0" expanded="true" />
-            <element signature="e#23806#23807#0" expanded="true" />
-            <element signature="e#23836#23837#0" expanded="true" />
-            <element signature="e#23885#23886#0" expanded="true" />
-            <element signature="e#23923#23924#0" expanded="true" />
-            <element signature="e#23967#23968#0" expanded="true" />
-            <element signature="e#24004#24005#0" expanded="true" />
-            <element signature="e#24050#24051#0" expanded="true" />
-            <element signature="e#24080#24081#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="260" column="27" selection-start-line="260" selection-start-column="27" selection-end-line="260" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="141" column="54" selection-start-line="141" selection-start-column="54" selection-end-line="141" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6331#6332#0" expanded="true" />
-            <element signature="e#6357#6358#0" expanded="true" />
-            <element signature="e#6584#6585#0" expanded="true" />
-            <element signature="e#6627#6628#0" expanded="true" />
-            <element signature="e#9795#9796#0" expanded="true" />
-            <element signature="e#9831#9832#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="27486">
+          <caret line="1065" column="43" selection-start-line="1065" selection-start-column="35" selection-end-line="1065" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="4968">
+          <caret line="191" selection-start-line="191" selection-end-line="191" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2457">
+          <caret line="110" column="40" selection-start-line="110" selection-start-column="40" selection-end-line="110" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1404">
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="466" column="37" lean-forward="true" selection-start-line="466" selection-start-column="37" selection-end-line="466" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/sql/DriverManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/DataBase/text.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="23" column="61" lean-forward="true" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBoDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1853">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="405" column="60" selection-start-line="405" selection-start-column="45" selection-end-line="405" selection-end-column="60" />
-          <folding>
-            <element signature="e#4245#4246#0" expanded="true" />
-            <element signature="e#4319#4320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="83" column="25" lean-forward="true" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1606#1607#0" expanded="true" />
-            <element signature="e#1632#1633#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#6909#6910#0" expanded="true" />
+            <element signature="e#6954#6955#0" expanded="true" />
+            <element signature="e#7860#7861#0" expanded="true" />
+            <element signature="e#7908#7909#0" expanded="true" />
+            <element signature="e#12963#12964#0" expanded="true" />
+            <element signature="e#13016#13017#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1537,7 +1472,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.46551725" />
+                <option value="0.1150748" />
                 <option value="0.5" />
               </list>
             </option>
@@ -1550,7 +1485,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.46551725" />
+                <option value="0.1150748" />
               </list>
             </option>
           </splitter-proportions>
@@ -1585,7 +1520,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.46551725" />
+                <option value="0.1150748" />
                 <option value="0.6" />
               </list>
             </option>
@@ -1610,7 +1545,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.46551725" />
+                <option value="0.1150748" />
               </list>
             </option>
           </splitter-proportions>

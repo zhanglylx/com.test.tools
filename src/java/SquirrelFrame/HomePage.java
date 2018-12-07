@@ -46,9 +46,11 @@ public class HomePage extends JFrame {
     /**
      * 设置风格
      */
-    static{
+    static {
+
         try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+//            com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel
+            UIManager.setLookAndFeel(SquirrelConfig.UI);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
                 | UnsupportedLookAndFeelException e) {
             ((Throwable) e).printStackTrace();
@@ -414,7 +416,7 @@ class Cartoon implements Runnable {
 
     //        @Override
 //    public void run() {
-//        HomePage.cartoon.setIcon(new ImageIcon("image/test.png"));
+//        HomePage.cartoon.setIcon(new ImageIcon("image/RunMainPerformance.png"));
 //        try {
 //            Thread.sleep(2500);
 //        } catch (InterruptedException e) {
@@ -454,6 +456,8 @@ class Cartoon implements Runnable {
         boolean xBoolean = true;
         boolean yBoolean = true;
         HomePage.cartoonLog.setText(SquirrelConfig.TOOLSTITLE);
+        String[] text = {System.getProperty("user.name"),
+                "中文万维", "测试牛掰"};
         while (true) {
 
             if (xBoolean) {
@@ -472,11 +476,8 @@ class Cartoon implements Runnable {
             if (new Random().nextInt(100) == 9) {
                 HomePage.cartoonLog.setForeground(colors[i]);
                 i++;
-                if (new Random().nextInt(2) == 1) {
-                    HomePage.cartoonLog.setText("中文万维");
-                } else {
-                    HomePage.cartoonLog.setText(SquirrelConfig.TOOLSTITLE);
-                }
+                HomePage.cartoonLog.setText(
+                        text[new Random().nextInt(text.length)]);
             }
             if (i == colors.length - 1) i = 0;
             if (x > 400) {

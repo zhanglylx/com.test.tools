@@ -2,6 +2,7 @@ package ZLYUtils;
 
 import InterfaceTesting.RunExcelCase;
 import Squirrel.TestTools;
+import SquirrelFrame.SquirrelConfig;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 public class FrameUtils {
     /**
      * 设置Jbutton按钮中的图片
+     *
      * @param imageNamePath
      * @return
      */
@@ -32,46 +34,84 @@ public class FrameUtils {
         return jbutton;
     }
 
+    /**
+     * 设置默认界面UI
+     */
+    public static void setUiDefault() {
+        try {
+            UIManager.setLookAndFeel(SquirrelConfig.UI);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+    }
 
+    /**
+     * 设置文件选择UI
+     */
+    public static void setFileUi() {
+        try {
+            UIManager.setLookAndFeel(SquirrelConfig.FILE_UI);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 保存文件选择框
+     *
      * @return
      */
-    public static String saveFileFrame(Component parent,File fileName) throws IllegalArgumentException{
-        if(!fileName.exists()){
-           throw new IllegalArgumentException("fileName不存在:"+fileName);
-        }
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setBackground(Color.black);
-        FileSystemView fsv = FileSystemView.getFileSystemView();  //注意了，这里重要的一句
-        fileChooser.setDialogTitle("请选择要保存的路径");
-        fileChooser.setApproveButtonText("确定");
-        fileChooser.setSelectedFile(fileName);
-        fileChooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
+    public static String saveFileFrame(Component parent, File fileName) throws IllegalArgumentException {
+        try {
+            setFileUi();
+            if (!fileName.exists()) {
+                throw new IllegalArgumentException("fileName不存在:" + fileName);
+            }
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setBackground(Color.black);
+            FileSystemView fsv = FileSystemView.getFileSystemView();  //注意了，这里重要的一句
+            fileChooser.setDialogTitle("请选择要保存的路径");
+            fileChooser.setApproveButtonText("确定");
+            fileChooser.setSelectedFile(fileName);
+            fileChooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
 //        fileChooser.setAcceptAllFileFilterUsed(false);//去掉所有文件选项
-        int ch = fileChooser.showDialog(parent, "保存文件");
-        if (JFileChooser.APPROVE_OPTION == ch) {
+            int ch = fileChooser.showDialog(parent, "保存文件");
+            if (JFileChooser.APPROVE_OPTION == ch) {
 //            path = path.substring(0,path.lastIndexOf(File.separator)+1);
-            return fileChooser.getSelectedFile().getPath();
+                return fileChooser.getSelectedFile().getPath();
+            }
+        } finally {
+            setUiDefault();
         }
         return null;
     }
 
 
-
     /**
      * 将file中文件名称转换成数组
+     *
      * @param files
      * @param arrays
      * @return
      */
-    public static String[] addFilesShiftArrays(File[] files,String[] arrays){
-        if(arrays==null)arrays=new String[0];
-        if(files == null)throw new IllegalArgumentException("files为空");
+    public static String[] addFilesShiftArrays(File[] files, String[] arrays) {
+        if (arrays == null) arrays = new String[0];
+        if (files == null) throw new IllegalArgumentException("files为空");
         for (File file : files) {
             arrays = Arrays.copyOf(arrays, arrays.length + 1);
-            arrays[arrays.length-1]=file.getName();
+            arrays[arrays.length - 1] = file.getName();
         }
         return arrays;
     }
@@ -79,27 +119,28 @@ public class FrameUtils {
     /**
      * 选择文件框
      */
-    public static String   selectFile( ) {
-        JFileChooser chooser = new JFileChooser();
-        FileSystemView fsv = FileSystemView.getFileSystemView();
-        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
-        chooser.showDialog(new JLabel(), "选择");
-        File file = chooser.getSelectedFile();
-        return (file.getAbsoluteFile().toString());
-
+    public static String selectFile() {
+        try {
+            setFileUi();
+            JFileChooser chooser = new JFileChooser();
+            FileSystemView fsv = FileSystemView.getFileSystemView();
+            chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
+            chooser.showDialog(new JLabel(), "选择");
+            File file = chooser.getSelectedFile();
+            return (file.getAbsoluteFile().toString());
+        } finally {
+            setUiDefault();
+        }
     }
-
-
-
-
 
 
     /**
      * 添加JDialog窗口关闭监听器
+     *
      * @param jDialog
      */
-    public static void jdialogClose(final JDialog jDialog){
+    public static void jdialogClose(final JDialog jDialog) {
         jDialog.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -125,7 +166,7 @@ public class FrameUtils {
         jbutton.setFont(new Font("Arial", Font.BOLD, 0));//设置字体
 
 
-     //   setIconImage(Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)); 设置Frame图标
+        //   setIconImage(Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)); 设置Frame图标
 
 
         //image.setImage(image.getImage().getScaledInstance(300, 500, Image.SCALE_DEFAULT));设置图片大小
@@ -148,9 +189,8 @@ public class FrameUtils {
 //        });
 
 
-
-
     }
+
     /**
      * 设置按钮监听器
      */

@@ -25,10 +25,7 @@ public class TooltipUtil {
         }
     }
 
-    public static int yesOrNo(String message){
-      return   JOptionPane.showConfirmDialog(null, message, "提示",JOptionPane.YES_NO_OPTION); //返回值为0或1
 
-    }
 
     /**
      * 选择框

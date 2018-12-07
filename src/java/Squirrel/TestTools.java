@@ -12,7 +12,8 @@ public class TestTools {
     private static Map<String,Boolean> jButtonMapEnabled = new HashMap<>();
     public static void invokingTestFrame(String testFrame, JDialog jdialog,JButton jButton) {
         //InterfaceTesting可以多开
-        if(!InterfaceTesting.equals(jButton.getText()))setjButtonEnabledFalse(jButton);
+        if(!InterfaceTesting.equals(jButton.getText()) &&
+                !leaveBug.equals(jButton.getText()))setjButtonEnabledFalse(jButton);
         switch (testFrame) {
             case getADLog:
                 new GetADLog(testFrame, jdialog);

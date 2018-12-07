@@ -24,7 +24,8 @@ public class InstallPackage extends JFrame implements ActionListener {
     JButton btn;
     JTextField textField;
     JButton installPackage;
-    private  static final String installPackageText = "正在安装";
+    private static final String installPackageText = "正在安装";
+
     public InstallPackage(JButton jButton) {
         this.setTitle(jButton.getText());
         setIconImage(
@@ -45,7 +46,7 @@ public class InstallPackage extends JFrame implements ActionListener {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                if(installPackageText.equals(installPackage.getText())){
+                if (installPackageText.equals(installPackage.getText())) {
                     TooltipUtil.errTooltip("正在安装包，请安装完毕后退出");
                     return;
                 }
@@ -96,7 +97,7 @@ public class InstallPackage extends JFrame implements ActionListener {
             TooltipUtil.errTooltip("请选择一个.apk后缀文件");
             return false;
         }
-        if(!new File(text).exists()){
+        if (!new File(text).exists()) {
             TooltipUtil.errTooltip("文件不存在");
             return false;
         }
@@ -106,20 +107,35 @@ public class InstallPackage extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFileChooser chooser = new JFileChooser();
-        FileSystemView fsv = FileSystemView.getFileSystemView();
-        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
-        chooser.showDialog(new JLabel(), "选择");
-        File file = chooser.getSelectedFile();
-        textField.setText(file.getAbsoluteFile().toString());
+            try{
+                FrameUtils.setFileUi();
+            JFileChooser chooser = new JFileChooser();
+            FileSystemView fsv = FileSystemView.getFileSystemView();
+            chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
+            chooser.showDialog(new JLabel(), "选择");
+            File file = chooser.getSelectedFile();
+            textField.setText(file.getAbsoluteFile().toString());
+            }finally {
+                FrameUtils.setUiDefault();
+            }
+
+
+
+
 
     }
-    class installPackageRun implements Runnable{
+
+    /**
+     * 安装apk包
+     */
+    class installPackageRun implements Runnable {
         private JButton jButton;
-        public installPackageRun(JButton jButton){
+
+        public installPackageRun(JButton jButton) {
             this.jButton = jButton;
         }
+
         @Override
         public void run() {
             synchronized (this) {
@@ -127,7 +143,7 @@ public class InstallPackage extends JFrame implements ActionListener {
                 this.jButton.setText("正在安装");
                 String[] adb = AdbUtils.operationAdb("install -r " + textField.getText());
                 if (adb == null) {
-                    TooltipUtil.errTooltip("安装失败:失败原因不知道" );
+                    TooltipUtil.errTooltip("安装失败:失败原因不知道");
                     this.jButton.setEnabled(true);
                     this.jButton.setText(jButtonText);
                     return;
@@ -142,10 +158,16 @@ public class InstallPackage extends JFrame implements ActionListener {
                     }
                 }
                 if (!success) {
-                    if(Arrays.toString(adb).toLowerCase().contains("failed to stat")) {
+                    if (Arrays.toString(adb).toLowerCase().contains("failed to stat")) {
                         TooltipUtil.errTooltip("文件名称不支持:" + Arrays.toString(adb));
-                    }else {
-                        TooltipUtil.errTooltip("安装失败:" + Arrays.toString(adb));
+                    } else {
+                        if (Arrays.toString(adb).length() < 200) {
+                            TooltipUtil.errTooltip("安装失败:" + Arrays.toString(adb));
+                        } else {
+                            String s = Arrays.toString(adb);
+                            s = s.substring(0, 100) + "..." + s.substring(s.length() - 99, s.length());
+                            TooltipUtil.errTooltip("安装失败:" + s);
+                        }
                     }
                 }
                 jButton.setEnabled(true);

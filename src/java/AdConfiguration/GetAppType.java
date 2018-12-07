@@ -1,5 +1,6 @@
 package AdConfiguration;
 
+import ZLYUtils.HttpUtils;
 import ZLYUtils.JavaUtils;
 import ZLYUtils.Network;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
@@ -104,11 +105,13 @@ public class GetAppType implements Runnable {
     private boolean sendAppTypeAdNo() {
         this.adNoMap.clear();
         //发送获取广告类型请求
-        String response = Network.sendPost(
+        Map<String, String> map = new HashMap<>();
+        map.put("ran", String.valueOf(Math.random()));
+        map.put("appname", AdSendConfig.getAppNameCode(this.appName));
+        String response = HttpUtils.doPost(
                 AdSendConfig.HOST_TEST + AdSendConfig.GET_APP_TYPE_PATH
-                        + "?ran=" + Math.random()
-                , "appname=" + AdSendConfig.getAppNameCode(this.appName)
-                , AdSendConfig.HEADERS);
+                , map, AdSendConfig.HEADERS
+                ,null);
         try {
             Document doc = Jsoup.parse(response);
             Elements elements = doc.select("option");

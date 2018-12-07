@@ -20,7 +20,7 @@ import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_SQUIRREL;
 /**
  * 录屏与截图
  */
-public class VideoRecordingScreenshot extends Pane {
+public class VideoRecordingScreenshot extends JFrame {
     private JButton screenshot;
     private JButton recordVideo;
     private JButton videoSwitch;
@@ -33,7 +33,7 @@ public class VideoRecordingScreenshot extends Pane {
     private Thread threadRefreshTheImage;
 
     public VideoRecordingScreenshot(String title, JDialog jDialog) {
-        super(title, jDialog);
+        super(title);
         setTitle(title);
         setLayout(null);
 
@@ -96,7 +96,7 @@ public class VideoRecordingScreenshot extends Pane {
                     threadRefreshTheImage.interrupt();
                     break;
                 case VIDEOSWITCH:
-                    System.out.println(FrameUtils.selectFile());
+                  new VideoRecording().start();
             }
         });
     }

@@ -226,10 +226,10 @@ public class GetADLog extends Pane {
                             break;
                         }
                     }
-                    if(i==GG.length-1 && !GG[i].contains("No such file or directory")){
-                        System.out.println("---");
-                        AdbUtils.runAdb(" shell rm -r /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
-                    }
+//                    if(i==GG.length-1 && !GG[i].contains("No such file or directory")){
+//                        System.out.println("---");
+//                        AdbUtils.runAdb(" shell rm -r /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
+//                    }
                 }
                 ggStr = this.adIdRecord;
                 try {

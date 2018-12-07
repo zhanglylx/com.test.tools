@@ -1,22 +1,18 @@
 package ZLYUtils;
 
-import java.io.*;
-import java.net.*;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.util.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.*;
-import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
+import org.apache.http.config.SocketConfig;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -24,12 +20,24 @@ import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
+
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLHandshakeException;
+import java.io.IOException;
+import java.io.InterruptedIOException;
+import java.io.UnsupportedEncodingException;
+import java.net.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * http类型，用于发送网络请求
@@ -40,13 +48,36 @@ public class HttpUtils {
     public static final String CONTENT_TYPE_JSON_URL = "application/json;charset=utf-8";
 
     // utf-8字符编码
-    public static final String CHARSET_UTF_8 = "utf-8";
+    public static final String CHARSET_UTF_8 = "UTF-8";
 
     // 连接管理器
     private static PoolingHttpClientConnectionManager pool;
 
-    // 请求配置
-    private static RequestConfig requestConfig;
+    // 超时时间:ms
+    private static final int SOCKET_TIME_OUT = 60 * 1000;
+
+    //创建连接的最长时间:ms
+    private static final int CONNECTION_TIME_OUT = 60 * 2000;
+
+    // 从连接池中获取到连接的最长时间:ms
+    private static final int CONNECTION_REQUEST_TIME_OUT = 60 * 2000;
+
+    // 线程池最大连接数
+    private static final int POOL_MAX_TOTAL = 3 * 1000;
+
+    //默认的每个路由的最大连接数
+    private static final int POOL_MAX_PERROUTE = 10;
+
+    //检查永久链接的可用性:ms
+    private static final int POOL_VALIDATE_AFTER_INACTIVITY = 2 * 1000;
+
+    //关闭Socket等待时间，单位:s
+    private static final int SOCKET_LINGER = 60;
+
+
+    private static HttpClientBuilder httpBulder;
+    //请求重试处理
+    private static HttpRequestRetryHandler httpRequestRetryHandler;
 
     static {
         try {
@@ -63,70 +94,101 @@ public class HttpUtils {
             pool = new PoolingHttpClientConnectionManager(
                     socketFactoryRegistry);
             // 将最大连接数增加到200，实际项目最好从配置文件中读取这个值
-            pool.setMaxTotal(200);
-            // 设置最大路由
-            pool.setDefaultMaxPerRoute(2);
+            pool.setMaxTotal(POOL_MAX_TOTAL);
+            //默认的每个路由的最大连接数
+            pool.setDefaultMaxPerRoute(POOL_MAX_PERROUTE);
+            //官方推荐使用这个来检查永久链接的可用性，而不推荐每次请求的时候才去检查
+            pool.setValidateAfterInactivity(POOL_VALIDATE_AFTER_INACTIVITY);
+            //设置默认连接配置
+            pool.setDefaultSocketConfig(setSocketConfig());
+            //请求重试处理
+            httpRequestRetryHandler = (exception, executionCount, context) -> {
+                if (executionCount >= 3) {// 如果已经重试了5次，就放弃
+                    return false;
+                }
+                if (exception instanceof NoHttpResponseException) {// 如果服务器丢掉了连接，那么就重试
+                    return true;
+                }
+                if (exception instanceof SSLHandshakeException) {// 不要重试SSL握手异常
+                    return false;
+                }
+                if (exception instanceof InterruptedIOException) {// 超时
+                    return false;
+                }
+                if (exception instanceof UnknownHostException) {// 目标服务器不可达
+                    return false;
+                }
+                if (exception instanceof SSLException) {// ssl握手异常
+                    return false;
 
-            requestConfig = requestConfig();
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
+                }
+                HttpClientContext clientContext = HttpClientContext.adapt(context);
+                HttpRequest request = clientContext.getRequest();
+                // 如果请求是幂等的，就再次尝试
+                if (!(request instanceof HttpEntityEnclosingRequest)) {
+                    return true;
+                }
+                return false;
+            };
+            httpBulder = HttpClients.custom()
+                    .setConnectionManager(pool)
+                    // 设置请求配置
+                    .setDefaultRequestConfig(requestConfig())
+                    // 设置重试次数
+//                .setRetryHandler(new DefaultHttpRequestRetryHandler(0, false))
+                    .setRetryHandler(httpRequestRetryHandler);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+
+    /**
+     * socket配置（默认配置 和 某个host的配置）
+     */
+    private static SocketConfig setSocketConfig() {
+        SocketConfig socketConfig = SocketConfig.custom()
+                .setTcpNoDelay(true)     //是否立即发送数据，设置为true会关闭Socket缓冲，默认为false
+                .setSoReuseAddress(true) //是否可以在一个进程关闭Socket后，即使它还没有释放端口，其它进程还可以立即重用端口
+                .setSoTimeout(SOCKET_TIME_OUT)       //接收数据的等待超时时间，单位ms
+                .setSoLinger(SOCKET_LINGER)         //关闭Socket时，要么发送完所有数据，要么等待60s后，就关闭连接，此时socket.close()是阻塞的
+                .setSoKeepAlive(true)    //开启监视TCP连接是否有效
+                .build();
+        return socketConfig;
+    }
+
     /**
      * 构建请求配置信息
-     * 超时时间什么的
+     * 超时时间
      */
     private static RequestConfig requestConfig() {
-        // 根据默认超时限制初始化requestConfig
-        int socketTimeout = 10000;
-        int connectTimeout = 10000;
-        int connectionRequestTimeout = 10000;
-        HttpHost httpHost = new HttpHost("127.0.0.1", 8888);
         RequestConfig config = RequestConfig.custom()
-                .setConnectTimeout(connectTimeout) // 创建连接的最长时间
-                .setConnectionRequestTimeout(connectionRequestTimeout) // 从连接池中获取到连接的最长时间
-                .setSocketTimeout(socketTimeout) // 数据传输的最长时间
-                .setStaleConnectionCheckEnabled(true) // 提交请求前测试连接是否可用
-                .setProxy(httpHost)
+                .setConnectTimeout(CONNECTION_TIME_OUT) // 创建连接的最长时间
+                .setConnectionRequestTimeout(CONNECTION_REQUEST_TIME_OUT) // 从连接池中获取到连接的最长时间
+                .setSocketTimeout(SOCKET_TIME_OUT) // 数据传输的最长时间
+//                .setStaleConnectionCheckEnabled(true) // 提交请求前测试连接是否可用
+                .setProxy(new HttpHost("localhost", 8888))
                 .build();
 
         return config;
     }
 
     public static CloseableHttpClient getHttpClient() {
-
-        CloseableHttpClient httpClient = HttpClients.custom()
-                // 设置连接池管理
-                .setConnectionManager(pool)
-                // 设置请求配置
-                .setDefaultRequestConfig(requestConfig)
-                // 设置重试次数
-                .setRetryHandler(new DefaultHttpRequestRetryHandler(0, false))
-                .build();
-
+        CloseableHttpClient httpClient = httpBulder.build();
         return httpClient;
     }
+
 
     public static String doGet(URI uri) {
         return doGet(uri, null, null);
     }
 
-    public static String doGet(URI uri, Map<String, String> headers,
-                               NetworkHeaders networkHeaders) {
+    public static String doGet(URI uri, Map<String, String> headers
+            , NetworkHeaders networkHeaders) {
         String result = "";
-        CloseableHttpClient httpClient = null;
         try {
-            // 1. 创建HttpClient对象
-            httpClient = getHttpClient();
             // 2. 创建HttpGet对象
             HttpGet httpGet = new HttpGet(uri);
-            httpGet.setConfig(requestConfig());
             httpGet.addHeader("Accept-Encoding", "chunked");
             httpGet.addHeader("Charset", CHARSET_UTF_8);
             if (null != headers) {
@@ -134,34 +196,33 @@ public class HttpUtils {
                     httpGet.addHeader(entry.getKey(), entry.getValue());
                 }
             }
-            result = getResponse(httpClient.execute(httpGet), networkHeaders);
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
+            result = getResponse(getHttpClient().execute(httpGet), networkHeaders);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             //不可以关闭，不然连接池就会被关闭
-            //httpclient.close();
+//            httpClient.close();
         }
         return result;
     }
 
-    private static URI getURI(String url, String param) {
-        URI uri = null;
+    public static String doGet(String url, String param) {
+        return doGet(getURI(url, param));
+    }
 
+    public static URI getURI(String url, String param) {
+        URI uri = null;
         try {
             if (param == null || param.equals("")) {
                 uri = new URIBuilder(url).build();
             } else {
                 uri = new URIBuilder().setPath(url).setCustomQuery(param).build();
-
             }
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
         return uri;
     }
-
 
     /**
      * 获取响应正文
@@ -171,8 +232,7 @@ public class HttpUtils {
      * @return
      */
     private static String getResponse(CloseableHttpResponse closeableHttpResponse
-            , NetworkHeaders networkHeaders
-    ) {
+            , NetworkHeaders networkHeaders) {
         String result = "";
         try {
             if (closeableHttpResponse.getStatusLine().getStatusCode() != 200) {
@@ -187,7 +247,7 @@ public class HttpUtils {
             e.printStackTrace();
         } finally {
             try {
-                closeableHttpResponse.close();
+                if (closeableHttpResponse != null) closeableHttpResponse.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -203,14 +263,15 @@ public class HttpUtils {
      * @param closeableHttpResponse
      * @param networkHeaders
      */
-    private static void responseNetworkHeaders(CloseableHttpResponse closeableHttpResponse, NetworkHeaders networkHeaders) {
+    private static void responseNetworkHeaders(CloseableHttpResponse closeableHttpResponse
+            , NetworkHeaders networkHeaders) {
         if (networkHeaders != null) {
             Map<String, List<String>> map = new HashMap<>();
             List<String> list;
             for (Header header : closeableHttpResponse.getAllHeaders()) {
                 list = new ArrayList<>();
                 for (HeaderElement element : header.getElements()) {
-                    list.add(element.getValue());
+                    list.add(element.getName());
                 }
                 map.put(header.getName(), list);
             }
@@ -230,11 +291,10 @@ public class HttpUtils {
      * @param networkHeaders
      * @return
      */
-    public static String doPostJson(String url, String param,
-                                    Map<String, String> requestHead,
-                                    NetworkHeaders networkHeaders) {
-        // 创建Httpclient对象
-        CloseableHttpClient httpClient = getHttpClient();
+    public static String doPostJson(String url
+            , String param
+            , Map<String, String> requestHead
+            , NetworkHeaders networkHeaders) {
         String resultString = "";
         try {
             // 创建Http Post请求
@@ -244,7 +304,6 @@ public class HttpUtils {
             StringEntity entity = new StringEntity(param, ContentType.APPLICATION_JSON);
             entity.setContentType(CONTENT_TYPE_JSON_URL);
             httpPost.setEntity(entity);
-            httpPost.setConfig(requestConfig());
             httpPost.addHeader("Accept-Encoding", "chunked");
             httpPost.addHeader("Charset", CHARSET_UTF_8);
             if (null != requestHead) {
@@ -253,7 +312,7 @@ public class HttpUtils {
                 }
             }
             // 执行http请求
-            resultString = getResponse(httpClient.execute(httpPost), networkHeaders);
+            resultString = getResponse(getHttpClient().execute(httpPost), networkHeaders);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -265,15 +324,10 @@ public class HttpUtils {
             , Map<String, String> param
             , Map<String, String> requestHead
             , NetworkHeaders networkHeaders) {
-        LocalProxy();
-        // 创建Httpclient对象
-        CloseableHttpClient httpClient = getHttpClient();
-        CloseableHttpResponse response = null;
         String resultString = "";
         try {
             // 创建Http Post请求
             HttpPost httpPost = new HttpPost(url);
-            httpPost.setConfig(requestConfig());
             httpPost.addHeader("Accept-Encoding", "chunked");
             httpPost.addHeader("Charset", CHARSET_UTF_8);
             if (null != requestHead) {
@@ -292,16 +346,9 @@ public class HttpUtils {
                 httpPost.setEntity(entity);
             }
             // 执行http请求
-            resultString = getResponse(httpClient.execute(httpPost), networkHeaders);
+            resultString = getResponse(getHttpClient().execute(httpPost), networkHeaders);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                response.close();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
         }
         return resultString;
     }
@@ -328,7 +375,7 @@ public class HttpUtils {
     public static String getEncoderString(String param, String encoder) {
         param = param.replace("\n", "\r\n");
         try {
-            param = java.net.URLEncoder.encode(param, encoder);
+            param = URLEncoder.encode(param, encoder);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -351,7 +398,7 @@ public class HttpUtils {
             str = str.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
             str = str.replaceAll("\\+", "%2B");
             if (str.indexOf("%", str.length() - 1) != -1) str = str.substring(0, str.length() - 1);
-            result = java.net.URLDecoder.decode(str, encodingName);
+            result = URLDecoder.decode(str, encodingName);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -409,10 +456,9 @@ public class HttpUtils {
 
 
     public static void main(String[] args) {
-        Map<String,String> map = new HashMap<>();
-        map.put("1","2");
+        Map<String, String> map = new HashMap<>();
+        map.put("1", "ddddd=");
         System.out.println(doPost("http://www.baidu.com", map));
-
         URIBuilder uriBuilder = new URIBuilder();
         uriBuilder.setPath("http://www.baidu.com");
         uriBuilder.setHost("33");

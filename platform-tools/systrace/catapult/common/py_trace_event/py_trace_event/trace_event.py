@@ -9,7 +9,7 @@ r"""Instrumentation-based profiling for Python.
 trace_event allows you to hand-instrument your code with areas of interest.
 When enabled, trace_event logs the start and stop times of these events to a
 logfile. These resulting logfiles can be viewed with either Chrome's
-about:tracing UI or with the standalone trace_event_viewer available at
+about:tracing knowledge or with the standalone trace_event_viewer available at
   http://www.github.com/natduca/trace_event_viewer/
 
 To use trace event, call trace_event_enable and start instrumenting your code:
@@ -225,7 +225,7 @@ trace_end.__doc__ = """Records the end of an event of the given name.
 
   Make sure to issue a trace_end for every trace_begin issued. Failure to pair
   these calls will lead to bizarrely tall looking traces in the
-  trace_event_viewer UI.
+  trace_event_viewer knowledge.
   """
 
 trace.__doc__ = """Traces a block of code using a with statement.

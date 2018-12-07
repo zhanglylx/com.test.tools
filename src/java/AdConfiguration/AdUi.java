@@ -67,12 +67,15 @@ public class AdUi extends FrontPanel {
     private boolean runing;//是否正在执行提交广告
     private int defaultCloseOperation;
     private AdDataBse adDataBse;
+    private Color colorSucces;
+    private Color colorErr;
+
     public ExecutorService getThreadPoint() {
         return threadPoint;
     }
 
     private ExecutorService threadPoint;
-    final long awaitTime = 10;
+    final long awaitTime = 500;
 
     public AdUi(String title) {
         super(title);
@@ -102,6 +105,8 @@ public class AdUi extends FrontPanel {
         this.threadPoint.execute(this.getAppType);
         this.runing = false;
         this.defaultCloseOperation = 2;
+        this.colorSucces = Color.MAGENTA;
+        this.colorErr = Color.red;
         setVisible(true);
     }
 
@@ -304,7 +309,7 @@ public class AdUi extends FrontPanel {
         this.singleExposureNum = jTextFields[0];
         this.singleExposureNum.setToolTipText("默认500");
 
-        this.singleExposureNum.setText("500");
+        this.singleExposureNum.setText("5000");
         this.singleClickNum = jTextFields[1];
 
         jTextFields = setAdLimitedNumber("总曝光    :",
@@ -412,13 +417,13 @@ public class AdUi extends FrontPanel {
         this.jPanel.add(setJLabel("起始时间:"));
         this.jPanel.add(this.startDate = getDatePicker(new Date(), 77, 0, 200, 31));
         JLabel jLabel = setJLabel("终止时间:");
+
         Date date = new Date();
         date.setTime(date.getTime() + 31536000000l);//加1年
         this.endDate = getDatePicker(date, 400, 0, 200, 31);
         this.jPanel.add(this.endDate);
         jLabel.setLocation(320, this.listUpBoundary);
         this.jPanel.add(jLabel);
-
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -557,17 +562,22 @@ public class AdUi extends FrontPanel {
             TooltipUtil.errTooltip("正在提交数据中，请稍后关闭");
         } else {
             this.defaultCloseOperation = 2;
-            TestTools.setJButtonEnabled(this.getTitle());
-            this.threadPoint.shutdown();
-            try {
-                if (!this.threadPoint.awaitTermination(awaitTime, TimeUnit.MILLISECONDS)) {
-                    this.threadPoint.shutdownNow();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        TestTools.setJButtonEnabled(getTitle());
+                        threadPoint.shutdown();
+                        if (!threadPoint.awaitTermination(awaitTime, TimeUnit.MILLISECONDS)) {
+                            threadPoint.shutdownNow();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        threadPoint.shutdownNow();
+                    }
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                this.threadPoint.shutdownNow();
-            }
-            AdDataBse.getAdDataBse().close();
+            }).start();
+
         }
     }
 
@@ -711,19 +721,18 @@ public class AdUi extends FrontPanel {
             Thread.sleep(1200);
             setAdValues();
             sendAd(f);
-        }catch (java.lang.NullPointerException e){
+        } catch (java.lang.NullPointerException e) {
             e.printStackTrace();
             this.output.setText("发生异常,检查网络:" + e.toString());
-            this.output.setForeground(Color.red);
-        }catch (java.lang.NumberFormatException e){
+            this.output.setForeground(this.colorErr);
+        } catch (java.lang.NumberFormatException e) {
             e.printStackTrace();
             this.output.setText("发生异常,检查网络:" + e.toString());
-            this.output.setForeground(Color.red);
-        }
-        catch (Exception e) {
+            this.output.setForeground(this.colorErr);
+        } catch (Exception e) {
             e.printStackTrace();
             this.output.setText("发生异常,提交失败:" + e.toString());
-            this.output.setForeground(Color.red);
+            this.output.setForeground(this.colorErr);
         }
 
     }
@@ -770,37 +779,38 @@ public class AdUi extends FrontPanel {
      * 发送广告请求
      */
     public void sendAd(JButton f) {
+
         if (this.sb == f) {
             boolean b = this.sendAdConfiguration.sendAd();
             if (!b) {
                 this.output.setText("新建广告失败");
-                this.output.setForeground(Color.red);
+                this.output.setForeground(this.colorErr);
             } else {
-                this.output.setText("新建广告成功");
-                this.output.setForeground(Color.GREEN);
+                this.output.setText("共新建广告成功[ "+this.sendAdConfiguration.getAds().size()+" ]条");
+                this.output.setForeground(this.colorSucces);
             }
             if (this.status.getSelectedIndex() == 1 && b) {
                 int index = this.sendAdConfiguration.sendUpdateStaus();
                 if (index >=
                         this.sendAdConfiguration.getAds().size()) {
-                    this.output.setText(this.output.getText() + ",更新上架成功");
-                    this.output.setForeground(Color.GREEN);
+                    this.output.setText(this.output.getText() + ",更新上架成功[ "+index+" ]条");
+                    this.output.setForeground(this.colorSucces);
                 } else if (index > 0) {
                     this.output.setText(this.output.getText() + ",更新上架部分成功:" + index);
-                    this.output.setForeground(Color.red);
+                    this.output.setForeground(this.colorErr);
                 } else {
                     this.output.setText(this.output.getText() + ",更新上架状态失败，请到后台手动更新");
-                    this.output.setForeground(Color.red);
+                    this.output.setForeground(this.colorErr);
                 }
             }
         } else if (this.shelves == f) {
             this.output.setText("共下架广告[ " +
                     this.sendAdConfiguration.sendShelves()
                     + " ]条");
-            this.output.setForeground(Color.GREEN);
+            this.output.setForeground(this.colorSucces);
         } else {
             this.output.setText("未知错误");
-            this.output.setForeground(Color.red);
+            this.output.setForeground(this.colorErr);
         }
     }
 
@@ -892,20 +902,20 @@ public class AdUi extends FrontPanel {
                 setAppBuiltInAds(AdSendConfig.ZHI_TOU);
             }
 
-        }else if (this.adAnnotation == jComboBox){
+        } else if (this.adAnnotation == jComboBox) {
             String str = jComboBox.getSelectedItem().toString();
             try {
                 int n = Integer.parseInt(str.substring(str.indexOf("GG-") + "GG-".length(),
                         str.indexOf(":")));
-                for(JButton j : this.adsList){
-                    if(Integer.parseInt(j.getText())==n){
-                        if(!this.sendAdConfiguration.getAds().contains(n)){
+                for (JButton j : this.adsList) {
+                    if (Integer.parseInt(j.getText()) == n) {
+                        if (!this.sendAdConfiguration.getAds().contains(n)) {
                             this.sendAdConfiguration.addAds(n);
                             j.setBackground(this.click_pressColor);
                             j.setForeground(this.click_Foreground);
                             setAdsGG();
-                        }else{
-                            this.output.setText("[GG-"+n+"]广告已选择");
+                        } else {
+                            this.output.setText("[GG-" + n + "]广告已选择");
                             this.output.setForeground(Color.RED);
                         }
 
@@ -913,7 +923,7 @@ public class AdUi extends FrontPanel {
                     }
                 }
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -1085,6 +1095,8 @@ public class AdUi extends FrontPanel {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    AdDataBse.getAdDataBse().close();
+                    break;
                 }
             }
         }

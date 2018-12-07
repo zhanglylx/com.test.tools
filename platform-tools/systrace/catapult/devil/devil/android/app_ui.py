@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-"""Provides functionality to interact with UI elements of an Android app."""
+"""Provides functionality to interact with knowledge elements of an Android app."""
 
 import collections
 import re
@@ -26,7 +26,7 @@ _RE_BOUNDS = re.compile(
 class _UiNode(object):
 
   def __init__(self, device, xml_node, package=None):
-    """Object to interact with a UI node from an xml snapshot.
+    """Object to interact with a knowledge node from an xml snapshot.
 
     Note: there is usually no need to call this constructor directly. Instead,
     use an AppUi object (below) to grab an xml screenshot from a device and
@@ -47,7 +47,7 @@ class _UiNode(object):
 
   @property
   def bounds(self):
-    """Get a rectangle with the bounds of this UI node.
+    """Get a rectangle with the bounds of this knowledge node.
 
     Returns:
       A geometry.Rectangle instance.
@@ -56,11 +56,11 @@ class _UiNode(object):
     return geometry.Rectangle.FromDict({k: int(v) for k, v in d.iteritems()})
 
   def Tap(self, point=None, dp_units=False):
-    """Send a tap event to the UI node.
+    """Send a tap event to the knowledge node.
 
     Args:
       point: An optional geometry.Point instance indicating the location to
-        tap, relative to the bounds of the UI node, i.e. (0, 0) taps the
+        tap, relative to the bounds of the knowledge node, i.e. (0, 0) taps the
         top-left corner. If ommited, the center of the node is tapped.
       dp_units: If True, indicates that the coordinates of the point are given
         in device-independent pixels; otherwise they are assumed to be "real"
@@ -103,7 +103,7 @@ class _UiNode(object):
     Args:
       key: An integer with the index of the child to retrieve.
     Returns:
-      A UI node instance of the selected child.
+      A knowledge node instance of the selected child.
     Raises:
       IndexError if the index is out of range.
     """
@@ -134,7 +134,7 @@ class _UiNode(object):
       valid identifiers). At least one argument must be supplied, and arguments
       with a None value are ignored.
     Returns:
-      A UI node instance of the first descendant node that matches ALL the
+      A knowledge node instance of the first descendant node that matches ALL the
       given key-value criteria; or None if no such node is found.
     Raises:
       TypeError if no search arguments are provided.
@@ -166,7 +166,7 @@ class AppUi(object):
   # pylint: disable=unused-argument
 
   def __init__(self, device, package=None):
-    """Object to interact with the UI of an Android app.
+    """Object to interact with the knowledge of an Android app.
 
     Args:
       device: A device_utils.DeviceUtils instance.
@@ -182,7 +182,7 @@ class AppUi(object):
   @decorators.WithTimeoutAndRetriesDefaults(_DEFAULT_SHORT_TIMEOUT,
                                             _DEFAULT_SHORT_RETRIES)
   def _GetRootUiNode(self, timeout=None, retries=None):
-    """Get a node pointing to the root of the UI nodes on screen.
+    """Get a node pointing to the root of the knowledge nodes on screen.
 
     Note: This is currently implemented via adb calls to uiatomator and it
     is *slow*, ~2 secs per call. Do not rely on low-level implementation
@@ -194,7 +194,7 @@ class AppUi(object):
       timeout: A number of seconds to wait for the uiautomator dump.
       retries: Number of times to retry if the adb command fails.
     Returns:
-      A UI node instance pointing to the root of the xml screenshot.
+      A knowledge node instance pointing to the root of the xml screenshot.
     """
     with device_temp_file.DeviceTempFile(self._device.adb) as dtemp:
       self._device.RunShellCommand(['uiautomator', 'dump', dtemp.name],
@@ -217,7 +217,7 @@ class AppUi(object):
     Args:
       See _UiNode._Find.
     Returns:
-      A UI node instance of the node if found, otherwise None.
+      A knowledge node instance of the node if found, otherwise None.
     """
     # pylint: disable=protected-access
     return self._GetRootUiNode()._Find(**kwargs)
@@ -232,7 +232,7 @@ class AppUi(object):
       retries: Number of times to retry in case of adb command errors.
       For other args, to specify the search criteria, see _UiNode._Find.
     Returns:
-      The UI node instance found.
+      The knowledge node instance found.
     Raises:
       device_errors.CommandTimeoutError if the node is not found before the
       timeout.

@@ -66,7 +66,7 @@ class UiAppTest(unittest.TestCase):
   def _setMockXmlScreenshots(self, xml_docs):
     """Mock self.app._GetRootUiNode to load nodes from some test xml_docs.
 
-    Each time the method is called it will return a UI node for each string
+    Each time the method is called it will return a knowledge node for each string
     given in |xml_docs|, or rise a time out error when the list is exhausted.
     """
     # pylint: disable=protected-access

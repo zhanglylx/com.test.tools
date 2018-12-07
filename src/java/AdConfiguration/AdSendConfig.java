@@ -3,6 +3,7 @@ package AdConfiguration;
 
 import ZLYUtils.Network;
 import ZLYUtils.NetworkHeaders;
+import org.apache.commons.lang.StringUtils;
 import sun.dc.pr.PRError;
 
 import java.util.*;
@@ -86,11 +87,11 @@ public class AdSendConfig {
         //更改以下名称时需要同步更改builtInAdGG()；
         if (MFDZS.equals(appName)) {
             return new String[]{"广点通", "头条SDK", "今日头条TT_API", "头条TT_API_02"
-                    , "头条TT_API_03", "聚效", GDTXXL, ZHI_TOU,
+                    , "头条TT_API_03", "聚效", GDTXXL, ZHI_TOU, "猎鹰sdk",
                     "测试公告文字"};
         } else {
             return new String[]{"广点通", "头条SDK", "今日头条TT_API", GDTXXL
-                    , ZHI_TOU, "测试公告文字"};
+                    , ZHI_TOU, "猎鹰sdk", "测试公告文字"};
         }
     }
 
@@ -105,13 +106,13 @@ public class AdSendConfig {
         if (MFDZS.equals(appName)) {
             switch (appType) {
                 case "广点通":
-                    s = new int[]{1, 3, 6, 10, 14, 17, 26, 30, 31, 32, 37, 39, 40, 45, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64};
+                    s = new int[]{1, 3, 6, 10, 14, 17, 26, 27, 30, 31, 32, 37, 39, 40, 45, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64};
                     break;
                 case "头条SDK":
                     s = new int[]{1, 30, 31,};
                     break;
                 case "今日头条TT_API":
-                    s = new int[]{1, 3, 6, 10, 14, 17, 26, 27, 30, 31, 40, 55, 56, 62, 63, 64};
+                    s = new int[]{1, 3, 6, 10, 14, 17, 26, 27, 30, 31, 40, 55, 56, 62};
                     break;
                 case "头条TT_API_02":
                     s = new int[]{30, 31};
@@ -120,23 +121,26 @@ public class AdSendConfig {
                     s = new int[]{30, 31};
                     break;
                 case "聚效":
-                    s = new int[]{26, 31, 32, 37, 39, 43, 46};
+                    s = new int[]{31, 32, 43, 46};
                     break;
                 case GDTXXL:
-                    s = new int[]{3, 6, 10, 14, 17, 27, 30, 31, 40, 55, 56};
+                    s = new int[]{3, 6, 10, 14, 17, 27, 30, 40, 55, 56};
                     break;
                 case ZHI_TOU:
-                    s = new int[]{1, 2, 3, 6, 10, 14, 17, 26, 27, 30, 31, 32, 37, 39, 40, 43, 45, 46, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 69, 70, 71};
+                    s = new int[]{1, 2, 3, 6, 10, 14, 17, 26, 27, 30, 31, 32, 37, 39, 40, 43, 45, 46, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 69, 70, 71};
                     break;
                 case "测试公告文字":
                     s = new int[]{65, 66, 67};
+                    break;
+                case "猎鹰sdk":
+                    s = new int[]{1, 30, 31};
                     break;
             }
         } else if (MFZS.equals(appName)) {
 
             switch (appType) {
                 case "广点通":
-                    s = new int[]{1, 3, 6, 10, 14, 17, 26, 30, 31, 32, 37, 39, 45, 56, 57, 58, 59, 60, 61, 62, 63, 64};
+                    s = new int[]{1, 3, 6, 10, 14, 17, 26, 27, 30, 31, 32, 37, 39, 45, 56, 57, 58, 59, 60, 61, 62, 63, 64};
                     break;
                 case "头条SDK":
                     s = new int[]{1, 30, 31,};
@@ -152,6 +156,9 @@ public class AdSendConfig {
                     break;
                 case "测试公告文字":
                     s = new int[]{65, 66, 67};
+                    break;
+                case "猎鹰sdk":
+                    s = new int[]{1, 30, 31};
                     break;
             }
         }

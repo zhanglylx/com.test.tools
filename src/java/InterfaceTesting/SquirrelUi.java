@@ -215,7 +215,8 @@ class Case extends JPanel implements ActionListener {
                     caseMap.put(InterfaceConfig.END_TRANSCODING, endTranscoding.getText());
                     caseMap.put(InterfaceConfig.TEST_PURPOSE, testPurpose.getText());
                     saveMap.put(saveMap.size(), caseMap);
-                    ExcelUtils.createExcelFile(file, "test", saveMap);
+                    ExcelUtils.createExcelFile(file, "RunMainPerformance", saveMap,true);
+
                 } else if (f == runCaseExcel) {
                     try {
                         RunExcelCase runExcelCase = RunExcelCase.getRunExcelCase();

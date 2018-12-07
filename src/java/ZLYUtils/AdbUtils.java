@@ -29,35 +29,59 @@ public class AdbUtils {
      */
     private static String[] errRunAdb(String code) {
         String[] str = null;
+        Process pro = null;
+        BufferedReader br = null;
         try {
             String dev = " ";
             if (devices != null) dev = " -s " + devices + " ";
-//            Process pro = Runtime.getRuntime().exec(AppiumMethod.SquirrelConfig.ADB_PUTH +dev+ code);
-            Process pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
-            BufferedReader br;
+            pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
             br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
             str = adbBufferedReader(br, str);
-        } catch (IOException e) {
+            pro.waitFor();
+            Thread.sleep(100);
+        } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pro != null) pro.destroy();
         }
         return str;
     }
 
     public static String[] runAdb(String code) {
         String[] str = null;
+        Process pro = null;
+        BufferedReader br = null;
         try {
             String dev = " ";
             if (devices != null) dev = " -s " + devices + " ";
 //            Process pro = Runtime.getRuntime().exec(AppiumMethod.SquirrelConfig.ADB_PUTH +dev+ code);
-            Process pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
-            BufferedReader br;
+            pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
             br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("utf-8")));
             str = adbBufferedReader(br, str);
             if (str == null) {
                 str = errRunAdb(code);
             }
-        } catch (IOException e) {
+            pro.waitFor();
+            Thread.sleep(100);
+
+        } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pro != null) pro.destroy();
         }
         return str;
     }
@@ -160,10 +184,10 @@ public class AdbUtils {
      * @param code
      * @return
      */
-    public  static String[] operationAdb(String code) {
+    public static String[] operationAdb(String code) {
         //检查是否连接设备
         if (!checkDevices()) {
-                return null;
+            return null;
         }
         return runAdb(code);
     }

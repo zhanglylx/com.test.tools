@@ -21,7 +21,7 @@ public class Uiautomator {
                 " shell uiautomator dump /data/local/tmp/" + xmlName);
         if (uiautomator == null ||
                 !Arrays.toString(uiautomator).contains(
-                        "knowledge hierchary dumped to: /data/local/tmp/" + xmlName)) {
+                        "UI hierchary dumped to: /data/local/tmp/" + xmlName)) {
             return "没有获取到手机XML元素文件";
         }
         uiautomator = AdbUtils.runAdb(
@@ -68,7 +68,7 @@ public class Uiautomator {
     }
 
     /**
-     * 点击事件
+     * 输入事件
      */
     public static String inputText(String str) {
         if (str == null) return "str为空";
@@ -87,29 +87,45 @@ public class Uiautomator {
      * @return
      */
     public static String startApp(String packageName, String mainActivity) {
-        if(packageName==null)return "包名为空";
-        if(mainActivity==null)return "mainActivity为空";
+        if (packageName == null) return "包名为空";
+        if (mainActivity == null) return "mainActivity为空";
         return Arrays.toString(AdbUtils.runAdb("shell am start " + packageName + "/" + mainActivity));
     }
 
     /**
      * 安装apk
+     *
      * @param apk
      * @return
      */
-    public static String installApk(File apk){
-        if(!apk.exists())return "apk不存在";
-        String [] s = AdbUtils.runAdb(" install -r "+apk.getPath());
-        if(s==null)return "安装失败,返回结果为null:"+apk.getPath();
-        return Arrays.toString(s).
-                replace("[","").
-                replace("]","").toLowerCase();
+    public static boolean installApk(File apk) {
+        if (!apk.exists()) return false;
+        String[] s = AdbUtils.runAdb(" install -r " + apk.getPath());
+        if (s == null) return false;
+        if ("succeed".equals(Arrays.toString(s).
+                replace("[", "").
+                replace("]", "").toLowerCase().trim())) {
+            return true;
+        }
+        return false;
     }
 
-
+    /**
+     * 点击home键
+     * @return
+     */
+    public static boolean inputHome(){
+        return inputKeyevent(3);
+    }
+    public static boolean inputKeyevent(int keyevent) {
+        if (AdbUtils.runAdb("shell input keyevent  " + keyevent) == null) {
+            return true;
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
-        System.out.println(installApk(new File("./apk/1062.apk")));
+        System.out.println(getElement());
     }
 
 }

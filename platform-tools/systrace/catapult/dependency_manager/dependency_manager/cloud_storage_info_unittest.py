@@ -114,7 +114,7 @@ class CloudStorageInfoTest(unittest.TestCase):
 class TestGetRemotePath(fake_filesystem_unittest.TestCase):
   def setUp(self):
     self.setUpPyfakefs()
-    self.config_path = '/test/dep_config.json'
+    self.config_path = '/test/dep_config.'
     self.fs.CreateFile(self.config_path, contents='{}')
     self.download_path = '/foo/download_path'
     self.fs.CreateFile(

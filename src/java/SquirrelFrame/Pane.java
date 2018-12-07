@@ -124,8 +124,8 @@ public class Pane extends JDialog {
 
             }
         });
-        setLocation(400, 200);
-        setLocationRelativeTo(null);
+        setLocation(0, 0);
+//        setLocationRelativeTo(null);
         setVisible(true);
 
     }

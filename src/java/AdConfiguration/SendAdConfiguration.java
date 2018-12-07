@@ -104,10 +104,12 @@ public class SendAdConfiguration {
     /**
      * 检查参数
      */
-    public void checkValues() {
-        if (this.ads.size() == 0 ||
-                this.ads.toString().equals("[]")) throw new IllegalArgumentException("广告位为空");
-        if (this.adNo == 0l) throw new IllegalArgumentException("广告类型adNo未选择");
+    public void checkValues(boolean shelves) {
+        if (!shelves) {
+            if (this.ads.size() == 0 ||
+                    this.ads.toString().equals("[]")) throw new IllegalArgumentException("广告位为空");
+            if (this.adNo == 0l) throw new IllegalArgumentException("广告类型adNo未选择");
+        }
         if (this.relStartDate == null) throw new IllegalArgumentException("起始时间为空");
         if (this.relEndDate == null) throw new IllegalArgumentException("结束时间为空");
         if (this.version.size() == 0 ||
@@ -131,7 +133,7 @@ public class SendAdConfiguration {
      * @return
      */
     public int sendShelves() {
-        checkValues();
+        checkValues(true);
         if (this.channelidShelves == -1) throw new IllegalArgumentException("渠道下架未配置");
         if (this.versionShelves == -1) throw new IllegalArgumentException("版本下架未配置");
         if (this.timeShelves == -1) throw new IllegalArgumentException("时间下架未配置");
@@ -156,7 +158,7 @@ public class SendAdConfiguration {
      * @return true 发送成功
      */
     public boolean sendAd() throws IllegalArgumentException {
-        checkValues();
+        checkValues(false);
         this.urlValue.delete(0, this.urlValue.length());
         //拼接事件
         setSel();
@@ -188,21 +190,21 @@ public class SendAdConfiguration {
         if (this.repetition.equals(urlValues)) {
             if (TooltipUtil.yesNoTooltip("数据已提交，是否重复提交?") == 1) {
                 return false;
-            }else{
-                String time =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+            } else {
+                String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
                 urlValues = urlValues.replace(ZLYUtils.Network.getEncoderString(this.relStartDate, AdSendConfig.ENCODER),
                         time);
-                this.repetition =this.urlValue.toString();
+                this.repetition = this.urlValue.toString();
                 this.relStartDate = time;
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        TooltipUtil.generalTooltip("起始时间更改为:"+time);
+                        TooltipUtil.generalTooltip("起始时间更改为:" + time);
                     }
                 }).start();
             }
-        }else{
-            this.repetition =this.urlValue.toString();
+        } else {
+            this.repetition = this.urlValue.toString();
         }
 
         String response = Network.sendPost(AdSendConfig.HOST_TEST + AdSendConfig.ADD_AD_RELEASE,

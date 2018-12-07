@@ -75,7 +75,7 @@ public class test1 extends Frame {
             // 鼠标进入变更
             public void mouseEntered(MouseEvent e) {
                 // 顺便说一下，水平反转图的效果，是可以用代码做到的，后面讲解。
-                URL imageUrl = getClass().getResource("image/test.png");
+                URL imageUrl = getClass().getResource("image/RunMainPerformance.png");
                 act = Toolkit.getDefaultToolkit().createImage(imageUrl);
                 canvas.repaint();
             }

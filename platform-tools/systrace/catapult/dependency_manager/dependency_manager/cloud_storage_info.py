@@ -85,7 +85,7 @@ class CloudStorageInfo(object):
       dependency_path = self._archive_info.GetUnzippedPath()
     else:
       mode = os.stat(dependency_path).st_mode
-      os.chmod(dependency_path, mode | stat.S_IXUSR)
+      os.chmod(dependency_path, mode | stat.S_IX)
     return os.path.abspath(dependency_path)
 
   @property

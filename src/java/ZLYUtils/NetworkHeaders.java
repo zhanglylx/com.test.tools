@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 消息头类型
  */
-public class  NetworkHeaders {
+public class  NetworkHeaders  {
     private static NetworkHeaders networkHeaders;
     private Map<String,List<String>> headers;
     public NetworkHeaders(){
@@ -22,4 +22,6 @@ public class  NetworkHeaders {
     public void setHeaders(Map<String, List<String>> headers) {
         this.headers = headers;
     }
+
+
 }
