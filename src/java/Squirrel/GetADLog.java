@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class GetADLog extends Pane {
+public class GetADLog extends JFrame {
     public static String[] AD;
     Thread threadAdLog;
     JTextArea logPaint = null;
@@ -25,6 +25,7 @@ public class GetADLog extends Pane {
     private boolean runT = false;
     private Log log;
     private List<JButton> jButtonsAd;
+
     /**
      * 设置广告位
      */
@@ -36,8 +37,8 @@ public class GetADLog extends Pane {
         }
     }
 
-    public GetADLog(String buttonText, JDialog frame) {
-        super(buttonText, frame);
+    public GetADLog(String buttonText) {
+        super(buttonText);
         setLayout(new GridLayout(2, 10));
         JPanel jPa = new JPanel();
         jPa.setLayout(new GridLayout(10, 10));
@@ -89,16 +90,16 @@ public class GetADLog extends Pane {
     /**
      * 限制每个按钮间快速切换
      */
-    public void limitButtonClick(){
-        for(JButton jButton : this.jButtonsAd){
-                jButton.setEnabled(false);
+    public void limitButtonClick() {
+        for (JButton jButton : this.jButtonsAd) {
+            jButton.setEnabled(false);
         }
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        for(JButton jButton : this.jButtonsAd){
+        for (JButton jButton : this.jButtonsAd) {
             jButton.setEnabled(true);
         }
 
@@ -129,16 +130,14 @@ public class GetADLog extends Pane {
             if (!threadAdLog.isAlive()) {
                 threadAdLog = new Thread(log);
                 threadAdLog.start();
-            }else{
+            } else {
                 threadAdLog.interrupt();
             }
-            this.setLogPaint("正在刷新，请稍后:"+f.getText());
+            this.setLogPaint("正在刷新，请稍后:" + f.getText());
             log.setjButton(f);
         });
 
     }
-
-
 
 
     class Log implements Runnable {
@@ -205,7 +204,7 @@ public class GetADLog extends Pane {
                 if (errSucceed) addText("重试成功");
                 errSucceed = false;
                 b = true;
-                for (int i=0;i<GG.length;i++) {
+                for (int i = 0; i < GG.length; i++) {
                     //判断显示台是否已经显示当前信息
                     if (!stringBuffer.toString().contains(date + "  " + GG[i])) {
                         //判断是否切换广告，如果切换，当前取消打印
