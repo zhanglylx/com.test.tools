@@ -1,0 +1,28 @@
+//        Date date = new Date();
+//
+//        final JXDatePicker datepick = new JXDatePicker();
+//
+//        // 设置 date日期
+//        datepick.setDate(date);
+//        datepick.setFormats(new SimpleDateFormat("yyyy年MM月dd日 hh"));
+//        datepick.setBounds(137, 0, 177, 24);
+//        datepick.setEditable(true);
+//        datepick.setEnabled(true);
+//        datepick.setVisible(true);
+//        this.jPanel.add(datepick);
+//
+//        JButton b = newJButton("获取时间");
+//        b.setBounds(10, 0, 100, 30);
+//        this.jPanel.add(b);
+//
+//        b.addActionListener(new ActionListener() {
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                // 获取 日期
+//                Date d = datepick.getDate();
+//                JOptionPane.showMessageDialog(null, "获取控件中的日期 :" + d);
+//
+//            }
+//        });
+//        this.adConfigJPanel.add(this.jPanel);

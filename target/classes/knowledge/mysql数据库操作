@@ -1,0 +1,131 @@
+package sql_test;
+
+import java.sql.*;   //加入sql中本程序所需要的类，以实现链接功能
+import java.text.DateFormat;  //插入数据中有日期时需要用到
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class sqlconn
+{
+
+    public static void fetchdata(Connection conn)   //读取数据函数
+    {
+        try
+        {
+            Statement statement = conn.createStatement();  //用statement 来执行sql语句
+            String sql = "select * from emp";   //这是sql语句中的查询某个表，注意后面的emp是表名！！！
+            ResultSet rs = statement.executeQuery(sql);  //用于返回结果
+            System.out.println("---------------------------------------------------");
+            System.out.println("表中的数据有:");
+            System.out.println("英语姓名" + "\t\t" + "工作职业" + "\t\t" + "入职日期");
+            System.out.println("---------------------------------------------------");
+
+            String job = null;
+            String id = null;
+            String date = null;
+            while(rs.next()){
+                job = rs.getString("job");
+                id = rs.getString("ename");
+                date = rs.getString("hiredate");
+                System.out.println(id + "\t\t" + job + "\t" + date);
+            }
+            rs.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+                System.out.println("数据库数据读取成功！"+"\n");
+        }
+    }
+
+    public static void insertdata(Connection conn)  //插入数据函数
+    {
+        try
+        {
+            PreparedStatement psql = conn.prepareStatement("insert into emp (empno,ename,job,hiredate,sal)"+"values(?,?,?,?,?)");  //用preparedStatement预处理来执行sql语句
+            psql.setInt(1, 5555);  //给其五个参量分别“赋值”
+            psql.setString(2, "Tony");
+            psql.setString(3, "doctor");
+            DateFormat mydateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date mydate = mydateFormat.parse("2014-01-01");
+            psql.setDate(4, new java.sql.Date(mydate.getTime()));
+            psql.setFloat(5,(float)7999.9);
+            psql.executeUpdate();  //参数准备后执行语句
+            psql.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+                System.out.println("数据库数据插入成功！"+"\n");
+        }
+    }
+
+    public static void updatedata(Connection conn)  //修改数据函数
+    {
+        try
+        {
+            PreparedStatement psql;
+            psql = conn.prepareStatement("update emp set sal = ? where ename = ?");
+            psql.setFloat(1, (float)5000.0);
+            psql.setString(2, "Mark");
+            psql.executeUpdate();
+            psql.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+                System.out.println("数据库数据修改成功！"+"\n");
+        }
+    }
+
+    public static void deletedata(Connection conn)  //删除数据函数
+    {
+        try
+        {
+            PreparedStatement psql;  //还是用预处理
+            psql = conn.prepareStatement("delete from emp where sal < ?");
+            psql.setFloat(1, 3000.00F);  //删除sal值小于3000的所有数据
+            psql.executeUpdate();
+            psql.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+                System.out.println("数据库数据删除成功！"+"\n");
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        Connection conn;    //与特定数据库的连接（会话）的变量
+        String driver = "com.mysql.jdbc.Driver";  //驱动程序名？？？
+        String url = "jdbc:mysql://localhost:3306/job_test";  //指向要访问的数据库！注意后面跟的是数据库名称
+        String user = "root";   //navicat for sql配置的用户名
+        String password = "123456";  //navicat for sql配置的密码
+        try{
+            Class.forName(driver);  //用class加载动态链接库——驱动程序？？？
+            conn = DriverManager.getConnection(url,user,password);  //利用信息链接数据库
+            if(!conn.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+
+            fetchdata(conn);   //读取数据
+            insertdata(conn);  //插入数据
+            updatedata(conn);  //修改数据
+            deletedata(conn);  //删除数据
+
+            conn.close();
+        }catch(ClassNotFoundException e){  //catch不同的错误信息，并报错
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            System.out.println("数据库各项操作顺利进行！");
+        }
+    }
+
+}

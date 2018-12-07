@@ -1,0 +1,29 @@
+　public void setHorizontalScrollBarPolicy(int policy)
+
+　　确定水平滚动条何时显示在滚动窗格上。选项有：
+
+　　ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED ：需要时出现
+
+　　ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER ：从不出现
+
+　　ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS ：总是出现
+
+　　垂直滚动条的设置：
+
+　　public void setVerticalScrollBarPolicy(int policy)
+
+　　确定垂直滚动条何时显示在滚动窗格上。合法值是：
+
+　　ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED 需要时出现
+
+　　ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER 从不出现
+
+　　ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS 总是出现
+
+　　补充：
+
+　　比如JScrollPane对象叫scrollPane，加上这两句话就可以使它需要时才显示垂直滚动条，隐藏水平滚动条。
+
+　　scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+　　scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);

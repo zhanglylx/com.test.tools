@@ -7,20 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0bfae92-6287-4d15-b853-6e14d672c61e" name="Default" comment="更新">
-      <change afterPath="$PROJECT_DIR$/src/java/Squirrel/VideoRecording.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/ZLYUtils/test123.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/performanceTest/GetIphoneData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/performanceTest/RunMainPerformance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/performanceTest/Statistical.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/performanceTest/avg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/zhanglianyu_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/zhanglianyu_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/File/测试地址/免费电子书配置地址.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试地址/免费电子书配置地址.xmind" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/File/测试模板/测试进度模板.eml" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试模板/测试进度模板.eml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/File/测试流程/软件测试规范.doc" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试流程/软件测试规范.doc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/screen/Squirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/screen/Squirrel.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/screen/copySquirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/screen/copySquirrel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/TIM截图20180530183546.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/免费电子书配置地址.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/免费电子书配置地址.xmind" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试报告模板.doc" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试报告模板.doc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试进度模板.eml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试进度模板.eml" afterDir="false" />
@@ -33,38 +22,6 @@
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info_unittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info_unittest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/test1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/src/main/java/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -102,20 +59,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FrameUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2943">
-              <caret line="121" column="25" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HttpUtils.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HttpUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="466" column="37" lean-forward="true" selection-start-line="466" selection-start-column="37" selection-end-line="466" selection-end-column="37" />
+              <caret line="466" column="32" selection-start-line="466" selection-start-column="32" selection-end-line="466" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6909#6910#0" expanded="true" />
@@ -125,6 +73,15 @@
                 <element signature="e#12963#12964#0" expanded="true" />
                 <element signature="e#13016#13017#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -184,15 +141,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExcelUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1323">
-              <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -248,7 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/java/Squirrel/FlowFrame.java" />
         <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdParameter.java" />
         <option value="$PROJECT_DIR$/src/java/UI/下拉列表与滚动条.java" />
         <option value="$PROJECT_DIR$/src/java/UI/按钮常用设置" />
@@ -299,6 +246,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j.properties" />
         <option value="$PROJECT_DIR$/src/log4j.properties" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -373,20 +321,7 @@
             <path>
               <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
               <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ZLYUtils" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -657,7 +592,7 @@
       <workItem from="1543804575648" duration="184000" />
       <workItem from="1543838875139" duration="4365000" />
       <workItem from="1544087591242" duration="13000" />
-      <workItem from="1544165787510" duration="501000" />
+      <workItem from="1544165787510" duration="902000" />
     </task>
     <task id="LOCAL-00001" summary="添加项目">
       <created>1532672592785</created>
@@ -981,11 +916,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542869734180</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="更新">
+      <created>1544166437116</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1544166437116</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="550891000" />
+    <option name="totallyTimeSpent" value="551292000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -997,34 +939,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="bottom" id="TODO" order="13" weight="0.32839838" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="6" weight="0.32974428" />
-      <window_info anchor="right" id="Palette&#9;" order="2" />
-      <window_info id="Image Layers" order="1" />
-      <window_info anchor="bottom" id="Java Enterprise" order="4" sideWeight="0.49928367" weight="0.32974428" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5007163" side_tool="true" weight="0.32974428" />
       <window_info anchor="right" id="Maven Projects" order="0" weight="0.22314675" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.7507163" weight="0.32569557" />
-      <window_info anchor="bottom" id="Version Control" order="5" sideWeight="0.49928367" weight="0.32839838" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32839838" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.36384267" />
-      <window_info id="Web" order="4" side_tool="true" />
       <window_info anchor="right" id="Database" order="6" weight="0.32980332" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="10" weight="0.39434725" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="TODO" order="13" weight="0.32839838" />
       <window_info anchor="bottom" id="Messages" order="2" weight="0.22094926" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info id="Image Layers" order="1" />
+      <window_info anchor="bottom" id="Java Enterprise" order="4" sideWeight="0.49928367" weight="0.32974428" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.7507163" weight="0.32569557" />
+      <window_info anchor="bottom" id="Version Control" order="5" sideWeight="0.49928367" weight="0.32839838" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32839838" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.36384267" />
+      <window_info id="Web" order="4" side_tool="true" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
@@ -1090,9 +1032,9 @@
     <MESSAGE value="修改创建Excel时变量在循环中导致内存溢出" />
     <MESSAGE value="更换主题" />
     <MESSAGE value="重构获取广告" />
-    <MESSAGE value="更新" />
     <MESSAGE value="添加HttpUtils类" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加HttpUtils类" />
+    <MESSAGE value="更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1100,20 +1042,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/net/URLEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="199" column="25" selection-start-line="199" selection-start-column="25" selection-end-line="199" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/entity/ContentType.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6411">
-          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/HttpEntity.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1449,7 +1377,7 @@
     <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="466" column="37" lean-forward="true" selection-start-line="466" selection-start-column="37" selection-end-line="466" selection-end-column="37" />
+          <caret line="466" column="32" selection-start-line="466" selection-start-column="32" selection-end-line="466" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6909#6910#0" expanded="true" />
@@ -1459,6 +1387,16 @@
             <element signature="e#12963#12964#0" expanded="true" />
             <element signature="e#13016#13017#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image/TIM截图20180530183546.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
         </state>
       </provider>
     </entry>
