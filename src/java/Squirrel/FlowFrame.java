@@ -14,14 +14,13 @@ import java.io.File;
  */
 public class FlowFrame extends Pane {
     JButton saveButton ;
-    public FlowFrame(String buttonText, JDialog frame) {
-        super(buttonText, frame);
+    public FlowFrame(String buttonText) {
+        super(buttonText);
         //添加制定流程中的按钮
         String[] flow = FrameUtils.addFilesShiftArrays(
                 WindosUtils.getDirectoryFilesName(FlowConfig.fileSit+buttonText),new String[0]);
         addButton(flow);
         setWidthAndHeight(flow);
-        setJDialog();
     }
 
     /**

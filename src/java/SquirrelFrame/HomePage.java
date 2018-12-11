@@ -138,44 +138,7 @@ public class HomePage extends JFrame {
         f.addActionListener(e -> {
             //判断是否为刷新按钮
             if (refresh.equals(f)) {
-                textArea.setText("正在刷新");
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        int i = 0;
-                        while (true) {
-                            refresh.setEnabled(false);
-                            AdbUtils.setDevices();
-                            if (i > 4) i = 0;
-                            if (!textArea.getText().contains("正在刷新")) {
-                                refresh.setEnabled(true);
-                                break;
-                            }
-                            switch (i) {
-                                case 0:
-                                    textArea.setText("正在刷新.");
-                                    break;
-                                case 1:
-                                    textArea.setText("正在刷新..");
-                                    break;
-                                case 2:
-                                    textArea.setText("正在刷新...");
-                                    break;
-                                default:
-                                    textArea.setText("正在刷新....");
-                                    break;
-                            }
-                            i++;
-                            try {
-                                Thread.sleep(100);
-                            } catch (InterruptedException e1) {
-                                e1.printStackTrace();
-                            }
-                        }
-                    }
-                });
-                t.start();
+                refreshPhone();
                 return;
             }
             String text = f.getText();
@@ -188,10 +151,10 @@ public class HomePage extends JFrame {
                     clearIphoneButtpm.setEnabled(false);
                     break;
                 case workFlow:
-                    new Pane(text, this);
+                    new Pane(text);
                     break;
                 case testTools:
-                    new Pane(text, this);
+                    new Pane(text);
                     break;
                 case installPackage:
                     handleClickEvents(f);
@@ -204,6 +167,50 @@ public class HomePage extends JFrame {
 
             }
         });
+    }
+
+    /**
+     * 刷新手机动画
+     */
+    private void refreshPhone() {
+        textArea.setText("正在刷新");
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                int i = 0;
+                while (true) {
+                    refresh.setEnabled(false);
+                    AdbUtils.setDevices();
+                    if (i > 4) i = 0;
+                    if (!textArea.getText().contains("正在刷新")) {
+                        refresh.setEnabled(true);
+                        break;
+                    }
+                    switch (i) {
+                        case 0:
+                            textArea.setText("正在刷新.");
+                            break;
+                        case 1:
+                            textArea.setText("正在刷新..");
+                            break;
+                        case 2:
+                            textArea.setText("正在刷新...");
+                            break;
+                        default:
+                            textArea.setText("正在刷新....");
+                            break;
+                    }
+                    i++;
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
+        t.start();
     }
 
     /**

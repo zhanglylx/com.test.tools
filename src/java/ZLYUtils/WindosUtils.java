@@ -80,12 +80,12 @@ public class WindosUtils {
 
     /**
      * 复制文件
-     * @param jdialog
+     * @param jFrame
      * @param filePath
      * @param jbutton
      */
-    public static void copyFile(JDialog jdialog, String filePath, JButton jbutton) {
-        if (copyFile(jdialog, filePath)) {
+    public static void copyFile(JFrame jFrame, String filePath, JButton jbutton) {
+        if (copyFile(jFrame, filePath)) {
             jbutton.setIcon(new ImageIcon(("image/succeed.png")));
         } else {
             jbutton.setIcon(new ImageIcon(("image/err.png")));
@@ -95,10 +95,10 @@ public class WindosUtils {
     /**
      * 复制文件
      *
-     * @param jdialog
+     * @param jFrame
      * @param filePath
      */
-    public static boolean copyFile(JDialog jdialog, String filePath) {
+    public static boolean copyFile(JFrame jFrame, String filePath) {
         File fe = new File(filePath);
         String err = filePath;
         if (!fe.exists() && (filePath = getPuth(filePath)) == null) {
@@ -108,7 +108,7 @@ public class WindosUtils {
         fe = new File(filePath);
         String copyPath = null;
         try {
-            copyPath = FrameUtils.saveFileFrame(jdialog, new File(filePath));
+            copyPath = FrameUtils.saveFileFrame(jFrame, new File(filePath));
 
         } catch (IllegalArgumentException e) {
             SaveCrash.save(e.toString());

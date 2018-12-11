@@ -2,6 +2,7 @@ package Squirrel;
 
 import AdConfiguration.AdUi;
 import InterfaceTesting.SquirrelUi;
+import SquirrelFrame.FrontPanel;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -11,22 +12,22 @@ public class TestTools {
     public static Map<String, JButton> jButtonMap = new HashMap<>();
     private static Map<String, Boolean> jButtonMapEnabled = new HashMap<>();
 
-    public static void invokingTestFrame(String testFrame, JDialog jdialog, JButton jButton) {
+    public static void invokingTestFrame(String testFrame, JButton jButton) {
         //InterfaceTesting可以多开
         if (!InterfaceTesting.equals(jButton.getText()) &&
                 !leaveBug.equals(jButton.getText())) setjButtonEnabledFalse(jButton);
         switch (testFrame) {
             case getADLog:
-                new GetADLog(testFrame);
+                new GetADLogs(testFrame);
                 break;
             case leaveBug:
-                new LeaveBug(leaveBug, jdialog);
+                new LeaveBug(leaveBug);
                 break;
             case ZhiBoTools:
-                new ZhiBo(ZhiBoTools, jdialog);
+                new ZhiBo(ZhiBoTools);
                 break;
             case Video_RECORDING_AND_SCREENSHOT:
-                new VideoRecordingScreenshot(Video_RECORDING_AND_SCREENSHOT, jdialog);
+                new VideoRecordingScreenshot(Video_RECORDING_AND_SCREENSHOT);
                 break;
             case InterfaceTesting:
                 new SquirrelUi(InterfaceTesting);

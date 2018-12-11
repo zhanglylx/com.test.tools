@@ -65,7 +65,6 @@ public class AdUi extends FrontPanel {
     private JRadioButton fixedTime;//固定时间
     private JRadioButton cycleDayTime;//按天循环时间
     private boolean runing;//是否正在执行提交广告
-    private int defaultCloseOperation;
     private AdDataBse adDataBse;
     private Color colorSucces;
     private Color colorErr;
@@ -104,7 +103,6 @@ public class AdUi extends FrontPanel {
         this.getAppType = new GetAppType(this);
         this.threadPoint.execute(this.getAppType);
         this.runing = false;
-        this.defaultCloseOperation = 2;
         this.colorSucces = Color.MAGENTA;
         this.colorErr = Color.red;
         setVisible(true);
@@ -556,12 +554,12 @@ public class AdUi extends FrontPanel {
 
 
     @Override
-    public void setClose() {
+    public int setClose() {
         if (this.runing) {
-            this.defaultCloseOperation = 0;
             TooltipUtil.errTooltip("正在提交数据中，请稍后关闭");
+            return 0;
         } else {
-            this.defaultCloseOperation = 2;
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -577,13 +575,8 @@ public class AdUi extends FrontPanel {
                     }
                 }
             }).start();
-
+            return 2;
         }
-    }
-
-    @Override
-    public int setDefaultCloseOperation() {
-        return this.defaultCloseOperation;
     }
 
 
@@ -786,14 +779,14 @@ public class AdUi extends FrontPanel {
                 this.output.setText("新建广告失败");
                 this.output.setForeground(this.colorErr);
             } else {
-                this.output.setText("共新建广告成功[ "+this.sendAdConfiguration.getAds().size()+" ]条");
+                this.output.setText("共新建广告成功[ " + this.sendAdConfiguration.getAds().size() + " ]条");
                 this.output.setForeground(this.colorSucces);
             }
             if (this.status.getSelectedIndex() == 1 && b) {
                 int index = this.sendAdConfiguration.sendUpdateStaus();
                 if (index >=
                         this.sendAdConfiguration.getAds().size()) {
-                    this.output.setText(this.output.getText() + ",更新上架成功[ "+index+" ]条");
+                    this.output.setText(this.output.getText() + ",更新上架成功[ " + index + " ]条");
                     this.output.setForeground(this.colorSucces);
                 } else if (index > 0) {
                     this.output.setText(this.output.getText() + ",更新上架部分成功:" + index);

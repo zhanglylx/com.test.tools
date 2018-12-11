@@ -1,6 +1,8 @@
 package SquirrelFrame;
 
 import InterfaceTesting.InterfaceConfig;
+import Squirrel.TestTools;
+import ZLYUtils.FrameUtils;
 import com.eltima.components.ui.DatePicker;
 
 import javax.swing.*;
@@ -32,14 +34,12 @@ public abstract class FrontPanel extends JFrame {
     public FrontPanel(String title) {
         if (title == null) throw new IllegalArgumentException("title为空");
         setTitle(title);
-        setIconImage(
-                Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
-        );
+        setIconImage();
         this.click_pressColor = Color.red;
         this.enterIntoColor = Color.CYAN;
         this.defaultColor = Color.lightGray;
         this.defaultFontColor = Color.DARK_GRAY;
-        this.click_Foreground = Color.GREEN;
+        this.click_Foreground = Color.BLUE;
         addWindowListener();
     }
 
@@ -51,27 +51,19 @@ public abstract class FrontPanel extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-
-                setClose();
-                setDefaultCloseOperation(setDefaultCloseOperation());
+                setDefaultCloseOperation(setClose());
 
             }
         });
     }
 
     /**
-     * 确认是否关闭程序
-     *
-     * @return true为关闭
-     */
-    public abstract void setClose();
-
-    /**
      * 设置窗口关闭时的操作
      * 默认为JFrame.DISPOSE_ON_CLOSE隐藏当前窗口，并释放窗体占有的其他资源
      * JFrame.EXIT_ON_CLOSE 结束窗口所在的应用程序。在窗口被关闭的时候会退出JVM。
      */
-    public abstract int setDefaultCloseOperation();
+    public abstract int setClose();
+
 
     /**
      * 设置点击颜色
@@ -80,7 +72,7 @@ public abstract class FrontPanel extends JFrame {
      */
     public void setJButtonClickColor(JButton jButton) {
         setJButtonBackground(jButton, click_pressColor);
-        jButton.setForeground( this.click_Foreground);
+        jButton.setForeground(this.click_Foreground);
     }
 
     /**
@@ -88,7 +80,7 @@ public abstract class FrontPanel extends JFrame {
      *
      * @param jButton
      */
-    void buttonMouseListener(JButton jButton) {
+    private void buttonMouseListener(JButton jButton) {
         jButton.addActionListener(e -> {
             //设置颜色
             setJButtonClickColor(jButton);
@@ -104,7 +96,6 @@ public abstract class FrontPanel extends JFrame {
         jButton.addMouseListener(new MouseListener() {
             //点击按钮
             public void mouseClicked(MouseEvent e) {
-
             }
 
             //按下按钮
@@ -115,12 +106,10 @@ public abstract class FrontPanel extends JFrame {
                         buttonPressEvent(jButton);
                     }
                 }).start();
-
             }
 
             //鼠标释放
             public void mouseReleased(MouseEvent e) {
-
             }
 
             //进入按钮
@@ -130,22 +119,25 @@ public abstract class FrontPanel extends JFrame {
                     setJButtonBackground(jButton, enterIntoColor);
             }
 
-
             //离开按钮
             public void mouseExited(MouseEvent e) {
                 if (jButton.getBackground().getRGB() ==
                         enterIntoColor.getRGB())
                     setJButtonBackground(jButton, defaultColor);
             }
-
         });
     }
 
+    /**
+     * 设置按钮颜色
+     *
+     * @param jButtonBackground
+     * @param color
+     */
     public void setJButtonBackground(JButton jButtonBackground, Color color) {
         synchronized (this) {
             jButtonBackground.setBackground(color);
         }
-
     }
 
     public JRadioButton newJRadioButton(String title) {
@@ -357,21 +349,6 @@ public abstract class FrontPanel extends JFrame {
      */
     public abstract void buttonPressEvent(JButton f);
 
-
-    /**
-     * 选择文件框
-     */
-    public static String selectFile() {
-        JFileChooser chooser = new JFileChooser();
-        FileSystemView fsv = FileSystemView.getFileSystemView();
-        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
-        chooser.showDialog(new JLabel(), "选择");
-        File file = chooser.getSelectedFile();
-        return (file.getAbsoluteFile().toString());
-
-    }
-
     /**
      * 时间控件
      *
@@ -410,7 +387,7 @@ public abstract class FrontPanel extends JFrame {
     /**
      * 设置ICon
      */
-    public void setIconImage() {
+    private void setIconImage() {
         setIconImage(
                 Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
         );
@@ -513,7 +490,7 @@ public abstract class FrontPanel extends JFrame {
      */
     static {
         try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+            UIManager.setLookAndFeel(SquirrelConfig.UI);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
                 | UnsupportedLookAndFeelException e) {
             ((Throwable) e).printStackTrace();

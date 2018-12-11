@@ -1,6 +1,7 @@
 package Squirrel;
 
 import SquirrelFrame.FrameSqiorrel;
+import SquirrelFrame.FrontPanel;
 import SquirrelFrame.OutputText;
 import ZLYUtils.FrameUtils;
 import ZLYUtils.SaveCrash;
@@ -10,6 +11,7 @@ import org.apache.commons.lang.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
@@ -24,7 +26,7 @@ import static Squirrel.ZhiBo.backpack_gift;
 /**
  * 直播工具类
  */
-public class ZhiBo extends FrameSqiorrel {
+public class ZhiBo extends FrontPanel {
     public static final String backpack_gift = "获取背包礼物";
     public static final String[] zhiboArrays;
 
@@ -32,10 +34,9 @@ public class ZhiBo extends FrameSqiorrel {
         zhiboArrays = new String[]{backpack_gift};
     }
 
-    public ZhiBo(String title, JDialog jdialog) {
+    public ZhiBo(String title) {
 
-        super(title, jdialog);
-        addJButton(zhiboArrays);
+        super(title);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) { //设置退出监听器
@@ -48,15 +49,89 @@ public class ZhiBo extends FrameSqiorrel {
     }
 
     @Override
-    public void addButtonMouseListener(JButton f) {
-        f.addActionListener(e -> {
-            String text = f.getText();
-            switch (text) {
-                case backpack_gift:
-                    new Backpack_gift(this);
-            }
-        });
+    public int setClose() {
+        return 0;
     }
+
+    @Override
+    public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
+
+    }
+
+    @Override
+    public void jTextFieldEnteredEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldReleasedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldExitedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldInputEvent(JTextField jTextField, KeyEvent e) {
+
+    }
+
+    @Override
+    public void jTextFieldPressedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldClickEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void buttonClickEvent(JButton f) {
+        String text = f.getText();
+        switch (text) {
+            case backpack_gift:
+                new Backpack_gift(this);
+        }
+    }
+
+    @Override
+    public void buttonPressEvent(JButton f) {
+
+    }
+
+    @Override
+    public void jComboBoxClickEvent(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuCanceled(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeInvisible(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxDeselectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxSelectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeVisible(JComboBox jComboBox) {
+
+    }
+
 }
 
 /**
@@ -81,7 +156,7 @@ class Backpack_gift extends JDialog {
         refreshEndTherad = false;
     }
 
-    public Backpack_gift(JDialog jDialog) {
+    public Backpack_gift(JFrame jDialog) {
         super(jDialog, true);
         refresh = new JButton();
         refreshClass = new Refresh(refresh);

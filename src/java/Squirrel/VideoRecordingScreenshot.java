@@ -1,5 +1,6 @@
 package Squirrel;
 
+import SquirrelFrame.FrontPanel;
 import SquirrelFrame.Pane;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
@@ -8,6 +9,7 @@ import ZLYUtils.WindosUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -20,7 +22,7 @@ import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_SQUIRREL;
 /**
  * 录屏与截图
  */
-public class VideoRecordingScreenshot extends JFrame {
+public class VideoRecordingScreenshot extends FrontPanel {
     private JButton screenshot;
     private JButton recordVideo;
     private JButton videoSwitch;
@@ -32,27 +34,20 @@ public class VideoRecordingScreenshot extends JFrame {
     private JButton picture;
     private Thread threadRefreshTheImage;
 
-    public VideoRecordingScreenshot(String title, JDialog jDialog) {
+    public VideoRecordingScreenshot(String title) {
         super(title);
-        setTitle(title);
         setLayout(null);
-
-        screenshot = new JButton(SCREENSHOT);
+        screenshot = newJButton(SCREENSHOT);
         screenshot.setSize(60, 40);
         screenshot.setLocation(5, 0);
-        buttonMouseListener(screenshot);
         add(screenshot);
-
-        videoSwitch = new JButton(VIDEOSWITCH);
+        videoSwitch = newJButton(VIDEOSWITCH);
         videoSwitch.setSize(60, 40);
         videoSwitch.setLocation(5, 50);
-        buttonMouseListener(videoSwitch);
         add(videoSwitch);
-
-
         setLocationRelativeTo(null);//设置中间显示
         setSize(400, 700);
-        picture = new JButton();
+        picture = newJButton("");
         picture.setSize(300, 650);  //设置大小
         picture.setLocation(82, 0);
         refreshTheImage = RefreshTheImage.getRefreshTheImage(picture);
@@ -60,45 +55,105 @@ public class VideoRecordingScreenshot extends JFrame {
         threadRefreshTheImage.start();
         add(refreshTheImage.getjButton());
         setLocation(350, 10);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosing(e);
-                //关闭刷新线程
-                refreshTheImage.stopMe();
-                TestTools.setJButtonEnabled(getTitle());
-
-
-            }
-        });
         setVisible(true);
+    }
+
+    @Override
+    public int setClose() {
+        //关闭刷新线程
+        refreshTheImage.stopMe();
+        TestTools.setJButtonEnabled(getTitle());
+        return 2;
+    }
+
+    @Override
+    public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
 
     }
 
-    /**
-     * 设置鼠标监听
-     *
-     * @param f
-     */
-    public void buttonMouseListener(JButton f) {
-        f.addActionListener(e -> {
-            String text = f.getText();
-            switch (text) {
-                case SCREENSHOT:
-                    refreshTheImage.suspend();
-                    String saveFile = FrameUtils.saveFileFrame(this,
-                            new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL));
-                    if (saveFile != null) {
-                        if (!saveFile.endsWith(".png")) saveFile += ".png";
-                        WindosUtils.copyFile(new File(saveFile),
-                                new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING));
-                    }
-                    threadRefreshTheImage.interrupt();
-                    break;
-                case VIDEOSWITCH:
-                  new VideoRecording().start();
+    @Override
+    public void jTextFieldEnteredEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldReleasedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldExitedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldInputEvent(JTextField jTextField, KeyEvent e) {
+
+    }
+
+    @Override
+    public void jTextFieldPressedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldClickEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void buttonClickEvent(JButton f) {
+        if (screenshot == f) {
+            refreshTheImage.suspend();
+            String saveFile = FrameUtils.saveFileFrame(this,
+                    new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL));
+            if (saveFile != null) {
+                if (!saveFile.endsWith(".png")) saveFile += ".png";
+                WindosUtils.copyFile(new File(saveFile),
+                        new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING));
             }
-        });
+            threadRefreshTheImage.interrupt();
+        } else if (videoSwitch == f) {
+            new VideoRecording().start();
+
+        }
+        setJButtonBackground(f, this.defaultColor);
+    }
+
+
+    @Override
+    public void buttonPressEvent(JButton f) {
+
+    }
+
+    @Override
+    public void jComboBoxClickEvent(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuCanceled(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeInvisible(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxDeselectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxSelectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeVisible(JComboBox jComboBox) {
+
     }
 }
 
@@ -154,7 +209,7 @@ class RefreshTheImage implements Runnable {
             synchronized (RefreshTheImage.class) {
                 try {
                     AdbUtils.operationAdb("shell screencap -p /sdcard/" + SCREENSHOT_SQUIRREL);
-                    adb = AdbUtils.operationAdb("pull  /sdcard/" + SCREENSHOT_SQUIRREL + " "+
+                    adb = AdbUtils.operationAdb("pull  /sdcard/" + SCREENSHOT_SQUIRREL + " " +
                             SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
                     System.out.println(Arrays.toString(adb));
                     if (!Arrays.toString(adb).contains("100%")) {

@@ -10,6 +10,7 @@ import ZLYUtils.WindosUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.HashMap;
@@ -22,11 +23,11 @@ import static Squirrel.TestTools.*;
  * 窗格类
  * 工作流程和测试工具窗口
  */
-public class Pane extends JDialog {
+public class Pane extends FrontPanel {
     public static final String testFlow = "测试流程";
     public static final String approvalProcess = "审批流程";
     private static String[] flow;
-    public static boolean close;
+
 
     /**
      * 流程二级页面创建方法:在File中创建一个目录，系统会自动加在二级页面中，
@@ -37,21 +38,13 @@ public class Pane extends JDialog {
     }
 
 
-    public Pane(String buttonText, JDialog frame) {
-        super(frame, false);
-        setTitle(buttonText);
-        close = false;
-    }
-
     /**
      * 设置子窗格
      *
      * @param buttonText
-     * @param frame
      */
-    public Pane(String buttonText, JFrame frame) {
-        super(frame, false);
-        setTitle(buttonText);
+    public Pane(String buttonText) {
+        super(buttonText);
         switch (buttonText) {
             case HomePage.workFlow:
                 setLayout(new GridLayout(3, 3));
@@ -68,27 +61,110 @@ public class Pane extends JDialog {
                 setWidthAndHeight(TestTools.testTools);
                 break;
         }
-
-        setJDialog();
+        setVisible(true);
     }
 
-    /**
-     * 设置鼠标监听
-     *
-     * @param f
-     */
-    public void buttonMouseListener(JButton f) {
-        f.addActionListener(e -> {
-            String text = f.getText();
-            //帮助文档
-            if (checkArraysContainText(flow, text)) {
-                new FlowFrame(f.getText(), this);
-                //测试工具
-            } else if (checkArraysContainText(testTools, text)) {
-                invokingTestFrame(text, this, f);
-
+    @Override
+    public int setClose() {
+        Map<String, Boolean> jButtonMapEnabled = getJButtonMapEnabled();
+        for (Iterator<Map.Entry<String, Boolean>> iterator =
+             jButtonMapEnabled.entrySet().iterator(); iterator.hasNext(); ) {
+            if (!iterator.next().getValue()) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        TooltipUtil.errTooltip("存在未关闭的子项");
+                    }
+                }).start();
+                return 0;
             }
-        });
+        }
+        return 2;
+    }
+
+
+    @Override
+    public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
+
+    }
+
+    @Override
+    public void jTextFieldEnteredEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldReleasedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldExitedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldInputEvent(JTextField jTextField, KeyEvent e) {
+
+    }
+
+    @Override
+    public void jTextFieldPressedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldClickEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void buttonClickEvent(JButton f) {
+        String text = f.getText();
+        //帮助文档
+        if (checkArraysContainText(flow, text)) {
+            new FlowFrame(f.getText());
+            //测试工具
+        } else if (checkArraysContainText(testTools, text)) {
+            invokingTestFrame(text, f);
+            setJButtonBackground(f, this.defaultColor);
+        }
+
+    }
+
+    @Override
+    public void buttonPressEvent(JButton f) {
+
+    }
+
+    @Override
+    public void jComboBoxClickEvent(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuCanceled(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeInvisible(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxDeselectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxSelectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeVisible(JComboBox jComboBox) {
+
     }
 
     public boolean checkArraysContainText(String[] arrays, String text) {
@@ -96,38 +172,6 @@ public class Pane extends JDialog {
             if (str.equals(text)) return true;
         }
         return false;
-    }
-
-    /**
-     * 设置窗口
-     */
-    public void setJDialog() {
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                Map<String,Boolean> jButtonMapEnabled = getJButtonMapEnabled();
-                for (Iterator<Map.Entry<String, Boolean>> iterator =
-                     jButtonMapEnabled.entrySet().iterator(); iterator.hasNext(); ) {
-                    if (!iterator.next().getValue()) {
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                TooltipUtil.errTooltip("存在未关闭的子项");
-                            }
-                        }).start();
-                        return;
-                    }
-                }
-                super.windowClosing(e);
-                setDefaultCloseOperation(2);
-
-            }
-        });
-        setLocation(0, 0);
-//        setLocationRelativeTo(null);
-        setVisible(true);
-
     }
 
     /**
@@ -149,14 +193,9 @@ public class Pane extends JDialog {
      * @param text
      */
     public void setButton(String text) {
-        JButton testFlowButton = new JButton(text);
-        buttonMouseListener(testFlowButton);
+        JButton testFlowButton = newJButton(text);
         if (approvalProcess.equals(text)) testFlowButton.setEnabled(false);
         add(testFlowButton);
     }
 
-    public void openFile(JButton j, String file) {
-        j.setEnabled(false);
-        ZLYUtils.WindosUtils.openFile(FlowConfig.fileSit + file);
-    }
 }
