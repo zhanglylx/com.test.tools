@@ -1,6 +1,11 @@
 package InterfaceTesting;
 
+import ZLYUtils.HttpUtils;
 import ZLYUtils.Network;
+import org.apache.http.client.utils.URIBuilder;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * 发送网路请求
@@ -15,7 +20,7 @@ public class SendRequest {
     private String transcoding;//转码文本
     private String beginTranscoding;//转码文本开始正则
     private String endTranscoding;//转码文本开始正则
-    private String url;
+    private URI url;
 
     public SendRequest() {
     }
@@ -29,7 +34,7 @@ public class SendRequest {
     public String sendRequest() {
         if (this.transcoding != null && !"".equals(this.transcoding)) {
             String encoderStr = beginTranscoding + transcoding + endTranscoding;//转码前
-            if(!urlValues.contains(encoderStr) && !body.contains(encoderStr))return "转码文本未找到:"+transcoding;
+            if (!urlValues.contains(encoderStr) && !body.contains(encoderStr)) return "转码文本未找到:" + transcoding;
             //转码后
             String encoderText = beginTranscoding +
                     Network.getEncoderString(transcoding, "UTF-8") + endTranscoding;
@@ -41,18 +46,15 @@ public class SendRequest {
                 (path == null || "".equals(path))
                 ) return "";
         //给url赋值
-        if (!"".equals(urlValues)) {
-            this.url = agreementValues + "://" + path + "?" + urlValues;
-        } else {
-            this.url = agreementValues + "://" + path;
-        }
+
+        this.url = HttpUtils.getURI(this.agreementValues + "://" + path, urlValues);
         if (InterfaceConfig.URL_GET_NAME.equals(this.method)) {
-            return (Network.sendGet(agreementValues + "://" + path, urlValues,null));
+            return (HttpUtils.doGet(this.url));
         } else if (InterfaceConfig.URL_POST_NAME.equals(this.method)) {
             if ("".equals(urlValues)) {
-                return (Network.sendPost(agreementValues + "://" + path, body,null));
+                return (Network.sendPost(agreementValues + "://" + path, body, null));
             } else {
-                return (Network.sendPost(agreementValues + "://" + path + "?" + urlValues, body,null));
+                return (Network.sendPost(agreementValues + "://" + path + "?" + urlValues, body, null));
             }
 
         }
@@ -130,12 +132,9 @@ public class SendRequest {
     }
 
     public String getUrl() {
-        return url;
+        return url.toString();
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
 
     public String getBeginTranscoding() {
         return beginTranscoding;

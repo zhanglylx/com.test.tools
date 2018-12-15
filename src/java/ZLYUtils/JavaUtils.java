@@ -10,21 +10,11 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class JavaUtils {
-    /**
-     * 睡眠
-     *
-     * @param time
-     */
-    public static void sleep(Long time) {
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            SaveCrash.save(e.toString());
-        }
-    }
+
 
     /**
      * 获取文件后缀名称
@@ -41,8 +31,8 @@ public class JavaUtils {
     }
 
     public static boolean isDateString(String datevalue, String dateFormat) {
-        if(datevalue==null || dateFormat==null)return false;
-        if(datevalue.equals("") || dateFormat.equals(""))return false;
+        if (datevalue == null || dateFormat == null) return false;
+        if (datevalue.equals("") || dateFormat.equals("")) return false;
         try {
             SimpleDateFormat fmt = new SimpleDateFormat(dateFormat);
             java.util.Date dd = fmt.parse(datevalue);
@@ -57,25 +47,18 @@ public class JavaUtils {
     }
 
 
-    public static void sleep(int time) {
-        sleep((long) time);
-    }
+    /**
+     * 获取随机数
+     * @param min
+     * @param max
+     * @return
+     */
 
     public static int getRandomNumbers(int min, int max) {
         return new Random().nextInt(max) % (max - min + 1) + min;
     }
 
-    /**
-     * java方法
-     */
-    private void fangfa() {
 
-        try {
-            System.in.read();//按任意键
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     //解析Html
@@ -141,6 +124,7 @@ public class JavaUtils {
 
     /**
      * 检查字符串匹配度
+     *
      * @param str1
      * @param str2
      * @return 未匹配成功数量
@@ -186,6 +170,7 @@ public class JavaUtils {
 
     /**
      * 字符串的相似度
+     *
      * @param str1
      * @param str2
      * @return
@@ -239,4 +224,73 @@ public class JavaUtils {
             }
         }
     }
+
+    /**
+     * 替换换行符
+     * @param str   替换字符串
+     * @param alternate    替换内容
+     * @return
+     */
+    public static String replaceLineBreak(String str, String alternate) {
+        Pattern CRLF = Pattern.compile("(\r\n|\r|\n|\n\r)");
+        Matcher m = CRLF.matcher(str);
+        if (m.find()) {
+            str = m.replaceAll(alternate);
+        }
+        return str;
+    }
+
+
+    /**
+     * 随机生成一个中文字符
+     * @return
+     */
+    public static String getRandomChinese(){
+        return new String(new char[] { (char) (new Random().nextInt(20902) + 19968) });
+    }
+
+    /**
+     * 随机生成一个中文字符
+     * @param lenth 指定长度
+     * @return
+     */
+    public static String getRandomChinese(int lenth){
+        StringBuffer stringBuffer = new StringBuffer();
+        for(int i=0;i<lenth;i++){
+            stringBuffer.append(getRandomChinese());
+        }
+        return stringBuffer.toString();
+    }
+
+
+    /**
+     * 睡眠
+     * @param time
+     */
+    public static void sleep(Long time){
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            SaveCrash.save(e.toString());
+        }
+    }
+    public static void sleep(int time){
+        sleep((long)time);
+    }
+
+
+
+    /**
+     * java方法
+     */
+    private void fangfa(){
+
+        try {
+            System.in.read();//按任意键
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

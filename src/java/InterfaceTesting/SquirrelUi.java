@@ -185,6 +185,7 @@ class Case extends JPanel implements ActionListener {
                     sendRequest.setEndTranscoding(endTranscoding.getText());
                     if (!checkValues()) return;
                     String reposen = sendRequest.sendRequest();
+
                     resultRequest.setText(sendRequest.getUrl());
                     if (InterfaceConfig.URL_POST_NAME.equals(sendRequest.getMethod()))
                         resultRequest.append("\nbody:" + sendRequest.getBody());
@@ -273,7 +274,7 @@ class Case extends JPanel implements ActionListener {
      * 设置提交按钮
      */
     private void setSubmit() {
-        this.submit = setJButton(InterfaceConfig.SUBMIT, 60, 40, 180, 12);
+        this.submit = setJButton(InterfaceConfig.SUBMIT, 60, 40, 165, 12);
         add(this.submit);
     }
 
@@ -339,7 +340,8 @@ class Case extends JPanel implements ActionListener {
      * 设置测试目的
      */
     private void setTestPurpose() {
-        add(setJLbael("测试目的", 70, 70, 350, 0));
+        add(setJLbael("测试", 70, 70, 245, -8));
+        add(setJLbael("目的", 70, 70, 245, 10));
         this.testPurpose = setJTextArea(this.testPurpose);
         add(setJScrollPane(this.testPurpose, 300, 50, 280, 10));
     }
@@ -359,7 +361,6 @@ class Case extends JPanel implements ActionListener {
         this.resultResponse = setJTextArea(this.resultResponse);
         this.resultResponse.setFont(new Font("标楷体", Font.BOLD, 13));
         jPanel.add(setJScrollPane(this.resultResponse, 600, 400, 100, 110));
-        jPanel.add(setJLbael("请求内容:", 100, 100, 5, 0));
         jPanel.add(setJLbael("匹配规则:", 100, 100, 5, 470));
         group = new ButtonGroup();
         this.matchingRule = new JRadioButton(InterfaceConfig.EQUALS);
