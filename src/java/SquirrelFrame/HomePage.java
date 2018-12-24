@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.Random;
 
 /**
@@ -406,9 +407,7 @@ public class HomePage extends JFrame {
     }
 
 
-    public static void main(String[] args) {
-        HomePage.getHomePage();
-    }
+    public static void main(String[] args) { HomePage.getHomePage();}
 
 
 }

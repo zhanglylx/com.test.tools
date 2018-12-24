@@ -2,31 +2,644 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="zhanglianyu:jar" />
+      <artifact name="test.tools:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0bfae92-6287-4d15-b853-6e14d672c61e" name="Default" comment="更新">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/avcodec-58.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/avdevice-58.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/avfilter-7.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/avformat-58.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/avutil-56.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/ffmpeg.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/ffplay.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/ffprobe.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/postproc-55.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/swresample-3.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/bin/swscale-5.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/developer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/faq.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/fate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-all.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-bitstream-filters.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-codecs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-devices.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-filters.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-formats.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-protocols.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-resampler.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-scaler.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg-utils.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffmpeg.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffplay-all.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffplay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffprobe-all.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/ffprobe.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/general.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/git-howto.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/libavcodec.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/libavdevice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/libavfilter.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/libavformat.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/libavutil.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/libswresample.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/libswscale.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/mailing-list-faq.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/nut.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/platform.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/doc/style.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/presets/ffprobe.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/presets/libvpx-1080p.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/presets/libvpx-1080p50_60.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/presets/libvpx-360p.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/presets/libvpx-720p.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ffmpeg/presets/libvpx-720p50_60.ffpreset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/zhanglianyu_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/image/TIM截图20180530183546.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/免费电子书配置地址.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/免费电子书配置地址.xmind" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试报告模板.doc" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试报告模板.doc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试进度模板.eml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试进度模板.eml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/软件测试规范.doc" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/软件测试规范.doc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/中文万维手机统计.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/中文万维手机统计.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/screen/Squirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/screen/Squirrel.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info_unittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info_unittest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/screen/Squirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/screen/Squirrel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/screen/copySquirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/screen/copySquirrel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/人力部流程/考勤制度规范.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/人力部流程/请假加班外出流程.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/gitlab调整 - 新.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/openvpn ldap认证操作指南.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/【中文万维-技术中心-sleuth&amp;zipkin-第一重】.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/【中文万维-技术中心-测试和更新规范】.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/中文万维-钉钉用户使用说明书-无财务.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/产品开发流程.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/关于ldap用户密码修改与重置操作指南.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/开发环境.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/技术部日报流程.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/服务端工程结构规范.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/技术部流程/直播免费电子书新版本开发环境说明.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/松鼠帮助文档/接口测试工具使用说明.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/松鼠帮助文档/松鼠接口测试工具流程图.vsdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/OpenVpn使用文档.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/openvpn-install-2.4.6-I602.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/swagger使用说明.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/免费电子书配置地址.xmind" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试地址/测试环境地址和账户.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/中文书城600第一期冒烟测试.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/冒烟测试用例模板.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/接口测试标准文档.xmind" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试报告模板.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试计划信模板.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/测试进度模板.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试模板/软件测试流程规范.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/bug提交规范.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/bug流程.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/测试时间安排总结.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/测试流程.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/软件测试规范.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试流程/项目执行流程.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/中文万维手机统计.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/中文书城常用设备汇总.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/免费电子书常用设备汇总.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/测试持有手机.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/测试设备/直播常用设备汇总.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/组织架构/组织架构.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/行政部流程/提交集团法务合同归档登记表【模板】.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/行政部流程/提交集团财务单据登记表【模板】.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/行政部流程/用章、合同归档及财务单据相关流程.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/File/行政部流程/行政-关于用章、合同归档、财务票据提交及取回流程 1.1版.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/TIM截图20180530183546.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/TestTools.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/err.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/refresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/refresh/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/refresh/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/refresh/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/refresh/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/save.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/screen/Squirrel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/succeed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/image/wait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/commons-codec-1.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/commons-collections-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/commons-collections4-4.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/commons-lang-2.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/curvesapi-1.04.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/dom4j-1.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/mysql-connector-java-8.0.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/poi-3.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/poi-ooxml-3.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/poi-ooxml-schemas-3.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/protobuf-java-2.6.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/stax-api-1.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/wormy.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/xml-apis-1.0.b2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/lib/xmlbeans-2.6.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/AdbWinApi.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/AdbWinUsbApi.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/adb.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/api/annotations.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/api/api-versions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/dmtracedump.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/etc1tool.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/fastboot.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/hprof-conv.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/lib64/libc++.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/libwinpthread-1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/make_f2fs.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/mke2fs.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/mke2fs.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/package.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/source.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/sqlite3.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/NOTICE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/UPSTREAM_REVISION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/battor/battor/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/battor/battor/battor_binary_dependencies.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/battor/battor/battor_error.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/battor/battor/battor_wrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/battor/battor/battor_wrapper_devicetest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/battor/battor/battor_wrapper_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/battor/bin/run_py_tests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/battor/bin/upload_battor_binaries.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/bin/run_tests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/eslint/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/eslint/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/eslint/bin/run_eslint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/eslint/bin/run_tests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/eslint/eslint/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/eslint/eslint/smoke_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/eslint/rules/catapult-camelcase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/eslint/tests/catapult-camelcase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/lab/commits.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/lab/hardware.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/lab/keychain_unlock.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/node_runner/node_runner/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/node_runner/node_runner/node_binaries.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/node_runner/node_runner/node_util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/node_runner/node_runner/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/run_tests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_impl/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_impl/decorators.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_impl/decorators_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_impl/log.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_impl/log_io_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_impl/meta_class.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_impl/multiprocessing_shim.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_impl/parsed_trace_events.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_impl/trace_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_event_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_time.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_trace_event/py_trace_event/trace_time_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/PRESUBMIT.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/binary_manager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/binary_manager_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/chrome_binaries.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/cloud_storage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/cloud_storage_global_lock.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/cloud_storage_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/contextlib_ext.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/contextlib_ext_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/dependency_util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/lock.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/lock_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/py_utils_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/annotated_symbol/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/annotated_symbol/base_symbol.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/annotated_symbol/class_definition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/annotated_symbol/function_definition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/annotated_symbol/import_statement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/annotated_symbol/reference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/module.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/offset_token.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor/snippet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor_util/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/refactor_util/move.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/shell_util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/tempfile_ext.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/tempfile_ext_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/test_data/foo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/common/py_utils/py_utils/xvfb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/PRESUBMIT.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/bin/run_tests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/bin/update" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/archive_info.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/base_config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/base_config_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/cloud_storage_info_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/dependency_info.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/dependency_info_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/dependency_manager_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/dependency_manager_util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/dependency_manager_util_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/exceptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/local_path_info.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/manager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/uploader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/dependency_manager/uploader_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/dependency_manager/pylintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/PRESUBMIT.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/bin/generate_md_docs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/bin/run_py_devicetests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/bin/run_py_tests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/apk_helper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/apk_helper_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/app_ui_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/battery_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/battery_utils_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/constants/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/constants/chrome.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/constants/file_system.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/decorators.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/decorators_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_blacklist.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_blacklist_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_errors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_errors_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_signal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_temp_file.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_test_case.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_utils_devicetest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/device_utils_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/fastboot_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/fastboot_utils_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/flag_changer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/flag_changer_devicetest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/flag_changer_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/forwarder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/install_commands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/logcat_monitor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/logcat_monitor_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/md5sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/md5sum_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/perf/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/perf/cache_control.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/perf/perf_control.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/perf/perf_control_devicetest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/perf/surface_stats_collector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/perf/thermal_throttle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/ports.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/aapt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/adb_compatibility_devicetest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/adb_wrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/adb_wrapper_devicetest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/adb_wrapper_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/build_tools.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/dexdump.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/fastboot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/gce_adb_wrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/intent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/keyevent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/shared_prefs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/shared_prefs_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/split_select.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/test/data/push_directory/push_directory_contents.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/test/data/push_file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/sdk/version_codes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/adb_run_shell_cmd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/cpufreq.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/device_monitor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/device_monitor_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/device_recovery.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/device_status.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/flash_device.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/keyboard.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/provision_devices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/screenshot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/script_common.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/script_common_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/video_recorder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/tools/wait_for_devices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/valgrind_tools/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/android/valgrind_tools/base_tool.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/base_error.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/constants/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/constants/exit_codes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/devil_dependencies.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/devil_env.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/devil_env_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/battor_device_mapping.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/cmd_helper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/cmd_helper_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/file_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/find_usb_devices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/find_usb_devices_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/geometry.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/geometry_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/host_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/lazy/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/lazy/weak_constant.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/lsusb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/lsusb_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/markdown.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/markdown_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/mock_calls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/mock_calls_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/parallelizer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/parallelizer_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/reraiser_thread.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/reraiser_thread_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/reset_usb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/run_tests_helper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/signal_handler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/test/data/test_serial_map.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/timeout_retry.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/timeout_retry_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/update_mapping.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/usb_hubs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/watchdog_timer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/devil/utils/zip_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/docs/adb_wrapper.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/docs/device_blacklist.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/docs/device_utils.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/docs/markdown.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/docs/persistent_device_list.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/devil/pylintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/PRESUBMIT.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/jni/Application.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/jni/file_utils.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/jni/file_utils.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/jni/logging.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/jni/main.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/jni/process_info.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/jni/process_info.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/jni/process_memory_stats.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/atrace_helper/jni/process_memory_stats.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/bin/adb_profile_chrome" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/bin/adb_profile_chrome_startup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/bin/run_tests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/bin/systrace" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/chrome_startup_tracing_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/chrome_startup_tracing_agent_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/chrome_tracing_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/chrome_tracing_agent_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/ddms_tracing_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/ddms_tracing_agent_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/fake_agent_1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/fake_agent_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/flags.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/perf_tracing_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/perf_tracing_agent_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/profiler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/profiler_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/run_tests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/third_party/COPYING" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/third_party/README.chromium" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/third_party/perf_to_tracing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/ui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/profile_chrome/util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/pylintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/AUTHORS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/decorators.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/monitor_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/output_generator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/output_generator_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/prefix.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/run_systrace.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/suffix.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/systrace_runner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/systrace_trace_viewer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/atrace_data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/atrace_data_raw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/atrace_data_stripped" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/atrace_extracted_tgids" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/atrace_extracted_threads" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/atrace_fixed_tgids" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/atrace_missing_tgids" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/atrace_procfs_dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/battor_test_data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/compressed_atrace_data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/decompressed_atrace_data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/test_data/profile-chrome_systrace_perf_chrome_data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/trace_result.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/agents_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/android_process_data_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/atrace_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/atrace_agent_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/atrace_from_file_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/atrace_from_file_agent_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/battor_trace_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/battor_trace_agent_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/ftrace_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/ftrace_agent_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/walt_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_agents/walt_agent_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/tracing_controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/update_systrace_trace_viewer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/systrace/systrace/util_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/README.chromium" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/linux-product_info.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/rfc2217.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/serialcli.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/serialjava.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/serialposix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/serialutil.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/serialwin32.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/sermsdos.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/tools/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/tools/list_ports.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/tools/list_ports_linux.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/tools/list_ports_osx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/tools/list_ports_posix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/tools/list_ports_windows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/tools/miniterm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/urlhandler/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/urlhandler/protocol_hwgrep.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/urlhandler/protocol_loop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/urlhandler/protocol_rfc2217.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/urlhandler/protocol_socket.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/pyserial/serial/win32.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/zipfile/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/zipfile/README.chromium" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/third_party/zipfile/zipfile_2_7_13.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/tracing/tracing/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/tracing/tracing/trace_data/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/tracing/tracing/trace_data/trace_data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/tracing/tracing/trace_data/trace_data_unittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/tracing/tracing_project.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/systrace.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/AdDataBse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AdConfiguration/AdDataBse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/AdSendConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/AdUi$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/AdUi$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/AdUi$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/AdUi$connAdDataBse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/AdUi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/GetAppType$Loging.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/GetAppType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/SendAdConfiguration$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/SendAdConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataBase/ConnectDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataBase/ConnectDataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/RunExcelCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/RunExcelCase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/SendRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/SendRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/SquirrelUi$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/SquirrelUi$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/SquirrelUi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/SquirrelUi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/FlowFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/FlowFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog$Log.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog$Log.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/InstallPackage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/InstallPackage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/LeaveBug.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/LeaveBug.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Refresh.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/Refresh.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/RefreshTheImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/RefreshTheImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/TestTools.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/TestTools.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/VideoRecording$Screenrecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/VideoRecording$Screenrecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/VideoRecordingScreenshot$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/VideoRecordingScreenshot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/VideoRecordingScreenshot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBo$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBoDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBoDataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/Cartoon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/Cartoon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$6$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$6$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$6$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$6$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/Pane$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/Pane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/Pane$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/Pane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/Pane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/SquirrelConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/AdbUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/AdbUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/ExcelUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/ExcelUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/FrameUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/FrameUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/HttpUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/HttpUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/JavaUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/Network.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/Network.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/SaveCrash.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/SaveCrash.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/Uiautomator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/Uiautomator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/WindosUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/WindosUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/DataBase/ConnectDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/DataBase/ConnectDataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/DataBase/text.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/DataBase/text.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/Case$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/Case$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/Case$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/Case$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/Case.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/InterfaceConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/InterfaceConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/RunExcelCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/RunExcelCase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/SaveExcelCase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/SendRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/SendRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/SquirrelUi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/SquirrelUi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/FlowFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/FlowFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/GetADLog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/GetADLog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/GetADLog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/GetADLog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/GetADLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/GetADLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/LeaveBug.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/LeaveBug.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Refresh.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Refresh.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/RefreshTheImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/RefreshTheImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/TestTools.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/TestTools.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/VideoRecordingScreenshot$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/VideoRecordingScreenshot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/VideoRecordingScreenshot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/ZhiBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/ZhiBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/ZhiBoDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/ZhiBoDataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Cartoon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Cartoon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/ClearIphone.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/ClearIphone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Pane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Pane$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Pane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Pane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/SquirrelConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/SquirrelConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/WindowsText$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/WindowsText$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/WindowsText.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/WindowsText.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/test1$1AnimeMouseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/test1$1AnimeMouseListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/AdbUtils$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/AdbUtils$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/AdbUtils$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/AdbUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/AdbUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/ExcelUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/ExcelUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/FrameUtils$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/FrameUtils$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/FrameUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/FrameUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/JavaUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/JavaUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/Network.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/Network.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/SaveCrash.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/SaveCrash.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/TooltipUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/TooltipUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/WindosUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/WindosUtils.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/src/main/java/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,84 +672,112 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HttpUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="466" column="32" selection-start-line="466" selection-start-column="32" selection-end-line="466" selection-end-column="32" />
+            <state relative-caret-position="276">
+              <caret line="24" column="55" lean-forward="true" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7962">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6909#6910#0" expanded="true" />
-                <element signature="e#6954#6955#0" expanded="true" />
-                <element signature="e#7860#7861#0" expanded="true" />
-                <element signature="e#7908#7909#0" expanded="true" />
-                <element signature="e#12963#12964#0" expanded="true" />
-                <element signature="e#13016#13017#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+            <state relative-caret-position="192">
+              <caret line="276" column="42" selection-start-line="276" selection-start-column="23" selection-end-line="276" selection-end-column="42" />
+              <folding>
+                <element signature="e#7802#7803#0" expanded="true" />
+                <element signature="e#7888#7889#0" expanded="true" />
+                <element signature="e#8511#8512#0" expanded="true" />
+                <element signature="e#8545#8546#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="log4j.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/log4j.properties">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/javax/swing/filechooser/FileSystemView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1404">
-              <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+            <state relative-caret-position="200">
+              <caret line="416" column="16" selection-start-line="416" selection-start-column="16" selection-end-line="416" selection-end-column="16" />
+              <folding>
+                <element signature="e#13209#13210#0" expanded="true" />
+                <element signature="e#13281#13282#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Pane.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/java/io/File.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1890">
-              <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+            <state relative-caret-position="200">
+              <caret line="510" column="18" selection-start-line="510" selection-start-column="18" selection-end-line="510" selection-end-column="18" />
+              <folding>
+                <element signature="e#21135#21136#0" expanded="true" />
+                <element signature="e#21162#21163#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdUi.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27486">
-              <caret line="1065" column="43" selection-start-line="1065" selection-start-column="35" selection-end-line="1065" selection-end-column="43" />
+            <state relative-caret-position="345">
+              <caret line="19" column="87" selection-start-line="19" selection-start-column="87" selection-end-line="19" selection-end-column="87" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdSendConfig.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4968">
-              <caret line="191" selection-start-line="191" selection-end-line="191" />
+            <state relative-caret-position="253">
+              <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetAppType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2457">
-              <caret line="110" column="40" selection-start-line="110" selection-start-column="40" selection-end-line="110" selection-end-column="40" />
+            <state relative-caret-position="230">
+              <caret line="53" column="58" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="126" column="70" selection-start-line="126" selection-start-column="70" selection-end-line="126" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/javax/swing/JFileChooser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="574" column="16" selection-start-line="574" selection-start-column="16" selection-end-line="574" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -155,19 +796,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>toLowerCase</find>
-      <find>success</find>
-      <find>System.out.pr</find>
-      <find>System.out.print</find>
-      <find>box</find>
-      <find>newJ</find>
-      <find>wifi</find>
       <find>click</find>
       <find>System</find>
       <find>sendAd</find>
       <find>显示时间</find>
       <find>22222</find>
-      <find>main</find>
       <find>close</find>
       <find>=====</find>
       <find />
@@ -185,6 +818,14 @@
       <find>SchemeRegistry</find>
       <find>System.</find>
       <find>System.getProperty</find>
+      <find>setClo</find>
+      <find>addJButton</find>
+      <find>new Bu</find>
+      <find>测试目的</find>
+      <find>响应内容</find>
+      <find>main</find>
+      <find>FileSystemView.getFileSystemView().getHomeDirectory().getPath()</find>
+      <find>AdSendConfig</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -196,57 +837,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdParameter.java" />
-        <option value="$PROJECT_DIR$/src/java/UI/下拉列表与滚动条.java" />
-        <option value="$PROJECT_DIR$/src/java/UI/按钮常用设置" />
-        <option value="$PROJECT_DIR$/src/java/UI/JScrollpane" />
-        <option value="$PROJECT_DIR$/src/java/UI/日期" />
         <option value="$PROJECT_DIR$/src/java/SquirrelFrame/TestFronPanel.java" />
         <option value="$PROJECT_DIR$/src/java/UI/单行输入行JTextField" />
-        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java" />
         <option value="$PROJECT_DIR$/src/java/DataBase/text.java" />
         <option value="$PROJECT_DIR$/src/java/knowledge/mysql数据库操作" />
         <option value="$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" />
         <option value="$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java" />
         <option value="$PROJECT_DIR$/src/java/performanceTest/Cpu.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/DoubleOperation.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/test123.java" />
         <option value="$PROJECT_DIR$/src/java/performanceTest/Statistical.java" />
-        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" />
-        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" />
         <option value="$PROJECT_DIR$/src/java/performanceTest/test.java" />
         <option value="$PROJECT_DIR$/src/java/performanceTest/GetIphoneData.java" />
         <option value="$PROJECT_DIR$/src/java/performanceTest/RunMainPerformance.java" />
         <option value="$PROJECT_DIR$/src/java/performanceTest/avg.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" />
-        <option value="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" />
         <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java" />
         <option value="$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" />
         <option value="$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" />
         <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecording.java" />
         <option value="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j.properties" />
         <option value="$PROJECT_DIR$/src/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" />
+        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/GetADLogs.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/LeaveBug.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/ZhiBo.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" />
+        <option value="$PROJECT_DIR$/src/java/Squirrel/FlowFrame.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" />
+        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java" />
+        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" />
+        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" />
+        <option value="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" />
+        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" />
+        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" />
       </list>
     </option>
   </component>
@@ -260,8 +901,8 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="localRepository" value="E:\maven\com-test-tools" />
-        <option name="mavenHome" value="D:/Developer/apache-maven-3.5.3" />
-        <option name="userSettingsFile" value="D:\Developer\apache-maven-3.5.3\conf\settings.xml" />
+        <option name="mavenHome" value="D:/development/apache-maven-3.6.0" />
+        <option name="userSettingsFile" value="D:\development\apache-maven-3.6.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -297,20 +938,20 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1456" />
+    <option name="height" value="876" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -321,24 +962,72 @@
             <path>
               <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
               <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="AdConfiguration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="SquirrelFrame" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="SquirrelFrame" type="462c0819:PsiDirectoryNode" />
+              <item name="HomePage.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+            <path>
+              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ZLYUtils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545635877298" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.1150748" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="project.structure.side.proportion" value="0.16436781" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -353,6 +1042,7 @@
       <recent name="E:\com.test.tools\src\java\com\tools" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Squirrel" />
       <recent name="ZLYUtils" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
@@ -372,80 +1062,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.HomePage">
-    <configuration name="HomePage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SquirrelFrame.HomePage" />
-      <module name="zhanglianyu" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SquirrelFrame.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="HttpUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ZLYUtils.HttpUtils" />
-      <module name="zhanglianyu" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ZLYUtils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="Network" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ZLYUtils.Network" />
-      <module name="zhanglianyu" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ZLYUtils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="Uiautomator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ZLYUtils.Uiautomator" />
-      <module name="zhanglianyu" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ZLYUtils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="VideoRecording" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Squirrel.VideoRecording" />
-      <module name="zhanglianyu" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Squirrel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -468,20 +1084,101 @@
       <properties />
       <listeners />
     </configuration>
+    <configuration name="GetADLogs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Squirrel.GetADLogs" />
+      <module name="zhanglianyu" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Squirrel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HomePage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SquirrelFrame.HomePage" />
+      <module name="test.tools" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SquirrelFrame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HttpUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ZLYUtils.HttpUtils" />
+      <module name="zhanglianyu" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ZLYUtils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Network" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ZLYUtils.Network" />
+      <module name="zhanglianyu" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ZLYUtils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VideoRecording" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Squirrel.VideoRecording" />
+      <module name="zhanglianyu" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Squirrel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.HomePage" />
-      <item itemvalue="Application.Uiautomator" />
       <item itemvalue="Application.Network" />
       <item itemvalue="Application.HttpUtils" />
       <item itemvalue="Application.VideoRecording" />
+      <item itemvalue="Application.GetADLogs" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HomePage" />
+        <item itemvalue="Application.GetADLogs" />
         <item itemvalue="Application.VideoRecording" />
         <item itemvalue="Application.HttpUtils" />
         <item itemvalue="Application.Network" />
-        <item itemvalue="Application.Uiautomator" />
       </list>
     </recent_temporary>
   </component>
@@ -593,20 +1290,15 @@
       <workItem from="1543838875139" duration="4365000" />
       <workItem from="1544087591242" duration="13000" />
       <workItem from="1544165787510" duration="902000" />
-    </task>
-    <task id="LOCAL-00001" summary="添加项目">
-      <created>1532672592785</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1532672592786</updated>
-    </task>
-    <task id="LOCAL-00002" summary="添加项目">
-      <created>1532918467626</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1532918467626</updated>
+      <workItem from="1544166808099" duration="410000" />
+      <workItem from="1544176157812" duration="802000" />
+      <workItem from="1544279426521" duration="13000" />
+      <workItem from="1544498255241" duration="4583000" />
+      <workItem from="1544601669462" duration="10000" />
+      <workItem from="1544606704204" duration="2214000" />
+      <workItem from="1544852150566" duration="3757000" />
+      <workItem from="1545034849277" duration="3297000" />
+      <workItem from="1545105400663" duration="1355000" />
     </task>
     <task id="LOCAL-00003" summary="添加网络请求utils类">
       <created>1533039858415</created>
@@ -923,11 +1615,39 @@
       <option name="project" value="LOCAL" />
       <updated>1544166437116</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="更新">
+      <created>1544167083318</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1544167083318</updated>
+    </task>
+    <task id="LOCAL-00049" summary="更新">
+      <created>1544167190413</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1544167190413</updated>
+    </task>
+    <task id="LOCAL-00050" summary="更新松鼠架构">
+      <created>1544502228031</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1544502228031</updated>
+    </task>
+    <task id="LOCAL-00051" summary="更新">
+      <created>1544854351473</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1544854351474</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="551292000" />
+    <option name="totallyTimeSpent" value="567733000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -939,41 +1659,43 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="6" weight="0.32974428" />
-      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5007163" side_tool="true" weight="0.32974428" />
-      <window_info anchor="right" id="Maven Projects" order="0" weight="0.22314675" />
-      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="0" />
-      <window_info anchor="right" id="Database" order="6" weight="0.32980332" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="10" weight="0.39434725" />
-      <window_info anchor="bottom" id="TODO" order="13" weight="0.32839838" />
-      <window_info anchor="bottom" id="Messages" order="2" weight="0.22094926" />
-      <window_info anchor="right" id="Palette&#9;" order="2" />
       <window_info id="Image Layers" order="1" />
-      <window_info anchor="bottom" id="Java Enterprise" order="4" sideWeight="0.49928367" weight="0.32974428" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.7507163" weight="0.32569557" />
-      <window_info anchor="bottom" id="Version Control" order="5" sideWeight="0.49928367" weight="0.32839838" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32839838" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.36384267" />
-      <window_info id="Web" order="4" side_tool="true" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="8" side_tool="true" />
+      <window_info id="Web" order="4" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.22492836" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5007163" side_tool="true" weight="0.32974428" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32839838" />
+      <window_info anchor="bottom" id="Messages" order="2" weight="0.21967655" />
+      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Java Enterprise" order="4" sideWeight="0.49928367" weight="0.32974428" />
+      <window_info anchor="bottom" id="Version Control" order="5" sideWeight="0.49928367" visible="true" weight="0.1509434" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="6" weight="0.32974428" />
       <window_info anchor="bottom" id="Message" order="7" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.32569557" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.7507163" weight="0.254717" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.39434725" />
+      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="13" weight="0.32749325" />
+      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
+      <window_info anchor="right" id="Maven Projects" order="0" weight="0.22314675" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Database" order="6" weight="0.24498567" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="10" weight="0.3295129" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1004,12 +1726,22 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="修改创建Excel标题时，不能读取所有map的key" />
     <MESSAGE value="解决响应数据显示乱码问题" />
     <MESSAGE value="接受响应时指定utf-8格式" />
     <MESSAGE value="优化松鼠测试工具，打开测试工具时，不限制点击父页面" />
@@ -1033,215 +1765,11 @@
     <MESSAGE value="更换主题" />
     <MESSAGE value="重构获取广告" />
     <MESSAGE value="添加HttpUtils类" />
+    <MESSAGE value="更新松鼠架构" />
     <MESSAGE value="更新" />
     <option name="LAST_COMMIT_MESSAGE" value="更新" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="2" />
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/HttpEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar!/org/apache/http/client/methods/HttpEntityEnclosingRequestBase.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/Locale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="579" column="31" selection-start-line="579" selection-start-column="31" selection-end-line="579" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/HttpHost.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Network.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="271" column="24" selection-end-line="623" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar!/org/apache/http/client/utils/URIBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="318" column="22" selection-start-line="318" selection-start-column="22" selection-end-line="318" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/entity/StringEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/protocol/HTTP.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19305">
-          <caret line="771" column="35" selection-start-line="771" selection-start-column="35" selection-end-line="771" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5427">
-          <caret line="209" column="81" selection-start-line="209" selection-start-column="81" selection-end-line="209" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/HttpMessage.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="6756" column="22" lean-forward="true" selection-start-line="6756" selection-start-column="22" selection-end-line="6756" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2349">
-          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="12" column="27" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/DoubleOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3726">
-          <caret line="164" column="11" selection-start-line="164" selection-start-column="11" selection-end-line="164" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4995">
-          <caret line="211" column="6" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78489">
-          <caret line="2992" column="25" selection-start-line="2992" selection-start-column="25" selection-end-line="2992" selection-end-column="25" />
-          <folding>
-            <element signature="e#117893#117894#0" expanded="true" />
-            <element signature="e#117955#117956#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/io/PrintStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20763">
-          <caret line="820" column="30" selection-start-line="820" selection-start-column="30" selection-end-line="820" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/com-test-tools/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar!/org/apache/commons/lang/StringUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4590">
-          <caret line="193" column="26" selection-start-line="193" selection-start-column="26" selection-end-line="193" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/net/URI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84915">
-          <caret line="3202" column="18" selection-start-line="3202" selection-start-column="18" selection-end-line="3202" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/performanceTest/avg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/package_inspection/CheckFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/image_comparison/Image_comparison_config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/image_comparison/ImageComparison.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Process.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5319">
-          <caret line="221" column="25" selection-start-line="221" selection-start-column="25" selection-end-line="221" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23112">
-          <caret line="913" column="16" selection-start-line="913" selection-start-column="16" selection-end-line="913" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
@@ -1249,101 +1777,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JFileChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2835">
-          <caret line="153" column="28" selection-start-line="153" selection-start-column="28" selection-end-line="153" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3942">
-          <caret line="150" column="30" selection-start-line="150" selection-start-column="30" selection-end-line="150" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2511">
-          <caret line="112" column="67" selection-start-line="112" selection-start-column="33" selection-end-line="112" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2268">
-          <caret line="98" column="43" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69444">
-          <caret line="2700" column="16" selection-start-line="2700" selection-start-column="16" selection-end-line="2700" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11556">
-          <caret line="461" selection-start-line="461" selection-end-line="461" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5157">
-          <caret line="198" column="26" selection-start-line="198" selection-start-column="26" selection-end-line="198" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecording.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JFileChooser.java" />
     <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1323">
           <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2943">
-          <caret line="121" column="25" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27486">
-          <caret line="1065" column="43" selection-start-line="1065" selection-start-column="35" selection-end-line="1065" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4968">
-          <caret line="191" selection-start-line="191" selection-end-line="191" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2457">
-          <caret line="110" column="40" selection-start-line="110" selection-start-column="40" selection-end-line="110" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1354,49 +1792,314 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/log4j.properties" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/log4j.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java">
+    <entry file="file://$PROJECT_DIR$/image/TIM截图20180530183546.png" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="466" column="32" selection-start-line="466" selection-start-column="32" selection-end-line="466" selection-end-column="32" />
+        <state relative-caret-position="162">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/GetADLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="110" column="27" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/LeaveBug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/FrameSqiorrel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JComponent.java" />
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JFrame.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2781">
+          <caret line="119" column="51" selection-start-line="119" selection-start-column="51" selection-end-line="119" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Container.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/FlowFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/TestTools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/GetADLogs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="38" column="38" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="11" selection-start-line="11" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Network.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2322">
+          <caret line="117" column="89" selection-start-line="117" selection-start-column="89" selection-end-line="117" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../maven/com-test-tools/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar!/org/apache/http/client/HttpRequestRetryHandler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/net/URI.java" />
+    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/String.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1634">
+          <caret line="98" column="50" selection-start-line="98" selection-start-column="50" selection-end-line="98" selection-end-column="50" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6909#6910#0" expanded="true" />
-            <element signature="e#6954#6955#0" expanded="true" />
-            <element signature="e#7860#7861#0" expanded="true" />
-            <element signature="e#7908#7909#0" expanded="true" />
-            <element signature="e#12963#12964#0" expanded="true" />
-            <element signature="e#13016#13017#0" expanded="true" />
+            <element signature="e#4467#4468#0" expanded="true" />
+            <element signature="e#4505#4506#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/image/TIM截图20180530183546.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        <state relative-caret-position="703">
+          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="51" column="32" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3253#3254#0" expanded="true" />
+            <element signature="e#3288#3289#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5773">
+          <caret line="268" column="7" selection-start-line="268" selection-start-column="7" selection-end-line="268" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2116">
+          <caret line="111" column="54" selection-start-line="111" selection-start-column="54" selection-end-line="111" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9545">
+          <caret line="423" column="31" selection-start-line="423" selection-start-column="31" selection-end-line="423" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/VideoSwitch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1886">
+          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2024">
+          <caret line="93" column="27" selection-start-line="93" selection-start-column="27" selection-end-line="93" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecording.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="24" column="55" lean-forward="true" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7962">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="53" column="58" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/javax/swing/JFileChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="574" column="16" selection-start-line="574" selection-start-column="16" selection-end-line="574" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="510" column="18" selection-start-line="510" selection-start-column="18" selection-end-line="510" selection-end-column="18" />
+          <folding>
+            <element signature="e#21135#21136#0" expanded="true" />
+            <element signature="e#21162#21163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/javax/swing/filechooser/FileSystemView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="416" column="16" selection-start-line="416" selection-start-column="16" selection-end-line="416" selection-end-column="16" />
+          <folding>
+            <element signature="e#13209#13210#0" expanded="true" />
+            <element signature="e#13281#13282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="276" column="42" selection-start-line="276" selection-start-column="23" selection-end-line="276" selection-end-column="42" />
+          <folding>
+            <element signature="e#7802#7803#0" expanded="true" />
+            <element signature="e#7888#7889#0" expanded="true" />
+            <element signature="e#8511#8512#0" expanded="true" />
+            <element signature="e#8545#8546#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="126" column="70" selection-start-line="126" selection-start-column="70" selection-end-line="126" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="19" column="87" selection-start-line="19" selection-start-column="87" selection-end-line="19" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1406,11 +2109,11 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>zhanglianyu:jar</last-edited>
+          <last-edited>test.tools:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.1150748" />
+                <option value="0.16436781" />
                 <option value="0.5" />
               </list>
             </option>
@@ -1423,7 +2126,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.1150748" />
+                <option value="0.5505747" />
               </list>
             </option>
           </splitter-proportions>
@@ -1454,11 +2157,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>zhanglianyu</last-edited>
+          <last-edited>test.tools</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.1150748" />
+                <option value="0.5505747" />
                 <option value="0.6" />
               </list>
             </option>
@@ -1479,11 +2182,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>datepicker</last-edited>
+          <last-edited>wormy</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.1150748" />
+                <option value="0.5505747" />
               </list>
             </option>
           </splitter-proportions>

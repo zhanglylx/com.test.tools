@@ -17,6 +17,8 @@ import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static ZLYUtils.FrameUtils.selectFile;
+
 /**
  * 松鼠工具接口测试页面
  */
@@ -71,6 +73,7 @@ class Case extends JPanel implements ActionListener {
     private JButton runCaseExcel;//执行Excel按钮
     private JRadioButton matchingRule;//匹配规则
     private String runExcelPath;
+
     public Case(JFrame jDialog) {
         this.jDialog = jDialog;
         sendRequest = new SendRequest();
@@ -175,7 +178,7 @@ class Case extends JPanel implements ActionListener {
         f.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String text = f.getText();
+
                 if (f == submit) {
                     sendRequest.setPath(path.getText());
                     sendRequest.setUrlValues(urlArguments.getText());
@@ -184,17 +187,31 @@ class Case extends JPanel implements ActionListener {
                     sendRequest.setBeginTranscoding(beginTranscoding.getText());
                     sendRequest.setEndTranscoding(endTranscoding.getText());
                     if (!checkValues()) return;
+                    saveCase.setEnabled(false);
                     String reposen = sendRequest.sendRequest();
 
                     resultRequest.setText(sendRequest.getUrl());
                     if (InterfaceConfig.URL_POST_NAME.equals(sendRequest.getMethod()))
                         resultRequest.append("\nbody:" + sendRequest.getBody());
-                    resultResponse.setText(reposen);
+                    resultResponse.setText("");
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e1) {
+                                e1.printStackTrace();
+                            }
+                            resultResponse.setText(reposen);
+                            saveCase.setEnabled(true);
+                        }
+                    }).start();
                 } else if (f == saveCase) {//保存用例
                     if (sendRequest.getMatchingRule() == null) {
                         TooltipUtil.errTooltip("请选择一个匹配规则");
                         return;
                     }
+                    submit.setEnabled(false);
                     Map<Integer, Map<String, String>> saveMap;
                     File file = new File(InterfaceConfig.SAVE_EXCEL_CASE_PATH);
                     try {
@@ -216,16 +233,15 @@ class Case extends JPanel implements ActionListener {
                     caseMap.put(InterfaceConfig.END_TRANSCODING, endTranscoding.getText());
                     caseMap.put(InterfaceConfig.TEST_PURPOSE, testPurpose.getText());
                     saveMap.put(saveMap.size(), caseMap);
-                    ExcelUtils.createExcelFile(file, "RunMainPerformance", saveMap,true);
-
+                    ExcelUtils.createExcelFile(file, "RunMainPerformance", saveMap, true);
+                    submit.setEnabled(true);
                 } else if (f == runCaseExcel) {
                     try {
                         RunExcelCase runExcelCase = RunExcelCase.getRunExcelCase();
                         runExcelCase.setCaseMap(ExcelUtils.getExcelXlsx(new File(runExcelPath)));
                         runExcelCase.setjButton(runCaseExcel);
                         runExcelCase.setRunExcelPath(runExcelPath);
-                        Thread t = new Thread(runExcelCase);
-                        t.start();
+                        new Thread(runExcelCase).start();
                     } catch (FileNotFoundException e1) {
                         TooltipUtil.errTooltip(e1.toString());
                     }
@@ -236,19 +252,20 @@ class Case extends JPanel implements ActionListener {
 
     /**
      * runcase选择路径
+     *
      * @param e
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFileChooser chooser = new JFileChooser();
-        FileSystemView fsv = FileSystemView.getFileSystemView();
-        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        chooser.setCurrentDirectory(new File("."));//默认松鼠页面
-        chooser.showDialog(new JLabel(), "选择");
-        File file = chooser.getSelectedFile();
-        runExcelPath = (file.getAbsoluteFile().toString());
-
+//        JFileChooser chooser = new JFileChooser();
+//        FileSystemView fsv = FileSystemView.getFileSystemView();
+//        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+//        chooser.setCurrentDirectory(new File("."));//默认松鼠页面
+//        chooser.showDialog(new JLabel(), "选择");
+//        File file = chooser.getSelectedFile();
+        runExcelPath = selectFile();
     }
+
     /**
      * 检查参数
      */

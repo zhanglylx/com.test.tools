@@ -5,10 +5,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.File;
-import java.io.IOException;
+import javax.swing.filechooser.FileSystemView;
+import java.io.*;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,6 +51,7 @@ public class JavaUtils {
 
     /**
      * 获取随机数
+     *
      * @param min
      * @param max
      * @return
@@ -57,8 +60,6 @@ public class JavaUtils {
     public static int getRandomNumbers(int min, int max) {
         return new Random().nextInt(max) % (max - min + 1) + min;
     }
-
-
 
 
     //解析Html
@@ -227,8 +228,9 @@ public class JavaUtils {
 
     /**
      * 替换换行符
-     * @param str   替换字符串
-     * @param alternate    替换内容
+     *
+     * @param str       替换字符串
+     * @param alternate 替换内容
      * @return
      */
     public static String replaceLineBreak(String str, String alternate) {
@@ -240,23 +242,60 @@ public class JavaUtils {
         return str;
     }
 
-
     /**
-     * 随机生成一个中文字符
+     * 获取本地txt文件内容
+     *
+     * @param file
      * @return
      */
-    public static String getRandomChinese(){
-        return new String(new char[] { (char) (new Random().nextInt(20902) + 19968) });
+    public static List<String> getLocaFileTxt(File file) throws IOException {
+        if (file == null) throw new NullPointerException("file为空");
+        if (!file.exists()) throw new IllegalArgumentException("文件不存在:" + file.getPath());
+        if (!file.getName().toLowerCase().endsWith(".txt"))
+            throw new IllegalArgumentException("不是txt文件:" + file.getPath());
+        List<String> list = new ArrayList<>();
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader =
+                    new BufferedReader(
+                            new InputStreamReader(new FileInputStream(file), "UTF-8")
+                    );
+            String msg;
+            while ((msg = bufferedReader.readLine()) != null) {
+                list.add(msg);
+            }
+        } finally {
+            if (bufferedReader != null) bufferedReader.close();
+        }
+        return list;
+    }
+
+    /**
+     * 获取本地桌面路径
+     * @return
+     */
+    public static File getLocalDesktopPath() {
+        return FileSystemView.getFileSystemView().getHomeDirectory();
     }
 
     /**
      * 随机生成一个中文字符
+     *
+     * @return
+     */
+    public static String getRandomChinese() {
+        return new String(new char[]{(char) (new Random().nextInt(20902) + 19968)});
+    }
+
+    /**
+     * 随机生成一个中文字符
+     *
      * @param lenth 指定长度
      * @return
      */
-    public static String getRandomChinese(int lenth){
+    public static String getRandomChinese(int lenth) {
         StringBuffer stringBuffer = new StringBuffer();
-        for(int i=0;i<lenth;i++){
+        for (int i = 0; i < lenth; i++) {
             stringBuffer.append(getRandomChinese());
         }
         return stringBuffer.toString();
@@ -265,9 +304,10 @@ public class JavaUtils {
 
     /**
      * 睡眠
+     *
      * @param time
      */
-    public static void sleep(Long time){
+    public static void sleep(Long time) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
@@ -275,16 +315,16 @@ public class JavaUtils {
             SaveCrash.save(e.toString());
         }
     }
-    public static void sleep(int time){
-        sleep((long)time);
-    }
 
+    public static void sleep(int time) {
+        sleep((long) time);
+    }
 
 
     /**
      * java方法
      */
-    private void fangfa(){
+    private void fangfa() {
 
         try {
             System.in.read();//按任意键

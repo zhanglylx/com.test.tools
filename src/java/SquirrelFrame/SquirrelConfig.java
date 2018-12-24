@@ -1,5 +1,7 @@
 package SquirrelFrame;
 
+import ZLYUtils.JavaUtils;
+
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.io.File;
@@ -15,8 +17,7 @@ public class SquirrelConfig {
     public static final String FFMPEGPATH = "lib" + File.separator + "ffmpeg" + File.separator + "bin" + File.separator + "ffmpeg.exe";
     public static final String UI = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
     public static final String FILE_UI = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
-    public static final String DEFAULT_PATH =
-            FileSystemView.getFileSystemView().getHomeDirectory().getPath();
+    public static final String DEFAULT_PATH = JavaUtils.getLocalDesktopPath().getPath();
 
 
 }

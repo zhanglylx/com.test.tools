@@ -3,12 +3,7 @@ package AdConfiguration;
 
 import ZLYUtils.Network;
 import ZLYUtils.NetworkHeaders;
-import org.apache.commons.lang.StringUtils;
-import sun.dc.pr.PRError;
-
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class AdSendConfig {
     public static final String SEL_APPNAME = "sel_appname";

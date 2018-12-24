@@ -123,9 +123,8 @@ public class FrameUtils {
         try {
             setFileUi();
             JFileChooser chooser = new JFileChooser();
-            FileSystemView fsv = FileSystemView.getFileSystemView();
             chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-            chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
+            chooser.setCurrentDirectory(JavaUtils.getLocalDesktopPath());//默认桌面
             chooser.showDialog(new JLabel(), "选择");
             File file = chooser.getSelectedFile();
             return (file.getAbsoluteFile().toString());

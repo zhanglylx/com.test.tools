@@ -167,7 +167,7 @@ public class HttpUtils {
                 .setConnectionRequestTimeout(CONNECTION_REQUEST_TIME_OUT) // 从连接池中获取到连接的最长时间
                 .setSocketTimeout(SOCKET_TIME_OUT) // 数据传输的最长时间
 //                .setStaleConnectionCheckEnabled(true) // 提交请求前测试连接是否可用
-                .setProxy(new HttpHost("localhost", 8888))
+//                .setProxy(new HttpHost("localhost", 8888))
                 .build();
 
         return config;

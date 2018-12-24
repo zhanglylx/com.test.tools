@@ -39,7 +39,7 @@ public class ConnectDataBase {
         if (url == null) throw new IllegalArgumentException("url为空");
         if (username == null) throw new IllegalArgumentException("username为空");
         if (password == null) throw new IllegalArgumentException("password为空");
-        if (!url.matches("^\\d+\\.\\d+\\.\\d+\\.\\d+:\\d+/.+$"))
+        if (!url.matches("^.+/.+$"))
             throw new IllegalArgumentException("url格式不正确:" + url);
         try {
             this.con = DriverManager.getConnection("jdbc:mysql://" + url, username, password);
