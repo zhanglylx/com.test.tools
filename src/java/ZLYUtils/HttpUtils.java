@@ -167,7 +167,7 @@ public class HttpUtils {
                 .setConnectionRequestTimeout(CONNECTION_REQUEST_TIME_OUT) // 从连接池中获取到连接的最长时间
                 .setSocketTimeout(SOCKET_TIME_OUT) // 数据传输的最长时间
 //                .setStaleConnectionCheckEnabled(true) // 提交请求前测试连接是否可用
-//                .setProxy(new HttpHost("localhost", 8888))
+                .setProxy(new HttpHost("localhost", 8888))
                 .build();
 
         return config;
@@ -214,9 +214,9 @@ public class HttpUtils {
         URI uri = null;
         try {
             if (param == null || param.equals("")) {
-                uri = new URIBuilder(url).build();
+                uri = new URIBuilder(url.trim()).build();
             } else {
-                uri = new URIBuilder().setPath(url).setCustomQuery(param).build();
+                uri = new URIBuilder(url.trim()).setCustomQuery(param.trim()).build();
             }
         } catch (URISyntaxException e) {
             e.printStackTrace();
@@ -319,9 +319,12 @@ public class HttpUtils {
         return resultString;
     }
 
+    public static String doPost(String url, Object param) {
+        return doPost(url, param, null, null);
+    }
 
     public static String doPost(String url
-            , Map<String, String> param
+            , Object param
             , Map<String, String> requestHead
             , NetworkHeaders networkHeaders) {
         String resultString = "";
@@ -337,13 +340,18 @@ public class HttpUtils {
             }
             // 创建参数列表
             if (param != null) {
-                List<NameValuePair> paramList = new ArrayList<>();
-                for (String key : param.keySet()) {
-                    paramList.add(new BasicNameValuePair(key, param.get(key)));
+                if (param instanceof Map) {
+                    Map<String, String> mapParam = (Map<String, String>) param;
+                    List<NameValuePair> paramList = new ArrayList<>();
+                    for (String key : mapParam.keySet()) {
+                        paramList.add(new BasicNameValuePair(key, mapParam.get(key)));
+                    }
+                    // 模拟表单
+                    httpPost.setEntity(new UrlEncodedFormEntity(paramList));
+                } else if (param instanceof String) {
+                    StringEntity entity = new StringEntity((String) param);
+                    httpPost.setEntity(entity);
                 }
-                // 模拟表单
-                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(paramList);
-                httpPost.setEntity(entity);
             }
             // 执行http请求
             resultString = getResponse(getHttpClient().execute(httpPost), networkHeaders);
@@ -456,17 +464,18 @@ public class HttpUtils {
 
 
     public static void main(String[] args) {
-        Map<String, String> map = new HashMap<>();
-        map.put("1", "ddddd=");
-        System.out.println(doPost("http://www.baidu.com", map));
-        URIBuilder uriBuilder = new URIBuilder();
-        uriBuilder.setPath("http://www.baidu.com");
-        uriBuilder.setHost("33");
-        uriBuilder.setScheme("3444");
-        uriBuilder.addParameter("3", "33");
-        uriBuilder.addParameter("3", "33");
-        uriBuilder.setCustomQuery("a=搜索");
-        System.out.println(uriBuilder);
+//        Map<String, String> map = new HashMap<>();
+//        map.put("1", "ddddd=");
+//        System.out.println(doPost("http://www.baidu.com", map));
+//        URIBuilder uriBuilder = new URIBuilder();
+//        uriBuilder.setPath("http://www.baidu.com");
+//        uriBuilder.setHost("33");
+//        uriBuilder.setScheme("3444");
+//        uriBuilder.addParameter("3", "33");
+//        uriBuilder.addParameter("3", "33");
+//        uriBuilder.setCustomQuery("a=搜索");
+        System.out.println(doPost("http://www.baidu.com", "", null, null));
+
     }
 
 

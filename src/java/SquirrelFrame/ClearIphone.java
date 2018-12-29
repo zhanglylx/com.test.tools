@@ -55,13 +55,21 @@ public class ClearIphone {
                 rm.add("sdcard/.cxb");
                 rm.add("sdcard/.hide_freebook/");
                 rm.add("sdcard/Android/data/com.mianfeia.book");
-                rm.add("sdcard/Android/data/com.mianfeizs.book");
                 break;
-            case HomePage.ZHIBO:
-                code = "com.chineseall.youzi";
-                rm.add("sdcard/.hide_live/");
+            case HomePage.MZ:
+                code = "com.mianfeizs.book";
+                rm.add("sdcard/Android/data/com.mianfeizs.book");
+                rm.add("sdcard/FreeBook/");
+                rm.add("sdcard/.freebook");
+                rm.add("sdcard/.cxb");
                 rm.add("sdcard/.hide_freebook/");
-                rm.add("sdcard/Android/data/com.chineseall.youzi");
+                break;
+            case HomePage.IKS:
+                code = "com.mfyueduqi.book";
+                rm.add("sdcard/Android/data/com.mfyueduqi.book");
+                rm.add("sdcard/FreeBook/");
+                rm.add("sdcard/.freebook");
+                rm.add("sdcard/.cxb");
                 break;
             default:
                 throw new IllegalArgumentException("未找到包名:" + packageName);
@@ -76,6 +84,7 @@ public class ClearIphone {
                 }
                 if (checkIphoneAppPackageExist(code)) {
                     TooltipUtil.errTooltip("包卸载失败了，具体原因您查看下日志，然后自己删吧");
+                    return;
 
                 }
             }
@@ -84,22 +93,20 @@ public class ClearIphone {
                 if (adb == null) return;
                 if (Arrays.toString(adb).contains("Is a directory")) {
                     TooltipUtil.errTooltip("本地目录删除失败了:" + Arrays.toString(adb));
+                    return;
                 }
             }
-            TooltipUtil.generalTooltip(packageName + ":完成");
         } else {
             String[] adb = AdbUtils.operationAdb("shell pm clear " + code);
             if (adb == null) return;
             if (!Arrays.toString(
                     adb).contains("Success")
-                    ) {
+            ) {
                 TooltipUtil.errTooltip("应用缓存删除失败:" + Arrays.toString(adb));
                 return;
             }
-            TooltipUtil.generalTooltip(packageName + ":完成");
         }
-
-
+        TooltipUtil.generalTooltip(packageName + ":完成");
     }
 
     /**

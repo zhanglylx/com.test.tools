@@ -2,6 +2,7 @@ package InterfaceTesting;
 
 import ZLYUtils.HttpUtils;
 import ZLYUtils.Network;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.apache.http.client.utils.URIBuilder;
 
 import java.net.URI;
@@ -32,6 +33,7 @@ public class SendRequest {
      * @return
      */
     public String sendRequest() {
+
         if (this.transcoding != null && !"".equals(this.transcoding)) {
             String encoderStr = beginTranscoding + transcoding + endTranscoding;//转码前
             if (!urlValues.contains(encoderStr) && !body.contains(encoderStr)) return "转码文本未找到:" + transcoding;
@@ -44,17 +46,16 @@ public class SendRequest {
         if ((agreementValues == null || "".equals(agreementValues)) &&
                 (method == null || "".equals(method)) &&
                 (path == null || "".equals(path))
-                ) return "";
+        ) return "";
         //给url赋值
-
         this.url = HttpUtils.getURI(this.agreementValues + "://" + path, urlValues);
         if (InterfaceConfig.URL_GET_NAME.equals(this.method)) {
             return (HttpUtils.doGet(this.url));
         } else if (InterfaceConfig.URL_POST_NAME.equals(this.method)) {
             if ("".equals(urlValues)) {
-                return (Network.sendPost(agreementValues + "://" + path, body, null));
+                return (HttpUtils.doPost(agreementValues + "://" + path, body));
             } else {
-                return (Network.sendPost(agreementValues + "://" + path + "?" + urlValues, body, null));
+                return (HttpUtils.doPost(agreementValues + "://" + path + "?" + urlValues, body));
             }
 
         }

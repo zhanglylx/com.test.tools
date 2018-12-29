@@ -36,9 +36,10 @@ class AdSendConfig {
     static final String SB_JBUTTON = "提交";
     static final String MFDZS = "免费电子书";
     static final String MFZS = "免费追书";
+    static final String IKS = "爱看书(使用免电广告类型)";
     static final int LFET_MARGIN = 5;//左边界
     static final String QZ_HINT = "数字类型,倒序,0为分量,相同非0权重按照加入时间排序,默认10";
-    static final String HOST_TEST = "http://192.168.1.242:9037";
+    static final String HOST_TEST = "http://manage-cx-qa.ikanshu.cn";
     static final String GET_APP_TYPE_PATH = "/fm/getAdOptionAppName";
     static final String ADD_AD_RELEASE = "/fm/addadrelease";
     static Map<String, String> HEADERS;
@@ -49,9 +50,9 @@ class AdSendConfig {
     static final String TOTAL_EXPOSURE_NUM = "totalExposureNum";
     static final String DAY_TOTAL_EXPOSURE_NUM = "dayTotalExposureNum";
     static final String SINGLE_EXPOSURE_NUM = "singleExposureNum";
-    static final String DATABASE_HOST = "192.168.1.246:3306/freezwsc";
-    static final String DATABASE_USERNAME = "root_rw";
-    static final String DATABASE_PASSWORD = "loto5522";
+    static final String DATABASE_HOST = "db.miandian.qa:3306/freezwsc";
+    static final String DATABASE_USERNAME = "APP_01";
+    static final String DATABASE_PASSWORD = "Iwanvi@123";
     static final String DATABASE_AD_TABLE_NAME = "freeadrelease";
     private static final String GDTXXL = "广点通信息流Banner";
     public static final String[] AD_ANNOTATION = new String[]{
@@ -81,13 +82,16 @@ class AdSendConfig {
      */
     public static String[] getBuiltInAppType(String appName) {
         //更改以下名称时需要同步更改builtInAdGG()；
-        if (MFDZS.equals(appName)) {
-            return new String[]{"广点通", "头条SDK", "今日头条TT_API", "头条TT_API_02"
-                    , "头条TT_API_03", "聚效", GDTXXL, ZHI_TOU, "猎鹰sdk",
-                    "测试公告文字"};
-        } else {
-            return new String[]{"广点通", "头条SDK", "今日头条TT_API", GDTXXL
-                    , ZHI_TOU, "猎鹰sdk", "测试公告文字"};
+        switch (appName) {
+            case MFDZS:
+                return new String[]{"广点通", "头条SDK", "今日头条TT_API", "头条TT_API_02"
+                        , "头条TT_API_03", "聚效", GDTXXL, ZHI_TOU, "猎鹰sdk",
+                        "测试公告文字"};
+            case MFZS:
+                return new String[]{"广点通", "头条SDK", "今日头条TT_API", GDTXXL
+                        , ZHI_TOU, "猎鹰sdk", "测试公告文字"};
+            default:
+                return new String[0];
         }
     }
 
@@ -170,6 +174,8 @@ class AdSendConfig {
             case MFDZS:
                 return "cxb";
             case MFZS:
+                return "mfzs";
+            case IKS:
                 return "mfzs";
             default:
                 return null;

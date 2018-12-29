@@ -3,8 +3,6 @@ package SquirrelFrame;
 import Squirrel.InstallPackage;
 import ZLYUtils.AdbUtils;
 import ZLYUtils.FrameUtils;
-import ZLYUtils.JavaUtils;
-import ZLYUtils.WindosUtils;
 import com.worm.StratWorm;
 
 import javax.swing.*;
@@ -14,7 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
 import java.util.Random;
 
 /**
@@ -24,16 +21,17 @@ public class HomePage extends JFrame {
     //选择的项目
     private String projectName;
     private String clearProjectName;
-    public static final String ZWSC = "中文书城";
-    public static final String CXB = "免费电子书";
-    public static final String ZHIBO = "直播";
-    public static final String clearIphone = "清理手机环境";
-    public static final String installPackage = "安装apk";
-    public static final String worm = "贪食蛇";
-    public static final String getLocalIP = "IP Address ";
-    public static final String workFlow = "帮助文档";
-    public static final String testTools = "测试工具";
-    public static final String VIDEOSWICTH = "视频压缩";
+    static final String ZWSC = "中文";
+    static final String CXB = "免电";
+    static final String MZ = "免追";
+    static final String IKS = "爱看书";
+    private static final String clearIphone = "清理手机环境";
+    private static final String installPackage = "安装apk";
+    private static final String worm = "贪食蛇";
+    static final String getLocalIP = "IP Address ";
+    static final String workFlow = "帮助文档";
+    static final String testTools = "测试工具";
+    static final String VIDEOSWICTH = "视频压缩";
     private JButton clearIphoneButtpm;
     private JButton getLocalIPButton;
     private JButton installPackageButton;
@@ -116,8 +114,9 @@ public class HomePage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String text = f.getText();
                 if (ZWSC.equals(text) ||
-                        ZHIBO.equals(text) ||
-                        CXB.equals(text)) {
+                        MZ.equals(text) ||
+                        CXB.equals(text) ||
+                        IKS.equals(text)) {
                     projectName = f.getText();
                     clearIphoneButtpm.setEnabled(true);
                 } else if (ClearIphone.CLEAR_ALL.equals(text) ||
@@ -289,22 +288,26 @@ public class HomePage extends JFrame {
         p1.setLayout(new GridLayout(2, 1));
         JPanel Project = new JPanel();
         Project.add(new JLabel("请选择一个项目:"));
-        JRadioButton zwsc = new JRadioButton("中文书城");
-        JRadioButton cxb = new JRadioButton("免费电子书");
-        JRadioButton zhibo = new JRadioButton("直播");
+        JRadioButton zwsc = new JRadioButton(ZWSC);
+        JRadioButton cxb = new JRadioButton(CXB);
+        JRadioButton mz = new JRadioButton(MZ);
+        JRadioButton iks = new JRadioButton(IKS);
         jRadioButtonMouseListener(zwsc);
         jRadioButtonMouseListener(cxb);
-        jRadioButtonMouseListener(zhibo);
+        jRadioButtonMouseListener(mz);
+        jRadioButtonMouseListener(iks);
         // 单选按钮组,同一个单选按钮组的互斥.
         ButtonGroup group = new ButtonGroup();
         group.add(zwsc);
         group.add(cxb);
-        group.add(zhibo);
+        group.add(mz);
+        group.add(iks);
         Project.add(zwsc);
         Project.add(cxb);
-        Project.add(zhibo);
+        Project.add(mz);
+        Project.add(iks);
         Project.setLayout(new FlowLayout(0));
-        Project.add(new JLabel("当前设备名称:"));
+        Project.add(new JLabel("           当前设备名称:"));
         textArea = new JTextField(15);
         textArea.setFont(new Font("黑体", Font.BOLD, 15));
         AdbUtils.setDevices();
@@ -407,7 +410,9 @@ public class HomePage extends JFrame {
     }
 
 
-    public static void main(String[] args) { HomePage.getHomePage();}
+    public static void main(String[] args) {
+        HomePage.getHomePage();
+    }
 
 
 }

@@ -17,7 +17,7 @@ public class ConnectDataBase {
         }
         try {
             //加载MySql的驱动类
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("找不到驱动程序类，加载驱动失败！");
             e.printStackTrace();

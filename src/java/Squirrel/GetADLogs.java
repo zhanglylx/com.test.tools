@@ -30,7 +30,7 @@ public class GetADLogs extends FrontPanel {
      */
     static {
         AD = new String[0];
-        for (int i = 0; i < 72; i++) {
+        for (int i = 0; i < 80; i++) {
             AD = Arrays.copyOf(AD, AD.length + 1);
             AD[AD.length - 1] = "GG-" + i;
         }

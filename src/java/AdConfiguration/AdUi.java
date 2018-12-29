@@ -500,7 +500,7 @@ public class AdUi extends FrontPanel {
         this.jPanel.add(setJLabel("所属应用:"));
         this.jPanel.add(this.appName = setJComboBox(
                 new String[]{
-                        AdSendConfig.MFDZS, AdSendConfig.MFZS}, this.listLeftMargin, appTypeWidth));
+                        AdSendConfig.MFDZS, AdSendConfig.MFZS,AdSendConfig.IKS}, this.listLeftMargin, appTypeWidth));
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -676,8 +676,11 @@ public class AdUi extends FrontPanel {
 
     public void setAdValues() {
         checkValues();
+
         this.sendAdConfiguration.setAppname(
                 AdSendConfig.getAppNameCode(this.appName.getSelectedItem().toString()));
+        if(AdSendConfig.IKS.equals(this.appName.getSelectedItem().toString()))
+            this.sendAdConfiguration.setAppname("aks");
         this.sendAdConfiguration.setAdNo(Long.parseLong(
                 this.getAppType.getAdNoMap().get(
                         this.appType.getSelectedItem().toString())));
