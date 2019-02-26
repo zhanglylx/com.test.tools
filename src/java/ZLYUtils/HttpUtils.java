@@ -23,6 +23,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
@@ -37,47 +38,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * http类型，用于发送网络请求
  */
 public class HttpUtils {
-    public static String networkUrl;
     // HTTP内容类型。相当于form表单的形式，提交数据
-    public static final String CONTENT_TYPE_JSON_URL = "application/json;charset=utf-8";
-
+    private static final String CONTENT_TYPE_JSON_URL = "application/json;charset=utf-8";
     // utf-8字符编码
-    public static final String CHARSET_UTF_8 = "UTF-8";
-
-    // 连接管理器
-    private static PoolingHttpClientConnectionManager pool;
-
+    private static final String CHARSET_UTF_8 = "UTF-8";
     // 超时时间:ms
     private static final int SOCKET_TIME_OUT = 60 * 1000;
-
     //创建连接的最长时间:ms
     private static final int CONNECTION_TIME_OUT = 60 * 2000;
-
     // 从连接池中获取到连接的最长时间:ms
     private static final int CONNECTION_REQUEST_TIME_OUT = 60 * 2000;
-
     // 线程池最大连接数
     private static final int POOL_MAX_TOTAL = 3 * 1000;
-
     //默认的每个路由的最大连接数
     private static final int POOL_MAX_PERROUTE = 10;
-
     //检查永久链接的可用性:ms
     private static final int POOL_VALIDATE_AFTER_INACTIVITY = 2 * 1000;
-
     //关闭Socket等待时间，单位:s
     private static final int SOCKET_LINGER = 60;
-
-
+    //建立httpClient配置
     private static HttpClientBuilder httpBulder;
-    //请求重试处理
-    private static HttpRequestRetryHandler httpRequestRetryHandler;
 
     static {
         try {
@@ -91,7 +76,8 @@ public class HttpUtils {
                     "http", PlainConnectionSocketFactory.getSocketFactory()).register(
                     "https", sslsf).build();
             // 初始化连接管理器
-            pool = new PoolingHttpClientConnectionManager(
+            // 连接管理器
+            PoolingHttpClientConnectionManager pool = new PoolingHttpClientConnectionManager(
                     socketFactoryRegistry);
             // 将最大连接数增加到200，实际项目最好从配置文件中读取这个值
             pool.setMaxTotal(POOL_MAX_TOTAL);
@@ -102,59 +88,46 @@ public class HttpUtils {
             //设置默认连接配置
             pool.setDefaultSocketConfig(setSocketConfig());
             //请求重试处理
-            httpRequestRetryHandler = (exception, executionCount, context) -> {
-                if (executionCount >= 3) {// 如果已经重试了5次，就放弃
-                    return false;
-                }
-                if (exception instanceof NoHttpResponseException) {// 如果服务器丢掉了连接，那么就重试
-                    return true;
-                }
-                if (exception instanceof SSLHandshakeException) {// 不要重试SSL握手异常
-                    return false;
-                }
-                if (exception instanceof InterruptedIOException) {// 超时
-                    return false;
-                }
-                if (exception instanceof UnknownHostException) {// 目标服务器不可达
-                    return false;
-                }
-                if (exception instanceof SSLException) {// ssl握手异常
-                    return false;
-
-                }
-                HttpClientContext clientContext = HttpClientContext.adapt(context);
-                HttpRequest request = clientContext.getRequest();
+            // 如果已经重试了3次，就放弃
+            // 如果服务器丢掉了连接，那么就重试
+            // 不要重试SSL握手异常
+            // 超时
+            // 目标服务器不可达
+            // ssl握手异常
+            // 如果请求是幂等的，就再次尝试
+            //请求重试处理
+            HttpRequestRetryHandler httpRequestRetryHandler = (exception, executionCount, context) -> {
+                if (executionCount >= 3) return false;// 如果已经重试了3次，就放弃
+                if (exception instanceof NoHttpResponseException) return true; // 如果服务器丢掉了连接，那么就重试
+                if (exception instanceof SSLHandshakeException) return false; // 不要重试SSL握手异常
+                if (exception instanceof InterruptedIOException) return false; // 超时
+                if (exception instanceof UnknownHostException) return false;// 目标服务器不可达
+                if (exception instanceof SSLException) return false;// ssl握手异常
                 // 如果请求是幂等的，就再次尝试
-                if (!(request instanceof HttpEntityEnclosingRequest)) {
-                    return true;
-                }
-                return false;
+                return !(HttpClientContext.adapt(context).getRequest()
+                        instanceof HttpEntityEnclosingRequest);
             };
             httpBulder = HttpClients.custom()
-                    .setConnectionManager(pool)
-                    // 设置请求配置
+                    .setConnectionManager(pool) // 设置请求配置
                     .setDefaultRequestConfig(requestConfig())
-                    // 设置重试次数
 //                .setRetryHandler(new DefaultHttpRequestRetryHandler(0, false))
-                    .setRetryHandler(httpRequestRetryHandler);
+                    .setRetryHandler(httpRequestRetryHandler);  // 设置重试次数
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
     /**
      * socket配置（默认配置 和 某个host的配置）
      */
     private static SocketConfig setSocketConfig() {
-        SocketConfig socketConfig = SocketConfig.custom()
+        return SocketConfig.custom()
                 .setTcpNoDelay(true)     //是否立即发送数据，设置为true会关闭Socket缓冲，默认为false
                 .setSoReuseAddress(true) //是否可以在一个进程关闭Socket后，即使它还没有释放端口，其它进程还可以立即重用端口
                 .setSoTimeout(SOCKET_TIME_OUT)       //接收数据的等待超时时间，单位ms
-                .setSoLinger(SOCKET_LINGER)         //关闭Socket时，要么发送完所有数据，要么等待60s后，就关闭连接，此时socket.close()是阻塞的
+                .setSoLinger(SOCKET_LINGER)         //关闭Socket时，要么发送完所有数据，要么等待XXs后，就关闭连接，此时socket.close()是阻塞的
                 .setSoKeepAlive(true)    //开启监视TCP连接是否有效
                 .build();
-        return socketConfig;
     }
 
     /**
@@ -162,22 +135,22 @@ public class HttpUtils {
      * 超时时间
      */
     private static RequestConfig requestConfig() {
-        RequestConfig config = RequestConfig.custom()
+        return RequestConfig.custom()
                 .setConnectTimeout(CONNECTION_TIME_OUT) // 创建连接的最长时间
                 .setConnectionRequestTimeout(CONNECTION_REQUEST_TIME_OUT) // 从连接池中获取到连接的最长时间
                 .setSocketTimeout(SOCKET_TIME_OUT) // 数据传输的最长时间
-//                .setStaleConnectionCheckEnabled(true) // 提交请求前测试连接是否可用
                 .setProxy(new HttpHost("localhost", 8888))
                 .build();
-
-        return config;
     }
 
-    public static CloseableHttpClient getHttpClient() {
-        CloseableHttpClient httpClient = httpBulder.build();
-        return httpClient;
+    private static CloseableHttpClient getHttpClient() {
+        return httpBulder.build();
     }
 
+
+    public static String doGet(String url, String param) {
+        return doGet(getURI(url, param));
+    }
 
     public static String doGet(URI uri) {
         return doGet(uri, null, null);
@@ -187,16 +160,7 @@ public class HttpUtils {
             , NetworkHeaders networkHeaders) {
         String result = "";
         try {
-            // 2. 创建HttpGet对象
-            HttpGet httpGet = new HttpGet(uri);
-            httpGet.addHeader("Accept-Encoding", "chunked");
-            httpGet.addHeader("Charset", CHARSET_UTF_8);
-            if (null != headers) {
-                for (Map.Entry<String, String> entry : headers.entrySet()) {
-                    httpGet.addHeader(entry.getKey(), entry.getValue());
-                }
-            }
-            result = getResponse(getHttpClient().execute(httpGet), networkHeaders);
+            result = getResponse(getHttpClient().execute(getHttpGet(uri, headers)), networkHeaders);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -206,22 +170,95 @@ public class HttpUtils {
         return result;
     }
 
-    public static String doGet(String url, String param) {
-        return doGet(getURI(url, param));
+    public static String doPostJson(String url, String param) {
+        return doPostJson(url, param, null, null);
     }
 
-    public static URI getURI(String url, String param) {
-        URI uri = null;
+
+    public static String doPost(String url, Object param) {
+        return doPost(url, param, null, null);
+    }
+
+    public static String doPost(String url, Map<String, String> param) {
+        return doPost(url, param, null, null);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static String doPost(String url
+            , Object param
+            , Map<String, String> requestHead
+            , NetworkHeaders networkHeaders) {
+        String resultString = "";
         try {
-            if (param == null || param.equals("")) {
-                uri = new URIBuilder(url.trim()).build();
-            } else {
-                uri = new URIBuilder(url.trim()).setCustomQuery(param.trim()).build();
+            HttpPost httpPost = getHttpPost(url, requestHead);
+            // 创建参数列表
+            if (param != null) {
+                if (param instanceof Map) {
+                    Map<String, String> mapParam = (Map<String, String>) param;
+                    List<NameValuePair> paramList = new ArrayList<>();
+                    for (String key : mapParam.keySet()) {
+                        paramList.add(new BasicNameValuePair(key, mapParam.get(key)));
+                    }
+                    // 模拟表单
+                    httpPost.setEntity(new UrlEncodedFormEntity(paramList));
+                } else if (param instanceof String) {
+                    StringEntity entity = new StringEntity((String) param);
+                    httpPost.setEntity(entity);
+                }
             }
-        } catch (URISyntaxException e) {
+            // 执行http请求
+            resultString = getResponse(getHttpClient().execute(httpPost), networkHeaders);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return uri;
+        return resultString;
+    }
+
+    public static String doPostJson(String url
+            , String param
+            , Map<String, String> requestHead
+            , NetworkHeaders networkHeaders) {
+        String resultString = "";
+        try {
+            // 创建Http Post请求
+            HttpPost httpPost = getHttpPost(url, requestHead);
+            // 创建请求内容
+            if (null == param) param = "";
+            StringEntity entity = new StringEntity(param, ContentType.APPLICATION_JSON);
+            entity.setContentType(CONTENT_TYPE_JSON_URL);
+            httpPost.setEntity(entity);
+            // 执行http请求
+            resultString = getResponse(getHttpClient().execute(httpPost), networkHeaders);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultString;
+    }
+
+    private static Header[] getHeaders(Map<String, String> requestHead) {
+        List<Header> headers = new ArrayList<>();
+        headers.add(new BasicHeader("Accept-Encoding", "chunked"));
+        headers.add(new BasicHeader("Charset", CHARSET_UTF_8));
+        if (null != requestHead) {
+            for (Map.Entry<String, String> entry : requestHead.entrySet()) {
+                headers.add(new BasicHeader(entry.getKey(), entry.getValue()));
+            }
+        }
+
+        return headers.toArray(new Header[]{});
+    }
+
+    private static HttpGet getHttpGet(URI uri, Map<String, String> headers) {
+        HttpGet httpGet = new HttpGet(uri);
+        httpGet.setHeaders(getHeaders(headers));
+        return httpGet;
+    }
+
+    private static HttpPost getHttpPost(String url, Map<String, String> requestHead) {
+        // 创建Http Post请求
+        HttpPost httpPost = new HttpPost(url);
+        httpPost.setHeaders(getHeaders(requestHead));
+        return httpPost;
     }
 
     /**
@@ -280,90 +317,20 @@ public class HttpUtils {
 
     }
 
-    public static String doPostJson(String url, String param) {
-        return doPostJson(url, param, null, null);
-    }
-
-    /**
-     * @param url
-     * @param param
-     * @param requestHead
-     * @param networkHeaders
-     * @return
-     */
-    public static String doPostJson(String url
-            , String param
-            , Map<String, String> requestHead
-            , NetworkHeaders networkHeaders) {
-        String resultString = "";
+    public static URI getURI(String url, String param) {
+        URI uri = null;
         try {
-            // 创建Http Post请求
-            HttpPost httpPost = new HttpPost(url);
-            // 创建请求内容
-            if (null == param) param = "";
-            StringEntity entity = new StringEntity(param, ContentType.APPLICATION_JSON);
-            entity.setContentType(CONTENT_TYPE_JSON_URL);
-            httpPost.setEntity(entity);
-            httpPost.addHeader("Accept-Encoding", "chunked");
-            httpPost.addHeader("Charset", CHARSET_UTF_8);
-            if (null != requestHead) {
-                for (Map.Entry<String, String> entry : requestHead.entrySet()) {
-                    httpPost.addHeader(entry.getKey(), entry.getValue());
-                }
+            if (param == null || param.equals("")) {
+                uri = new URIBuilder(url.trim()).build();
+            } else {
+                uri = new URIBuilder(url.trim()).setCustomQuery(param.trim()).build();
             }
-            // 执行http请求
-            resultString = getResponse(getHttpClient().execute(httpPost), networkHeaders);
-        } catch (Exception e) {
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        return resultString;
+        return uri;
     }
 
-    public static String doPost(String url, Object param) {
-        return doPost(url, param, null, null);
-    }
-
-    public static String doPost(String url
-            , Object param
-            , Map<String, String> requestHead
-            , NetworkHeaders networkHeaders) {
-        String resultString = "";
-        try {
-            // 创建Http Post请求
-            HttpPost httpPost = new HttpPost(url);
-            httpPost.addHeader("Accept-Encoding", "chunked");
-            httpPost.addHeader("Charset", CHARSET_UTF_8);
-            if (null != requestHead) {
-                for (Map.Entry<String, String> entry : requestHead.entrySet()) {
-                    httpPost.addHeader(entry.getKey(), entry.getValue());
-                }
-            }
-            // 创建参数列表
-            if (param != null) {
-                if (param instanceof Map) {
-                    Map<String, String> mapParam = (Map<String, String>) param;
-                    List<NameValuePair> paramList = new ArrayList<>();
-                    for (String key : mapParam.keySet()) {
-                        paramList.add(new BasicNameValuePair(key, mapParam.get(key)));
-                    }
-                    // 模拟表单
-                    httpPost.setEntity(new UrlEncodedFormEntity(paramList));
-                } else if (param instanceof String) {
-                    StringEntity entity = new StringEntity((String) param);
-                    httpPost.setEntity(entity);
-                }
-            }
-            // 执行http请求
-            resultString = getResponse(getHttpClient().execute(httpPost), networkHeaders);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return resultString;
-    }
-
-    public static String doPost(String url, Map<String, String> param) {
-        return doPost(url, param, null, null);
-    }
 
     /**
      * 设置本地代理

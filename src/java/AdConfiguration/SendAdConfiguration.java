@@ -207,11 +207,11 @@ public class SendAdConfiguration {
             this.repetition = this.urlValue.toString();
         }
 
-        String response = Network.sendPost(AdSendConfig.HOST_TEST + AdSendConfig.ADD_AD_RELEASE,
+        String response = Network.sendPost(AdSendConfig.getHostUrl() + AdSendConfig.ADD_AD_RELEASE,
                 urlValues,
                 AdSendConfig.HEADERS, this.networkHeaders);
         if (this.networkHeaders.getHeaders().get("Location").toString().contains(
-                AdSendConfig.HOST_TEST + "/fm/listadrelease"
+                AdSendConfig.getHostUrl() + "/fm/listadrelease"
         ) && response.equals("302")) return true;
         return false;
     }

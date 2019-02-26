@@ -55,6 +55,7 @@ public class ClearIphone {
                 rm.add("sdcard/.cxb");
                 rm.add("sdcard/.hide_freebook/");
                 rm.add("sdcard/Android/data/com.mianfeia.book");
+                rm.add("mnt/sdcard/com.mianfeia.book");
                 break;
             case HomePage.MZ:
                 code = "com.mianfeizs.book";
@@ -63,6 +64,7 @@ public class ClearIphone {
                 rm.add("sdcard/.freebook");
                 rm.add("sdcard/.cxb");
                 rm.add("sdcard/.hide_freebook/");
+                rm.add("mnt/sdcard/com.mianfeizs.book");
                 break;
             case HomePage.IKS:
                 code = "com.mfyueduqi.book";
@@ -70,6 +72,7 @@ public class ClearIphone {
                 rm.add("sdcard/FreeBook/");
                 rm.add("sdcard/.freebook");
                 rm.add("sdcard/.cxb");
+                rm.add("mnt/sdcard/com.mfyueduqi.book");
                 break;
             default:
                 throw new IllegalArgumentException("未找到包名:" + packageName);

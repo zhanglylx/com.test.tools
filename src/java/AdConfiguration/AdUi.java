@@ -64,6 +64,9 @@ public class AdUi extends FrontPanel {
     private int appTypeWidth;//广告类型宽度
     private JRadioButton fixedTime;//固定时间
     private JRadioButton cycleDayTime;//按天循环时间
+
+    private JRadioButton devTextEnvironment;//开发测试环境
+    private JRadioButton textEnvironment;//测试环境
     private boolean runing;//是否正在执行提交广告
     private AdDataBse adDataBse;
     private Color colorSucces;
@@ -235,6 +238,17 @@ public class AdUi extends FrontPanel {
      */
     public void setTable() {
         setJPanel();
+        this.devTextEnvironment = newJRadioButton("开发环境");
+        this.devTextEnvironment.setLocation(this.listLeftMargin, this.listUpBoundary);
+        this.jPanel.add(this.devTextEnvironment);
+        this.textEnvironment = newJRadioButton("测试环境");
+        this.textEnvironment.setLocation(300, this.listUpBoundary);
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(this.devTextEnvironment);
+        buttonGroup.add(this.textEnvironment);
+        this.textEnvironment.setSelected(true);
+        AdSendConfig.setHostDevEnvironment(false);
+        this.jPanel.add(this.textEnvironment);
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -500,7 +514,7 @@ public class AdUi extends FrontPanel {
         this.jPanel.add(setJLabel("所属应用:"));
         this.jPanel.add(this.appName = setJComboBox(
                 new String[]{
-                        AdSendConfig.MFDZS, AdSendConfig.MFZS,AdSendConfig.IKS}, this.listLeftMargin, appTypeWidth));
+                        AdSendConfig.MFDZS, AdSendConfig.MFZS, AdSendConfig.IKS}, this.listLeftMargin, appTypeWidth));
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -586,6 +600,17 @@ public class AdUi extends FrontPanel {
             this.sendAdConfiguration.setIscirclead((byte) 0);
         } else if (this.cycleDayTime == jRadioButton) {
             this.sendAdConfiguration.setIscirclead((byte) 1);
+        } else if (this.devTextEnvironment == jRadioButton) {
+            AdSendConfig.setHostDevEnvironment(true);
+            AdSendConfig.loging();
+            AdDataBse.setAdDataBseNull();
+            new Thread(this.getAppType).start();
+        } else if (this.textEnvironment == jRadioButton) {
+            AdSendConfig.setHostDevEnvironment(false);
+            AdSendConfig.loging();
+            AdDataBse.setAdDataBseNull();
+            new Thread(this.getAppType).start();
+
         }
     }
 
@@ -679,7 +704,7 @@ public class AdUi extends FrontPanel {
 
         this.sendAdConfiguration.setAppname(
                 AdSendConfig.getAppNameCode(this.appName.getSelectedItem().toString()));
-        if(AdSendConfig.IKS.equals(this.appName.getSelectedItem().toString()))
+        if (AdSendConfig.IKS.equals(this.appName.getSelectedItem().toString()))
             this.sendAdConfiguration.setAppname("aks");
         this.sendAdConfiguration.setAdNo(Long.parseLong(
                 this.getAppType.getAdNoMap().get(
@@ -882,7 +907,6 @@ public class AdUi extends FrontPanel {
         if (this.appName == jComboBox) {
             if (AdSendConfig.HEADERS.get("Cookie") == null ||
                     AdSendConfig.HEADERS.get("Cookie").length() < 1) AdSendConfig.loging();
-            this.getAppType.setAppName(this.appName.getSelectedItem().toString());
             new Thread(this.getAppType).start();
         } else if (this.builtInAppType == jComboBox) {
             String text = this.builtInAppType.getSelectedItem().toString();
@@ -1031,6 +1055,14 @@ public class AdUi extends FrontPanel {
 
     public JButton getShelves() {
         return shelves;
+    }
+
+    public JRadioButton getDevTextEnvironment() {
+        return devTextEnvironment;
+    }
+
+    public JRadioButton getTextEnvironment() {
+        return textEnvironment;
     }
 
     public void startLoging() {

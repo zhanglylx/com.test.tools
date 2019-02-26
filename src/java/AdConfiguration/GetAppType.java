@@ -37,9 +37,6 @@ public class GetAppType implements Runnable {
         return appName;
     }
 
-    public void setAppName(String appName) {
-        this.appName = appName;
-    }
 
     private String appName;
 
@@ -109,7 +106,7 @@ public class GetAppType implements Runnable {
         map.put("ran", String.valueOf(Math.random()));
         map.put("appname", AdSendConfig.getAppNameCode(this.appName));
         String response = HttpUtils.doPost(
-                AdSendConfig.HOST_TEST + AdSendConfig.GET_APP_TYPE_PATH
+                AdSendConfig.getHostUrl() + AdSendConfig.GET_APP_TYPE_PATH
                 , map, AdSendConfig.HEADERS
                 ,null);
         try {
@@ -163,6 +160,8 @@ public class GetAppType implements Runnable {
             adUi.getBuiltInAppType().setEnabled(false);
             adUi.getSb().setEnabled(false);
             adUi.getShelves().setEnabled(false);
+            adUi.getDevTextEnvironment().setEnabled(false);
+            adUi.getTextEnvironment().setEnabled(false);
             while (this.stop) {
                 //大于指定次数，重新计算.
                 if (i > 30) {
@@ -192,6 +191,8 @@ public class GetAppType implements Runnable {
             adUi.getSb().setEnabled(true);
             adUi.getBuiltInAppType().setEnabled(true);
             adUi.getShelves().setEnabled(true);
+            adUi.getDevTextEnvironment().setEnabled(true);
+            adUi.getTextEnvironment().setEnabled(true);
             this.stop = true;
         }
     }

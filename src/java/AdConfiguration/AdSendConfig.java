@@ -40,6 +40,7 @@ class AdSendConfig {
     static final int LFET_MARGIN = 5;//左边界
     static final String QZ_HINT = "数字类型,倒序,0为分量,相同非0权重按照加入时间排序,默认10";
     static final String HOST_TEST = "http://manage-cx-qa.ikanshu.cn";
+    static final String HOST_DEV = "http://manage-cx-dev.ikanshu.cn";
     static final String GET_APP_TYPE_PATH = "/fm/getAdOptionAppName";
     static final String ADD_AD_RELEASE = "/fm/addadrelease";
     static Map<String, String> HEADERS;
@@ -50,11 +51,13 @@ class AdSendConfig {
     static final String TOTAL_EXPOSURE_NUM = "totalExposureNum";
     static final String DAY_TOTAL_EXPOSURE_NUM = "dayTotalExposureNum";
     static final String SINGLE_EXPOSURE_NUM = "singleExposureNum";
-    static final String DATABASE_HOST = "db.miandian.qa:3306/freezwsc";
-    static final String DATABASE_USERNAME = "APP_01";
-    static final String DATABASE_PASSWORD = "Iwanvi@123";
+    private static final String DATABASE_HOST_TEST = "db.miandian.qa:3306/freezwsc";
+    private static final String DATABASE_HOST_DEV = "db.miandian:3306/freezwsc";
+    private static final String DATABASE_USERNAME = "APP_01";
+    private static final String DATABASE_PASSWORD = "Iwanvi@123";
     static final String DATABASE_AD_TABLE_NAME = "freeadrelease";
     private static final String GDTXXL = "广点通信息流Banner";
+    private static boolean hostDevEnvironment = false;//测试环境
     public static final String[] AD_ANNOTATION = new String[]{
             "广告在应用中的位置",
             "GG-1:启动页全屏", "GG-2:书架公告", "GG-3:书架顶部通栏",
@@ -74,6 +77,25 @@ class AdSendConfig {
             "GG-69:精品页12榜间大banner", "GG-70:精品页23榜间大banner",
             "GG-71:精品页34榜间大banner"
     };
+
+    public static String getHostUrl() {
+        if (hostDevEnvironment) return HOST_DEV;
+        return HOST_TEST;
+    }
+
+    public static String[] getDataBase() {
+        if (hostDevEnvironment) return new String[]{DATABASE_HOST_DEV, DATABASE_USERNAME, DATABASE_PASSWORD};
+        return new String[]{DATABASE_HOST_TEST, DATABASE_USERNAME, DATABASE_PASSWORD};
+    }
+
+    /**
+     * 设置环境
+     *
+     * @param hostDevEnvironment
+     */
+    public static synchronized void setHostDevEnvironment(boolean hostDevEnvironment) {
+        AdSendConfig.hostDevEnvironment = hostDevEnvironment;
+    }
 
     /**
      * 获取内置广告位支持的广告类型
@@ -186,7 +208,7 @@ class AdSendConfig {
         synchronized (AdSendConfig.class) {
             HEADERS = new HashMap<>();
             NetworkHeaders networkHeaders = new NetworkHeaders();
-            Network.sendPost(HOST_TEST + "/fm/login/login",
+            Network.sendPost(AdSendConfig.getHostUrl() + "/fm/login/login",
                     "username=admin&password=123456",
                     null, networkHeaders);
             String cookies = "";

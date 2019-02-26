@@ -7,10 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AdDataBse {
     public ConnectDataBase getConnectDataBase() {
@@ -23,14 +20,9 @@ public class AdDataBse {
     private AdDataBse() {
         try {
             this.connectDataBase = new ConnectDataBase("mysql");
-            this.connectDataBase.coonnect(AdSendConfig.DATABASE_HOST,
-                    AdSendConfig.DATABASE_USERNAME, AdSendConfig.DATABASE_PASSWORD);
-        } catch (CommunicationsException e1) {
-            e1.printStackTrace();
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        } catch (ClassNotFoundException e1) {
-            e1.printStackTrace();
+            System.out.println(Arrays.toString(AdSendConfig.getDataBase()));
+            this.connectDataBase.coonnect(AdSendConfig.getDataBase()[0],
+                    AdSendConfig.getDataBase()[1], AdSendConfig.getDataBase()[2]);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -129,9 +121,9 @@ public class AdDataBse {
             sql = sqlLikeAdd(sql, AdSendConfig.SINGLE_CLICK_NUM);
             sql = sqlLikeAdd(sql, AdSendConfig.SINGLE_EXPOSURE_NUM);
         }
-        if(adNo==0){
+        if (adNo == 0) {
             sql = sqlLikeAdd(sql, AdSendConfig.AD_NO);
-        }else{
+        } else {
             sql = sqlEqualAdd(sql, AdSendConfig.AD_NO);
         }
 
@@ -140,9 +132,9 @@ public class AdDataBse {
         } else {
             sql = sqlLikeAdd(sql, AdSendConfig.WIFI_STATE);
         }
-        if(ads.size()==0){
+        if (ads.size() == 0) {
             sql = sqlLikeAdd(sql, AdSendConfig.ADV_SING_NO);
-        }else {
+        } else {
             sql = sqlEqualAdd(sql, AdSendConfig.ADV_SING_NO);
         }
 
@@ -190,9 +182,9 @@ public class AdDataBse {
                 preparedStatement.setString(13, "%");
                 preparedStatement.setString(14, "%");
             }
-            if(adNo==0){
+            if (adNo == 0) {
                 preparedStatement.setString(15, "%");
-            }else{
+            } else {
                 preparedStatement.setString(15, String.valueOf(adNo));
             }
 
@@ -201,11 +193,11 @@ public class AdDataBse {
             } else {
                 preparedStatement.setString(16, "%");
             }
-            if(ads.size()==0){
+            if (ads.size() == 0) {
                 preparedStatement.setString(17, "%");
                 System.out.println(preparedStatement.toString());
                 i += preparedStatement.executeUpdate();
-            }else {
+            } else {
                 for (int ad : ads) {
                     preparedStatement.setString(17, "GG-" + ad);
                     System.out.println(preparedStatement.toString());
