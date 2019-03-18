@@ -6,6 +6,7 @@ import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
 import ZLYUtils.FrameUtils;
 import ZLYUtils.WindosUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +24,7 @@ import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_SQUIRREL;
  * 录屏与截图
  */
 public class VideoRecordingScreenshot extends FrontPanel {
-    private JButton screenshot;
+    private JButton screenshot; //屏幕截图
     private JButton recordVideo;
     private JButton videoSwitch;
     public static final String SCREENSHOT = "截屏";
@@ -112,6 +113,7 @@ public class VideoRecordingScreenshot extends FrontPanel {
                 WindosUtils.copyFile(new File(saveFile),
                         new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING));
             }
+            refreshTheImage.suspendCancel();
             threadRefreshTheImage.interrupt();
         } else if (videoSwitch == f) {
             new VideoRecording().start();
@@ -187,7 +189,9 @@ class RefreshTheImage implements Runnable {
     public void suspend() {
         this.suspend = false;
     }
-
+    public void suspendCancel(){
+        this.suspend = true;
+    }
     public void stopMe() {
         stopMe = false;
     }
@@ -204,13 +208,14 @@ class RefreshTheImage implements Runnable {
     public synchronized void run() {
         String[] adb;
         //adb shell screencap -p /sdcard/1.png
+        //设置锁
         while (stopMe) {
-            //设置锁
-            synchronized (RefreshTheImage.class) {
                 try {
                     AdbUtils.operationAdb("shell screencap -p /sdcard/" + SCREENSHOT_SQUIRREL);
+                    System.out.println("开始拉取图片");
                     adb = AdbUtils.operationAdb("pull  /sdcard/" + SCREENSHOT_SQUIRREL + " " +
                             SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
+                    System.out.println("拉取图片结束");
                     System.out.println(Arrays.toString(adb));
                     if (!Arrays.toString(adb).contains("100%")) {
                         image = new ImageIcon("image/wait.png");
@@ -226,6 +231,7 @@ class RefreshTheImage implements Runnable {
                     jButton.setIcon(image);
                     if (!this.suspend) {
                         try {
+                            System.out.println("进入睡眠");
                             Thread.sleep(100000);
                         } catch (InterruptedException e) {
                             System.out.println("睡眠中断");
@@ -237,8 +243,9 @@ class RefreshTheImage implements Runnable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            System.out.println(StringUtils.leftPad("-",100,"-"));
             }
-        }
+        System.out.println("截图关闭");
         stopMe = true;
     }
 }
