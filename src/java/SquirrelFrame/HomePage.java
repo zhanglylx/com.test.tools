@@ -1,23 +1,22 @@
 package SquirrelFrame;
 
-import Squirrel.InstallPackage;
+import TestTools.TestToolsRoot;
+import TestTools.InstallPackage;
 import ZLYUtils.AdbUtils;
-import ZLYUtils.FrameUtils;
+import ZLYUtils.SwingUtils;
 import com.worm.StratWorm;
-
+import operation_plug.OperationPlugUi;
+import Frame.FrontPanel;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.Random;
 
 /**
  * 首页
  */
-public class HomePage extends JFrame {
+public class HomePage extends FrontPanel {
     //选择的项目
     private String projectName;
     private String clearProjectName;
@@ -30,8 +29,11 @@ public class HomePage extends JFrame {
     private static final String worm = "贪食蛇";
     static final String getLocalIP = "IP Address ";
     static final String workFlow = "帮助文档";
-    static final String testTools = "测试工具";
+    static final String testToolsStr = "测试工具";
+    private JButton testTools;
     static final String VIDEOSWICTH = "视频压缩";
+    private final JButton URLCODE = newJButton("松鼠工具");
+    private JButton OPERATION;
     private JButton clearIphoneButtpm;
     private JButton getLocalIPButton;
     private JButton installPackageButton;
@@ -42,27 +44,10 @@ public class HomePage extends JFrame {
     //动画
     public static JButton cartoon;
 
-    /**
-     * 设置风格
-     */
-    static {
-
-        try {
-//            com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel
-            UIManager.setLookAndFeel(SquirrelConfig.UI);
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                | UnsupportedLookAndFeelException e) {
-            ((Throwable) e).printStackTrace();
-        }
-    }
-
     private HomePage() {
-        super(SquirrelConfig.TOOLSTITLE);
+        super(SquirrelConfig.TOOLSTITLE,false);
         setLayout(null);
-        setSize(700, 500);
-        setIconImage(
-                Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
-        );
+        setSize(800, 500);
         //检查adb端口是否被占用
         Thread adbNetstat = new Thread(new Runnable() {
             @Override
@@ -71,31 +56,23 @@ public class HomePage extends JFrame {
             }
         });
         adbNetstat.start();
+        add(getMenubar());//添加菜单条
+        add(panelProject());//添加项目
+        add(functionOfPanel());
+        add(addCartoon());
+//        add(panelLogo());
+        Thread t = new Thread(new Cartoon());
+        t.start();
+        setLocationRelativeTo(null);//设置窗体位置,中间显示
+        setVisible(true);//设置窗口可见
+
+    }
+
+    public Menubar getMenubar() {
         Menubar menubar = new Menubar();
         menubar.setSize(this.getWidth() * 10, 37);
         menubar.setLocation(this.getX(), 5);
-        add(menubar);//添加菜单条
-        add(panelProject());//添加项目
-        add(functionOfPanel());
-        add(addTestButton(testTools));
-        setLocationRelativeTo(null);//设置窗体位置,中间显示
-
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) { //设置退出监听器
-                super.windowClosing(e);
-                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                System.exit(0);
-            }
-        });
-        add(addCartoon());
-//        add(panelLogo());
-//        pack();//自适应
-        Thread t = new Thread(new Cartoon());
-        t.start();
-        setVisible(true);//设置窗口可见
-
-
+        return menubar;
     }
 
     public static HomePage getHomePage() {
@@ -129,19 +106,61 @@ public class HomePage extends JFrame {
         });
     }
 
-    /**
-     * 设置按钮监听器
-     *
-     * @param f
-     */
-    private void buttonMouseListener(JButton f) {
-        f.addActionListener(e -> {
-            //判断是否为刷新按钮
-            if (refresh.equals(f)) {
-                refreshPhone();
+    @Override
+    public int setClose() {
+        return JFrame.EXIT_ON_CLOSE;
+    }
+
+
+    @Override
+    public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
+
+    }
+
+    @Override
+    public void jTextFieldEnteredEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldReleasedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldExitedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldInputEvent(JTextField jTextField, KeyEvent e) {
+
+    }
+
+    @Override
+    public void jTextFieldPressedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldClickEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void buttonClickEvent(JButton f) {
+        //判断是否为刷新按钮
+        if (refresh.equals(f)) {
+            refreshPhone();
+        } else if (this.testTools == f) {
+            new TestToolsRoot(f.getText());
+        } else {
+            String text = f.getText();
+            if (OPERATION == f) {
+                new OperationPlugUi(text);
                 return;
             }
-            String text = f.getText();
+
             switch (text) {
                 case worm:
                     new StratWorm().start();
@@ -151,9 +170,6 @@ public class HomePage extends JFrame {
                     clearIphoneButtpm.setEnabled(false);
                     break;
                 case workFlow:
-                    new Pane(text);
-                    break;
-                case testTools:
                     new Pane(text);
                     break;
                 case installPackage:
@@ -166,7 +182,39 @@ public class HomePage extends JFrame {
                     new WindowsText(text, this);
 
             }
-        });
+
+        }
+    }
+
+
+    @Override
+    public void jComboBoxClickEvent(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuCanceled(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeInvisible(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxDeselectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxSelectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeVisible(JComboBox jComboBox) {
+
     }
 
     /**
@@ -255,7 +303,7 @@ public class HomePage extends JFrame {
      * @return
      */
     private JButton addCartoon() {
-        cartoonLog = new JButton();
+        cartoonLog = newJButton();
         cartoonLog.setBorderPainted(false);// 不绘制边框
         cartoonLog.setContentAreaFilled(false);//透明的设置
         cartoonLog.setLocation(0, 250);
@@ -270,11 +318,10 @@ public class HomePage extends JFrame {
      * @return
      */
     private JPanel panelBottom() {
-        JPanel p4 = new JPanel();
-        JButton regardsButton = new JButton(Menubar.regards);
+        JPanel p4 = newJPanel();
+        JButton regardsButton = newJButton(Menubar.regards);
         p4.setLayout(new BorderLayout());
         p4.add(regardsButton, BorderLayout.EAST);
-        buttonMouseListener(regardsButton);
         return p4;
     }
 
@@ -284,70 +331,59 @@ public class HomePage extends JFrame {
      * @return
      */
     private JPanel panelProject() {
-        JPanel p1 = new JPanel();
-        p1.setLayout(new GridLayout(2, 1));
-        JPanel Project = new JPanel();
-        Project.add(new JLabel("请选择一个项目:"));
-        JRadioButton zwsc = new JRadioButton(ZWSC);
-        JRadioButton cxb = new JRadioButton(CXB);
-        JRadioButton mz = new JRadioButton(MZ);
-        JRadioButton iks = new JRadioButton(IKS);
+        JPanel p1 = newJPanel();
+        p1.setLayout(newGridLayout(2, 1));
+        JPanel Project = newJPanel();
+        Project.add(newJLabel("请选择一个项目:"));
+        JRadioButton zwsc = newJRadioButton(ZWSC);
+        JRadioButton cxb = newJRadioButton(CXB);
+        JRadioButton mz = newJRadioButton(MZ);
+        JRadioButton iks = newJRadioButton(IKS);
         jRadioButtonMouseListener(zwsc);
         jRadioButtonMouseListener(cxb);
         jRadioButtonMouseListener(mz);
         jRadioButtonMouseListener(iks);
         // 单选按钮组,同一个单选按钮组的互斥.
-        ButtonGroup group = new ButtonGroup();
-        group.add(zwsc);
-        group.add(cxb);
-        group.add(mz);
-        group.add(iks);
+        SwingUtils.setButtonGroup(zwsc, cxb, mz, iks);
         Project.add(zwsc);
         Project.add(cxb);
         Project.add(mz);
         Project.add(iks);
-        Project.setLayout(new FlowLayout(0));
-        Project.add(new JLabel("           当前设备名称:"));
-        textArea = new JTextField(15);
-        textArea.setFont(new Font("黑体", Font.BOLD, 15));
+        Project.setLayout(new FlowLayout(FlowLayout.LEFT));
+        Project.add(newJLabel("           当前设备名称:"));
+        textArea = newJTextField();
+        textArea.setColumns(15);
         AdbUtils.setDevices();
         setRefresh();
         Project.add(refresh);
         Project.add(textArea);
         p1.add(Project);
-        JPanel clearJPanel = new JPanel();
-        clearJPanel.setLayout(new FlowLayout(0));
-        clearJPanel.add(new JLabel("请选择清理方式:"));
-        JRadioButton clearCache = new JRadioButton(ClearIphone.CLEAR_CACHE);
-        JRadioButton clearFile = new JRadioButton(ClearIphone.CLEAR_FILE);
-        JRadioButton clearAll = new JRadioButton(ClearIphone.CLEAR_ALL);
+        JPanel clearJPanel = newJPanel(false);
+        clearJPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        clearJPanel.add(newJLabel("请选择清理方式:"));
+        JRadioButton clearCache = newJRadioButton(ClearIphone.CLEAR_CACHE);
+        JRadioButton clearFile = newJRadioButton(ClearIphone.CLEAR_FILE);
+        JRadioButton clearAll = newJRadioButton(ClearIphone.CLEAR_ALL);
         jRadioButtonMouseListener(clearCache);
         jRadioButtonMouseListener(clearFile);
         jRadioButtonMouseListener(clearAll);
-        // 单选按钮组,同一个单选按钮组的互斥.
-        ButtonGroup clear = new ButtonGroup();
-        clear.add(clearAll);
         clearAll.setSelected(true);
         clearProjectName = clearAll.getText();
-        clear.add(clearFile);
-        clear.add(clearCache);
+        SwingUtils.setButtonGroup(clearAll, clearFile, clearCache);
         clearJPanel.add(clearAll);
         clearJPanel.add(clearFile);
         clearJPanel.add(clearCache);
-        clearIphoneButtpm = new JButton(clearIphone);
+        clearIphoneButtpm = newJButton(clearIphone);
         clearIphoneButtpm.setEnabled(false);
-        buttonMouseListener(clearIphoneButtpm);
         clearJPanel.add(clearIphoneButtpm);
-        installPackageButton = new JButton(installPackage);
-        buttonMouseListener(installPackageButton);
+        installPackageButton = newJButton(installPackage);
         clearJPanel.add(installPackageButton);
+
         p1.add(clearJPanel);
-
         //设置大小
-        p1.setSize(this.getWidth() * 10, 100);
-        p1.setLocation(this.getX() - 1, 50);
+        p1.setSize(this.getWidth() * 10, 91);
+        p1.setLocation(this.getX() - 1, 40);
         p1.setBorder(new EtchedBorder(EtchedBorder.RAISED));
-
         return p1;
     }
 
@@ -356,7 +392,7 @@ public class HomePage extends JFrame {
      */
     private void setRefresh() {
 
-        refresh = new JButton();     //添加刷新按钮
+        refresh = newJButton("");     //添加刷新按钮
 //        refresh.setBorder(BorderFactory.createRaisedBevelBorder());//设置凸起来的按钮
         refresh.setContentAreaFilled(false);//透明的设置
         ImageIcon icon1 = new ImageIcon(("image/refresh.png"));  // 设置按钮背景图像
@@ -364,7 +400,6 @@ public class HomePage extends JFrame {
         refresh.setIcon(icon1);
 //      refresh.setBorderPainted(false);// 不绘制边框
         refresh.setFocusable(true);  // 设置焦点控制
-        buttonMouseListener(refresh);
     }
 
     /**
@@ -373,40 +408,25 @@ public class HomePage extends JFrame {
      * @return
      */
     private JPanel functionOfPanel() {
-        JPanel p2 = new JPanel();
-        JButton wormButton = new JButton(worm);
+        JPanel p2 = newJPanel();
+        this.testTools = newJButton();
+        SwingUtils.setJButtonImage(this.testTools, "image/TestTools.png");
+        p2.add(this.testTools);
+        JButton wormButton = newJButton(worm);
         p2.add(wormButton);
-        buttonMouseListener(wormButton);
-        getLocalIPButton = new JButton(getLocalIP);
-        buttonMouseListener(getLocalIPButton);
+        getLocalIPButton = newJButton(getLocalIP);
         p2.add(getLocalIPButton);//添加获取本地IP地址
-        JButton work = new JButton(workFlow);
-        buttonMouseListener(work);
+        JButton work = newJButton(workFlow);
         p2.add(work);
-        JButton videoSwitch = new JButton(VIDEOSWICTH);
-        buttonMouseListener(videoSwitch);
+        JButton videoSwitch = newJButton(VIDEOSWICTH);
         p2.add(videoSwitch);
-        p2.setLayout(new GridLayout(1, 2));
-        p2.setSize(400, 45);
-        p2.setLocation(this.getX() + 70, 153);
+        OPERATION = newJButton("运营插件");
+        p2.add(OPERATION);
+        p2.add(URLCODE);
+        p2.setSize(this.getWidth() - 2, 50);
+        p2.setLocation(0, 131);
+        p2.setLayout(new GridLayout(1, 1));
         return p2;
-    }
-
-
-    /**
-     * 添加按钮
-     *
-     * @return
-     */
-
-    private JButton addTestButton(String buttonText1) {
-        JButton testButton = FrameUtils.jbuttonImage("image/TestTools.png");
-        testButton.setText(buttonText1);
-        testButton.setFont(new Font("Arial", Font.BOLD, 0));
-        testButton.setLocation(this.getX() - 10, 150);
-        testButton.setSize(100, 50);
-        buttonMouseListener(testButton);
-        return testButton;
     }
 
 
@@ -468,9 +488,8 @@ class Cartoon implements Runnable {
         boolean yBoolean = true;
         HomePage.cartoonLog.setText(SquirrelConfig.TOOLSTITLE);
         String[] text = {System.getProperty("user.name"),
-                "中文万维", "测试牛掰"};
+                "软件测试工具", "软件测试工具"};
         while (true) {
-
             if (xBoolean) {
                 if (yBoolean) {
                     HomePage.cartoonLog.setLocation(x += 1, y += 1);

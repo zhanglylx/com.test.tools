@@ -1,8 +1,8 @@
-package Squirrel;
+package TestTools;
 
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
-import ZLYUtils.FrameUtils;
+import ZLYUtils.SwingUtils;
 import ZLYUtils.TooltipUtil;
 
 import javax.swing.*;
@@ -23,7 +23,7 @@ public class InstallPackage extends JFrame implements ActionListener {
 
     JButton btn;
     JTextField textField;
-    JButton installPackage;
+    JButton installPackageButton;
     private static final String installPackageText = "正在安装";
 
     public InstallPackage(JButton jButton) {
@@ -34,7 +34,7 @@ public class InstallPackage extends JFrame implements ActionListener {
         FlowLayout layout = new FlowLayout();// 布局
         textField = new JTextField(30);// 文本域
         btn = new JButton("浏览");// 钮1
-        installPackage = new JButton("安装");
+        installPackageButton = new JButton("安装");
         // 设置布局
         layout.setAlignment(FlowLayout.LEFT);// 左对齐
         this.setLayout(layout);
@@ -46,7 +46,7 @@ public class InstallPackage extends JFrame implements ActionListener {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                if (installPackageText.equals(installPackage.getText())) {
+                if (installPackageText.equals(installPackageButton.getText())) {
                     TooltipUtil.errTooltip("正在安装包，请安装完毕后退出");
                     return;
                 }
@@ -58,8 +58,8 @@ public class InstallPackage extends JFrame implements ActionListener {
         this.add(label);
         this.add(textField);
         this.add(btn);
-        this.add(installPackage);
-        jButtonMouseListener(installPackage);
+        this.add(installPackageButton);
+        jButtonMouseListener(installPackageButton);
     }
 
     /**
@@ -71,7 +71,7 @@ public class InstallPackage extends JFrame implements ActionListener {
         f.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (f == installPackage) {
+                if (f == installPackageButton) {
                     if (!checkInsatllPath()) return;
                     f.setEnabled(false);
 
@@ -107,8 +107,8 @@ public class InstallPackage extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-            try{
-                FrameUtils.setFileUi();
+        try {
+            SwingUtils.setFileUi();
             JFileChooser chooser = new JFileChooser();
             FileSystemView fsv = FileSystemView.getFileSystemView();
             chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -116,12 +116,9 @@ public class InstallPackage extends JFrame implements ActionListener {
             chooser.showDialog(new JLabel(), "选择");
             File file = chooser.getSelectedFile();
             textField.setText(file.getAbsoluteFile().toString());
-            }finally {
-                FrameUtils.setUiDefault();
-            }
-
-
-
+        } finally {
+            SwingUtils.setUiDefault();
+        }
 
 
     }
@@ -143,7 +140,7 @@ public class InstallPackage extends JFrame implements ActionListener {
                 this.jButton.setText("正在安装");
                 String[] adb = AdbUtils.operationAdb("install -r " + textField.getText());
                 if (adb == null) {
-                    TooltipUtil.errTooltip("安装失败:失败原因不知道");
+                    TooltipUtil.errTooltip("安装失败");
                     this.jButton.setEnabled(true);
                     this.jButton.setText(jButtonText);
                     return;

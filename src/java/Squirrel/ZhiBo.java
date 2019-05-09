@@ -1,13 +1,12 @@
 package Squirrel;
 
-import SquirrelFrame.FrameSqiorrel;
-import SquirrelFrame.FrontPanel;
+import Frame.FrontPanel;
 import SquirrelFrame.OutputText;
-import ZLYUtils.FrameUtils;
+import ZLYUtils.SwingUtils;
 import ZLYUtils.SaveCrash;
 import ZLYUtils.TooltipUtil;
 import ZLYUtils.WindosUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +19,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static Squirrel.Backpack_gift.refreshEndTherad;
 import static Squirrel.ZhiBo.backpack_gift;
 
 /**
@@ -52,6 +50,8 @@ public class ZhiBo extends FrontPanel {
     public int setClose() {
         return 0;
     }
+
+
 
     @Override
     public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
@@ -97,10 +97,6 @@ public class ZhiBo extends FrontPanel {
         }
     }
 
-    @Override
-    public void buttonPressEvent(JButton f) {
-
-    }
 
     @Override
     public void jComboBoxClickEvent(JComboBox jComboBox) {
@@ -177,7 +173,8 @@ class Backpack_gift extends JDialog {
         addJButtonMonitor(all);//给全部按钮添加监听器
         jPanel1.add((automationRefresh = new JButton("自动刷新")));
         addJButtonMonitor(automationRefresh);//给自动刷新按钮添加监听器
-        refresh = FrameUtils.jbuttonImage("image/refresh/0.png");
+        refresh = new JButton();
+                SwingUtils.setJButtonImage(refresh,"image/refresh/0.png");
         jPanel1.add((clear = new JButton("清屏")));
         addJButtonMonitor(clear);
         addJButtonMonitor(refresh);//给刷新按钮添加监听器
@@ -556,7 +553,7 @@ class Refresh implements Runnable {
         int index = 1;
         while (true) {
             String[] arr = new String[0];
-            arr = ZLYUtils.FrameUtils.addFilesShiftArrays(ZLYUtils.WindosUtils.getDirectoryFilesName("image/refresh"), arr);
+            arr = SwingUtils.addFilesShiftArrays(ZLYUtils.WindosUtils.getDirectoryFilesName("image/refresh"), arr);
             if (index >= arr.length) index = 0;
             jButton.setIcon(new ImageIcon("image/refresh/" + arr[index]));
             index++;

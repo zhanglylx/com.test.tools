@@ -1,20 +1,32 @@
-package Squirrel;
+package operation_plug;
 
-import SquirrelFrame.FrontPanel;
+import Frame.FrontPanel;
+import operation_plug.foundation_platform.acquisition_audio_management.ProductionUi;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 
-public class LeaveBug extends FrontPanel {
-    public LeaveBug(String title){
+public class OperationPlugUi  extends FrontPanel {
+    private JButton addProduction;
+    public OperationPlugUi(String title) {
         super(title);
-        setTitle(title);
-
+        setSize(300,200);
+        setLocationRelativeTo(null);
+        this.addProduction = newJButton("添加采集音频作品");
+        add(this.addProduction);
+        setVisible(true);
     }
+
+    public static void main(String[] args) {
+        new OperationPlugUi("运营插件");
+    }
+
     @Override
     public int setClose() {
-        return 0;
+        return 2;
     }
+
+
 
     @Override
     public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
@@ -53,13 +65,12 @@ public class LeaveBug extends FrontPanel {
 
     @Override
     public void buttonClickEvent(JButton f) {
-
+        if(this.addProduction == f){
+            new ProductionUi(f.getText());
+        }
     }
 
-    @Override
-    public void buttonPressEvent(JButton f) {
 
-    }
 
     @Override
     public void jComboBoxClickEvent(JComboBox jComboBox) {

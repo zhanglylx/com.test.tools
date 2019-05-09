@@ -1,19 +1,15 @@
 package SquirrelFrame;
 
-import InterfaceTesting.RunExcelCase;
 import Squirrel.FlowConfig;
 import Squirrel.FlowFrame;
 import Squirrel.TestTools;
-import ZLYUtils.FrameUtils;
+import ZLYUtils.SwingUtils;
 import ZLYUtils.TooltipUtil;
 import ZLYUtils.WindosUtils;
-
+import Frame.FrontPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -34,7 +30,7 @@ public class Pane extends FrontPanel {
      * 在三级页面中加入相应文件即可加入到三级页面中
      */
     static {
-        flow = FrameUtils.addFilesShiftArrays(WindosUtils.getDirectoryFilesName(FlowConfig.fileSit), flow);
+        flow = SwingUtils.addFilesShiftArrays(WindosUtils.getDirectoryFilesName(FlowConfig.fileSit), flow);
     }
 
 
@@ -53,7 +49,7 @@ public class Pane extends FrontPanel {
                 }
                 setWidthAndHeight(flow);
                 break;
-            case HomePage.testTools:
+            case HomePage.testToolsStr:
                 setLayout(new GridLayout(3, 3));
                 for (String s : TestTools.testTools) {
                     setButton(s);
@@ -81,6 +77,7 @@ public class Pane extends FrontPanel {
         }
         return 2;
     }
+
 
 
     @Override
@@ -127,15 +124,11 @@ public class Pane extends FrontPanel {
             //测试工具
         } else if (checkArraysContainText(testTools, text)) {
             invokingTestFrame(text, f);
-            setJButtonBackground(f, this.defaultColor);
+            setJButtonBackground(f, getDefaultColor());
         }
 
     }
 
-    @Override
-    public void buttonPressEvent(JButton f) {
-
-    }
 
     @Override
     public void jComboBoxClickEvent(JComboBox jComboBox) {

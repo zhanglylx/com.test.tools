@@ -1,9 +1,5 @@
 package Squirrel;
 
-import AdConfiguration.AdUi;
-import InterfaceTesting.SquirrelUi;
-import SquirrelFrame.FrontPanel;
-
 import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,24 +13,24 @@ public class TestTools {
         if (!InterfaceTesting.equals(jButton.getText()) &&
                 !leaveBug.equals(jButton.getText())) setjButtonEnabledFalse(jButton);
         switch (testFrame) {
-            case getADLog:
-                new GetADLogs(testFrame);
-                break;
-            case leaveBug:
-                new LeaveBug(leaveBug);
-                break;
-            case ZhiBoTools:
-                new ZhiBo(ZhiBoTools);
-                break;
-            case Video_RECORDING_AND_SCREENSHOT:
-                new VideoRecordingScreenshot(Video_RECORDING_AND_SCREENSHOT);
-                break;
-            case InterfaceTesting:
-                new SquirrelUi(InterfaceTesting);
-                break;
-            case AD_TEXT_CONFIG:
-                new AdUi(testFrame);
-                break;
+//            case getADLog:
+//                new GetADLogs(testFrame);
+//                break;
+//            case leaveBug:
+//                new LeaveBug(leaveBug);
+//                break;
+//            case ZhiBoTools:
+//                new ZhiBo(ZhiBoTools);
+//                break;
+//            case Video_RECORDING_AND_SCREENSHOT:
+//                new VideoRecordingScreenshot(Video_RECORDING_AND_SCREENSHOT);
+//                break;
+//            case InterfaceTesting:
+//                new InterfaceTestUi(InterfaceTesting);
+//                break;
+//            case AD_TEXT_CONFIG:
+//                new AdUi(testFrame);
+//                break;
         }
     }
 

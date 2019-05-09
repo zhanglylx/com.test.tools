@@ -1,7 +1,7 @@
-package AdConfiguration;
+package TestTools.ad_configuration;
 
 import Squirrel.TestTools;
-import SquirrelFrame.FrontPanel;
+import Frame.FrontPanel;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.TooltipUtil;
 import com.eltima.components.ui.DatePicker;
@@ -354,7 +354,6 @@ public class AdUi extends FrontPanel {
         int jScrollPaneX = 425;
         this.jPanel.add(setJLabel(aStr));
         this.jPanel.add(setJScrollPane(a = setJTextField()));
-        this.jScrollPane.setSize(jScrollPaneWidth, this.jTextFieldHight);
         JLabel jLabel = newJLabel(bStr);
         jLabel.setLocation(jLabelX, this.listUpBoundary);
         this.jPanel.add(jLabel);
@@ -594,6 +593,8 @@ public class AdUi extends FrontPanel {
     }
 
 
+
+
     @Override
     public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
         if (this.fixedTime == jRadioButton) {
@@ -768,17 +769,15 @@ public class AdUi extends FrontPanel {
             shelves.setEnabled(false);
             startAd(f);
             this.sb.setBackground(Color.ORANGE);
-            this.sb.setForeground(defaultFontColor);
+            this.sb.setForeground(getDefaultFontColor());
             this.sb.setEnabled(true);
             this.shelves.setEnabled(true);
             this.shelves.setBackground(Color.ORANGE);
-            this.shelves.setForeground(defaultFontColor);
+            this.shelves.setForeground(getDefaultFontColor());
             this.runing = false;
         } else if (this.adsList.contains(f)) {
             setAds(f);
         } else if (this.clearJButton == f) {
-
-            this.clearJButton.setBackground(Color.pink);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -790,8 +789,6 @@ public class AdUi extends FrontPanel {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            this.clearJButton.setBackground(this.enterIntoColor);
-            this.clearJButton.setForeground(this.defaultFontColor);
         }
     }
 
@@ -894,9 +891,7 @@ public class AdUi extends FrontPanel {
         return list;
     }
 
-    @Override
-    public void buttonPressEvent(JButton f) {
-    }
+
 
     /**
      * 列表点击事件
@@ -931,8 +926,8 @@ public class AdUi extends FrontPanel {
                     if (Integer.parseInt(j.getText()) == n) {
                         if (!this.sendAdConfiguration.getAds().contains(n)) {
                             this.sendAdConfiguration.addAds(n);
-                            j.setBackground(this.click_pressColor);
-                            j.setForeground(this.click_Foreground);
+                            j.setBackground(getClick_pressColor());
+                            j.setForeground(getClick_Foreground());
                             setAdsGG();
                         } else {
                             this.output.setText("[GG-" + n + "]广告已选择");
@@ -971,8 +966,8 @@ public class AdUi extends FrontPanel {
         for (JButton j : this.adsList) {
             if (this.sendAdConfiguration.getAds().size() == 0) break;
             this.sendAdConfiguration.deleteAds(Integer.parseInt(j.getText()));
-            setJButtonBackground(j, this.defaultColor);
-            j.setForeground(this.defaultFontColor);
+            setJButtonBackground(j, getDefaultColor());
+            j.setForeground(getDefaultFontColor());
         }
         this.adsJTextField.setText("");
     }
@@ -1010,9 +1005,10 @@ public class AdUi extends FrontPanel {
     private void setAds(JButton f) {
         if (this.sendAdConfiguration.getAds().contains(Integer.parseInt(f.getText()))) {
             this.sendAdConfiguration.deleteAds(Integer.parseInt(f.getText()));
-            setJButtonBackground(f, enterIntoColor);
-            f.setForeground(this.defaultFontColor);
+            setJButtonBackground(f, getDefaultColor());
+            f.setForeground(getDefaultFontColor());
         } else {
+            setJButtonBackground(f, getClick_pressColor());
             this.sendAdConfiguration.addAds(Integer.parseInt(f.getText()));
         }
         setAdsGG();

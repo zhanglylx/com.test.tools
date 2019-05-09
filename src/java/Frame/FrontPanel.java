@@ -1,48 +1,52 @@
-package SquirrelFrame;
+package Frame;
 
-import InterfaceTesting.InterfaceConfig;
-import Squirrel.TestTools;
-import ZLYUtils.FrameUtils;
+import SquirrelFrame.SquirrelConfig;
+import ZLYUtils.SwingUtils;
 import com.eltima.components.ui.DatePicker;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import static java.awt.Font.PLAIN;
 
 /**
  * 根面板
  */
 public abstract class FrontPanel extends JFrame {
-    public Color click_pressColor;//点击颜色
-    public Color enterIntoColor;//鼠标悬停颜色颜色
-    public Color defaultColor;//默认颜色
-    public Color defaultFontColor;//默认字体颜色
-    public Color click_Foreground;//点击字体颜色
+    private Color click_pressColor;//点击颜色
+    private Color enterIntoColor;//鼠标悬停颜色颜色
+    private Color defaultColor;//默认颜色
+    private Color defaultFontColor;//默认字体颜色
+    private Color click_Foreground;//点击字体颜色
+    private Color backGroundColor;//页面背景颜色
 
     public FrontPanel(String title) {
         if (title == null) throw new IllegalArgumentException("title为空");
         setTitle(title);
         setIconImage();
         this.click_pressColor = Color.red;
-        this.enterIntoColor = Color.CYAN;
+        this.enterIntoColor = Color.PINK;
         this.defaultColor = Color.lightGray;
-        this.defaultFontColor = Color.DARK_GRAY;
+        this.defaultFontColor = Color.black;
         this.click_Foreground = Color.BLUE;
+       this.backGroundColor = Color.WHITE;
         addWindowListener();
+        this.getContentPane().setBackground(this.backGroundColor);
     }
 
+    public FrontPanel(String title,boolean setResizable){
+        this(title);
+        this.setResizable(setResizable);
+    }
+    public FrontPanel(String title,boolean setResizable,Component c){
+        this(title,setResizable);
+        setLocationRelativeTo(c);//设置窗体位置
+    }
     /**
      * 设置关闭
      */
@@ -82,8 +86,6 @@ public abstract class FrontPanel extends JFrame {
      */
     private void buttonMouseListener(JButton jButton) {
         jButton.addActionListener(e -> {
-            //设置颜色
-            setJButtonClickColor(jButton);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -91,25 +93,19 @@ public abstract class FrontPanel extends JFrame {
                 }
             }).start();
         });
-//        jButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//设置鼠标变为小手
-
         jButton.addMouseListener(new MouseListener() {
             //点击按钮
             public void mouseClicked(MouseEvent e) {
+
             }
 
             //按下按钮
             public void mousePressed(MouseEvent e) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        buttonPressEvent(jButton);
-                    }
-                }).start();
             }
 
             //鼠标释放
             public void mouseReleased(MouseEvent e) {
+
             }
 
             //进入按钮
@@ -128,6 +124,7 @@ public abstract class FrontPanel extends JFrame {
         });
     }
 
+
     /**
      * 设置按钮颜色
      *
@@ -143,6 +140,8 @@ public abstract class FrontPanel extends JFrame {
     public JRadioButton newJRadioButton(String title) {
         return newJRadioButton(title, 30);
     }
+
+
 
     /**
      * 新建单选按钮
@@ -176,15 +175,6 @@ public abstract class FrontPanel extends JFrame {
     public abstract void jRadioButtonClickEvent(JRadioButton jRadioButton);
 
     /**
-     * 设置单选按钮容器
-     *
-     * @return
-     */
-    public ButtonGroup buttonGroup() {
-        return new ButtonGroup();
-    }
-
-    /**
      * 设置鼠标为小手
      *
      * @param jButton
@@ -193,25 +183,31 @@ public abstract class FrontPanel extends JFrame {
         jButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//设置鼠标变为小手
     }
 
+   public JButton newJButton(){
+        return newJButton(null);
+   }
     public JButton newJButton(String title) {
         JButton jButton = new JButton(title);
         jButton.setBackground(Color.lightGray);
         jButton.setFont(new Font("Dialog", Font.PLAIN, 15));
         buttonMouseListener(jButton);
+        setJButtonCursor(jButton);
         return jButton;
     }
 
-    public JPanel newJPanel() {
+    public JPanel newJPanel(boolean border) {
         JPanel jPanel = new JPanel();
 //        jPanel.setBorder(
 //                BorderFactory.createTitledBorder("分组框")); //设置面板边框，实现分组框的效果，此句代码为关键代码
 //        jPanel.setBorder(
 //                BorderFactory.createLineBorder(Color.BLACK)); //设置面板边框，实现分组框的效果，此句代码为关键代码
-        jPanel.setBorder(newLineBorder());
-        jPanel.setBackground(Color.WHITE);
+        if(border)jPanel.setBorder(newLineBorder());
+        jPanel.setBackground(this.backGroundColor);
         return jPanel;
     }
-
+    public JPanel newJPanel(){
+        return newJPanel(true);
+    }
     /**
      * 新建显示文本
      */
@@ -340,14 +336,8 @@ public abstract class FrontPanel extends JFrame {
      *
      * @param f
      */
-    public abstract void buttonClickEvent(JButton f);
+    public abstract void buttonClickEvent(JButton jButton);
 
-    /**
-     * 按钮按下事件
-     *
-     * @param f
-     */
-    public abstract void buttonPressEvent(JButton f);
 
     /**
      * 时间控件
@@ -484,16 +474,45 @@ public abstract class FrontPanel extends JFrame {
      */
     public abstract void jComboBoxPopupMenuWillBecomeVisible(JComboBox jComboBox);
 
+    /**
+     * 网格式布局
+     *
+     * @param rows 行数
+     * @param cols 列数
+     * @return GridLayout
+     */
+    public GridLayout newGridLayout(int rows, int cols) {
+        return new GridLayout(rows, cols);
+    }
+
+    public Color getClick_pressColor() {
+        return click_pressColor;
+    }
+
+    public Color getEnterIntoColor() {
+        return enterIntoColor;
+    }
+
+    public Color getDefaultColor() {
+        return defaultColor;
+    }
+
+    public Color getDefaultFontColor() {
+        return defaultFontColor;
+    }
+
+    public Color getClick_Foreground() {
+        return click_Foreground;
+    }
+
+    public Color getBackGroundColor() {
+        return backGroundColor;
+    }
 
     /**
      * 设置风格
      */
     static {
-        try {
-            UIManager.setLookAndFeel(SquirrelConfig.UI);
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                | UnsupportedLookAndFeelException e) {
-            ((Throwable) e).printStackTrace();
-        }
+        SwingUtils.setUiDefault();
     }
 }

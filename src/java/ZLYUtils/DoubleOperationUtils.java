@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * double类型运算
  */
-public class DoubleOperation {
+public class DoubleOperationUtils {
     private static final int DIV_SCALE=10;//默认除法运算精度
 
     /**

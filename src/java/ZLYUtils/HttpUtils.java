@@ -1,13 +1,12 @@
 package ZLYUtils;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.*;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.config.Registry;
@@ -46,7 +45,7 @@ public class HttpUtils {
     // HTTP内容类型。相当于form表单的形式，提交数据
     private static final String CONTENT_TYPE_JSON_URL = "application/json;charset=utf-8";
     // utf-8字符编码
-    private static final String CHARSET_UTF_8 = "UTF-8";
+    public static final String CHARSET_UTF_8 = "UTF-8";
     // 超时时间:ms
     private static final int SOCKET_TIME_OUT = 60 * 1000;
     //创建连接的最长时间:ms
@@ -112,6 +111,7 @@ public class HttpUtils {
                     .setDefaultRequestConfig(requestConfig())
 //                .setRetryHandler(new DefaultHttpRequestRetryHandler(0, false))
                     .setRetryHandler(httpRequestRetryHandler);  // 设置重试次数
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -147,6 +147,9 @@ public class HttpUtils {
         return httpBulder.build();
     }
 
+    public static String doGet(String url, String param, Map<String, String> headers) {
+        return doGet(getURI(url, param), headers, null);
+    }
 
     public static String doGet(String url, String param) {
         return doGet(getURI(url, param));
@@ -160,8 +163,8 @@ public class HttpUtils {
             , NetworkHeaders networkHeaders) {
         String result = "";
         try {
-            result = getResponse(getHttpClient().execute(getHttpGet(uri, headers)), networkHeaders);
-        } catch (IOException e) {
+            result = getResponse(getHttpGet(uri, headers), networkHeaders);
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             //不可以关闭，不然连接池就会被关闭
@@ -189,6 +192,7 @@ public class HttpUtils {
             , Map<String, String> requestHead
             , NetworkHeaders networkHeaders) {
         String resultString = "";
+
         try {
             HttpPost httpPost = getHttpPost(url, requestHead);
             // 创建参数列表
@@ -206,8 +210,7 @@ public class HttpUtils {
                     httpPost.setEntity(entity);
                 }
             }
-            // 执行http请求
-            resultString = getResponse(getHttpClient().execute(httpPost), networkHeaders);
+            resultString = getResponse(httpPost, networkHeaders);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -228,7 +231,7 @@ public class HttpUtils {
             entity.setContentType(CONTENT_TYPE_JSON_URL);
             httpPost.setEntity(entity);
             // 执行http请求
-            resultString = getResponse(getHttpClient().execute(httpPost), networkHeaders);
+            resultString = getResponse(httpPost, networkHeaders);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -264,21 +267,28 @@ public class HttpUtils {
     /**
      * 获取响应正文
      *
-     * @param closeableHttpResponse
+     * @param httpRequestBase
      * @param networkHeaders
      * @return
      */
-    private static String getResponse(CloseableHttpResponse closeableHttpResponse
+    private static String getResponse(HttpRequestBase httpRequestBase
             , NetworkHeaders networkHeaders) {
         String result = "";
+        CloseableHttpResponse closeableHttpResponse = null;
         try {
+            HttpClient httpClient;
+            CloseableHttpClient closeableHttpClient = getHttpClient();
+            long startTime = System.currentTimeMillis();
+            closeableHttpResponse = closeableHttpClient.execute(httpRequestBase);
+            if (networkHeaders != null){
+                networkHeaders.setResponseTime(System.currentTimeMillis() - startTime);
+                networkHeaders.setHttpRequestBase(httpRequestBase);
+            }
             if (closeableHttpResponse.getStatusLine().getStatusCode() != 200) {
                 result = closeableHttpResponse.getStatusLine().getStatusCode() + "";
             } else {
-                if (closeableHttpResponse.getEntity() != null) {
-                    responseNetworkHeaders(closeableHttpResponse, networkHeaders);
-                    result = EntityUtils.toString(closeableHttpResponse.getEntity(), CHARSET_UTF_8);
-                }
+                responseNetworkHeaders(closeableHttpResponse, networkHeaders);
+                result = EntityUtils.toString(closeableHttpResponse.getEntity(), CHARSET_UTF_8);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -303,6 +313,7 @@ public class HttpUtils {
     private static void responseNetworkHeaders(CloseableHttpResponse closeableHttpResponse
             , NetworkHeaders networkHeaders) {
         if (networkHeaders != null) {
+            networkHeaders.setResponseCode(closeableHttpResponse.getStatusLine().getStatusCode());
             Map<String, List<String>> map = new HashMap<>();
             List<String> list;
             for (Header header : closeableHttpResponse.getAllHeaders()) {
@@ -356,6 +367,7 @@ public class HttpUtils {
         }
         return param;
     }
+
 
     /**
      * URL 解码

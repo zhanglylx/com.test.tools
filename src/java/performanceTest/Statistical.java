@@ -1,15 +1,9 @@
 package performanceTest;
 
-import ZLYUtils.DoubleOperation;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import sun.dc.pr.PRError;
+import ZLYUtils.DoubleOperationUtils;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.ref.PhantomReference;
 import java.util.*;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * 统计类
@@ -73,23 +67,23 @@ public class Statistical {
             for (double d : this.cpu) {
                 if (d > this.cpuMax) this.cpuMax = d;
                 if (d != 0.0) {
-                    this.cpuSum = DoubleOperation.add(this.cpuSum, d);
+                    this.cpuSum = DoubleOperationUtils.add(this.cpuSum, d);
                     this.cpuListNum++;
                 }
             }
             this.cpu.clear();
             if (this.cpuListNum != 0) {
-                this.cpuAvg = DoubleOperation.div(this.cpuSum, this.cpuListNum, 2);
+                this.cpuAvg = DoubleOperationUtils.div(this.cpuSum, this.cpuListNum, 2);
             }
             //处理虚拟内存
             for (int i : this.memoryVSS) {
                 if (i > this.memoryVSSMax) this.memoryVSSMax = i;
-                this.memoryVSSSum = DoubleOperation.add(this.memoryVSSSum, i * 1.0);
+                this.memoryVSSSum = DoubleOperationUtils.add(this.memoryVSSSum, i * 1.0);
                 this.memoryListVSSNum++;
             }
             this.memoryVSS.clear();
             if (this.memoryListVSSNum != 0) {
-                this.memoryVSSAvg = DoubleOperation.div(this.memoryVSSSum, this.memoryListVSSNum, 2);
+                this.memoryVSSAvg = DoubleOperationUtils.div(this.memoryVSSSum, this.memoryListVSSNum, 2);
             }
             for (int i : this.memoryRSS) {
                 if (i > this.memoryRSSMax) this.memoryRSSMax = i;
@@ -98,7 +92,7 @@ public class Statistical {
             }
             this.memoryRSS.clear();
             if (this.memoryListRSSNum != 0.0) {
-                this.memoryRSSAvg = DoubleOperation.div(this.memoryRSSSum, this.memoryListRSSNum, 2);
+                this.memoryRSSAvg = DoubleOperationUtils.div(this.memoryRSSSum, this.memoryListRSSNum, 2);
             }
         }
         return "[cpu平均:" + cpuAvg + " cpu最大:" + cpuMax + "] [VSS内存平均:" + this.memoryVSSAvg +

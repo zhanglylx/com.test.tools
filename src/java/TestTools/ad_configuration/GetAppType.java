@@ -1,16 +1,11 @@
-package AdConfiguration;
+package TestTools.ad_configuration;
 
 import ZLYUtils.HttpUtils;
-import ZLYUtils.JavaUtils;
-import ZLYUtils.Network;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import javax.swing.*;
-import java.rmi.ServerException;
 import java.util.*;
 
 /**

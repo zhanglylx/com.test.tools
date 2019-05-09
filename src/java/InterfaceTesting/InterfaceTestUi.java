@@ -1,12 +1,10 @@
 package InterfaceTesting;
 
-import Squirrel.TestTools;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.ExcelUtils;
 import ZLYUtils.TooltipUtil;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,13 +15,13 @@ import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static ZLYUtils.FrameUtils.selectFile;
+import static ZLYUtils.SwingUtils.selectFile;
 
 /**
  * 松鼠工具接口测试页面
  */
-public class SquirrelUi extends JFrame {
-    public SquirrelUi(String title) {
+public class InterfaceTestUi extends JFrame {
+    public InterfaceTestUi(String title) {
         setTitle(title);
         setLayout(null);
         setSize(750, 700);

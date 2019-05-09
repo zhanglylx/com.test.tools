@@ -46,6 +46,7 @@ public class ClearIphone {
                 code = "com.chineseall.singlebook";
                 rm.add("sdcard/.chineseall");
                 rm.add("sdcard/ChineseallReader");
+                rm.add("sdcard/"+code);
                 rm.add("sdcard/Android/data/com.chineseall.singlebook");
                 break;
             case HomePage.CXB:
@@ -55,6 +56,7 @@ public class ClearIphone {
                 rm.add("sdcard/.cxb");
                 rm.add("sdcard/.hide_freebook/");
                 rm.add("sdcard/Android/data/com.mianfeia.book");
+                rm.add("sdcard/"+code);
                 rm.add("mnt/sdcard/com.mianfeia.book");
                 break;
             case HomePage.MZ:
@@ -64,6 +66,7 @@ public class ClearIphone {
                 rm.add("sdcard/.freebook");
                 rm.add("sdcard/.cxb");
                 rm.add("sdcard/.hide_freebook/");
+                rm.add("sdcard/"+code);
                 rm.add("mnt/sdcard/com.mianfeizs.book");
                 break;
             case HomePage.IKS:
@@ -72,6 +75,8 @@ public class ClearIphone {
                 rm.add("sdcard/FreeBook/");
                 rm.add("sdcard/.freebook");
                 rm.add("sdcard/.cxb");
+                rm.add("sdcard/.hide_freebook/");
+                rm.add("sdcard/"+code);
                 rm.add("mnt/sdcard/com.mfyueduqi.book");
                 break;
             default:

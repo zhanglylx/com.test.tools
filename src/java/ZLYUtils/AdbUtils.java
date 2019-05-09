@@ -42,14 +42,7 @@ public class AdbUtils {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pro != null) pro.destroy();
+            close(br, pro);
         }
         return str;
     }
@@ -61,29 +54,29 @@ public class AdbUtils {
         try {
             String dev = " ";
             if (devices != null) dev = " -s " + devices + " ";
-//            Process pro = Runtime.getRuntime().exec(AppiumMethod.SquirrelConfig.ADB_PUTH +dev+ code);
             pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
             br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("utf-8")));
             str = adbBufferedReader(br, str);
-            if (str == null) {
-                str = errRunAdb(code);
-            }
+            if (str == null) str = errRunAdb(code);
             pro.waitFor();
             Thread.sleep(100);
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pro != null) pro.destroy();
+            close(br, pro);
         }
         return str;
+    }
+
+    private static void close(BufferedReader bufferedReader, Process process) {
+        if (bufferedReader != null) {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (process != null) process.destroy();
     }
 
     /**
@@ -181,7 +174,7 @@ public class AdbUtils {
     /**
      * 执行adb命令
      *
-     * @param code
+     * @param code 执行命令
      * @return
      */
     public static String[] operationAdb(String code) {

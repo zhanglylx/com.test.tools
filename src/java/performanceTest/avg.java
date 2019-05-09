@@ -1,6 +1,6 @@
 package performanceTest;
 
-import ZLYUtils.DoubleOperation;
+import ZLYUtils.DoubleOperationUtils;
 import ZLYUtils.ExcelUtils;
 
 import java.io.File;
@@ -17,9 +17,9 @@ public class avg {
         for(Map.Entry<Integer,Map<String,String>> entry:mapMap.entrySet()){
             d=Double.parseDouble(entry.getValue().get("com.chaozh.iReaderFree:vss"));
             if(d>max)max=d;
-            sum=DoubleOperation.add(sum,d);
+            sum= DoubleOperationUtils.add(sum,d);
         }
         System.out.println("最大值:"+max);
-        System.out.println("平均值:"+DoubleOperation.div(sum,mapMap.size(),2));
+        System.out.println("平均值:"+ DoubleOperationUtils.div(sum,mapMap.size(),2));
     }
 }

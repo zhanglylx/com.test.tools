@@ -1,23 +1,20 @@
-package Squirrel;
+package TestTools;
 
-import SquirrelFrame.FrontPanel;
-import SquirrelFrame.Pane;
+import Frame.FrontPanel;
+import Squirrel.TestTools;
+import TestTools.VideoRecording;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
-import ZLYUtils.FrameUtils;
+import ZLYUtils.SwingUtils;
 import ZLYUtils.WindosUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Arrays;
 
-import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_LEADING;
-import static Squirrel.VideoRecordingScreenshot.SCREENSHOT_SQUIRREL;
 
 
 /**
@@ -67,6 +64,7 @@ public class VideoRecordingScreenshot extends FrontPanel {
         return 2;
     }
 
+
     @Override
     public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
 
@@ -106,7 +104,7 @@ public class VideoRecordingScreenshot extends FrontPanel {
     public void buttonClickEvent(JButton f) {
         if (screenshot == f) {
             refreshTheImage.suspend();
-            String saveFile = FrameUtils.saveFileFrame(this,
+            String saveFile = SwingUtils.saveFileFrame(this,
                     new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL));
             if (saveFile != null) {
                 if (!saveFile.endsWith(".png")) saveFile += ".png";
@@ -119,14 +117,10 @@ public class VideoRecordingScreenshot extends FrontPanel {
             new VideoRecording().start();
 
         }
-        setJButtonBackground(f, this.defaultColor);
+        setJButtonBackground(f, getDefaultColor());
     }
 
 
-    @Override
-    public void buttonPressEvent(JButton f) {
-
-    }
 
     @Override
     public void jComboBoxClickEvent(JComboBox jComboBox) {
@@ -208,23 +202,22 @@ class RefreshTheImage implements Runnable {
     public synchronized void run() {
         String[] adb;
         //adb shell screencap -p /sdcard/1.png
-        //设置锁
         while (stopMe) {
                 try {
-                    AdbUtils.operationAdb("shell screencap -p /sdcard/" + SCREENSHOT_SQUIRREL);
+                    AdbUtils.operationAdb("shell screencap -p /sdcard/" + VideoRecordingScreenshot.SCREENSHOT_SQUIRREL);
                     System.out.println("开始拉取图片");
-                    adb = AdbUtils.operationAdb("pull  /sdcard/" + SCREENSHOT_SQUIRREL + " " +
-                            SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL);
+                    adb = AdbUtils.operationAdb("pull  /sdcard/" + VideoRecordingScreenshot.SCREENSHOT_SQUIRREL + " " +
+                            SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_SQUIRREL);
                     System.out.println("拉取图片结束");
                     System.out.println(Arrays.toString(adb));
                     if (!Arrays.toString(adb).contains("100%")) {
                         image = new ImageIcon("image/wait.png");
                     } else {
                         if (this.suspend) {
-                            WindosUtils.copyFile(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING,
-                                    new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_SQUIRREL));
+                            WindosUtils.copyFile(SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_LEADING,
+                                    new File(SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_SQUIRREL));
                         }
-                        image = new ImageIcon(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING);
+                        image = new ImageIcon(SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_LEADING);
                     }
 
                     image.setImage(image.getImage().getScaledInstance(300, 650, Image.SCALE_DEFAULT));
@@ -232,12 +225,11 @@ class RefreshTheImage implements Runnable {
                     if (!this.suspend) {
                         try {
                             System.out.println("进入睡眠");
-                            Thread.sleep(100000);
+                            Thread.sleep(10*1000);
                         } catch (InterruptedException e) {
                             System.out.println("睡眠中断");
                         }
                         this.suspend = true;
-
                     }
 
                 } catch (Exception e) {

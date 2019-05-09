@@ -14,24 +14,22 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Arrays;
 
-public class FrameUtils {
+public class SwingUtils {
     /**
      * 设置Jbutton按钮中的图片
      *
      * @param imageNamePath
      * @return
      */
-    public static JButton jbuttonImage(String imageNamePath) {
-        JButton jbutton = new JButton();
+    public static void setJButtonImage(JButton jButton, String imageNamePath) {
 //        jbutton.setBorder(BorderFactory.createRaisedBevelBorder());//设置凸起来的按钮
-        jbutton.setContentAreaFilled(false);//透明的设置
+        jButton.setContentAreaFilled(false);//透明的设置
         ImageIcon icon1 = new ImageIcon((imageNamePath));  // 设置按钮背景图像
-        jbutton.setMargin(new Insets(0, 0, 0, 0)); // 设置按钮边框与边框内容之间的像素数
-        jbutton.setIcon(icon1);
-        jbutton.setBorderPainted(false);// 不绘制边框
-        jbutton.setFocusable(true);  // 设置焦点控制
-        jbutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//设置鼠标变为小手
-        return jbutton;
+        jButton.setMargin(new Insets(0, 0, 0, 0)); // 设置按钮边框与边框内容之间的像素数
+        jButton.setIcon(icon1);
+        jButton.setBorderPainted(false);// 不绘制边框
+        jButton.setFocusable(true);  // 设置焦点控制
+        jButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//设置鼠标变为小手
     }
 
     /**
@@ -149,6 +147,20 @@ public class FrameUtils {
             }
         });
     }
+
+    /**
+     * 设置单选按钮
+     * @param buttons
+     */
+    public static void setButtonGroup(AbstractButton... buttons) {
+        ButtonGroup buttonGroup = new ButtonGroup();
+        for (AbstractButton button : buttons) {
+            buttonGroup.add(button);
+        }
+    }
+
+
+
 
     /**
      * 各种方法

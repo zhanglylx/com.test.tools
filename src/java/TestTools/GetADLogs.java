@@ -1,6 +1,7 @@
-package Squirrel;
+package TestTools;
 
-import SquirrelFrame.FrontPanel;
+import Frame.FrontPanel;
+import Squirrel.TestTools;
 import ZLYUtils.AdbUtils;
 
 import javax.swing.*;
@@ -121,6 +122,7 @@ public class GetADLogs extends FrontPanel {
 
     }
 
+
     @Override
     public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
 
@@ -182,10 +184,6 @@ public class GetADLogs extends FrontPanel {
         log.setjButton(f);
     }
 
-    @Override
-    public void buttonPressEvent(JButton f) {
-
-    }
 
     @Override
     public void jComboBoxClickEvent(JComboBox jComboBox) {

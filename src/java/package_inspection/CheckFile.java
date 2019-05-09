@@ -1,6 +1,5 @@
 package package_inspection;
 
-import Squirrel.FlowConfig;
 import ZLYUtils.*;
 
 import java.io.File;
@@ -21,7 +20,7 @@ public class CheckFile {
 
     public CheckFile(String path) {
         this.path = path;
-        this.files = FrameUtils.addFilesShiftArrays(
+        this.files = SwingUtils.addFilesShiftArrays(
                 WindosUtils.getDirectoryFilesName(path), new String[0]);
         this.fileSizeCheckResult = new LinkedHashMap<>();
         this.filesNumber = files.length;
@@ -46,7 +45,7 @@ public class CheckFile {
                 this.checkFileSizeCount=3;
             } else {
                 //获取文件大小KB，进行四舍五入
-                size = String.valueOf(DoubleOperation.div(file.length()*1.0,1024.0,1))+" KB";
+                size = String.valueOf(DoubleOperationUtils.div(file.length()*1.0,1024.0,1))+" KB";
                 if (this.fileSizeCheckResult.containsKey(size)) {
                     this.fileSizeCheckResult.put(size,
                             this.fileSizeCheckResult.get(size) + "," + fileName);

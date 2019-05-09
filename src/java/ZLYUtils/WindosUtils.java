@@ -108,7 +108,7 @@ public class WindosUtils {
         fe = new File(filePath);
         String copyPath = null;
         try {
-            copyPath = FrameUtils.saveFileFrame(jFrame, new File(filePath));
+            copyPath = SwingUtils.saveFileFrame(jFrame, new File(filePath));
 
         } catch (IllegalArgumentException e) {
             SaveCrash.save(e.toString());

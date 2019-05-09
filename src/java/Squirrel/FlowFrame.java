@@ -2,7 +2,7 @@ package Squirrel;
 
 import SquirrelFrame.*;
 import SquirrelFrame.SquirrelConfig;
-import ZLYUtils.FrameUtils;
+import ZLYUtils.SwingUtils;
 import ZLYUtils.WindosUtils;
 
 import javax.swing.*;
@@ -17,7 +17,7 @@ public class FlowFrame extends Pane {
     public FlowFrame(String buttonText) {
         super(buttonText);
         //添加制定流程中的按钮
-        String[] flow = FrameUtils.addFilesShiftArrays(
+        String[] flow = SwingUtils.addFilesShiftArrays(
                 WindosUtils.getDirectoryFilesName(FlowConfig.fileSit+buttonText),new String[0]);
         addButton(flow);
         setWidthAndHeight(flow);
@@ -30,7 +30,8 @@ public class FlowFrame extends Pane {
     private void addButton(String[] button) {
         setLayout(new GridLayout(button.length,1));
         for (int i = 0; i < button.length; i++) {
-            saveButton=FrameUtils.jbuttonImage("image/save.png");
+            saveButton= newJButton();
+            SwingUtils.setJButtonImage(saveButton,"image/save.png");
             saveButton.setToolTipText("保存");//鼠标悬停文字
 //            saveButton.setText((i+1)+"");
             saveButton.setText("save"+button[i]);

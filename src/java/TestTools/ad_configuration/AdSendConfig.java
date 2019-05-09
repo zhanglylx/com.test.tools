@@ -1,4 +1,4 @@
-package AdConfiguration;
+package TestTools.ad_configuration;
 
 
 import ZLYUtils.Network;

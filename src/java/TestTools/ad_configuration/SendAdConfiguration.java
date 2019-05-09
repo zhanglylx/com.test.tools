@@ -1,10 +1,9 @@
-package AdConfiguration;
+package TestTools.ad_configuration;
 
 import ZLYUtils.Network;
 import ZLYUtils.NetworkHeaders;
 import ZLYUtils.TooltipUtil;
 
-import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

@@ -1,8 +1,10 @@
 package SquirrelFrame;
 
+import Frame.FrontPanel;
 import ZLYUtils.WindosUtils;
 
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 
 import static SquirrelFrame.SquirrelConfig.FFMPEGPATH;
@@ -10,17 +12,40 @@ import static SquirrelFrame.SquirrelConfig.FFMPEGPATH;
 /**
  * 视频转换
  */
-public class VideoSwitch {
+public class VideoSwitch  extends FrontPanel {
     private File file;
     private String convertedFormat;
     private JTextArea jTextArea;
     private String savePath;
+    //选择文件按钮
+    private JButton selectFileButton;
+    private JPanel jPanel1;
+    private JPanel outLogJPane;
+    public static void main(String[] args) {
+        new VideoSwitch();
+    }
+    public VideoSwitch(){
+        super("视频压缩");
+        this.setLayout(newGridLayout(2,1));
+        setJPnel1();
+        setSize(600,600);
+        this.setLocation(100,20);
+        this.selectFileButton = newJButton("选择视频文件");
+
+        setVisible(true);
+
+    }
+
+    private void setJPnel1(){
+        this.jPanel1 = newJPanel();
+    }
 
     /**
      * @param file
      * @param convertedFormat 转换后的格式
      */
     public VideoSwitch(File file, String convertedFormat) {
+        super("视频压缩");
         if (file == null) throw new IllegalArgumentException("file参数为空");
         if (convertedFormat == null) throw new IllegalArgumentException("convertedFormat为空");
         if (!file.exists()) throw new IllegalArgumentException("文件不存在");
@@ -33,6 +58,7 @@ public class VideoSwitch {
     }
 
     public VideoSwitch(File file, String convertedFormat, JTextArea jTextArea) {
+        super("视频压缩");
         if (file == null) throw new IllegalArgumentException("file参数为空");
         if (convertedFormat == null) throw new IllegalArgumentException("convertedFormat为空");
         if (jTextArea == null) throw new IllegalArgumentException("jTextArea为空");
@@ -48,6 +74,7 @@ public class VideoSwitch {
 
 
     public VideoSwitch(File file) {
+        super("视频压缩");
         if (file == null) throw new IllegalArgumentException("file参数为空");
         if (!file.exists()) throw new IllegalArgumentException("文件不存在");
         if (!file.isFile()) throw new IllegalArgumentException("不是文件");
@@ -64,6 +91,84 @@ public class VideoSwitch {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public int setClose() {
+        return 2;
+    }
+
+
+
+    @Override
+    public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
+
+    }
+
+    @Override
+    public void jTextFieldEnteredEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldReleasedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldExitedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldInputEvent(JTextField jTextField, KeyEvent e) {
+
+    }
+
+    @Override
+    public void jTextFieldPressedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldClickEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void buttonClickEvent(JButton f) {
+
+    }
+
+
+    @Override
+    public void jComboBoxClickEvent(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuCanceled(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeInvisible(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxDeselectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxSelectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeVisible(JComboBox jComboBox) {
+
     }
 
     class RunFfmpeg implements Runnable {
