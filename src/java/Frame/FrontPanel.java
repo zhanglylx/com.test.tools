@@ -24,8 +24,10 @@ public abstract class FrontPanel extends JFrame {
     private Color defaultFontColor;//默认字体颜色
     private Color click_Foreground;//点击字体颜色
     private Color backGroundColor;//页面背景颜色
+    private Color jButtonColor;
     public static final Font DEFAULT_FONT = new Font("标楷体", Font.BOLD, 15);
     public static final String LOGO_ICON = "image/logo.png";
+
     public FrontPanel(String title) {
         if (title == null) throw new IllegalArgumentException("title为空");
         setTitle(title);
@@ -36,6 +38,7 @@ public abstract class FrontPanel extends JFrame {
         this.defaultFontColor = Color.black;
         this.click_Foreground = Color.BLUE;
         this.backGroundColor = Color.WHITE;
+        this.jButtonColor = this.defaultColor;
         addWindowListener();
         this.getContentPane().setBackground(this.backGroundColor);
     }
@@ -99,7 +102,6 @@ public abstract class FrontPanel extends JFrame {
         jButton.addMouseListener(new MouseListener() {
             //点击按钮
             public void mouseClicked(MouseEvent e) {
-
             }
 
             //按下按钮
@@ -108,25 +110,29 @@ public abstract class FrontPanel extends JFrame {
 
             //鼠标释放
             public void mouseReleased(MouseEvent e) {
-
             }
 
             //进入按钮
             public void mouseEntered(MouseEvent e) {
-                if (jButton.getBackground().getRGB() ==
-                        defaultColor.getRGB())
-                    setJButtonBackground(jButton, enterIntoColor);
+                setJButtonColor(jButton.getBackground());
+                setJButtonBackground(jButton, enterIntoColor);
             }
 
             //离开按钮
             public void mouseExited(MouseEvent e) {
-                if (jButton.getBackground().getRGB() ==
-                        enterIntoColor.getRGB())
-                    setJButtonBackground(jButton, defaultColor);
+                if (jButton.getBackground() == enterIntoColor)
+                    setJButtonBackground(jButton, getJButtonColor());
             }
         });
     }
 
+    private void setJButtonColor(Color color) {
+        this.jButtonColor = color;
+    }
+
+    private Color getJButtonColor() {
+        return this.jButtonColor;
+    }
 
     /**
      * 设置按钮颜色
@@ -190,13 +196,12 @@ public abstract class FrontPanel extends JFrame {
     }
 
     public JButton newJButton(String title) {
-        return newJButton(title, false,false);
+        return newJButton(title, false, false);
     }
 
     public JButton newJButton(String title, boolean setBorder, boolean setBorderFactory) {
         JButton jButton = new JButton(title);
         jButton.setBackground(Color.lightGray);
-//        jButton.setFont(new Font("Dialog", Font.PLAIN, 15));
         jButton.setFont(DEFAULT_FONT);
         buttonMouseListener(jButton);
         setJButtonCursor(jButton);
@@ -348,7 +353,6 @@ public abstract class FrontPanel extends JFrame {
 
     /**
      * 按钮点击事件
-     *
      */
     public abstract void buttonClickEvent(JButton jButton);
 

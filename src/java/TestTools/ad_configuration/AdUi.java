@@ -522,9 +522,9 @@ public class AdUi extends FrontPanel {
     private void setAdsJPanel() {
         this.adsJPanel = newJPanel();
         this.adsJPanel.setLayout(new GridLayout(10, 10));
-        this.clearJButton = newJButton("clear");
+        this.clearJButton = newJButton("clear",true,true);
+        this.clearJButton.setBackground(Color.CYAN);
         this.clearJButton.setToolTipText("清空广告位");
-        this.clearJButton.setBorder(newLineBorder());
         this.adsJPanel.add(this.clearJButton);
         setAds();
         this.adsJPanel.add(this.sb = newJButton("提交"));

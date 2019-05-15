@@ -53,29 +53,10 @@ public class InstallPackage extends FrontPanel implements ActionListener {
         this.add(textField);
         this.add(btn);
         this.add(installPackageButton);
-        //jButtonMouseListener(installPackageButton);
         this.setVisible(true);
     }
 
-    /**
-     * 设置按钮监听器
-     *
-     * @param f
-     */
-    private void jButtonMouseListener(JButton f) {
-        f.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (f == installPackageButton) {
-                    if (!checkInsatllPath()) return;
-                    f.setEnabled(false);
 
-                    Thread t = new Thread(new installPackageRun(f));
-                    t.start();
-                }
-            }
-        });
-    }
 
     /**
      * 检查安装路径是否合法
@@ -160,7 +141,13 @@ public class InstallPackage extends FrontPanel implements ActionListener {
 
     @Override
     public void buttonClickEvent(JButton jButton) {
+        if (jButton == installPackageButton) {
+            if (!checkInsatllPath()) return;
+            jButton.setEnabled(false);
 
+            Thread t = new Thread(new installPackageRun(jButton));
+            t.start();
+        }
     }
 
     @Override
