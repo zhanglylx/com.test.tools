@@ -24,7 +24,8 @@ public abstract class FrontPanel extends JFrame {
     private Color defaultFontColor;//默认字体颜色
     private Color click_Foreground;//点击字体颜色
     private Color backGroundColor;//页面背景颜色
-
+    public static final Font DEFAULT_FONT = new Font("标楷体", Font.BOLD, 15);
+    public static final String LOGO_ICON = "image/logo.png";
     public FrontPanel(String title) {
         if (title == null) throw new IllegalArgumentException("title为空");
         setTitle(title);
@@ -34,19 +35,21 @@ public abstract class FrontPanel extends JFrame {
         this.defaultColor = Color.lightGray;
         this.defaultFontColor = Color.black;
         this.click_Foreground = Color.BLUE;
-       this.backGroundColor = Color.WHITE;
+        this.backGroundColor = Color.WHITE;
         addWindowListener();
         this.getContentPane().setBackground(this.backGroundColor);
     }
 
-    public FrontPanel(String title,boolean setResizable){
+    public FrontPanel(String title, boolean setResizable) {
         this(title);
         this.setResizable(setResizable);
     }
-    public FrontPanel(String title,boolean setResizable,Component c){
-        this(title,setResizable);
+
+    public FrontPanel(String title, boolean setResizable, Component c) {
+        this(title, setResizable);
         setLocationRelativeTo(c);//设置窗体位置
     }
+
     /**
      * 设置关闭
      */
@@ -142,7 +145,6 @@ public abstract class FrontPanel extends JFrame {
     }
 
 
-
     /**
      * 新建单选按钮
      *
@@ -152,7 +154,7 @@ public abstract class FrontPanel extends JFrame {
     public JRadioButton newJRadioButton(String title, int height) {
         JRadioButton jRadioButton = new JRadioButton(title);
         jRadioButton.setSize(title.length() * 22, height);
-        jRadioButton.setFont(SquirrelConfig.typeface);
+        jRadioButton.setFont(DEFAULT_FONT);
         jRadioButton.setBorder(newLineBorder());
         jRadioButton.setOpaque(false);
         jRadioButton.addActionListener(new ActionListener() {
@@ -183,15 +185,26 @@ public abstract class FrontPanel extends JFrame {
         jButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//设置鼠标变为小手
     }
 
-   public JButton newJButton(){
+    public JButton newJButton() {
         return newJButton(null);
-   }
+    }
+
     public JButton newJButton(String title) {
+        return newJButton(title, false,false);
+    }
+
+    public JButton newJButton(String title, boolean setBorder, boolean setBorderFactory) {
         JButton jButton = new JButton(title);
         jButton.setBackground(Color.lightGray);
-        jButton.setFont(new Font("Dialog", Font.PLAIN, 15));
+//        jButton.setFont(new Font("Dialog", Font.PLAIN, 15));
+        jButton.setFont(DEFAULT_FONT);
         buttonMouseListener(jButton);
         setJButtonCursor(jButton);
+        if (setBorderFactory)
+            jButton.setBorder(BorderFactory.createRaisedBevelBorder());
+        if (setBorder)
+            jButton.setBorder(newLineBorder());
+
         return jButton;
     }
 
@@ -201,13 +214,15 @@ public abstract class FrontPanel extends JFrame {
 //                BorderFactory.createTitledBorder("分组框")); //设置面板边框，实现分组框的效果，此句代码为关键代码
 //        jPanel.setBorder(
 //                BorderFactory.createLineBorder(Color.BLACK)); //设置面板边框，实现分组框的效果，此句代码为关键代码
-        if(border)jPanel.setBorder(newLineBorder());
+        if (border) jPanel.setBorder(newLineBorder());
         jPanel.setBackground(this.backGroundColor);
         return jPanel;
     }
-    public JPanel newJPanel(){
+
+    public JPanel newJPanel() {
         return newJPanel(true);
     }
+
     /**
      * 新建显示文本
      */
@@ -220,7 +235,7 @@ public abstract class FrontPanel extends JFrame {
      */
     public JLabel newJLabel(String title, int height) {
         JLabel jLabel = new JLabel(title);
-        jLabel.setFont(SquirrelConfig.typeface);
+        jLabel.setFont(DEFAULT_FONT);
         jLabel.setBackground(Color.LIGHT_GRAY);
         jLabel.setSize(title.length() * 14, height);
         return jLabel;
@@ -233,7 +248,7 @@ public abstract class FrontPanel extends JFrame {
      */
     public JTextField newJTextField() {
         JTextField jTextField = new JTextField();
-        jTextField.setFont(SquirrelConfig.typeface);
+        jTextField.setFont(DEFAULT_FONT);
         jTextField.setBorder(newLineBorder());
         jTextField.setBackground(Color.WHITE);
         jTextField.addKeyListener(new KeyAdapter() {
@@ -334,7 +349,6 @@ public abstract class FrontPanel extends JFrame {
     /**
      * 按钮点击事件
      *
-     * @param f
      */
     public abstract void buttonClickEvent(JButton jButton);
 
@@ -379,7 +393,7 @@ public abstract class FrontPanel extends JFrame {
      */
     private void setIconImage() {
         setIconImage(
-                Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
+                Toolkit.getDefaultToolkit().getImage(LOGO_ICON)
         );
     }
 
@@ -391,7 +405,7 @@ public abstract class FrontPanel extends JFrame {
      */
     public JComboBox newJComboBox(String[] list, int width) {
         JComboBox jComboBox = new JComboBox(list);
-        jComboBox.setFont(SquirrelConfig.typeface);
+        jComboBox.setFont(DEFAULT_FONT);
         jComboBox.setBackground(Color.ORANGE);
         jComboBox.setSize(width, 30);
         jComboBox.addActionListener(new ActionListener() {

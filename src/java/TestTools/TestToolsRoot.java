@@ -82,7 +82,7 @@ public class TestToolsRoot extends FrontPanel {
             new AdUi(jButton.getText());
             jButton.setEnabled(true);
         } else if (this.getADLog == jButton) {
-            new GetADLogs(jButton.getText());
+            new GetADLogs(jButton.getText(),jButton);
         } else if (this.interfaceTesting == jButton) {
             new InterfaceTestUi(jButton.getText());
         } else if (this.videoRecordingScreenshot == jButton) {

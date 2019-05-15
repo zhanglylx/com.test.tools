@@ -1,6 +1,5 @@
 package TestTools.ad_configuration;
 
-import Squirrel.TestTools;
 import Frame.FrontPanel;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.TooltipUtil;
@@ -203,7 +202,7 @@ public class AdUi extends FrontPanel {
         this.shelves.setSize(80, this.jTextFieldHight - 10);
         this.shelves.setLocation(550, this.listUpBoundary);
         this.shelves.setBackground(Color.ORANGE);
-        this.shelves.setFont(SquirrelConfig.typeface);
+        this.shelves.setFont(DEFAULT_FONT);
         setJButtonCursor(this.shelves);
         quicklyShelvesJPanel2.add(this.shelves);
         this.adConfigJPanel.add(quicklyShelvesJPanel);
@@ -529,7 +528,7 @@ public class AdUi extends FrontPanel {
         this.adsJPanel.add(this.clearJButton);
         setAds();
         this.adsJPanel.add(this.sb = newJButton("提交"));
-        this.sb.setFont(SquirrelConfig.typeface);
+        this.sb.setFont(DEFAULT_FONT);
         this.sb.setBorder(BorderFactory.createRaisedBevelBorder());
         this.sb.setBackground(Color.ORANGE);
         this.sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -577,7 +576,6 @@ public class AdUi extends FrontPanel {
                 @Override
                 public void run() {
                     try {
-                        TestTools.setJButtonEnabled(getTitle());
                         threadPoint.shutdown();
                         if (!threadPoint.awaitTermination(awaitTime, TimeUnit.MILLISECONDS)) {
                             threadPoint.shutdownNow();

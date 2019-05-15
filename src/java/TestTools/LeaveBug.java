@@ -1,8 +1,6 @@
 package TestTools;
 
 import Frame.FrontPanel;
-import Squirrel.TestTools;
-
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 

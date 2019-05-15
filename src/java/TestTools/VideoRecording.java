@@ -1,6 +1,5 @@
 package TestTools;
 
-import Squirrel.TestTools;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
 import ZLYUtils.TooltipUtil;

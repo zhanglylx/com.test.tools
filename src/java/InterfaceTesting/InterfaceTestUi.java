@@ -3,7 +3,7 @@ package InterfaceTesting;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.ExcelUtils;
 import ZLYUtils.TooltipUtil;
-
+import Frame.FrontPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -27,7 +27,7 @@ public class InterfaceTestUi extends JFrame {
         setSize(750, 700);
         add(new Case(this));
         setIconImage(
-                Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
+                Toolkit.getDefaultToolkit().getImage(FrontPanel.LOGO_ICON)
         );
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -466,7 +466,7 @@ class Case extends JPanel implements ActionListener {
         jTextArea.setLineWrap(true);
         jTextArea.setWrapStyleWord(true);
         jTextArea.setEditable(true);
-        jTextArea.setFont(SquirrelConfig.typeface);
+        jTextArea.setFont(FrontPanel.DEFAULT_FONT);
         return jTextArea;
     }
 

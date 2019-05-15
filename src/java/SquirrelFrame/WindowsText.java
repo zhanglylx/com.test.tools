@@ -1,7 +1,7 @@
 package SquirrelFrame;
 
 import ZLYUtils.SwingUtils;
-
+import Frame.FrontPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,7 +40,7 @@ public class WindowsText extends JDialog implements ActionListener{
         setLayout(new BorderLayout());
         jta = new JTextArea(10, 15);
         jta.setTabSize(4);
-        jta.setFont(SquirrelConfig.typeface);
+        jta.setFont(FrontPanel.DEFAULT_FONT);
         jta.setLineWrap(true);// 激活自动换行功能
         jta.setWrapStyleWord(true);// 激活断行不断字功能
         jscrollPane = new JScrollPane(jta);

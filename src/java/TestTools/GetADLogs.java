@@ -1,7 +1,6 @@
 package TestTools;
 
 import Frame.FrontPanel;
-import Squirrel.TestTools;
 import ZLYUtils.AdbUtils;
 
 import javax.swing.*;
@@ -25,34 +24,34 @@ public class GetADLogs extends FrontPanel {
     private boolean runT = false;
     private Log log;
     private List<JButton> jButtonsAd;
-
+    private JButton jButton;
     /**
      * 设置广告位
      */
     static {
         AD = new String[0];
-        for (int i = 0; i < 80; i++) {
+        for (int i = 1; i < 90; i++) {
             AD = Arrays.copyOf(AD, AD.length + 1);
             AD[AD.length - 1] = "GG-" + i;
         }
     }
 
-    public GetADLogs(String buttonText) {
+    public GetADLogs(String buttonText,JButton jButton) {
         super(buttonText);
+        this.jButton=jButton;
+        this.jButton.setEnabled(false);
         setLayout(new GridLayout(2, 10));
         JPanel jPa = newJPanel();
-        jPa.setLayout(new GridLayout(10, 10));
+        jPa.setLayout(new GridLayout(10, 20));
         JButton jb;
         this.jButtonsAd = new ArrayList<>();
         for (int i = 0; i < AD.length; i++) {
-            jb = newJButton(AD[i]);
+            jb = newJButton(AD[i],true,true);
             jPa.add(jb);
-            setButton(jb);
             this.jButtonsAd.add(jb);
         }
         this.clear = newJButton("清空");
         jPa.add(this.clear);
-        setButton(clear);
         add(jPa);
         setJDialog();
         this.log = new Log();
@@ -61,7 +60,10 @@ public class GetADLogs extends FrontPanel {
 
     @Override
     public int setClose() {
-        return 0;
+        threadAdLog.interrupt();
+        log.closeLog();
+        this.jButton.setEnabled(true);
+        return 2;
     }
 
     /**
@@ -74,7 +76,6 @@ public class GetADLogs extends FrontPanel {
                 super.windowClosing(e);
                 threadAdLog.interrupt();
                 log.closeLog();
-                TestTools.setJButtonEnabled(getTitle());
                 setDefaultCloseOperation(2);
             }
         });
@@ -107,18 +108,6 @@ public class GetADLogs extends FrontPanel {
         for (JButton jButton : this.jButtonsAd) {
             jButton.setEnabled(true);
         }
-
-    }
-
-    /**
-     * 设置按钮监听器
-     *
-     * @param f
-     */
-    public void buttonMouseListener(JButton f) {
-        f.addActionListener((ActionEvent e) -> {
-
-        });
 
     }
 
@@ -365,16 +354,5 @@ public class GetADLogs extends FrontPanel {
         return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     }
 
-    /**
-     * 设置按钮
-     *
-     * @param text
-     */
-    public void setButton(JButton text) {
-        buttonMouseListener(text);
-    }
 
-    public static void main(String[] args) {
-        new GetADLogs("");
-    }
 }

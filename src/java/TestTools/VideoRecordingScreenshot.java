@@ -1,7 +1,6 @@
 package TestTools;
 
 import Frame.FrontPanel;
-import Squirrel.TestTools;
 import TestTools.VideoRecording;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
@@ -60,7 +59,6 @@ public class VideoRecordingScreenshot extends FrontPanel {
     public int setClose() {
         //关闭刷新线程
         refreshTheImage.stopMe();
-        TestTools.setJButtonEnabled(getTitle());
         return 2;
     }
 

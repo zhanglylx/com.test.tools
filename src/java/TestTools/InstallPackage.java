@@ -1,24 +1,21 @@
 package TestTools;
 
-import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
 import ZLYUtils.SwingUtils;
 import ZLYUtils.TooltipUtil;
+import Frame.FrontPanel;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.util.Arrays;
 
 /**
  * 安装apk包
  */
-public class InstallPackage extends JFrame implements ActionListener {
+public class InstallPackage extends FrontPanel implements ActionListener {
     private static final long serialVersionUID = 1L;
 
     JButton btn;
@@ -27,19 +24,16 @@ public class InstallPackage extends JFrame implements ActionListener {
     private static final String installPackageText = "正在安装";
 
     public InstallPackage(JButton jButton) {
-        this.setTitle(jButton.getText());
-        setIconImage(
-                Toolkit.getDefaultToolkit().getImage(SquirrelConfig.logoIcon)
-        );
+        super(jButton.getText());
         FlowLayout layout = new FlowLayout();// 布局
-        textField = new JTextField(30);// 文本域
-        btn = new JButton("浏览");// 钮1
-        installPackageButton = new JButton("安装");
+        textField = newJTextField();// 文本域
+        textField.setColumns(30);
+        btn = newJButton("浏览");// 钮1
+        installPackageButton = newJButton("安装");
         // 设置布局
         layout.setAlignment(FlowLayout.LEFT);// 左对齐
         this.setLayout(layout);
-        this.setBounds(400, 200, 600, 70);
-        this.setVisible(true);
+        this.setBounds(400, 200, 650, 70);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -54,12 +48,13 @@ public class InstallPackage extends JFrame implements ActionListener {
             }
         });
         btn.addActionListener(this);
-        JLabel label = new JLabel("请选择文件：");// 标签
+        JLabel label = newJLabel("请选择文件：");// 标签
         this.add(label);
         this.add(textField);
         this.add(btn);
         this.add(installPackageButton);
-        jButtonMouseListener(installPackageButton);
+        //jButtonMouseListener(installPackageButton);
+        this.setVisible(true);
     }
 
     /**
@@ -120,6 +115,81 @@ public class InstallPackage extends JFrame implements ActionListener {
             SwingUtils.setUiDefault();
         }
 
+
+    }
+
+    @Override
+    public int setClose() {
+        return 0;
+    }
+
+    @Override
+    public void jRadioButtonClickEvent(JRadioButton jRadioButton) {
+
+    }
+
+    @Override
+    public void jTextFieldEnteredEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldReleasedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldExitedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldInputEvent(JTextField jTextField, KeyEvent e) {
+
+    }
+
+    @Override
+    public void jTextFieldPressedEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void jTextFieldClickEvent(JTextField jTextField) {
+
+    }
+
+    @Override
+    public void buttonClickEvent(JButton jButton) {
+
+    }
+
+    @Override
+    public void jComboBoxClickEvent(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuCanceled(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeInvisible(JComboBox jComboBox) {
+
+    }
+
+    @Override
+    public void jComboBoxDeselectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxSelectedItem(String str) {
+
+    }
+
+    @Override
+    public void jComboBoxPopupMenuWillBecomeVisible(JComboBox jComboBox) {
 
     }
 

@@ -2,7 +2,6 @@ package SquirrelFrame;
 
 import Squirrel.FlowConfig;
 import Squirrel.FlowFrame;
-import Squirrel.TestTools;
 import ZLYUtils.SwingUtils;
 import ZLYUtils.TooltipUtil;
 import ZLYUtils.WindosUtils;
@@ -13,7 +12,6 @@ import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import java.util.Map;
 
-import static Squirrel.TestTools.*;
 
 /**
  * 窗格类
@@ -49,32 +47,12 @@ public class Pane extends FrontPanel {
                 }
                 setWidthAndHeight(flow);
                 break;
-            case HomePage.testToolsStr:
-                setLayout(new GridLayout(3, 3));
-                for (String s : TestTools.testTools) {
-                    setButton(s);
-                }
-                setWidthAndHeight(TestTools.testTools);
-                break;
         }
         setVisible(true);
     }
 
     @Override
     public int setClose() {
-        Map<String, Boolean> jButtonMapEnabled = getJButtonMapEnabled();
-        for (Iterator<Map.Entry<String, Boolean>> iterator =
-             jButtonMapEnabled.entrySet().iterator(); iterator.hasNext(); ) {
-            if (!iterator.next().getValue()) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TooltipUtil.errTooltip("存在未关闭的子项");
-                    }
-                }).start();
-                return 0;
-            }
-        }
         return 2;
     }
 
@@ -122,9 +100,6 @@ public class Pane extends FrontPanel {
         if (checkArraysContainText(flow, text)) {
             new FlowFrame(f.getText());
             //测试工具
-        } else if (checkArraysContainText(testTools, text)) {
-            invokingTestFrame(text, f);
-            setJButtonBackground(f, getDefaultColor());
         }
 
     }
