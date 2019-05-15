@@ -140,7 +140,7 @@ public class AdUi extends FrontPanel {
         setQz();
         //设置曝光和点击
         setBgDj();
-//        //设置显示时间
+        //设置显示时间
         setDisplayTime();
         //设置内容广告类型
         setBuiltInAppType();
@@ -150,7 +150,7 @@ public class AdUi extends FrontPanel {
         setQuicklyShelves();
         //设置输出台
         setOutput();
-//        //内置表格
+        //内置表格
         setTable();
     }
 
@@ -522,7 +522,7 @@ public class AdUi extends FrontPanel {
     private void setAdsJPanel() {
         this.adsJPanel = newJPanel();
         this.adsJPanel.setLayout(new GridLayout(10, 10));
-        this.clearJButton = newJButton("clear",true,true);
+        this.clearJButton = newJButton("clear", true, true);
         this.clearJButton.setBackground(Color.CYAN);
         this.clearJButton.setToolTipText("清空广告位");
         this.adsJPanel.add(this.clearJButton);
@@ -558,7 +558,7 @@ public class AdUi extends FrontPanel {
      */
     private void setAds() {
         for (int i = 1; i < 99; i++) {
-            this.jButton = newJButton(String.valueOf(i));
+            this.jButton = newJButton(String.valueOf(i),true,true);
             this.adsList.add(this.jButton);
             this.adsJPanel.add(this.jButton);
         }
@@ -589,8 +589,6 @@ public class AdUi extends FrontPanel {
             return 2;
         }
     }
-
-
 
 
     @Override
@@ -888,7 +886,6 @@ public class AdUi extends FrontPanel {
         }
         return list;
     }
-
 
 
     /**
