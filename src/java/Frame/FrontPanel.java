@@ -408,7 +408,7 @@ public abstract class FrontPanel extends JFrame {
      * @return
      */
     public JComboBox newJComboBox(String[] list, int width) {
-        JComboBox jComboBox = new JComboBox(list);
+        JComboBox jComboBox = new JAutoCompleteComboBox(list);
         jComboBox.setFont(DEFAULT_FONT);
         jComboBox.setBackground(Color.ORANGE);
         jComboBox.setSize(width, 30);

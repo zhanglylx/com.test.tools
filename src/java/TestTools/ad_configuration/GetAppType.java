@@ -67,7 +67,7 @@ public class GetAppType implements Runnable {
             }
             //内置广告
             Vector builtInAppType = new Vector();
-            builtInAppType.add("请选择一条内置广告");
+           builtInAppType.add("请选择一条内置广告");
             for (String s : AdSendConfig.getBuiltInAppType(this.appName)) {
                 if (this.adNoMap.containsKey(s)) {
                     builtInAppType.add(s);

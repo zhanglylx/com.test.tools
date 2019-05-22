@@ -33,7 +33,7 @@ public class InstallPackage extends FrontPanel implements ActionListener {
         // 设置布局
         layout.setAlignment(FlowLayout.LEFT);// 左对齐
         this.setLayout(layout);
-        this.setBounds(400, 200, 650, 70);
+        this.setBounds(400, 200, 700, 80);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {

@@ -95,7 +95,7 @@ public class AdUi extends FrontPanel {
         this.jTextFieldYMargin = -3;
         this.jTextFieldWidth = 568;
         this.jTextFieldHight = 40;
-        this.appTypeWidth = 566;
+        this.appTypeWidth = 568;
         //设置广告位面板
         setAdsJPanel();
         //设置广告配置面板
