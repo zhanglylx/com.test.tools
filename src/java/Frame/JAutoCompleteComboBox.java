@@ -4,14 +4,12 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import java.util.Arrays;
 
 /**
  * @author SamZheng
@@ -144,12 +142,14 @@ class AutoCompleter implements KeyListener, ItemListener {
         }
 
         if (opts.length > 0) {
-            if (caretPosition > editor.getText().length()) return;
-            editor.setCaretPosition(caretPosition);
-            editor.setText(editor.getText().trim().substring(0, caretPosition));
+//            if (caretPosition > editor.getText().length()) return;
+//            editor.setCaretPosition(caretPosition);
+//            editor.setText(editor.getText().trim().substring(0, caretPosition));
             if (owner != null) {
                 try {
                     owner.showPopup();
+                    editor.setText(strf);
+
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
