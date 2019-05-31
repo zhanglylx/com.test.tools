@@ -36,7 +36,7 @@ class AdSendConfig {
     static final String SB_JBUTTON = "提交";
     static final String MFDZS = "免费电子书";
     static final String MFZS = "免费追书";
-    static final String IKS = "爱看书(使用免电广告类型)";
+    static final String IKS = "爱看书";
     static final int LFET_MARGIN = 5;//左边界
     static final String QZ_HINT = "数字类型,倒序,0为分量,相同非0权重按照加入时间排序,默认10";
     static final String HOST_TEST = "http://manage-cx-qa.ikanshu.cn";
@@ -198,7 +198,7 @@ class AdSendConfig {
             case MFZS:
                 return "mfzs";
             case IKS:
-                return "mfzs";
+                return "aks";
             default:
                 return null;
         }

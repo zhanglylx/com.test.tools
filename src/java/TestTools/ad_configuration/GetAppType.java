@@ -1,5 +1,7 @@
 package TestTools.ad_configuration;
 
+import TestTools.ad_configuration.DataBase.FreeAd;
+import TestTools.ad_configuration.DataBase.FreeAdDAO;
 import ZLYUtils.HttpUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -47,6 +49,7 @@ public class GetAppType implements Runnable {
     public void run() {
         this.threadLoging = new Thread(loging);
         this.threadLoging.start();
+        this.appName = this.adUi.getAppName().getSelectedItem().toString();
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -67,7 +70,7 @@ public class GetAppType implements Runnable {
             }
             //内置广告
             Vector builtInAppType = new Vector();
-           builtInAppType.add("请选择一条内置广告");
+            builtInAppType.add("请选择一条内置广告");
             for (String s : AdSendConfig.getBuiltInAppType(this.appName)) {
                 if (this.adNoMap.containsKey(s)) {
                     builtInAppType.add(s);
@@ -97,24 +100,34 @@ public class GetAppType implements Runnable {
     private boolean sendAppTypeAdNo() {
         this.adNoMap.clear();
         //发送获取广告类型请求
-        Map<String, String> map = new HashMap<>();
-        map.put("ran", String.valueOf(Math.random()));
-        map.put("appname", AdSendConfig.getAppNameCode(this.appName));
-        String response = HttpUtils.doPost(
-                AdSendConfig.getHostUrl() + AdSendConfig.GET_APP_TYPE_PATH
-                , map, AdSendConfig.HEADERS
-                ,null);
+//        Map<String, String> map = new HashMap<>();
+//        map.put("ran", String.valueOf(Math.random()));
+//        map.put("appname", AdSendConfig.getAppNameCode(this.appName));
+//        String response = HttpUtils.doPost(
+//                AdSendConfig.getHostUrl() + AdSendConfig.GET_APP_TYPE_PATH
+//                , map, AdSendConfig.HEADERS
+//                , null);
         try {
-            Document doc = Jsoup.parse(response);
-            Elements elements = doc.select("option");
-            for (int i = 0; i < elements.size(); i++) {
-                this.adNoMap.put(elements.get(i).text(),
-                        elements.get(i).attributes().get("value"));
+            FreeAdDAO freeAdDAO = new FreeAdDAO();
+            System.out.println(this.appName);
+            for (FreeAd freeAd : freeAdDAO.getFreeAdAll(AdSendConfig.getAppNameCode(this.appName))) {
+                this.adNoMap.put(freeAd.getAdname(),freeAd.getAdindexno());
             }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+//        try {
+//            Document doc = Jsoup.parse(response);
+//            Elements elements = doc.select("option");
+//            for (int i = 0; i < elements.size(); i++) {
+//                this.adNoMap.put(elements.get(i).text(),
+//                        elements.get(i).attributes().get("value"));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return false;
+//        }
         if (this.adNoMap.size() > 0) {
             return true;
         }

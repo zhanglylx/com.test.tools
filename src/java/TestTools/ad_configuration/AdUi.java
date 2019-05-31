@@ -352,11 +352,13 @@ public class AdUi extends FrontPanel {
         int jLabelX = 355;
         int jScrollPaneX = 425;
         this.jPanel.add(setJLabel(aStr));
-        this.jPanel.add(setJScrollPane(a = setJTextField()));
+        this.jPanel.add(setJScrollPane(a));
+        this.jScrollPane.setSize(jScrollPaneWidth, this.jTextFieldHight);
+        this.jScrollPane.setLocation(this.jTextFieldLeftMargin, this.jTextFieldYMargin);
         JLabel jLabel = newJLabel(bStr);
         jLabel.setLocation(jLabelX, this.listUpBoundary);
         this.jPanel.add(jLabel);
-        this.jPanel.add(setJScrollPane(b = setJTextField()));
+        this.jPanel.add(setJScrollPane(b));
         this.jScrollPane.setSize(jScrollPaneWidth, this.jTextFieldHight);
         this.jScrollPane.setLocation(jScrollPaneX, this.jTextFieldYMargin);
         this.adConfigJPanel.add(this.jPanel);
@@ -558,7 +560,7 @@ public class AdUi extends FrontPanel {
      */
     private void setAds() {
         for (int i = 1; i < 99; i++) {
-            this.jButton = newJButton(String.valueOf(i),true,true);
+            this.jButton = newJButton(String.valueOf(i), true, true);
             this.adsList.add(this.jButton);
             this.adsJPanel.add(this.jButton);
         }
@@ -703,9 +705,14 @@ public class AdUi extends FrontPanel {
                 AdSendConfig.getAppNameCode(this.appName.getSelectedItem().toString()));
         if (AdSendConfig.IKS.equals(this.appName.getSelectedItem().toString()))
             this.sendAdConfiguration.setAppname("aks");
-        this.sendAdConfiguration.setAdNo(Long.parseLong(
-                this.getAppType.getAdNoMap().get(
-                        this.appType.getSelectedItem().toString())));
+        String addType = this.appType.getSelectedItem().toString();
+        if (this.getAppType.getAdNoMap().get(addType) == null) {
+            throw new NullPointerException("未找到广告类型：" + addType);
+        } else {
+            this.sendAdConfiguration.setAdNo(Long.parseLong(
+                    this.getAppType.getAdNoMap().get(
+                            this.appType.getSelectedItem().toString())));
+        }
         this.sendAdConfiguration.setSb(this.sb.getText());
         this.sendAdConfiguration.setChannelid(analysisSeparator(this.channelidJTextField.getText()));
         this.sendAdConfiguration.setVersion(analysisSeparator(this.appVersion.getText()));
@@ -739,14 +746,6 @@ public class AdUi extends FrontPanel {
             Thread.sleep(1200);
             setAdValues();
             sendAd(f);
-        } catch (java.lang.NullPointerException e) {
-            e.printStackTrace();
-            this.output.setText("发生异常,检查网络:" + e.toString());
-            this.output.setForeground(this.colorErr);
-        } catch (java.lang.NumberFormatException e) {
-            e.printStackTrace();
-            this.output.setText("发生异常,检查网络:" + e.toString());
-            this.output.setForeground(this.colorErr);
         } catch (Exception e) {
             e.printStackTrace();
             this.output.setText("发生异常,提交失败:" + e.toString());
@@ -792,7 +791,7 @@ public class AdUi extends FrontPanel {
     /**
      * 发送广告请求
      */
-    public void sendAd(JButton f) {
+    public void sendAd(JButton f) throws Exception {
 
         if (this.sb == f) {
             boolean b = this.sendAdConfiguration.sendAd();
