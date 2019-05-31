@@ -1,9 +1,12 @@
 package TestTools.ad_configuration;
 
+import TestTools.ad_configuration.DataBase.FreeadReslease;
+import TestTools.ad_configuration.DataBase.FreeadResleaseDAO;
 import ZLYUtils.Network;
 import ZLYUtils.NetworkHeaders;
 import ZLYUtils.TooltipUtil;
 
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -45,7 +48,7 @@ public class SendAdConfiguration {
     private int wifiShelves;//wifi下架
     private int bgdjShelves;//曝光点击下架
     private String createDate;//创建时间
-
+    private int sendAdIndex;//新建了多少个广告
     public SendAdConfiguration() {
         this.ads = new ArrayList<>();//广告位
         this.dayTotalClickNum = 0;//单天总单机
@@ -81,7 +84,7 @@ public class SendAdConfiguration {
         this.wifiShelves = -1;
         this.bgdjShelves = -1;
         this.createDate = null;
-
+        this.sendAdIndex=-1;
     }
 
     /**
@@ -90,14 +93,15 @@ public class SendAdConfiguration {
      * @return
      */
     public int sendUpdateStaus() {
-        return AdDataBse.getAdDataBse().updateStatusOnTheShelf(
-                this.appname, jointValues(this.version, this.separator),
-                jointValues(this.channelid, this.separator),
-                this.relStartDate, this.relEndDate, this.qz, this.iscirclead,
-                this.lbtime, this.dayTotalClickNum, this.dayTotalExposureNum,
-                this.totalClickNum, this.totalExposureNum, this.singleClickNum,
-                this.singleExposureNum, this.adNo, this.ads, this.wifiState
-        );
+//        return AdDataBse.getAdDataBse().updateStatusOnTheShelf(
+//                this.appname, jointValues(this.version, this.separator),
+//                jointValues(this.channelid, this.separator),
+//                this.relStartDate, this.relEndDate, this.qz, this.iscirclead,
+//                this.lbtime, this.dayTotalClickNum, this.dayTotalExposureNum,
+//                this.totalClickNum, this.totalExposureNum, this.singleClickNum,
+//                this.singleExposureNum, this.adNo, this.ads, this.wifiState
+//        );
+        return this.sendAdIndex;
     }
 
     /**
@@ -156,7 +160,8 @@ public class SendAdConfiguration {
      *
      * @return true 发送成功
      */
-    public boolean sendAd() throws IllegalArgumentException {
+    public boolean sendAd() throws Exception {
+        this.sendAdIndex=-1;
         checkValues(false);
         this.urlValue.delete(0, this.urlValue.length());
         //拼接事件
@@ -206,13 +211,44 @@ public class SendAdConfiguration {
             this.repetition = this.urlValue.toString();
         }
 
-        String response = Network.sendPost(AdSendConfig.getHostUrl() + AdSendConfig.ADD_AD_RELEASE,
-                urlValues,
-                AdSendConfig.HEADERS, this.networkHeaders);
-        if (this.networkHeaders.getHeaders().get("Location").toString().contains(
-                AdSendConfig.getHostUrl() + "/fm/listadrelease"
-        ) && response.equals("302")) return true;
-        return false;
+//        String response = Network.sendPost(AdSendConfig.getHostUrl() + AdSendConfig.ADD_AD_RELEASE,
+//                urlValues,
+//                AdSendConfig.HEADERS, this.networkHeaders);
+        //通过数据库方式发送
+        FreeadReslease freeadReslease = new FreeadReslease();
+        FreeadResleaseDAO freeadResleaseDAO = new FreeadResleaseDAO();
+        boolean sendBoolean = true;
+        this.sendAdIndex=0;
+        for (int advSingNo : this.ads) {
+            freeadReslease.setAppname(this.appname);
+            freeadReslease.setAdvSingNo("GG-" + advSingNo);
+            freeadReslease.setAdNo(String.valueOf(this.adNo));
+            freeadReslease.setChannelid(jointValues(this.channelid, ","));
+            freeadReslease.setVersion(jointValues(this.version, ","));
+            freeadReslease.setRelStartDate(this.relStartDate);
+            freeadReslease.setRelEndDate(this.relEndDate);
+            freeadReslease.setQz(this.qz);
+            freeadReslease.setLbtime(this.lbtime);
+            freeadReslease.setTktime(this.tkTime);
+            freeadReslease.setStatus(this.status);
+            freeadReslease.setIsspecial(this.isSpecial);
+            freeadReslease.setSingleClickNum(this.singleClickNum);
+            freeadReslease.setSingleExposureNum(this.singleExposureNum);
+            freeadReslease.setTotalClickNum(this.totalClickNum);
+            freeadReslease.setTotalExposureNum(this.totalExposureNum);
+            freeadReslease.setWifiState(this.wifiState);
+            freeadReslease.setDayTotalClickNum(this.dayTotalClickNum);
+            freeadReslease.setDayTotalExoisureNum(this.dayTotalExposureNum);
+            freeadReslease.setCycpnum(this.cycpNum);
+            freeadReslease.setSxdisnum(this.sxdisNum);
+            freeadReslease.setIscirclead(this.iscirclead);
+            if (!freeadResleaseDAO.insertAD(freeadReslease)) {
+                sendBoolean = false;
+            }else{
+                this.sendAdIndex++;
+            }
+        }
+        return sendBoolean;
     }
 
     private void setBgDj() {
@@ -249,8 +285,8 @@ public class SendAdConfiguration {
      */
     private synchronized String jointValues(List<String> list, String separator) {
         StringBuffer stringBuffer = new StringBuffer();
-        for (Object s : list) {
-            stringBuffer.append(s.toString());
+        for (String s : list) {
+            stringBuffer.append(s.trim());
             stringBuffer.append(separator);
         }
         return stringBuffer.delete(stringBuffer.length() - 1, stringBuffer.length()).toString();
@@ -480,6 +516,6 @@ public class SendAdConfiguration {
         sendAdConfiguration.setAppname("cxb");
         sendAdConfiguration.setAdNo(222l);
         sendAdConfiguration.setSb("提交");
-        System.out.println(sendAdConfiguration.sendAd());
+
     }
 }
