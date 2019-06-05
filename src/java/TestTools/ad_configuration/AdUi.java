@@ -1089,7 +1089,7 @@ public class AdUi extends FrontPanel {
             vector.add("否");
             vector.add("是");
             Vector<String> vectorErr = new Vector<>();
-            vectorErr.add("数据库获取失败,重试中,默认下架");
+            vectorErr.add("数据库获取失败,重试中,默认下架，请检查您是否连接了VPN");
             while (true) {
                 try {
                     adDataBse = AdDataBse.getAdDataBse();

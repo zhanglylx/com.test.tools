@@ -7,8 +7,8 @@ import java.awt.*;
 import java.io.File;
 
 public class SquirrelConfig {
-    public static final String guanyu = "v4.0.4 更新内容\n  1.获取广告日志增加广告位  \n  2.页面更美光，按钮更清晰";
-    public static final String TOOLSTITLE = "软件测试工具";
+    public static final String guanyu = "v4.0.5 更新内容\n  1.添加广告从接口方式改为数据库方式  \n  2.解决录屏与截图模块图片卡死现象，因为没有导入lang3的包";
+    public static final String TOOLSTITLE = "松鼠";
     public static final String OPENWAIT = "文件较大，请等待";
     public static final String Screenshot_save_path = "image" + File.separator + "screen" + File.separator; //录屏与截图保存地址
     public static final String FFMPEGPATH = "lib" + File.separator + "ffmpeg" + File.separator + "bin" + File.separator + "ffmpeg.exe";
