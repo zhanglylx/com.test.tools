@@ -47,6 +47,7 @@ public class AdbUtils {
         return str;
     }
 
+
     public static String[] runAdb(String code) {
         String[] str = null;
         Process pro = null;
@@ -68,7 +69,7 @@ public class AdbUtils {
         return str;
     }
 
-    private static void close(BufferedReader bufferedReader, Process process) {
+    static void close(BufferedReader bufferedReader, Process process) {
         if (bufferedReader != null) {
             try {
                 bufferedReader.close();

@@ -6,6 +6,9 @@ import operation_plug.foundation_platform.acquisition_audio_management.Productio
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 
+/**
+ * 运营插件
+ */
 public class OperationPlugUi  extends FrontPanel {
     private JButton addProduction;
     public OperationPlugUi(String title) {

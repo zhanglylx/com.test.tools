@@ -1,7 +1,6 @@
 package TestTools.ad_configuration;
 
 import Frame.FrontPanel;
-import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.TooltipUtil;
 import com.eltima.components.ui.DatePicker;
 
@@ -9,8 +8,8 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;

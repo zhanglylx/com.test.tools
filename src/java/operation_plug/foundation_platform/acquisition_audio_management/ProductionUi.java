@@ -65,7 +65,7 @@ public class ProductionUi extends FrontPanel {
     @Override
     public void buttonClickEvent(JButton f) {
         if (this.selectFile == f) {
-            SwingUtils.selectFile();
+            SwingUtils.selectFile(this);
         }
     }
 

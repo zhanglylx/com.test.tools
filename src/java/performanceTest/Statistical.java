@@ -63,6 +63,7 @@ public class Statistical {
 
 
     public String toString() {
+//        不准，多进程的没有打印
         synchronized (this) {
             for (double d : this.cpu) {
                 if (d > this.cpuMax) this.cpuMax = d;

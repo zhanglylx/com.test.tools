@@ -1,11 +1,12 @@
 package TestTools.ad_configuration.DataBase;
 
 import TestTools.ad_configuration.AdDataBse;
+import ZLYUtils.WindosUtils;
 
 import java.sql.*;
 
 public class FreeadResleaseDAO {
-    private static final String INSERT_AD = "INSERT INTO freeadrelease() values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_AD = "INSERT INTO freeadrelease() values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String AD_MAX = "SELECT MAX(id) as i FROM freeadrelease";
 
     public FreeadResleaseDAO() {
@@ -48,6 +49,9 @@ public class FreeadResleaseDAO {
         preparedStatement.setInt(32, freeadReslease.getShieldAdTime());
         preparedStatement.setInt(33, freeadReslease.getAdStatus());
         preparedStatement.setInt(34, freeadReslease.getNetState());
+//        35是描述:description字段
+        preparedStatement.setString(35, "松鼠工具创建:"+ WindosUtils.getDate());
+        System.out.println(preparedStatement.toString());
         boolean b = false;
         if (preparedStatement.executeUpdate() == 1) b = true;
         preparedStatement.close();

@@ -3,6 +3,7 @@ package ZLYUtils;
 import SquirrelFrame.SquirrelConfig;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -115,20 +116,72 @@ public class SwingUtils {
     /**
      * 选择文件框
      */
-    public static String selectFile() {
+    public static String selectFile(Component parent, String[] filter) {
         try {
             setFileUi();
+
             JFileChooser chooser = new JFileChooser();
+//            添加文件过滤器
+            if (filter != null && filter.length > 0) {
+                for (int i = 0; i < filter.length; i++) {
+                    if (i == 0) {
+                        chooser.setFileFilter(setFileFilter(filter[i]));
+                    } else {
+                        chooser.addChoosableFileFilter(setFileFilter(filter[i]));
+                    }
+                }
+            }
             chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             chooser.setCurrentDirectory(JavaUtils.getLocalDesktopPath());//默认桌面
-            chooser.showDialog(new JLabel(), "选择");
             File file = chooser.getSelectedFile();
+            int ch = chooser.showDialog(parent, "选择文件");
+            if (null == file || JFileChooser.APPROVE_OPTION != ch) return null;
             return (file.getAbsoluteFile().toString());
         } finally {
             setUiDefault();
         }
     }
 
+    /**
+     * 设置文件过滤
+     *
+     * @param fileFilter
+     * @return
+     */
+    private static FileFilter setFileFilter(String fileFilter) {
+        return new FileFilter() {
+            @Override
+            public boolean accept(File f) {
+                if (f.getName().contains(fileFilter.trim())) return true;
+                return false;
+            }
+
+            @Override
+            public String getDescription() {
+                return fileFilter;
+            }
+        };
+    }
+
+
+    public static String selectFile(Component parent) {
+        return selectFile(parent, null);
+    }
+
+
+    /**
+     * 将文本域焦点设置到最后
+     *
+     * @param jTextAreaMoveEnd
+     */
+    public static void setJTextAreaMoveEnd(JTextArea jTextAreaMoveEnd) {
+        //        //下面的代码就是移动到文本域的最后面
+        jTextAreaMoveEnd.selectAll();
+        if (jTextAreaMoveEnd.getSelectedText() != null && jTextAreaMoveEnd != null) {
+            jTextAreaMoveEnd.setCaretPosition(jTextAreaMoveEnd.getSelectedText().length());
+            jTextAreaMoveEnd.requestFocus();
+        }
+    }
 
     /**
      * 添加JDialog窗口关闭监听器
@@ -148,6 +201,7 @@ public class SwingUtils {
 
     /**
      * 设置单选按钮
+     *
      * @param buttons
      */
     public static void setButtonGroup(AbstractButton... buttons) {
@@ -156,8 +210,6 @@ public class SwingUtils {
             buttonGroup.add(button);
         }
     }
-
-
 
 
     /**

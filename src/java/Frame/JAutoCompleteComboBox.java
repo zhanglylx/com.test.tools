@@ -28,7 +28,7 @@ public class JAutoCompleteComboBox extends JComboBox {
         addCompleter();
     }
 
-    public JAutoCompleteComboBox(Object[] items) {
+    JAutoCompleteComboBox(Object[] items) {
         super(items);
         addCompleter();
     }
@@ -99,7 +99,7 @@ class AutoCompleter implements KeyListener, ItemListener {
 
     private ComboBoxModel model = null;
 
-    public AutoCompleter(JComboBox comboBox) {
+    AutoCompleter(JComboBox comboBox) {
         owner = comboBox;
         editor = (JTextField) comboBox.getEditor().getEditorComponent();
         editor.addKeyListener(this);
@@ -132,7 +132,7 @@ class AutoCompleter implements KeyListener, ItemListener {
     /**
      * 自动完成。根据输入的内容，在列表中找到相似的项目.
      */
-    protected void autoComplete(String strf, int caretPosition) {
+    void autoComplete(String strf, int caretPosition) {
         Object[] opts;
 //        opts = getMatchingOptions(strf.substring(0, caretPosition));
         opts = getMatchingOptions(strf);

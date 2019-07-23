@@ -261,7 +261,7 @@ class Case extends JPanel implements ActionListener {
 //        chooser.setCurrentDirectory(new File("."));//默认松鼠页面
 //        chooser.showDialog(new JLabel(), "选择");
 //        File file = chooser.getSelectedFile();
-        runExcelPath = selectFile();
+        runExcelPath = selectFile(this);
     }
 
     /**

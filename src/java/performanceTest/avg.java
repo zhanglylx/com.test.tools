@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Map;
 
+/**
+ * 计算平均值
+ */
 public class avg {
     public static void main(String[] args) throws FileNotFoundException {
         Map<Integer,Map<String,String>> mapMap = ExcelUtils.getExcelXlsx(new File("掌阅退出后台第二次.xlsx"));

@@ -3,6 +3,7 @@ package TestTools;
 
 import Frame.FrontPanel;
 import InterfaceTesting.InterfaceTestUi;
+import TestTools.aapt.Aapt;
 import TestTools.ad_configuration.AdUi;
 
 import javax.swing.*;
@@ -16,8 +17,9 @@ public class TestToolsRoot extends FrontPanel {
     private JButton videoRecordingScreenshot;
     private JButton interfaceTesting;
     private JButton urlCoding;
+    private JButton aaptJButton;
     public TestToolsRoot(String title) {
-        super(title,false,null);
+        super(title,false,true);
         this.setLayout(new GridLayout(4, 2));
         this.getADLog = newJButton("获取广告日志");
         add(this.getADLog);
@@ -31,6 +33,8 @@ public class TestToolsRoot extends FrontPanel {
         add(this.interfaceTesting);
         this.urlCoding=newJButton("URL解码与编码");
         add(this.urlCoding);
+        this.aaptJButton = newJButton("aapt");
+        add(this.aaptJButton);
         this.setSize(400, 250);
         setVisible(true);
     }
@@ -87,6 +91,8 @@ public class TestToolsRoot extends FrontPanel {
             new InterfaceTestUi(jButton.getText());
         } else if (this.videoRecordingScreenshot == jButton) {
             new VideoRecordingScreenshot(jButton.getText());
+        }else if(this.aaptJButton == jButton){
+            new Aapt(jButton.getText());
         }
     }
 

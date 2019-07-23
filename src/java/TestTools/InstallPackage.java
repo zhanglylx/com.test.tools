@@ -84,14 +84,17 @@ public class InstallPackage extends FrontPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            SwingUtils.setFileUi();
-            JFileChooser chooser = new JFileChooser();
-            FileSystemView fsv = FileSystemView.getFileSystemView();
-            chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-            chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
-            chooser.showDialog(new JLabel(), "选择");
-            File file = chooser.getSelectedFile();
-            textField.setText(file.getAbsoluteFile().toString());
+//            SwingUtils.setFileUi();
+////            JFileChooser chooser = new JFileChooser();
+////            FileSystemView fsv = FileSystemView.getFileSystemView();
+////            chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+////            chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
+////            chooser.showDialog(new JLabel(), "选择");
+//            File file = chooser.getSelectedFile();
+           String filePath =  SwingUtils.selectFile(this,new String[]{".apk"});
+
+            if(filePath == null) return;
+            textField.setText(filePath);
         } finally {
             SwingUtils.setUiDefault();
         }

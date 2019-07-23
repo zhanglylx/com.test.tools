@@ -104,7 +104,7 @@ public class WindowsText extends JDialog implements ActionListener{
             case HomePage.VIDEOSWICTH:
                 setSize(600, 600);
                 setLocation(400, 100);
-                new VideoSwitch(new File(SwingUtils.selectFile()),".mp4",jta).start();
+                new VideoSwitch(new File(SwingUtils.selectFile(this)),".mp4",jta).start();
                 break;
             default:
 //                jta.setText(GetADLog.list.toString());

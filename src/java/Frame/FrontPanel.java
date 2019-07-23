@@ -1,8 +1,8 @@
 package Frame;
 
-import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.SwingUtils;
 import com.eltima.components.ui.DatePicker;
+
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -43,14 +43,27 @@ public abstract class FrontPanel extends JFrame {
         this.getContentPane().setBackground(this.backGroundColor);
     }
 
+    /**
+     * 尺寸是否可调整
+     *
+     * @param title
+     * @param setResizable
+     */
     public FrontPanel(String title, boolean setResizable) {
         this(title);
         this.setResizable(setResizable);
     }
 
-    public FrontPanel(String title, boolean setResizable, Component c) {
+    /**
+     * 设置窗体位置
+     *
+     * @param title
+     * @param setResizable 尺寸是否可变
+     * @param
+     */
+    public FrontPanel(String title, boolean setResizable, boolean center) {
         this(title, setResizable);
-        setLocationRelativeTo(c);//设置窗体位置
+        if (center) setLocationRelativeTo(null);//设置窗体位置
     }
 
     /**
@@ -224,6 +237,7 @@ public abstract class FrontPanel extends JFrame {
         return jPanel;
     }
 
+
     public JPanel newJPanel() {
         return newJPanel(true);
     }
@@ -244,6 +258,34 @@ public abstract class FrontPanel extends JFrame {
         jLabel.setBackground(Color.LIGHT_GRAY);
         jLabel.setSize(title.length() * 14, height);
         return jLabel;
+    }
+
+    /**
+     * 设置多行文本框
+     *
+     * @return
+     */
+    public JTextArea newJTextArea() {
+        JTextArea jTextArea = new JTextArea();
+//        设置自动折行
+        jTextArea.setLineWrap(true);
+        // 激活断行不断字功能
+        jTextArea.setWrapStyleWord(true);
+        //设置字体
+        jTextArea.setFont(DEFAULT_FONT);
+        return jTextArea;
+    }
+
+    /**
+     * 新建一个滚动条的多行文本框
+     *
+     * @param view
+     * @return
+     */
+    public JScrollPane newJTexAreaJScrollPane( Component view) {
+        JScrollPane jScrollPane = new JScrollPane(view);
+        jScrollPane.setBorder(newLineBorder());
+        return jScrollPane;
     }
 
     /**
@@ -348,7 +390,7 @@ public abstract class FrontPanel extends JFrame {
      */
     public LineBorder newLineBorder() {
         return new LineBorder(
-                new java.awt.Color(127, 157, 185), 1, true);
+                new java.awt.Color(127, 157, 185), 2, true);
     }
 
     /**
