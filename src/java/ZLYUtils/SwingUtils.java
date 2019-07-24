@@ -133,8 +133,8 @@ public class SwingUtils {
             }
             chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             chooser.setCurrentDirectory(JavaUtils.getLocalDesktopPath());//默认桌面
-            File file = chooser.getSelectedFile();
             int ch = chooser.showDialog(parent, "选择文件");
+            File file = chooser.getSelectedFile();
             if (null == file || JFileChooser.APPROVE_OPTION != ch) return null;
             return (file.getAbsoluteFile().toString());
         } finally {
