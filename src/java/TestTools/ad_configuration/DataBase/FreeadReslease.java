@@ -3,7 +3,9 @@ package TestTools.ad_configuration.DataBase;
 import ZLYUtils.JavaUtils;
 import ZLYUtils.WindosUtils;
 
-public class FreeadReslease {
+import java.io.Serializable;
+
+public class FreeadReslease implements Serializable {
     private String appname;
     private String advSingNo;
     private String adNo;
@@ -37,29 +39,38 @@ public class FreeadReslease {
     private int shieldAdTime;
     private int adStatus;
     private int netState;
-    public FreeadReslease(){
-        this.tktime=0;
-        this.cycpnum=0;
-        this.sxdisnum=0;
-        this.isdel=0;
-        this.updateDate= WindosUtils.getDate();
-        this.createDate=WindosUtils.getDate();
-        this.isspecial=0;
-        this.iscirclead=0;
-        this.singleClickNum=0;
-        this.singleExposureNum=0;
-        this.totalClickNum=0;
-        this.totalExposureNum=0;
-        this.dayTotalClickNum=0;
-        this.dayTotalExoisureNum=0;
-        this.cyynum=0;
-        this.videoAdSet=0;
-        this.videoAdRate=0;
-        this.bookLocation=0;
-        this.startCha=0;
-        this.shieldAdTime=0;
-        this.adStatus=0;
-        this.netState=0;
+    private String popupdesc;
+    private String shieldAdStation;
+    private Integer jlvideoAdRate;
+    private Integer chapterEnd;
+    private Integer inset;
+    private Integer antimisoperation;
+    private Integer upanddown;
+
+    public FreeadReslease() {
+        this.tktime = 0;
+        this.cycpnum = 0;
+        this.sxdisnum = 0;
+        this.isdel = 0;
+        this.updateDate = WindosUtils.getDate();
+        this.createDate = WindosUtils.getDate();
+        this.isspecial = 0;
+        this.iscirclead = 0;
+        this.singleClickNum = 0;
+        this.singleExposureNum = 0;
+        this.totalClickNum = 0;
+        this.totalExposureNum = 0;
+        this.dayTotalClickNum = 0;
+        this.dayTotalExoisureNum = 0;
+        this.cyynum = 0;
+        this.videoAdSet = 0;
+        this.videoAdRate = 0;
+        this.bookLocation = 0;
+        this.startCha = 0;
+        this.shieldAdTime = 0;
+        this.adStatus = 0;
+        this.netState = 0;
+        this.antimisoperation = 0;
     }
 
 
@@ -180,11 +191,9 @@ public class FreeadReslease {
     }
 
 
-
     public String getCreateDate() {
         return createDate;
     }
-
 
 
     public int getIsspecial() {
@@ -318,5 +327,61 @@ public class FreeadReslease {
 
     public void setNetState(int netState) {
         this.netState = netState;
+    }
+
+    public String getPopupdesc() {
+        return popupdesc;
+    }
+
+    public void setPopupdesc(String popupdesc) {
+        this.popupdesc = popupdesc;
+    }
+
+    public String getShieldAdStation() {
+        return shieldAdStation;
+    }
+
+    public void setShieldAdStation(String shieldAdStation) {
+        this.shieldAdStation = shieldAdStation;
+    }
+
+    public Integer getJlvideoAdRate() {
+        return jlvideoAdRate;
+    }
+
+    public void setJlvideoAdRate(Integer jlvideoAdRate) {
+        this.jlvideoAdRate = jlvideoAdRate;
+    }
+
+    public Integer getChapterEnd() {
+        return chapterEnd;
+    }
+
+    public void setChapterEnd(Integer chapterEnd) {
+        this.chapterEnd = chapterEnd;
+    }
+
+    public Integer getInset() {
+        return inset;
+    }
+
+    public void setInset(Integer inset) {
+        this.inset = inset;
+    }
+
+    public Integer getAntimisoperation() {
+        return antimisoperation;
+    }
+
+    public void setAntimisoperation(Integer antimisoperation) {
+        this.antimisoperation = antimisoperation;
+    }
+
+    public Integer getUpanddown() {
+        return upanddown;
+    }
+
+    public void setUpanddown(Integer upanddown) {
+        this.upanddown = upanddown;
     }
 }

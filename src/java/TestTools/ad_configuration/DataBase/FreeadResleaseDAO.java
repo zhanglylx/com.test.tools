@@ -6,7 +6,7 @@ import ZLYUtils.WindosUtils;
 import java.sql.*;
 
 public class FreeadResleaseDAO {
-    private static final String INSERT_AD = "INSERT INTO freeadrelease() values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_AD = "INSERT INTO freeadrelease() values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String AD_MAX = "SELECT MAX(id) as i FROM freeadrelease";
 
     public FreeadResleaseDAO() {
@@ -15,7 +15,7 @@ public class FreeadResleaseDAO {
     public boolean insertAD(FreeadReslease freeadReslease) throws SQLException {
         Connection connection = AdDataBse.getAdDataBse().getConnectDataBase().getCon();
         PreparedStatement preparedStatement = connection.prepareStatement(INSERT_AD);
-        preparedStatement.setInt(1, selectMaxId()+1);
+        preparedStatement.setInt(1, selectMaxId() + 1);
         preparedStatement.setString(2, freeadReslease.getAppname());
         preparedStatement.setString(3, freeadReslease.getAdvSingNo());
         preparedStatement.setString(4, freeadReslease.getAdNo());
@@ -50,12 +50,27 @@ public class FreeadResleaseDAO {
         preparedStatement.setInt(33, freeadReslease.getAdStatus());
         preparedStatement.setInt(34, freeadReslease.getNetState());
 //        35是描述:description字段
-        preparedStatement.setString(35, "松鼠工具创建:"+ WindosUtils.getDate());
+        preparedStatement.setString(35, "松鼠工具创建:" + WindosUtils.getDate());
+        preparedStatement.setString(36, freeadReslease.getPopupdesc());
+        preparedStatement.setString(37, freeadReslease.getShieldAdStation());
+        setIntVluesOrNull(preparedStatement,38,freeadReslease.getJlvideoAdRate());
+        setIntVluesOrNull(preparedStatement,39,freeadReslease.getChapterEnd());
+        setIntVluesOrNull(preparedStatement,40,freeadReslease.getInset());
+        setIntVluesOrNull(preparedStatement,41,freeadReslease.getAntimisoperation());
+        setIntVluesOrNull(preparedStatement,42,freeadReslease.getUpanddown());
         System.out.println(preparedStatement.toString());
         boolean b = false;
         if (preparedStatement.executeUpdate() == 1) b = true;
         preparedStatement.close();
         return b;
+    }
+
+    private void setIntVluesOrNull(PreparedStatement preparedStatement, int number, Integer values) throws SQLException {
+        if (values != null) {
+            preparedStatement.setInt(number, values);
+        } else {
+            preparedStatement.setNull(number, Types.INTEGER);
+        }
     }
 
     public int selectMaxId() throws SQLException {
