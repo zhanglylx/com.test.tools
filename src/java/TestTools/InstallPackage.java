@@ -57,7 +57,6 @@ public class InstallPackage extends FrontPanel implements ActionListener {
     }
 
 
-
     /**
      * 检查安装路径是否合法
      *
@@ -91,10 +90,9 @@ public class InstallPackage extends FrontPanel implements ActionListener {
 ////            chooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
 ////            chooser.showDialog(new JLabel(), "选择");
 //            File file = chooser.getSelectedFile();
-           String filePath =  SwingUtils.selectFile(this,new String[]{".apk"});
-
-            if(filePath == null) return;
-            textField.setText(filePath);
+            File filePath = SwingUtils.selectApkFile(this);
+            if (filePath == null) return;
+            textField.setText(filePath.toString());
         } finally {
             SwingUtils.setUiDefault();
         }

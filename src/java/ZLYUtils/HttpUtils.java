@@ -139,7 +139,7 @@ public class HttpUtils {
                 .setConnectTimeout(CONNECTION_TIME_OUT) // 创建连接的最长时间
                 .setConnectionRequestTimeout(CONNECTION_REQUEST_TIME_OUT) // 从连接池中获取到连接的最长时间
                 .setSocketTimeout(SOCKET_TIME_OUT) // 数据传输的最长时间
-                .setProxy(new HttpHost("localhost", 8888))
+//                .setProxy(new HttpHost("localhost", 8888))
                 .build();
     }
 
@@ -276,7 +276,6 @@ public class HttpUtils {
         String result = "";
         CloseableHttpResponse closeableHttpResponse = null;
         try {
-            HttpClient httpClient;
             CloseableHttpClient closeableHttpClient = getHttpClient();
             long startTime = System.currentTimeMillis();
             closeableHttpResponse = closeableHttpClient.execute(httpRequestBase);

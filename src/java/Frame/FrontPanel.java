@@ -2,17 +2,24 @@ package Frame;
 
 import ZLYUtils.SwingUtils;
 import com.eltima.components.ui.DatePicker;
+import org.apache.commons.lang3.StringUtils;
 
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Vector;
 
 /**
  * 根面板
@@ -172,7 +179,11 @@ public abstract class FrontPanel extends JFrame {
      */
     public JRadioButton newJRadioButton(String title, int height) {
         JRadioButton jRadioButton = new JRadioButton(title);
-        jRadioButton.setSize(title.length() * 22, height);
+        if(title.length()<4){
+            jRadioButton.setSize(4 * 23, height);
+        }else {
+            jRadioButton.setSize(title.length() * 23, height);
+        }
         jRadioButton.setFont(DEFAULT_FONT);
         jRadioButton.setBorder(newLineBorder());
         jRadioButton.setOpaque(false);
@@ -209,20 +220,34 @@ public abstract class FrontPanel extends JFrame {
     }
 
     public JButton newJButton(String title) {
-        return newJButton(title, false, false);
+        return newJButton(title, false, false, null);
     }
 
-    public JButton newJButton(String title, boolean setBorder, boolean setBorderFactory) {
+    public JButton newJButton(String title, String toolTipText) {
+        return newJButton(title, false, false, toolTipText);
+    }
+
+    /**
+     * @param title
+     * @param setBorder
+     * @param bevelBorder
+     * @param toolTipText
+     * @return
+     */
+    public JButton newJButton(String title, boolean setBorder, boolean bevelBorder, String toolTipText) {
         JButton jButton = new JButton(title);
+        jButton.setOpaque(false);//除去边框
         jButton.setBackground(Color.lightGray);
         jButton.setFont(DEFAULT_FONT);
         buttonMouseListener(jButton);
         setJButtonCursor(jButton);
-        if (setBorderFactory)
-            jButton.setBorder(BorderFactory.createRaisedBevelBorder());
-        if (setBorder)
+        if (bevelBorder) {
+            jButton.setBorder(newLineBorderSpecific());
+//            jButton.setBorder(BorderFactory.createEtchedBorder( Color.red, Color.red));
+        } else if (setBorder) {
             jButton.setBorder(newLineBorder());
-
+        }
+        if (StringUtils.isNotEmpty(toolTipText)) jButton.setToolTipText(toolTipText);
         return jButton;
     }
 
@@ -282,11 +307,30 @@ public abstract class FrontPanel extends JFrame {
      * @param view
      * @return
      */
-    public JScrollPane newJTexAreaJScrollPane( Component view) {
+    public JScrollPane newJScrollPane(Component view) {
         JScrollPane jScrollPane = new JScrollPane(view);
         jScrollPane.setBorder(newLineBorder());
+        jScrollPane.setBackground(this.defaultColor);
         return jScrollPane;
     }
+
+    /**
+     * 新建一个表格的滚动条
+     *
+     * @param jTable
+     * @param width
+     * @param rows   行数
+     * @return
+     */
+    public JScrollPane newJScrollPane(JTable jTable, int width, int rows) {
+        // 设置滚动面板视口大小（超过该大小的行数据，需要拖动滚动条才能看到）
+        jTable.setPreferredScrollableViewportSize(new Dimension(width, rows * 25));
+        JScrollPane jScrollPane = new JScrollPane(jTable);
+        jScrollPane.setBorder(newLineBorder());
+        jScrollPane.setBackground(Color.white);
+        return jScrollPane;
+    }
+
 
     /**
      * 新建单行文本框
@@ -394,6 +438,16 @@ public abstract class FrontPanel extends JFrame {
     }
 
     /**
+     * 新建一个特殊的边框
+     *
+     * @return
+     */
+    public LineBorder newLineBorderSpecific() {
+        return new LineBorder(
+                new java.awt.Color(200, 22, 200), 4, true);
+    }
+
+    /**
      * 按钮点击事件
      */
     public abstract void buttonClickEvent(JButton jButton);
@@ -488,8 +542,24 @@ public abstract class FrontPanel extends JFrame {
                 if (ItemEvent.SELECTED == arg0.getStateChange()) {
                     jComboBoxDeselectedItem(arg0.getItem().toString());
                 }
+
                 if (ItemEvent.DESELECTED == arg0.getStateChange()) {
                     jComboBoxSelectedItem(arg0.getItem().toString());
+                }
+            }
+        });
+
+        /**
+         * 给下拉列表添加键盘监听器
+         */
+        jComboBox.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+//                点击回车时关闭下拉列表
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    jComboBox.hide();
+                    jComboBox.show();
                 }
             }
         });
@@ -534,6 +604,48 @@ public abstract class FrontPanel extends JFrame {
      */
     public abstract void jComboBoxPopupMenuWillBecomeVisible(JComboBox jComboBox);
 
+    public JTable newJTable(Vector columnNames, int row) {
+        Vector rowData = new Vector();
+        for (int i = 0; i < row; i++) {
+            rowData.add(new Vector());
+        }
+        return newJTable(rowData, columnNames);
+    }
+
+    /**
+     * @param columnNames 表头(列名)
+     * @return
+     */
+    public JTable newJTable(Vector data, Vector columnNames) {
+        DefaultTableModel defaultTableModel = new DefaultTableModel(data, columnNames);
+        // 创建一个表格，指定 所有行数据 和 表头
+        JTable table = new JTable(defaultTableModel);
+        table.setFont(DEFAULT_FONT);
+        table.setBackground(Color.white);
+        // 设置表格内容颜色
+        table.setForeground(this.defaultFontColor);                   // 字体颜色
+        table.setSelectionForeground(this.defaultFontColor);      // 选中后字体颜色
+        table.setSelectionBackground(this.enterIntoColor);     // 选中后字体背景
+        table.setGridColor(Color.GRAY);                     // 网格颜色
+
+        // 设置表头
+        table.getTableHeader().setFont(DEFAULT_FONT);  // 设置表头名称字体样式
+        table.getTableHeader().setForeground(Color.RED);                // 设置表头名称字体颜色
+        table.getTableHeader().setResizingAllowed(true);               // 设置不允许手动改变列宽
+        table.getTableHeader().setReorderingAllowed(true);             // 设置不允许拖动重新排序各列
+        // 设置行高
+        table.setRowHeight(25);
+        //设置显示网格
+        table.setShowGrid(true);
+        table.setBackground(this.backGroundColor);
+        //设置显示水平防线网格线
+        table.setShowHorizontalLines(true);
+//      设置竖直方向网格线
+        table.setShowVerticalLines(true);
+        return table;
+    }
+
+
     /**
      * 网格式布局
      *
@@ -569,10 +681,12 @@ public abstract class FrontPanel extends JFrame {
         return backGroundColor;
     }
 
+
     /**
      * 设置风格
      */
     static {
         SwingUtils.setUiDefault();
     }
+
 }

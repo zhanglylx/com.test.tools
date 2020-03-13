@@ -2,8 +2,10 @@ package InterfaceTesting;
 
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.ExcelUtils;
+import ZLYUtils.SwingUtils;
 import ZLYUtils.TooltipUtil;
 import Frame.FrontPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +17,6 @@ import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static ZLYUtils.SwingUtils.selectFile;
 
 /**
  * 松鼠工具接口测试页面
@@ -70,7 +71,7 @@ class Case extends JPanel implements ActionListener {
     private JTextArea resultResponse;//结果面板
     private JButton runCaseExcel;//执行Excel按钮
     private JRadioButton matchingRule;//匹配规则
-    private String runExcelPath;
+    private File runExcelPath;
 
     public Case(JFrame jDialog) {
         this.jDialog = jDialog;
@@ -236,7 +237,7 @@ class Case extends JPanel implements ActionListener {
                 } else if (f == runCaseExcel) {
                     try {
                         RunExcelCase runExcelCase = RunExcelCase.getRunExcelCase();
-                        runExcelCase.setCaseMap(ExcelUtils.getExcelXlsx(new File(runExcelPath)));
+                        runExcelCase.setCaseMap(ExcelUtils.getExcelXlsx(runExcelPath));
                         runExcelCase.setjButton(runCaseExcel);
                         runExcelCase.setRunExcelPath(runExcelPath);
                         new Thread(runExcelCase).start();
@@ -261,7 +262,7 @@ class Case extends JPanel implements ActionListener {
 //        chooser.setCurrentDirectory(new File("."));//默认松鼠页面
 //        chooser.showDialog(new JLabel(), "选择");
 //        File file = chooser.getSelectedFile();
-        runExcelPath = selectFile(this);
+        runExcelPath = SwingUtils.selectFile(this, new String[]{".xlsx"});
     }
 
     /**

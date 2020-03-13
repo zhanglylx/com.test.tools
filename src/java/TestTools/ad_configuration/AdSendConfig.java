@@ -37,6 +37,7 @@ class AdSendConfig {
     static final String MFDZS = "免费电子书";
     static final String MFZS = "免费追书";
     static final String IKS = "爱看书";
+    static final String MFXS = "免费小说";
     static final int LFET_MARGIN = 5;//左边界
     static final String QZ_HINT = "数字类型,倒序,0为分量,相同非0权重按照加入时间排序,默认10";
     static final String HOST_TEST = "http://manage-cx-qa.ikanshu.cn";
@@ -199,30 +200,32 @@ class AdSendConfig {
                 return "mfzs";
             case IKS:
                 return "aks";
+            case  MFXS:
+                return "mfxs";
             default:
                 return null;
         }
     }
 
-    public static synchronized void loging() {
-        synchronized (AdSendConfig.class) {
-            HEADERS = new HashMap<>();
-            NetworkHeaders networkHeaders = new NetworkHeaders();
-            Network.sendPost(AdSendConfig.getHostUrl() + "/fm/login/login",
-                    "username=admin&password=123456",
-                    null, networkHeaders);
-            String cookies = "";
-            try {
-                for (String s : networkHeaders.getHeaders().get("Set-Cookie")) {
-                    cookies += s;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            HEADERS.put("Cookie", cookies);
-
-        }
-    }
+//    public static synchronized void loging() {
+//        synchronized (AdSendConfig.class) {
+//            HEADERS = new HashMap<>();
+//            NetworkHeaders networkHeaders = new NetworkHeaders();
+//            Network.sendPost(AdSendConfig.getHostUrl() + "/fm/login/login",
+//                    "username=admin&password=123456",
+//                    null, networkHeaders);
+//            String cookies = "";
+//            try {
+//                for (String s : networkHeaders.getHeaders().get("Set-Cookie")) {
+//                    cookies += s;
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            HEADERS.put("Cookie", cookies);
+//
+//        }
+//    }
 
 
 }

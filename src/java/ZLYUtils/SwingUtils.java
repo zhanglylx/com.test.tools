@@ -5,6 +5,8 @@ import SquirrelFrame.SquirrelConfig;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileSystemView;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +14,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Arrays;
+import java.util.Vector;
 
 public class SwingUtils {
     /**
@@ -113,13 +116,42 @@ public class SwingUtils {
         return arrays;
     }
 
+    public static boolean checkFileIsApk(String file) {
+        return checkFileIsApk(new File(file));
+    }
+
+    public static boolean checkFileIsApk(File file) {
+        if (file == null) {
+            TooltipUtil.errTooltip("文件为空");
+            return false;
+        }
+        if (!file.isFile()) {
+            TooltipUtil.errTooltip("不是一个文件");
+            return false;
+        }
+        if (!file.getName().endsWith(".apk")) {
+            TooltipUtil.errTooltip("不是一个apk文件");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 选择apk文件
+     *
+     * @param parent
+     * @return
+     */
+    public static File selectApkFile(Component parent) {
+        return selectFile(parent, new String[]{".apk"});
+    }
+
     /**
      * 选择文件框
      */
-    public static String selectFile(Component parent, String[] filter) {
+    public static File selectFile(Component parent, String[] filter) {
         try {
             setFileUi();
-
             JFileChooser chooser = new JFileChooser();
 //            添加文件过滤器
             if (filter != null && filter.length > 0) {
@@ -136,7 +168,20 @@ public class SwingUtils {
             int ch = chooser.showDialog(parent, "选择文件");
             File file = chooser.getSelectedFile();
             if (null == file || JFileChooser.APPROVE_OPTION != ch) return null;
-            return (file.getAbsoluteFile().toString());
+            boolean f = false;
+            if (filter != null && filter.length > 0) {
+                for (String fe : filter) {
+                    if (file.getName().endsWith(fe.trim())) {
+                        f = true;
+                        break;
+                    }
+                }
+            }
+            if (!f) {
+                TooltipUtil.errTooltip("您选择文件的格式不正确，请重新选择");
+                return null;
+            }
+            return file;
         } finally {
             setUiDefault();
         }
@@ -158,13 +203,13 @@ public class SwingUtils {
 
             @Override
             public String getDescription() {
-                return fileFilter;
+                return fileFilter.trim();
             }
         };
     }
 
 
-    public static String selectFile(Component parent) {
+    public static File selectFile(Component parent) {
         return selectFile(parent, null);
     }
 
@@ -174,14 +219,39 @@ public class SwingUtils {
      *
      * @param jTextAreaMoveEnd
      */
-    public static void setJTextAreaMoveEnd(JTextArea jTextAreaMoveEnd) {
+    public static void setJTextAreaMoveEnd(JTextComponent jTextAreaMoveEnd) {
         //        //下面的代码就是移动到文本域的最后面
         jTextAreaMoveEnd.selectAll();
-        if (jTextAreaMoveEnd.getSelectedText() != null && jTextAreaMoveEnd != null) {
+        if (jTextAreaMoveEnd.getSelectedText() != null) {
             jTextAreaMoveEnd.setCaretPosition(jTextAreaMoveEnd.getSelectedText().length());
             jTextAreaMoveEnd.requestFocus();
         }
     }
+
+    /**
+     * 设置单行文本框的滚动条自动在最右侧
+     *
+     * @param jScrollPaneBarRight
+     * @param jTextField
+     */
+    public static void setJScrollPaneBarRight(JScrollPane jScrollPaneBarRight, JTextField jTextField) {
+        Point p = new Point();
+        p.setLocation(jTextField.getText().length() * 100, 0);
+        System.out.println(p);
+        jScrollPaneBarRight.getViewport().setViewPosition(p);
+    }
+
+    /**
+     * 设置表格指定列的列宽
+     *
+     * @param jTablePreferredWidth
+     * @param column
+     * @param width
+     */
+    public static void setJTablePreferredWidth(JTable jTablePreferredWidth, int column, int width) {
+        jTablePreferredWidth.getColumnModel().getColumn(column).setPreferredWidth(width);
+    }
+
 
     /**
      * 添加JDialog窗口关闭监听器
@@ -263,5 +333,23 @@ public class SwingUtils {
         });
     }
 
-
+    /**
+     * 更新table数据
+     *
+     * @param jTableData
+     * @param dataVector
+     */
+    public static void setJTableData(JTable jTableData, Vector[] dataVector) {
+        Vector column = new Vector();
+        DefaultTableModel dtm = (DefaultTableModel) jTableData.getModel();
+        for (int i = 0; i < dtm.getColumnCount(); i++) {
+            column.add(dtm.getColumnName(i));
+        }
+        Vector vector = new Vector();
+        for (Vector v : dataVector) {
+            vector.add(v);
+        }
+        dtm.setDataVector(vector, column);
+        jTableData.setModel(dtm);
+    }
 }

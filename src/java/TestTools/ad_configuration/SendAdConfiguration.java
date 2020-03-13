@@ -49,6 +49,17 @@ public class SendAdConfiguration {
     private int bgdjShelves;//曝光点击下架
     private String createDate;//创建时间
     private int sendAdIndex;//新建了多少个广告
+
+    public int getUsergroup() {
+        return usergroup;
+    }
+
+    public void setUsergroup(int usergroup) {
+        this.usergroup = usergroup;
+    }
+
+    private int usergroup;
+
     public SendAdConfiguration() {
         this.ads = new ArrayList<>();//广告位
         this.dayTotalClickNum = 0;//单天总单机
@@ -84,7 +95,8 @@ public class SendAdConfiguration {
         this.wifiShelves = -1;
         this.bgdjShelves = -1;
         this.createDate = null;
-        this.sendAdIndex=-1;
+        this.sendAdIndex = -1;
+        this.usergroup = 0;
     }
 
     /**
@@ -161,7 +173,7 @@ public class SendAdConfiguration {
      * @return true 发送成功
      */
     public boolean sendAd() throws Exception {
-        this.sendAdIndex=-1;
+        this.sendAdIndex = -1;
         checkValues(false);
         this.urlValue.delete(0, this.urlValue.length());
         //拼接事件
@@ -218,7 +230,7 @@ public class SendAdConfiguration {
         FreeadReslease freeadReslease = new FreeadReslease();
         FreeadResleaseDAO freeadResleaseDAO = new FreeadResleaseDAO();
         boolean sendBoolean = true;
-        this.sendAdIndex=0;
+        this.sendAdIndex = 0;
         for (int advSingNo : this.ads) {
             freeadReslease.setAppname(this.appname);
             freeadReslease.setAdvSingNo("GG-" + advSingNo);
@@ -242,9 +254,10 @@ public class SendAdConfiguration {
             freeadReslease.setCycpnum(this.cycpNum);
             freeadReslease.setSxdisnum(this.sxdisNum);
             freeadReslease.setIscirclead(this.iscirclead);
+            freeadReslease.setUsergroup(this.usergroup);
             if (!freeadResleaseDAO.insertAD(freeadReslease)) {
                 sendBoolean = false;
-            }else{
+            } else {
                 this.sendAdIndex++;
             }
         }

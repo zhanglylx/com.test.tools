@@ -46,6 +46,60 @@ public class FreeadReslease implements Serializable {
     private Integer inset;
     private Integer antimisoperation;
     private Integer upanddown;
+    private Integer usergroup;
+    private Integer guideBt;
+    private String imgUrl;
+    private Integer bottom;
+    private Integer regStartTime;
+    private Integer regEndTime;
+
+    public Integer getGuideBt() {
+        return guideBt;
+    }
+
+    public void setGuideBt(Integer guideBt) {
+        this.guideBt = guideBt;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public Integer getBottom() {
+        return bottom;
+    }
+
+    public void setBottom(Integer bottom) {
+        this.bottom = bottom;
+    }
+
+    public Integer getRegStartTime() {
+        return regStartTime;
+    }
+
+    public void setRegStartTime(Integer regStartTime) {
+        this.regStartTime = regStartTime;
+    }
+
+    public Integer getRegEndTime() {
+        return regEndTime;
+    }
+
+    public void setRegEndTime(Integer regEndTime) {
+        this.regEndTime = regEndTime;
+    }
+
+    public Integer getUsergroup() {
+        return usergroup;
+    }
+
+    public void setUsergroup(Integer usergroup) {
+        this.usergroup = usergroup;
+    }
 
     public FreeadReslease() {
         this.tktime = 0;

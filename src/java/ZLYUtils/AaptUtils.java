@@ -16,7 +16,7 @@ public class AaptUtils {
         try {
             pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "aapt.exe " + code);
             br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("utf-8")));
-            str = adbBufferedReader(br, str);
+            str = adbBufferedReader(br);
             if (str == null) str = errRunAapt(code);
             pro.waitFor();
             Thread.sleep(100);
@@ -42,7 +42,7 @@ public class AaptUtils {
         try {
             pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "aapt.exe " + code);
             br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
-            str = adbBufferedReader(br, str);
+            str = adbBufferedReader(br);
             pro.waitFor();
             Thread.sleep(100);
         } catch (Exception e) {

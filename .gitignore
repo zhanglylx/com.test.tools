@@ -8,3 +8,6 @@
 gen
 /out/
 /platform-tools/
+target/workspace
+.project
+.classpath

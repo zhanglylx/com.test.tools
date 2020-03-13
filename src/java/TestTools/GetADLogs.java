@@ -1,6 +1,7 @@
 package TestTools;
 
 import Frame.FrontPanel;
+import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
 
 import javax.swing.*;
@@ -25,20 +26,24 @@ public class GetADLogs extends FrontPanel {
     private Log log;
     private List<JButton> jButtonsAd;
     private JButton jButton;
+    private JButton mianfeiaJButton;
+    private JButton mianzhuiJButton;
+    private JButton aikanshuJButton;
+
     /**
      * 设置广告位
      */
     static {
         AD = new String[0];
-        for (int i = 1; i < 90; i++) {
+        for (int i = 1; i < 87; i++) {
             AD = Arrays.copyOf(AD, AD.length + 1);
             AD[AD.length - 1] = "GG-" + i;
         }
     }
 
-    public GetADLogs(String buttonText,JButton jButton) {
+    public GetADLogs(String buttonText, JButton jButton) {
         super(buttonText);
-        this.jButton=jButton;
+        this.jButton = jButton;
         this.jButton.setEnabled(false);
         setLayout(new GridLayout(2, 10));
         JPanel jPa = newJPanel();
@@ -46,11 +51,17 @@ public class GetADLogs extends FrontPanel {
         JButton jb;
         this.jButtonsAd = new ArrayList<>();
         for (int i = 0; i < AD.length; i++) {
-            jb = newJButton(AD[i],true,true);
+            jb = newJButton(AD[i], true, false,null);
             jPa.add(jb);
             this.jButtonsAd.add(jb);
         }
-        this.clear = newJButton("清空");
+        jPa.add(this.mianfeiaJButton = newJButton("免电"));
+        jPa.add(this.mianzhuiJButton = newJButton("免追"));
+        jPa.add(this.aikanshuJButton = newJButton("爱看书"));
+        this.mianfeiaJButton.setBackground(Color.orange);
+        this.mianzhuiJButton.setBackground(Color.orange);
+        this.aikanshuJButton.setBackground(Color.orange);
+        this.clear = newJButton("清空", true, true,null);
         jPa.add(this.clear);
         add(jPa);
         setJDialog();
@@ -153,15 +164,27 @@ public class GetADLogs extends FrontPanel {
             setLogPaint("");
             return;
         }
+        //设置package
+        getPackageName(f);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 limitButtonClick();
             }
         }).start();
-        log.setAdIdRecord(f.getText());
-        f.setBackground(Color.magenta);
-        if (f != log.jButton) log.restoreColor();
+
+        //记录点击过的按钮记录成黄色
+        if (f != log.jButton
+                && f != this.mianfeiaJButton
+                && f != this.mianzhuiJButton
+                && f != this.aikanshuJButton) log.restoreColor();
+
+        if (this.jButtonsAd.contains(f)) {
+            f.setBackground(Color.magenta);
+            log.setjButton(f);
+            log.setAdIdRecord(f.getText());
+        }
         log.clearStringBuffer();
         if (!threadAdLog.isAlive()) {
             threadAdLog = new Thread(log);
@@ -170,7 +193,7 @@ public class GetADLogs extends FrontPanel {
             threadAdLog.interrupt();
         }
         this.setLogPaint("正在刷新，请稍后:" + f.getText());
-        log.setjButton(f);
+
     }
 
 
@@ -213,6 +236,7 @@ public class GetADLogs extends FrontPanel {
         private JButton jButton;
         private String getErrText = "获取失败，重试中,可能是没有连接手机";
         private StringBuffer stringBuffer;//记录显示台已经显示的信息
+        private String packageName = "请选择要获取的APP名称";
 
         public Log() {
             this.date = date();
@@ -247,6 +271,10 @@ public class GetADLogs extends FrontPanel {
             return this.adIdRecord;
         }
 
+        public void setPackageName(String packageName) {
+            this.packageName = packageName;
+        }
+
         @Override
         public void run() {
             boolean err = false;
@@ -256,8 +284,8 @@ public class GetADLogs extends FrontPanel {
             String[] GG;
             while (this.stopLog) {
                 logPaintAppend("==");
-                GG = AdbUtils.runAdb(" shell cat /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
-                System.out.println(" shell cat /sdcard/FreeBook/ad/" + date + "/" + adIdRecord + ".txt");
+                GG = AdbUtils.runAdb(" shell cat /sdcard/Android/data/" + this.packageName + "/files/logs/ad/" + date + "/" + adIdRecord + ".txt");
+                System.out.println(" shell cat /sdcard/Android/data/" + this.packageName + "/files/logs/ad/" + date + "/" + adIdRecord + ".txt");
                 if (GG == null) {
                     if (!err) addText(this.getErrText);
                     logPaintAppend(".");
@@ -320,6 +348,30 @@ public class GetADLogs extends FrontPanel {
             logPaint.requestFocus();
         }
     }
+
+    /**
+     * 获取包名
+     *
+     * @param jButton
+     * @return
+     */
+    public void getPackageName(JButton jButton) {
+        jButton.setBackground(Color.blue);
+        if (this.mianfeiaJButton == jButton) {
+            log.setPackageName(SquirrelConfig.MIAN_FEI_PACKAGE);
+            this.mianzhuiJButton.setBackground(Color.orange);
+            this.aikanshuJButton.setBackground(Color.orange);
+        } else if (this.mianzhuiJButton == jButton) {
+            log.setPackageName(SquirrelConfig.MIAN_ZHUI_PACKAGE);
+            this.mianfeiaJButton.setBackground(Color.orange);
+            this.aikanshuJButton.setBackground(Color.orange);
+        } else if (this.aikanshuJButton == jButton) {
+            log.setPackageName(SquirrelConfig.AI_KAN_SHU_PACKAGE);
+            this.mianfeiaJButton.setBackground(Color.orange);
+            this.mianzhuiJButton.setBackground(Color.orange);
+        }
+    }
+
 
     public synchronized void logPaintAppend(String text) {
         logPaint.append(text);

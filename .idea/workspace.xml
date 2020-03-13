@@ -7,6 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0bfae92-6287-4d15-b853-6e14d672c61e" name="Default" comment="更新">
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/META-INF/MANIFEST.MF" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/ffmpeg/LICENSE.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/ffmpeg/README.txt" afterDir="false" />
@@ -60,8 +62,21 @@
       <change afterPath="$PROJECT_DIR$/lib/ffmpeg/presets/libvpx-360p.ffpreset" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/ffmpeg/presets/libvpx-720p.ffpreset" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/ffmpeg/presets/libvpx-720p50_60.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/TestTools/serach_book_info/BookDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/ZLYUtils/Compressor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/ZLYUtils/Encryptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/ZLYUtils/IOUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/File/人力部流程/请假加班外出流程.txt" beforeDir="false" afterPath="$PROJECT_DIR$/File/人力部流程/请假加班外出流程.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/File/测试地址/免费电子书配置地址.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试地址/免费电子书配置地址.xmind" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/File/测试模板/短期项目测试报告模板.txt" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试模板/短期项目测试报告模板.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/File/测试流程/测试流程.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/File/测试流程/软件测试规范.doc" beforeDir="false" afterPath="$PROJECT_DIR$/File/测试流程/软件测试规范.doc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/File/测试设备/测试持有手机.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/image/TIM截图20180530183546.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/image/screen/Squirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/screen/Squirrel.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/image/screen/copySquirrel.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/screen/copySquirrel.png" afterDir="false" />
@@ -491,39 +506,183 @@
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/catapult/tracing/tracing_project.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/platform-tools/systrace/systrace.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/zhanglianyu_jar/zhanglianyu.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Squirrel/GetADLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Squirrel/GetADLogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Frame/FrontPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Frame/FrontPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceTestUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceTestUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/TestTools/GetADLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/TestTools/GetADLogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/TestTools/InstallPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/TestTools/InstallPackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/TestTools/aapt/Aapt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/TestTools/aapt/Aapt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/AdSendConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/AdSendConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/AdUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/AdUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/DataBase/FreeadReslease.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/DataBase/FreeadReslease.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/DataBase/FreeadResleaseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/DataBase/FreeadResleaseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/SendAdConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/TestTools/ad_configuration/SendAdConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/AaptUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/AaptUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/AdDataBse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AdConfiguration/AdDataBse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/MD5Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/MD5Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/SwingUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/SwingUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/performanceTest/RunMainPerformance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/performanceTest/RunMainPerformance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/performanceTest/avg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/performanceTest/avg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AdConfiguration/AdDataBse.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/DataBase/ConnectDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataBase/ConnectDataBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/SendRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/SendRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog$Log.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/GetADLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/Case.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/RunExcelCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterfaceTesting/RunExcelCase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/SquirrelUi$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterfaceTesting/SquirrelUi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Backpack_gift.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/FlowFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/FlowFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/InstallPackage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/InstallPackage$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/InstallPackage$installPackageRun.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/InstallPackage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/LeaveBug.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/Refresh.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/RefreshTheImage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/TestTools.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/VideoRecording$Screenrecord.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/VideoRecording.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/VideoRecordingScreenshot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBo$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBoDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Squirrel/ZhiBoDataBase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/Cartoon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/Cartoon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/ClearIphone.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/ClearIphone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$3$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$4$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$6$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$6$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/FrontPanel.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage$5.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/HomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/Pane$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/Pane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/Pane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/VideoSwitch$RunFfmpeg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/VideoSwitch$RunFfmpeg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/VideoSwitch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/VideoSwitch.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/WindowsText.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SquirrelFrame/WindowsText.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/test$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/test$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/test$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/test1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/test1$1AnimeMouseListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SquirrelFrame/test1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/AdbUtils$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/AdbUtils$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/AdbUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/AdbUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/DoubleOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/ExcelUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/ExcelUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/FrameUtils$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/FrameUtils$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/FrameUtils.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/HttpUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/HttpUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/Network.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/Network.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/NetworkHeaders.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/NetworkHeaders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/SaveCrash.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/SaveCrash.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/Uiautomator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/Uiautomator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/WindosUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ZLYUtils/WindosUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ZLYUtils/test123.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/knowledge/按钮常用设置" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/knowledge/按钮常用设置" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/package_inspection/CheckFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/package_inspection/CheckFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/performanceTest/RunMainPerformance$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/performanceTest/RunMainPerformance$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/performanceTest/RunMainPerformance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/performanceTest/RunMainPerformance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/performanceTest/Statistical.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/performanceTest/Statistical.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/performanceTest/avg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/performanceTest/avg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/test.tools.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/DataBase/ConnectDataBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/DataBase/text.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/Case$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/Case$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/Case.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/InterfaceConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/RunExcelCase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/SendRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/InterfaceTesting/SquirrelUi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Backpack_gift.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/FlowConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/FlowFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/GetADLog$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/GetADLog$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/GetADLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/LeaveBug.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/Refresh.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/RefreshTheImage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/TestTools.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/VideoRecordingScreenshot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/ZhiBo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/ZhiBoDataBase$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/Squirrel/ZhiBoDataBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Cartoon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/ClearIphone.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/FrameSqiorrel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/FrameSqiorrel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/HomePage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/LogPaint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Menubar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/OutputText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Pane$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/Pane.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/SquirrelConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/TextArea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/WindowsText$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/WindowsText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/test$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/test$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/test$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/test1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/test1$1AnimeMouseListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/SquirrelFrame/test1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/AdbUtils$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/AdbUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/ExcelUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/FrameUtils$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/FrameUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/JavaUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/Network.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/SaveCrash.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/TooltipUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/WindosUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/classes/ZLYUtils/test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test.tools/WEB-INF/lib/commons-lang-2.6.jar" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/src/main/java/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -554,108 +713,11 @@
     <expand />
     <select />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="1072" selection-start-line="1072" selection-end-line="1072" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="28" column="45" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/DataBase/text.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBoDataBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1144">
-              <caret line="89" column="13" selection-start-line="89" selection-start-column="13" selection-end-line="89" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/FrameSqiorrel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="com.test.tools" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -669,36 +731,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find />
-      <find>setclose</find>
-      <find>GG</find>
-      <find>内置广告</find>
-      <find>setClos</find>
-      <find>json</find>
-      <find>数据库连接成</find>
-      <find>数据库</find>
-      <find>数据库连接成功</find>
-      <find>next</find>
-      <find>setClose</find>
-      <find>[</find>
-      <find>SchemeRegistry</find>
-      <find>System.</find>
-      <find>System.getProperty</find>
+      <find>setParameter</find>
+      <find>Buff</find>
+      <find>睡眠中断</find>
       <find>setClo</find>
-      <find>addJButton</find>
-      <find>new Bu</find>
-      <find>测试目的</find>
-      <find>响应内容</find>
-      <find>main</find>
-      <find>FileSystemView.getFileSystemView().getHomeDirectory().getPath()</find>
-      <find>AdSendConfig</find>
-      <find>iks</find>
-      <find>中文</find>
+      <find>newJBUtton</find>
+      <find>帮助</find>
+      <find>newJ</find>
+      <find>buttonClickEvent</find>
+      <find>jbuttonM</find>
+      <find>click</find>
+      <find>newJB</find>
+      <find>set</find>
+      <find>setcl</find>
+      <find>newJp</find>
+      <find>jb</find>
+      <find />
+      <find>--选择广告--</find>
+      <find>JTextArea</find>
+      <find>insertString</find>
       <find>免费电子书</find>
-      <find>APPLICATION_JSON</find>
-      <find>setStaleConnectionCheckEnabled</find>
-      <find>CheckEnabled</find>
-      <find>getDate</find>
+      <find>开发环境</find>
+      <find>固定时间</find>
+      <find>广告类型</find>
+      <find>selectFile</find>
+      <find>爱看书</find>
+      <find>ThreadPoolExecutor</find>
+      <find>ScheduledExecutorService</find>
+      <find>定时器</find>
+      <find>内置</find>
+      <find>时间策略</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -706,69 +768,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/java/DataBase/text.java" />
-        <option value="$PROJECT_DIR$/src/java/knowledge/mysql数据库操作" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/java/performanceTest/Cpu.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/DoubleOperation.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/test123.java" />
-        <option value="$PROJECT_DIR$/src/java/performanceTest/Statistical.java" />
-        <option value="$PROJECT_DIR$/src/java/performanceTest/test.java" />
-        <option value="$PROJECT_DIR$/src/java/performanceTest/GetIphoneData.java" />
-        <option value="$PROJECT_DIR$/src/java/performanceTest/RunMainPerformance.java" />
-        <option value="$PROJECT_DIR$/src/java/performanceTest/avg.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/InstallPackage.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/Network.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/NetworkHeaders.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/TooltipUtil.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecording.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/ExcelUtils.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/log4j.properties" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/LeaveBug.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/ZhiBo.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/TestTools.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/FlowFrame.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java" />
-        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java" />
-        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java" />
-        <option value="$PROJECT_DIR$/src/java/Squirrel/GetADLogs.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java" />
-        <option value="$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java" />
-        <option value="$PROJECT_DIR$/src/java/ZLYUtils/test.java" />
-        <option value="$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java" />
-        <option value="$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java" />
-        <option value="$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java" />
-      </list>
-    </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -779,232 +778,68 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="test.tools Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="test.tools Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="test.tools Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="test.tools Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/platform-tools/systrace/catapult/common/node_runner/node_runner/package.json" />
-    </packageJsonPaths>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
-    <option name="y" value="-8" />
-    <option name="width" value="1456" />
-    <option name="height" value="876" />
-  </component>
+  <component name="ProjectId" id="1Z4CYx6I9zK00U26oaWbklXrwjA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="AdConfiguration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Squirrel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="SquirrelFrame" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="SquirrelFrame" type="462c0819:PsiDirectoryNode" />
-              <item name="HomePage.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="com.test.tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="com.test.tools" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ZLYUtils" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="com.test.tools" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546047938493" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../freebook-test" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559716498849" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/wormy.jar!/" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.17480469" />
-    <property name="project.structure.side.proportion" value="0.11848341" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="project.structure.side.proportion" value="0.504142" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ZLYUtils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\com.test.tools\src\java\ZLYUtils" />
+      <recent name="E:\com.test.tools\src" />
+      <recent name="E:\com.test.tools\src\java" />
+      <recent name="E:\com.test.tools\src\java\com\tools" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ZLYUtils" />
+      <recent name="operation_plug.foundation_platform.acquisition_audio_management" />
+      <recent name="operation_plug.foundation_platform" />
+      <recent name="Squirrel" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\com.test.tools\src\java" />
       <recent name="E:\com.test.tools\target\classes" />
       <recent name="E:\com.test.tools\src\main\webapp\WEB-INF" />
       <recent name="E:\com.test.tools\src" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\com.test.tools\src" />
-      <recent name="E:\com.test.tools\src\java" />
-      <recent name="E:\com.test.tools\src\java\com\tools" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Squirrel" />
-      <recent name="ZLYUtils" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ZLYUtils" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.HomePage">
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <properties />
-      <listeners />
-    </configuration>
-    <configuration name="GetADLogs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Squirrel.GetADLogs" />
-      <module name="zhanglianyu" />
+    <configuration name="Compressor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ZLYUtils.Compressor" />
+      <module name="test.tools" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Squirrel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HomePage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SquirrelFrame.HomePage" />
-      <module name="test.tools" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SquirrelFrame.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HttpUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ZLYUtils.HttpUtils" />
-      <module name="test.tools" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ZLYUtils.*" />
@@ -1015,13 +850,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VideoRecording" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Squirrel.VideoRecording" />
-      <module name="zhanglianyu" />
+    <configuration name="HomePage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SquirrelFrame.HomePage" />
+      <module name="com.test.tools" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SquirrelFrame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MD5Utils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ZLYUtils.MD5Utils" />
+      <module name="test.tools" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Squirrel.*" />
+          <option name="PATTERN" value="ZLYUtils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunMainPerformance" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="performanceTest.RunMainPerformance" />
+      <module name="test.tools" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="performanceTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -1035,34 +897,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ZLYUtils.test" />
+    <configuration name="avg" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="performanceTest.avg" />
       <module name="test.tools" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="performanceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.HomePage" />
-      <item itemvalue="Application.HttpUtils" />
-      <item itemvalue="Application.VideoRecording" />
-      <item itemvalue="Application.GetADLogs" />
-      <item itemvalue="Application.test" />
+      <item itemvalue="Application.Compressor" />
+      <item itemvalue="Application.MD5Utils" />
+      <item itemvalue="Application.RunMainPerformance" />
+      <item itemvalue="Application.avg" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HomePage" />
-        <item itemvalue="Application.test" />
-        <item itemvalue="Application.HttpUtils" />
-        <item itemvalue="Application.GetADLogs" />
-        <item itemvalue="Application.VideoRecording" />
+        <item itemvalue="Application.avg" />
+        <item itemvalue="Application.RunMainPerformance" />
+        <item itemvalue="Application.Compressor" />
+        <item itemvalue="Application.MD5Utils" />
       </list>
     </recent_temporary>
   </component>
@@ -1183,27 +1061,56 @@
       <workItem from="1544852150566" duration="3757000" />
       <workItem from="1545034849277" duration="3297000" />
       <workItem from="1545105400663" duration="1355000" />
-    </task>
-    <task id="LOCAL-00003" summary="添加网络请求utils类">
-      <created>1533039858415</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1533039858415</updated>
-    </task>
-    <task id="LOCAL-00004" summary="添加Excel工具类">
-      <created>1533039873907</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1533039873907</updated>
-    </task>
-    <task id="LOCAL-00005" summary="更改松鼠config名称">
-      <created>1533039887087</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1533039887087</updated>
+      <workItem from="1560665920250" duration="367000" />
+      <workItem from="1560666323981" duration="351000" />
+      <workItem from="1560690586708" duration="331000" />
+      <workItem from="1560690940481" duration="133000" />
+      <workItem from="1560919498744" duration="2536000" />
+      <workItem from="1562832704123" duration="886000" />
+      <workItem from="1562854380695" duration="14000" />
+      <workItem from="1562854607335" duration="850000" />
+      <workItem from="1562856065274" duration="617000" />
+      <workItem from="1562895356306" duration="1820000" />
+      <workItem from="1562915877240" duration="26000" />
+      <workItem from="1563263062393" duration="613000" />
+      <workItem from="1563852250063" duration="16225000" />
+      <workItem from="1563875946488" duration="768000" />
+      <workItem from="1563935599327" duration="23589000" />
+      <workItem from="1563968900163" duration="1130000" />
+      <workItem from="1563970097046" duration="12338000" />
+      <workItem from="1564393103367" duration="105000" />
+      <workItem from="1564475327870" duration="659000" />
+      <workItem from="1564627375954" duration="744000" />
+      <workItem from="1564717853154" duration="23000" />
+      <workItem from="1565776317199" duration="11577000" />
+      <workItem from="1566367614644" duration="5210000" />
+      <workItem from="1566524709112" duration="2535000" />
+      <workItem from="1566560894569" duration="170000" />
+      <workItem from="1566957788483" duration="3000" />
+      <workItem from="1566960995139" duration="1546000" />
+      <workItem from="1567062102257" duration="599000" />
+      <workItem from="1567066512798" duration="819000" />
+      <workItem from="1567161258350" duration="599000" />
+      <workItem from="1568604949675" duration="1771000" />
+      <workItem from="1568619653241" duration="610000" />
+      <workItem from="1569318965912" duration="1178000" />
+      <workItem from="1569323594595" duration="10000" />
+      <workItem from="1569730266539" duration="1398000" />
+      <workItem from="1570502376758" duration="661000" />
+      <workItem from="1570588311120" duration="14000" />
+      <workItem from="1570860377372" duration="14000" />
+      <workItem from="1571109038242" duration="5690000" />
+      <workItem from="1576230417095" duration="1451000" />
+      <workItem from="1576635221633" duration="1533000" />
+      <workItem from="1576825787572" duration="20000" />
+      <workItem from="1578303498128" duration="1904000" />
+      <workItem from="1578385651269" duration="2141000" />
+      <workItem from="1578405516228" duration="42000" />
+      <workItem from="1579329849948" duration="722000" />
+      <workItem from="1580781228042" duration="3278000" />
+      <workItem from="1580785455977" duration="8000" />
+      <workItem from="1584089032885" duration="312000" />
+      <workItem from="1584089595171" duration="1447000" />
     </task>
     <task id="LOCAL-00006" summary="加入接口测试">
       <created>1533039905450</created>
@@ -1527,11 +1434,29 @@
       <option name="project" value="LOCAL" />
       <updated>1544854351474</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="更新">
+      <created>1563875578037</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1563875578037</updated>
+    </task>
+    <task id="LOCAL-00053" summary="修复选择文件后为空问题">
+      <created>1563935863741</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1563935863741</updated>
+    </task>
+    <task id="LOCAL-00054" summary="对广告数据库新加入的字段在代码中进行新增和兼容">
+      <created>1576636743019</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1576636743019</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="567733000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1542,45 +1467,6 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1456" height="876" extended-state="6" />
-    <layout>
-      <window_info id="Designer" order="0" />
-      <window_info id="Image Layers" order="1" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Web" order="4" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.2277937" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5007163" side_tool="true" weight="0.32974428" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32839838" />
-      <window_info anchor="bottom" id="Messages" order="2" weight="0.21967655" />
-      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Java Enterprise" order="4" sideWeight="0.49928367" weight="0.32974428" />
-      <window_info anchor="bottom" id="Version Control" order="5" sideWeight="0.49928367" weight="0.5700809" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="6" weight="0.32974428" />
-      <window_info anchor="bottom" id="Message" order="7" />
-      <window_info anchor="bottom" id="Find" order="8" weight="0.32479784" />
-      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.7507163" weight="0.38274932" />
-      <window_info anchor="bottom" id="Debug" order="10" weight="0.39434725" />
-      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="13" weight="0.32749325" />
-      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
-      <window_info anchor="right" id="Maven Projects" order="0" weight="0.22314675" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Palette&#9;" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Database" order="6" weight="0.24498567" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="8" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="10" weight="0.3295129" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -1590,20 +1476,7 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -1625,16 +1498,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="解决响应数据显示乱码问题" />
-    <MESSAGE value="接受响应时指定utf-8格式" />
-    <MESSAGE value="优化松鼠测试工具，打开测试工具时，不限制点击父页面" />
-    <MESSAGE value="运行自动化用例时加入线程" />
-    <MESSAGE value="写Excel加线程锁" />
-    <MESSAGE value="直播工具刷新动画不好用了，代码以前写的太乱，先不管了" />
-    <MESSAGE value="增加url转码和runExcel加入动态显示" />
-    <MESSAGE value="解决5037端口误杀java程序" />
-    <MESSAGE value="加入用例正在执行时，接口工具页面禁止关闭，等待停止后关闭" />
-    <MESSAGE value="加入安装apk类" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="添加安装apk按钮" />
     <MESSAGE value="更新松鼠" />
     <MESSAGE value="更新创建Excel时，读取map使用迭代器，防止出现空指针情况" />
@@ -1649,479 +1513,47 @@
     <MESSAGE value="重构获取广告" />
     <MESSAGE value="添加HttpUtils类" />
     <MESSAGE value="更新松鼠架构" />
+    <MESSAGE value="解决获取截图时可能存在停止截图的bug" />
+    <MESSAGE value="更新框架" />
+    <MESSAGE value="将广告配置的选择广告按钮加入边框" />
+    <MESSAGE value="下拉列表默认支持可手动搜索" />
+    <MESSAGE value="下拉列表默认支持可手动搜索和增加安装面板的宽度，解决刘景华的安装按钮因面板宽度不够被隐藏的问题" />
+    <MESSAGE value="解释时间策略未添加和统计插入次数" />
+    <MESSAGE value="将插入广告改为数据库方式和解决单人点击总点击和单日点击被覆盖的问题" />
+    <MESSAGE value="更新至4.0.5" />
     <MESSAGE value="更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新" />
+    <MESSAGE value="修复选择文件后为空问题" />
+    <MESSAGE value="对广告数据库新加入的字段在代码中进行新增和兼容" />
+    <option name="LAST_COMMIT_MESSAGE" value="对广告数据库新加入的字段在代码中进行新增和兼容" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/LeaveBug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/WindowsText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JComponent.java" />
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/javax/swing/JFrame.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecordingScreenshot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2781">
-          <caret line="119" column="51" selection-start-line="119" selection-start-column="51" selection-end-line="119" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/awt/Container.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/FlowFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/TestTools.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/Pane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Uiautomator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="11" selection-start-line="11" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../maven/com-test-tools/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar!/org/apache/http/client/HttpRequestRetryHandler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/net/URI.java" />
-    <entry file="jar://D:/Developer/jdk1.8.0_171/src.zip!/java/lang/String.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/VideoSwitch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1886">
-          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/AdbUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2024">
-          <caret line="93" column="27" selection-start-line="93" selection-start-column="27" selection-end-line="93" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/VideoRecording.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/javax/swing/JFileChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="574" column="16" selection-start-line="574" selection-start-column="16" selection-end-line="574" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="510" column="18" selection-start-line="510" selection-start-column="18" selection-end-line="510" selection-end-column="18" />
-          <folding>
-            <element signature="e#21135#21136#0" expanded="true" />
-            <element signature="e#21162#21163#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/javax/swing/filechooser/FileSystemView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="416" column="16" selection-start-line="416" selection-start-column="16" selection-end-line="416" selection-end-column="16" />
-          <folding>
-            <element signature="e#13209#13210#0" expanded="true" />
-            <element signature="e#13281#13282#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/GetADLog.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/FrameUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2622">
-          <caret line="126" column="70" selection-start-line="126" selection-start-column="70" selection-end-line="126" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/GetADLogs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/SendAdConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="387" column="24" selection-start-line="387" selection-start-column="24" selection-end-line="387" selection-end-column="24" />
-          <folding>
-            <element signature="e#13490#13491#0" expanded="true" />
-            <element signature="e#13528#13529#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/GetAppType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="113" column="23" selection-start-line="113" selection-start-column="23" selection-end-line="113" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/InterfaceConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../maven/com-test-tools/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar!/org/apache/http/client/entity/UrlEncodedFormEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/entity/StringEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../maven/com-test-tools/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar!/org/apache/http/entity/ContentType.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/Network.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="342" column="25" selection-start-line="342" selection-start-column="25" selection-end-line="342" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/development/Java/jdk1.8.0_131/src.zip!/java/net/URI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="586" column="11" selection-start-line="586" selection-start-column="11" selection-end-line="586" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../maven/com-test-tools/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar!/org/apache/http/client/utils/URIBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/HttpUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="212" column="24" lean-forward="true" selection-start-line="212" selection-start-column="24" selection-end-line="212" selection-end-column="24" />
-          <folding>
-            <element signature="e#11700#11701#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SquirrelUi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-398">
-          <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/SendRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="53" column="58" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2581#2582#0" expanded="true" />
-            <element signature="e#2697#2698#0" expanded="true" />
-            <element signature="e#2759#2760#0" expanded="true" />
-            <element signature="e#2839#2840#0" expanded="true" />
-            <element signature="e#2897#2898#0" expanded="true" />
-            <element signature="e#2969#2970#0" expanded="true" />
-            <element signature="e#3037#3038#0" expanded="true" />
-            <element signature="e#3129#3130#0" expanded="true" />
-            <element signature="e#3187#3188#0" expanded="true" />
-            <element signature="e#3259#3260#0" expanded="true" />
-            <element signature="e#3333#3334#0" expanded="true" />
-            <element signature="e#3437#3438#0" expanded="true" />
-            <element signature="e#3509#3510#0" expanded="true" />
-            <element signature="e#3609#3610#0" expanded="true" />
-            <element signature="e#3676#3677#0" expanded="true" />
-            <element signature="e#3759#3760#0" expanded="true" />
-            <element signature="e#3879#3880#0" expanded="true" />
-            <element signature="e#3957#3958#0" expanded="true" />
-            <element signature="e#4069#4070#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/InterfaceTesting/RunExcelCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="96" column="25" lean-forward="true" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
-          <folding>
-            <element signature="e#4467#4468#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/JavaUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2024">
-          <caret line="262" column="23" selection-start-line="262" selection-start-column="23" selection-end-line="262" selection-end-column="23" />
-          <folding>
-            <element signature="e#7802#7803#0" expanded="true" />
-            <element signature="e#7878#7879#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="528" column="44" selection-start-line="528" selection-start-column="44" selection-end-line="528" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/ZLYUtils/WindosUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="550" column="1" selection-start-line="550" selection-start-column="1" selection-end-line="550" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/HomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/FrontPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/FrameSqiorrel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/ClearIphone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1144">
-          <caret line="89" column="13" selection-start-line="89" selection-start-column="13" selection-end-line="89" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/SquirrelFrame/SquirrelConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdUi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="1072" selection-start-line="1072" selection-end-line="1072" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Squirrel/ZhiBoDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/DataBase/text.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/DataBase/ConnectDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdDataBse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/AdConfiguration/AdSendConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="28" column="45" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>test.tools:jar</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.11848341" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Web</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2781065" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>Web|test.tools</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2781065" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>datepicker1</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2781065" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="WindowStateProjectService">
+    <state x="2029" y="180" width="594" height="680" key="#HomePage" timestamp="1584090903468">
+      <screen x="1366" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2029" y="180" width="594" height="680" key="#HomePage/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1584090903468" />
+    <state x="2105" y="228" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1584090349473">
+      <screen x="1366" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2105" y="228" key="#com.intellij.ide.macro.MacrosDialog/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1584090349473" />
+    <state x="2131" y="213" key="#com.intellij.ide.util.MemberChooser" timestamp="1584089837269">
+      <screen x="1366" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2131" y="213" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1584089837269" />
+    <state x="2000" y="263" key="FileChooserDialogImpl" timestamp="1584090797777">
+      <screen x="1366" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2000" y="263" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1584090797777" />
+    <state x="1806" y="97" key="SettingsEditor" timestamp="1584091043487">
+      <screen x="1366" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1806" y="97" key="SettingsEditor/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1584091043487" />
+    <state x="2018" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1584089629367">
+      <screen x="1366" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2018" y="347" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1584089629367" />
+    <state x="2023" y="322" key="git4idea.merge.GitPullDialog" timestamp="1584091070974">
+      <screen x="1366" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2023" y="322" key="git4idea.merge.GitPullDialog/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1584091070974" />
   </component>
 </project>

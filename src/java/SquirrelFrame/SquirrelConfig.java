@@ -15,6 +15,8 @@ public class SquirrelConfig {
     public static final String UI = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
     public static final String FILE_UI = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
     public static final String DEFAULT_PATH = JavaUtils.getLocalDesktopPath().getPath();
-
+    public static final String MIAN_FEI_PACKAGE = "com.mianfeia.book";
+    public static final String MIAN_ZHUI_PACKAGE = "com.mianfeizs.book";
+    public static final String AI_KAN_SHU_PACKAGE = "com.mfyueduqi.book";
 
 }

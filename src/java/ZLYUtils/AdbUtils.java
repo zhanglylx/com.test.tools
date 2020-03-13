@@ -36,7 +36,7 @@ public class AdbUtils {
             if (devices != null) dev = " -s " + devices + " ";
             pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
             br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
-            str = adbBufferedReader(br, str);
+            str = adbBufferedReader(br);
             pro.waitFor();
             Thread.sleep(100);
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class AdbUtils {
             if (devices != null) dev = " -s " + devices + " ";
             pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
             br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("utf-8")));
-            str = adbBufferedReader(br, str);
+            str = adbBufferedReader(br);
             if (str == null) str = errRunAdb(code);
             pro.waitFor();
             Thread.sleep(100);
@@ -85,15 +85,14 @@ public class AdbUtils {
      *
      * @return
      */
-    public static String[] adbBufferedReader(BufferedReader br, String[] str) throws IOException {
+    public static String[] adbBufferedReader(BufferedReader br) throws IOException {
         String msg;
-        int index = 0;
+        String[] str = new String[0];
         while ((msg = br.readLine()) != null) {
-            if (index == 0) str = new String[0];
             str = Arrays.copyOf(str, str.length + 1);
             str[str.length - 1] = msg;
-            index++;
         }
+        if (str.length == 0) return null;
         return str;
     }
 

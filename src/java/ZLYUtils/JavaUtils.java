@@ -10,6 +10,7 @@ import java.io.*;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -272,6 +273,7 @@ public class JavaUtils {
 
     /**
      * 获取本地桌面路径
+     *
      * @return
      */
     public static File getLocalDesktopPath() {
@@ -320,6 +322,20 @@ public class JavaUtils {
         sleep((long) time);
     }
 
+    /**
+     * 数组添加内容
+     * @param objects
+     * @param object
+     * @param <T>
+     * @return
+     */
+    public static <T> T arraysLenthAdd(Object[] objects, Object ... object) {
+        for(Object o:object){
+            objects = Arrays.copyOf(objects, objects.length + 1);
+            objects[objects.length - 1] = o;
+        }
+        return (T) objects;
+    }
 
     /**
      * java方法

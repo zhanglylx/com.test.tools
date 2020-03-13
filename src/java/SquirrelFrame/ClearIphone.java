@@ -46,37 +46,37 @@ public class ClearIphone {
                 code = "com.chineseall.singlebook";
                 rm.add("sdcard/.chineseall");
                 rm.add("sdcard/ChineseallReader");
-                rm.add("sdcard/"+code);
+                rm.add("sdcard/" + code);
                 rm.add("sdcard/Android/data/com.chineseall.singlebook");
                 break;
             case HomePage.CXB:
-                code = "com.mianfeia.book";
+                code = SquirrelConfig.MIAN_FEI_PACKAGE;
                 rm.add("sdcard/FreeBook/");
                 rm.add("sdcard/.freebook");
                 rm.add("sdcard/.cxb");
                 rm.add("sdcard/.hide_freebook/");
                 rm.add("sdcard/Android/data/com.mianfeia.book");
-                rm.add("sdcard/"+code);
+                rm.add("sdcard/" + code);
                 rm.add("mnt/sdcard/com.mianfeia.book");
                 break;
             case HomePage.MZ:
-                code = "com.mianfeizs.book";
+                code = SquirrelConfig.MIAN_ZHUI_PACKAGE;
                 rm.add("sdcard/Android/data/com.mianfeizs.book");
                 rm.add("sdcard/FreeBook/");
                 rm.add("sdcard/.freebook");
                 rm.add("sdcard/.cxb");
                 rm.add("sdcard/.hide_freebook/");
-                rm.add("sdcard/"+code);
+                rm.add("sdcard/" + code);
                 rm.add("mnt/sdcard/com.mianfeizs.book");
                 break;
             case HomePage.IKS:
-                code = "com.mfyueduqi.book";
+                code = SquirrelConfig.AI_KAN_SHU_PACKAGE;
                 rm.add("sdcard/Android/data/com.mfyueduqi.book");
                 rm.add("sdcard/FreeBook/");
                 rm.add("sdcard/.freebook");
                 rm.add("sdcard/.cxb");
                 rm.add("sdcard/.hide_freebook/");
-                rm.add("sdcard/"+code);
+                rm.add("sdcard/" + code);
                 rm.add("mnt/sdcard/com.mfyueduqi.book");
                 break;
             default:
@@ -96,8 +96,9 @@ public class ClearIphone {
 
                 }
             }
+            String[] adb;
             for (String r : rm) {
-                String[] adb = AdbUtils.operationAdb("shell rm -r " + r);
+                adb = AdbUtils.operationAdb("shell rm -r " + r);
                 if (adb == null) return;
                 if (Arrays.toString(adb).contains("Is a directory")) {
                     TooltipUtil.errTooltip("本地目录删除失败了:" + Arrays.toString(adb));

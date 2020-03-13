@@ -409,7 +409,7 @@ public class WindosUtils {
             Process pro = Runtime.getRuntime().exec(code);
             BufferedReader br;
             br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
-            str = AdbUtils.adbBufferedReader(br,str);
+            str = AdbUtils.adbBufferedReader(br);
         } catch (IOException e) {
             e.printStackTrace();
         }

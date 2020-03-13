@@ -130,7 +130,7 @@ public class RunExcelCase implements Runnable {
         this.jButton = jButton;
     }
 
-    public void setRunExcelPath(String runExcelPath) {
-        this.runExcelPath = runExcelPath;
+    public void setRunExcelPath(File runExcelPath) {
+        this.runExcelPath = runExcelPath.toString();
     }
 }

@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="com.test.tools" />
-        <module name="test.tools" />
         <module name="zhanglianyu" />
+        <module name="test.tools" />
+        <module name="com.test.tools" />
       </profile>
     </annotationProcessing>
   </component>

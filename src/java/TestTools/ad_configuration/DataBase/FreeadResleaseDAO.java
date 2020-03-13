@@ -6,7 +6,17 @@ import ZLYUtils.WindosUtils;
 import java.sql.*;
 
 public class FreeadResleaseDAO {
-    private static final String INSERT_AD = "INSERT INTO freeadrelease() values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_AD = "INSERT INTO freeadrelease() values(" +
+            "?,?,?,?,?," +
+            "?,?,?,?,?," +
+            "?,?,?,?,?," +
+            "?,?,?,?,?," +
+            "?,?,?,?,?," +
+            "?,?,?,?,?," +
+            "?,?,?,?,?," +
+            "?,?,?,?,?," +
+            "?,?,?," +
+            "?,?,?,?,?)";
     private static final String AD_MAX = "SELECT MAX(id) as i FROM freeadrelease";
 
     public FreeadResleaseDAO() {
@@ -53,11 +63,17 @@ public class FreeadResleaseDAO {
         preparedStatement.setString(35, "松鼠工具创建:" + WindosUtils.getDate());
         preparedStatement.setString(36, freeadReslease.getPopupdesc());
         preparedStatement.setString(37, freeadReslease.getShieldAdStation());
-        setIntVluesOrNull(preparedStatement,38,freeadReslease.getJlvideoAdRate());
-        setIntVluesOrNull(preparedStatement,39,freeadReslease.getChapterEnd());
-        setIntVluesOrNull(preparedStatement,40,freeadReslease.getInset());
-        setIntVluesOrNull(preparedStatement,41,freeadReslease.getAntimisoperation());
-        setIntVluesOrNull(preparedStatement,42,freeadReslease.getUpanddown());
+        setIntVluesOrNull(preparedStatement, 38, freeadReslease.getJlvideoAdRate());
+        setIntVluesOrNull(preparedStatement, 39, freeadReslease.getChapterEnd());
+        setIntVluesOrNull(preparedStatement, 40, freeadReslease.getInset());
+        setIntVluesOrNull(preparedStatement, 41, freeadReslease.getAntimisoperation());
+        setIntVluesOrNull(preparedStatement, 42, freeadReslease.getUpanddown());
+        setIntVluesOrNull(preparedStatement, 43, freeadReslease.getUsergroup());
+        setIntVluesOrNull(preparedStatement, 44, freeadReslease.getGuideBt());
+        preparedStatement.setString(45, freeadReslease.getImgUrl());
+        setIntVluesOrNull(preparedStatement, 46, freeadReslease.getBottom());
+        setIntVluesOrNull(preparedStatement, 47, freeadReslease.getRegStartTime());
+        setIntVluesOrNull(preparedStatement, 48, freeadReslease.getRegEndTime());
         System.out.println(preparedStatement.toString());
         boolean b = false;
         if (preparedStatement.executeUpdate() == 1) b = true;

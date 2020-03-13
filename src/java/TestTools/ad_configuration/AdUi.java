@@ -1,6 +1,7 @@
 package TestTools.ad_configuration;
 
 import Frame.FrontPanel;
+import ZLYUtils.SwingUtils;
 import ZLYUtils.TooltipUtil;
 import com.eltima.components.ui.DatePicker;
 
@@ -10,6 +11,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.*;
+import java.util.Timer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -62,13 +64,17 @@ public class AdUi extends FrontPanel {
     private int appTypeWidth;//广告类型宽度
     private JRadioButton fixedTime;//固定时间
     private JRadioButton cycleDayTime;//按天循环时间
+    private JRadioButton userGroupAll;//用户群体：全部 0
+    private JRadioButton userGroupOdd;//用户群体：全部 1
+    private JRadioButton userGroupEven;//用户群体：全部 2
 
-    private JRadioButton devTextEnvironment;//开发测试环境
+    private JRadioButton devTextEnvironment;//开发环境
     private JRadioButton textEnvironment;//测试环境
     private boolean runing;//是否正在执行提交广告
     private AdDataBse adDataBse;
     private Color colorSucces;
     private Color colorErr;
+    private Timer timer;//数据库连接检查定时器
 
     public ExecutorService getThreadPoint() {
         return threadPoint;
@@ -79,8 +85,9 @@ public class AdUi extends FrontPanel {
 
     public AdUi(String title) {
         super(title);
+        this.timer = new Timer();
         this.threadPoint = Executors.newFixedThreadPool(10);
-        startLoging();
+//        startLoging();
         setLayout(new GridLayout(1, 2));
         setSize(1300, 700);
         this.sendAdConfiguration = new SendAdConfiguration();
@@ -149,7 +156,7 @@ public class AdUi extends FrontPanel {
         setQuicklyShelves();
         //设置输出台
         setOutput();
-        //内置表格
+        //设置环境
         setTable();
     }
 
@@ -301,11 +308,26 @@ public class AdUi extends FrontPanel {
      */
     public void setBuiltInAppType() {
         setJPanel();
-        this.jPanel.add(setJLabel("内置广告:"));
-        this.jPanel.add(this.builtInAppType =
-                newJComboBox(new String[]{""}, this.appTypeWidth));
-        this.builtInAppType.setLocation(this.listLeftMargin, this.listUpBoundary);
-        this.builtInAppType.setEnabled(false);
+//        this.jPanel.add(setJLabel("内置广告:"));
+        this.builtInAppType =
+                newJComboBox(new String[]{""}, this.appTypeWidth);
+//        this.jPanel.add(this.builtInAppType);
+//        this.builtInAppType.setLocation(this.listLeftMargin, this.listUpBoundary);
+//        this.builtInAppType.setEnabled(false);
+//        this.adConfigJPanel.add(this.jPanel);
+        this.jPanel.add(setJLabel("用户群体:"));
+        this.userGroupAll = newJRadioButton("全部");
+        this.userGroupAll.setLocation(this.listLeftMargin, this.listUpBoundary);
+        this.userGroupOdd = newJRadioButton("奇数");
+        this.userGroupOdd.setLocation(316, this.listUpBoundary);
+        this.userGroupEven = newJRadioButton("偶数");
+        this.userGroupEven.setLocation(530, this.listUpBoundary);
+        SwingUtils.setButtonGroup(this.userGroupAll, this.userGroupEven, this.userGroupOdd);
+        this.userGroupAll.setSelected(true);
+        jRadioButtonClickEvent(this.userGroupAll);
+        this.jPanel.add(this.userGroupAll);
+        this.jPanel.add(this.userGroupOdd);
+        this.jPanel.add(this.userGroupEven);
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -513,7 +535,7 @@ public class AdUi extends FrontPanel {
         this.jPanel.add(setJLabel("所属应用:"));
         this.jPanel.add(this.appName = setJComboBox(
                 new String[]{
-                        AdSendConfig.MFDZS, AdSendConfig.MFZS, AdSendConfig.IKS}, this.listLeftMargin, appTypeWidth));
+                        AdSendConfig.MFDZS, AdSendConfig.MFZS, AdSendConfig.IKS, AdSendConfig.MFXS}, this.listLeftMargin, appTypeWidth));
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -523,18 +545,15 @@ public class AdUi extends FrontPanel {
     private void setAdsJPanel() {
         this.adsJPanel = newJPanel();
         this.adsJPanel.setLayout(new GridLayout(10, 10));
-        this.clearJButton = newJButton("clear", true, true);
+        this.clearJButton = newJButton("clear", true, true, null);
         this.clearJButton.setBackground(Color.CYAN);
         this.clearJButton.setToolTipText("清空广告位");
         this.adsJPanel.add(this.clearJButton);
         setAds();
         this.adsJPanel.add(this.sb = newJButton("提交"));
         this.sb.setFont(DEFAULT_FONT);
-        this.sb.setBorder(BorderFactory.createRaisedBevelBorder());
         this.sb.setBackground(Color.ORANGE);
-        this.sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        this.sb.setBorder(new LineBorder(
-                new java.awt.Color(200, 22, 200), 5, true));
+        this.sb.setBorder(newLineBorderSpecific());
         this.adsJPanel.setLocation(getWidth() / 2 - 30, 0);
         this.adsJPanel.setSize(getWidth() / 2, getHeight());
     }
@@ -559,7 +578,7 @@ public class AdUi extends FrontPanel {
      */
     private void setAds() {
         for (int i = 1; i < 99; i++) {
-            this.jButton = newJButton(String.valueOf(i), true, true);
+            this.jButton = newJButton(String.valueOf(i), true, false, null);
             this.adsList.add(this.jButton);
             this.adsJPanel.add(this.jButton);
         }
@@ -581,9 +600,13 @@ public class AdUi extends FrontPanel {
                         if (!threadPoint.awaitTermination(awaitTime, TimeUnit.MILLISECONDS)) {
                             threadPoint.shutdownNow();
                         }
+                        AdDataBse.getAdDataBse().close();
+                        timer.cancel();
                     } catch (Exception e) {
                         e.printStackTrace();
                         threadPoint.shutdownNow();
+                        AdDataBse.getAdDataBse().close();
+                        timer.cancel();
                     }
                 }
             }).start();
@@ -600,15 +623,20 @@ public class AdUi extends FrontPanel {
             this.sendAdConfiguration.setIscirclead((byte) 1);
         } else if (this.devTextEnvironment == jRadioButton) {
             AdSendConfig.setHostDevEnvironment(true);
-            AdSendConfig.loging();
+//            AdSendConfig.loging();
             AdDataBse.setAdDataBseNull();
             new Thread(this.getAppType).start();
         } else if (this.textEnvironment == jRadioButton) {
             AdSendConfig.setHostDevEnvironment(false);
-            AdSendConfig.loging();
+//            AdSendConfig.loging();
             AdDataBse.setAdDataBseNull();
             new Thread(this.getAppType).start();
-
+        } else if (this.userGroupAll == jRadioButton) {
+            this.sendAdConfiguration.setUsergroup(0);
+        } else if (this.userGroupOdd == jRadioButton) {
+            this.sendAdConfiguration.setUsergroup(1);
+        } else if (this.userGroupEven == jRadioButton) {
+            this.sendAdConfiguration.setUsergroup(2);
         }
     }
 
@@ -893,8 +921,8 @@ public class AdUi extends FrontPanel {
      */
     public void jComboBoxClickEvent(JComboBox jComboBox) {
         if (this.appName == jComboBox) {
-            if (AdSendConfig.HEADERS.get("Cookie") == null ||
-                    AdSendConfig.HEADERS.get("Cookie").length() < 1) AdSendConfig.loging();
+//            if (AdSendConfig.HEADERS.get("Cookie") == null ||
+//                    AdSendConfig.HEADERS.get("Cookie").length() < 1) AdSendConfig.loging();
             new Thread(this.getAppType).start();
         } else if (this.builtInAppType == jComboBox) {
             String text = this.builtInAppType.getSelectedItem().toString();
@@ -1053,27 +1081,27 @@ public class AdUi extends FrontPanel {
     public JRadioButton getTextEnvironment() {
         return textEnvironment;
     }
-
-    public void startLoging() {
-        this.threadPoint.execute(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        AdSendConfig.loging();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        Thread.sleep(1000 * 5 * 60);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                        break;
-                    }
-                }
-            }
-        }));
-    }
+//
+//    public void startLoging() {
+//        this.threadPoint.execute(new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                while (true) {
+//                    try {
+//                        AdSendConfig.loging();
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    try {
+//                        Thread.sleep(1000 * 5 * 60);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                        break;
+//                    }
+//                }
+//            }
+//        }));
+//    }
 
     public static void main(String[] args) {
         new AdUi("测试");
@@ -1089,33 +1117,56 @@ public class AdUi extends FrontPanel {
             vector.add("是");
             Vector<String> vectorErr = new Vector<>();
             vectorErr.add("数据库获取失败,重试中,默认下架，请检查您是否连接了VPN");
-            while (true) {
-                try {
-                    adDataBse = AdDataBse.getAdDataBse();
-                    if ((adDataBse.isClosed())) {
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    try {
+                        adDataBse = AdDataBse.getAdDataBse();
+                        if ((adDataBse.isClosed())) {
+                            status.setModel(new DefaultComboBoxModel(vectorErr));
+                            status.setEnabled(false);
+                            adDataBse.setAdDataBseNull();
+                        } else {
+                            if (!vector.contains(status.getSelectedItem().toString())) {
+                                status.setModel(new DefaultComboBoxModel(vector));
+                                status.setEnabled(true);
+                                status.setSelectedIndex(1);
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                         status.setModel(new DefaultComboBoxModel(vectorErr));
                         status.setEnabled(false);
-                        adDataBse.setAdDataBseNull();
-                    } else {
-                        if (!vector.contains(status.getSelectedItem().toString())) {
-                            status.setModel(new DefaultComboBoxModel(vector));
-                            status.setEnabled(true);
-                            status.setSelectedIndex(1);
-                        }
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    status.setModel(new DefaultComboBoxModel(vectorErr));
-                    status.setEnabled(false);
                 }
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    AdDataBse.getAdDataBse().close();
-                    break;
-                }
-            }
+            }, 0, 2000);
+//            while (true) {
+//                try {
+//                    adDataBse = AdDataBse.getAdDataBse();
+//                    if ((adDataBse.isClosed())) {
+//                        status.setModel(new DefaultComboBoxModel(vectorErr));
+//                        status.setEnabled(false);
+//                        adDataBse.setAdDataBseNull();
+//                    } else {
+//                        if (!vector.contains(status.getSelectedItem().toString())) {
+//                            status.setModel(new DefaultComboBoxModel(vector));
+//                            status.setEnabled(true);
+//                            status.setSelectedIndex(1);
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    status.setModel(new DefaultComboBoxModel(vectorErr));
+//                    status.setEnabled(false);
+//                }
+//                try {
+//                    Thread.sleep(2000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                    AdDataBse.getAdDataBse().close();
+//                    break;
+//                }
+//            }
         }
     }
 

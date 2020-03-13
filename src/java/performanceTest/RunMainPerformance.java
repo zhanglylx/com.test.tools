@@ -13,7 +13,7 @@ public class RunMainPerformance {
         //QQ阅读包名:com.qq.reader
         //掌阅:com.chaozh.iReaderFree
         //中文书城:com.chineseall.singlebook
-        Statistical statistical = new Statistical("com.chaozh.iReaderFree");
+        Statistical statistical = new Statistical("com.mfyueduqi.book");
         GetIphoneData getIphoneData = new GetIphoneData(statistical);
         boolean[] b = new boolean[1];
         b[0] = true;
@@ -22,10 +22,10 @@ public class RunMainPerformance {
             public void run() {
                 int index = 1;
                 while (true) {
-//                    if(TooltipUtil.yesOrNo("是否关闭获取性能")==0){
-//                        b[0]=false;
-//                        break;
-//                    }
+                    if(TooltipUtil.yesNoTooltip("是否关闭获取性能")==0){
+                        b[0]=false;
+                        break;
+                    }
 //                    Uiautomator.inputTap(1011, 50);
 //                    if (index == 100) {
 //                        b[0] = false;
