@@ -125,6 +125,15 @@ public class FreeadReslease implements Serializable {
         this.adStatus = 0;
         this.netState = 0;
         this.antimisoperation = 0;
+        this.guideBt = 1;
+        this.imgUrl = "";
+        this.bottom = 0;
+        this.regStartTime = 0;
+        this.regEndTime = 0;
+        this.chapterEnd = 0;
+        this.inset = 0;
+        this.jlvideoAdRate = 0;
+        this.upanddown = 0;
     }
 
 
