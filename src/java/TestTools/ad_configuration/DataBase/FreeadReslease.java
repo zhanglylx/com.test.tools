@@ -52,6 +52,26 @@ public class FreeadReslease implements Serializable {
     private Integer bottom;
     private Integer regStartTime;
     private Integer regEndTime;
+    //    自动误点击开关，0 关闭， 1开启
+    private Integer acs;
+    //    误点比例，整数，例如 10 为十分之一
+    private Integer acr;
+
+    public Integer getAcs() {
+        return acs;
+    }
+
+    public void setAcs(Integer acs) {
+        this.acs = acs;
+    }
+
+    public Integer getAcr() {
+        return acr;
+    }
+
+    public void setAcr(Integer acr) {
+        this.acr = acr;
+    }
 
     public Integer getGuideBt() {
         return guideBt;
@@ -134,6 +154,8 @@ public class FreeadReslease implements Serializable {
         this.inset = 0;
         this.jlvideoAdRate = 0;
         this.upanddown = 0;
+        this.acs = 0;
+        this.acr = 0;
     }
 
 

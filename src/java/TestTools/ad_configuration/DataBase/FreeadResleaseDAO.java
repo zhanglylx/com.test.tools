@@ -15,8 +15,8 @@ public class FreeadResleaseDAO {
             "?,?,?,?,?," +
             "?,?,?,?,?," +
             "?,?,?,?,?," +
-            "?,?,?," +
-            "?,?,?,?,?)";
+            "?,?,?,?,?," +
+            "?,?,?，?,?)";
     private static final String AD_MAX = "SELECT MAX(id) as i FROM freeadrelease";
 
     public FreeadResleaseDAO() {
@@ -74,6 +74,8 @@ public class FreeadResleaseDAO {
         setIntVluesOrNull(preparedStatement, 46, freeadReslease.getBottom());
         setIntVluesOrNull(preparedStatement, 47, freeadReslease.getRegStartTime());
         setIntVluesOrNull(preparedStatement, 48, freeadReslease.getRegEndTime());
+        setIntVluesOrNull(preparedStatement, 49, freeadReslease.getAcs());
+        setIntVluesOrNull(preparedStatement, 50, freeadReslease.getAcr());
         System.out.println(preparedStatement.toString());
         boolean b = false;
         if (preparedStatement.executeUpdate() == 1) b = true;
