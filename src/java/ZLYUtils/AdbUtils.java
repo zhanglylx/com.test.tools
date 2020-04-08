@@ -66,6 +66,7 @@ public class AdbUtils {
         } finally {
             close(br, pro);
         }
+        if (str == null) throw new RuntimeException("adb命令执行失败");
         return str;
     }
 
