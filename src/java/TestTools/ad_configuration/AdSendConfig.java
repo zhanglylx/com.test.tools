@@ -52,8 +52,8 @@ class AdSendConfig {
     static final String TOTAL_EXPOSURE_NUM = "totalExposureNum";
     static final String DAY_TOTAL_EXPOSURE_NUM = "dayTotalExposureNum";
     static final String SINGLE_EXPOSURE_NUM = "singleExposureNum";
-    private static final String DATABASE_HOST_TEST = "db.miandian.qa:3306/freezwsc";
-    private static final String DATABASE_HOST_DEV = "db.miandian:3306/freezwsc";
+    private static final String DATABASE_HOST_TEST = "db.miandian.qa:3306/admanage";
+    private static final String DATABASE_HOST_DEV = "db.miandian:3306/admanage";
     private static final String DATABASE_USERNAME = "APP_01";
     private static final String DATABASE_PASSWORD = "Iwanvi@123";
     static final String DATABASE_AD_TABLE_NAME = "freeadrelease";
