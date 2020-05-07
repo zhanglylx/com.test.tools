@@ -16,7 +16,8 @@ public class FreeadResleaseDAO {
             "?,?,?,?,?," +
             "?,?,?,?,?," +
             "?,?,?,?,?," +
-            "?,?,?，?,?)";
+            "?,?,?,?,?" +
+            ")";
     private static final String AD_MAX = "SELECT MAX(id) as i FROM freeadrelease";
 
     public FreeadResleaseDAO() {

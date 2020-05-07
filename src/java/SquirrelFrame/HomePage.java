@@ -31,7 +31,7 @@ public class HomePage extends FrontPanel {
     static final String workFlow = "帮助文档";
     static final String testToolsStr = "测试工具";
     private JButton testTools;
-    static final String VIDEOSWICTH = "视频压缩";
+    static final String VIDEOSWICTH = "MP4压缩";
     private final JButton URLCODE = newJButton("松鼠工具");
     private JButton OPERATION;
     private JButton clearIphoneButtpm;

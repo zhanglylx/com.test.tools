@@ -29,17 +29,21 @@ public class TooltipUtil {
 
     /**
      * 选择框
+     *
      * @param message
      * @param list
      * @return
      */
-    public static String listSelectTooltip(String message,String[] list){
-        if(list.length<1){
-            SaveCrash.save( new IllegalArgumentException("list为空").toString());
+    public static String listSelectTooltip(String message, List<Object> list) {
+        return listSelectTooltip(message,list.toArray());
+    }
+    public static String listSelectTooltip(String message, Object... list) {
+        if (list.length < 1) {
+            SaveCrash.save(new IllegalArgumentException("list为空").toString());
         }
-       return  (String) JOptionPane.showInputDialog(null,
-               message+":\n", "提示",
-               JOptionPane.PLAIN_MESSAGE, new ImageIcon("icon.png"), list,list[0]);
+        return String.valueOf(JOptionPane.showInputDialog(null,
+                message + ":\n", "提示",
+                JOptionPane.PLAIN_MESSAGE, new ImageIcon("icon.png"), list, list[0]));
     }
 
     public static int yesNoTooltip(String text){

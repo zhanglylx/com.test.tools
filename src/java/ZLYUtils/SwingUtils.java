@@ -146,6 +146,10 @@ public class SwingUtils {
         return selectFile(parent, new String[]{".apk"});
     }
 
+    public static File selectFile(Component parent) {
+        return selectFile(parent, null);
+    }
+
     /**
      * 选择文件框
      */
@@ -176,6 +180,8 @@ public class SwingUtils {
                         break;
                     }
                 }
+            } else {
+                f = true;
             }
             if (!f) {
                 TooltipUtil.errTooltip("您选择文件的格式不正确，请重新选择");
@@ -206,11 +212,6 @@ public class SwingUtils {
                 return fileFilter.trim();
             }
         };
-    }
-
-
-    public static File selectFile(Component parent) {
-        return selectFile(parent, null);
     }
 
 
