@@ -34,8 +34,7 @@ public class VideoRecording {
         String video = AdbUtils.runAdb("pull " + VIDEO_PATH
                 + " " + SquirrelConfig.DEFAULT_PATH
         ).toString();
-        System.out.println(video);
-        if (!video.contains("100%")) {
+        if (!video.contains(VIDEO_PATH + ": 1 file pulled, 0 skipped.")) {
             TooltipUtil.errTooltip("视频拉取到电脑失败");
         } else {
             TooltipUtil.generalTooltip("视频拉取成功:" +

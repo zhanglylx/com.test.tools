@@ -209,7 +209,7 @@ class RefreshTheImage implements Runnable {
                         SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_SQUIRREL);
                 System.out.println("拉取图片结束");
                 System.out.println(adb);
-                if (!adb.toString().contains("100%")) {
+                if (!adb.toString().contains(VideoRecordingScreenshot.SCREENSHOT_SQUIRREL + ": 1 file pulled") || !adb.toString().contains("0 skipped")) {
                     image = new ImageIcon("image/wait.png");
                 } else {
                     if (this.suspend) {
