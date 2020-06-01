@@ -6,9 +6,12 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 
 public class WindosUtils {
@@ -34,42 +37,45 @@ public class WindosUtils {
             TooltipUtil.errTooltip("打开" + file + "失败，请联系管理员");
         }
     }
+
     /***
      * 测试主机Host的port端口是否被使用
      * @param host
      * @param port
      * @throws UnknownHostException
      */
-    public static boolean isPortUsing(String host,int port) throws UnknownHostException {
+    public static boolean isPortUsing(String host, int port) throws UnknownHostException {
         boolean flag = false;
         InetAddress Address = InetAddress.getByName(host);
         try {
-            Socket socket = new Socket(Address,port);  //建立一个Socket连接
+            Socket socket = new Socket(Address, port);  //建立一个Socket连接
             flag = true;
         } catch (IOException e) {
 
         }
         return flag;
     }
+
     /**
      * 查询使用端口的PID
+     *
      * @param netstat
      * @return PID
      */
-    public static int selectNetstatPid(int netstat){
-        if(!String.valueOf(netstat).matches("\\d+"))throw new IllegalArgumentException(
-                "参数错误，不是整数:"+netstat);
+    public static int selectNetstatPid(int netstat) {
+        if (!String.valueOf(netstat).matches("\\d+")) throw new IllegalArgumentException(
+                "参数错误，不是整数:" + netstat);
         try {
-            String [] cmd =cmd("netstat -ano ");
+            String[] cmd = cmd("netstat -ano ");
             String result = null;
-            for(int i=0;i<cmd.length;i++){
-                if(cmd[i].contains("127.0.0.1:"+netstat+" ")){
-                    result=cmd[i];
+            for (int i = 0; i < cmd.length; i++) {
+                if (cmd[i].contains("127.0.0.1:" + netstat + " ")) {
+                    result = cmd[i];
                     break;
                 }
             }
-            if(result==null)return -1;
-            result=result.substring(result.lastIndexOf(" "),result.length()).trim();
+            if (result == null) return -1;
+            result = result.substring(result.lastIndexOf(" "), result.length()).trim();
             return Integer.parseInt(result);
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,6 +86,7 @@ public class WindosUtils {
 
     /**
      * 复制文件
+     *
      * @param jFrame
      * @param filePath
      * @param jbutton
@@ -116,9 +123,9 @@ public class WindosUtils {
         if (copyPath == null) return false;
         //文件如果存在，重新名称
         if (new File(copyPath).exists()) {
-            int filePathIndex =copyPath.lastIndexOf(".");
+            int filePathIndex = copyPath.lastIndexOf(".");
             StringBuffer sb = new StringBuffer(copyPath);
-            sb.insert(filePathIndex,WindosUtils.getDate(" MM-dd-HH-mm-ss"));
+            sb.insert(filePathIndex, WindosUtils.getDate(" MM-dd-HH-mm-ss"));
 
             copyPath = sb.toString();
         }
@@ -158,20 +165,19 @@ public class WindosUtils {
 
     /**
      * 复制文件
-     *
      */
-    public static boolean copyFile(File savePath,File copyPath) {
+    public static boolean copyFile(File savePath, File copyPath) {
 
-        if(savePath == null || copyPath ==null)
+        if (savePath == null || copyPath == null)
             throw new IllegalArgumentException("复制或保存地址为空");
-       if(!copyPath.exists())TooltipUtil.errTooltip("没有找到复制文件地址");
+        if (!copyPath.exists()) TooltipUtil.errTooltip("没有找到复制文件地址");
         //文件如果存在，重新名称
         if (savePath.exists()) {
-            int filePathIndex =savePath.getPath().lastIndexOf(".");
+            int filePathIndex = savePath.getPath().lastIndexOf(".");
             StringBuffer sb = new StringBuffer(savePath.getPath());
-            if(filePathIndex!=-1){
-                sb.insert(filePathIndex,WindosUtils.getDate(" MM-dd-HH-mm-ss"));
-            }else{
+            if (filePathIndex != -1) {
+                sb.insert(filePathIndex, WindosUtils.getDate(" MM-dd-HH-mm-ss"));
+            } else {
                 sb.append(WindosUtils.getDate(" MM-dd-HH-mm-ss"));
             }
             savePath = new File(sb.toString());
@@ -212,12 +218,11 @@ public class WindosUtils {
 
     /**
      * 复制文件
-     *
      */
-    public static boolean copyFile(String savePath,File copyPath) {
-        if(savePath == null || copyPath ==null)
+    public static boolean copyFile(String savePath, File copyPath) {
+        if (savePath == null || copyPath == null)
             throw new IllegalArgumentException("复制或保存地址为空");
-        if(!copyPath.exists())TooltipUtil.errTooltip("没有找到复制文件地址");
+        if (!copyPath.exists()) TooltipUtil.errTooltip("没有找到复制文件地址");
         InputStream ips = null;
         OutputStream ops = null;
         try {
@@ -250,7 +255,6 @@ public class WindosUtils {
         }
         return false;
     }
-
 
 
     /**
@@ -374,81 +378,30 @@ public class WindosUtils {
 
     /**
      * 获取指定PID名称
+     *
      * @return
      */
-    public static String getPIDName(int  pid){
-        if(!String.valueOf(pid).matches("\\d+"))throw new IllegalArgumentException("参数不合法:"+pid);
+    public static String getPIDName(int pid) {
+        if (!String.valueOf(pid).matches("\\d+")) throw new IllegalArgumentException("参数不合法:" + pid);
         try {
-            String [] request=cmd("tasklist");
-            for(int i=0;i<request.length;i++){
+            String[] request = cmd("tasklist");
+            for (int i = 0; i < request.length; i++) {
                 String r = request[i];
-                if(r.equals(""))continue;
-                r=r.trim();
-                r = r.substring(r.indexOf(" "),r.length()).trim();
-                if(r.startsWith(String.valueOf(pid))){
-                    r=request[i].trim();
-                    return  r.substring(0,r.indexOf(" "));
+                if (r.equals("")) continue;
+                r = r.trim();
+                r = r.substring(r.indexOf(" "), r.length()).trim();
+                if (r.startsWith(String.valueOf(pid))) {
+                    r = request[i].trim();
+                    return r.substring(0, r.indexOf(" "));
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }catch (java.lang.StringIndexOutOfBoundsException e){
+        } catch (java.lang.StringIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
         return null;
     }
-
-    /**
-     * 运行本地exe程序
-     * @param code
-     * @return
-     */
-    public static String[] runLocalhostExe(String code) {
-        String[] str = null;
-        try {
-            Process pro = Runtime.getRuntime().exec(code);
-            BufferedReader br;
-            br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
-            str = AdbUtils.adbBufferedReader(br);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return str;
-    }
-
-    /**
-     * 运行本地exe程序
-     * @param code
-     * @return
-     */
-    public static String[] runLocalhostExe(String code,JTextArea jTextArea) {
-        if(jTextArea == null)throw  new IllegalArgumentException("jTextArea为空");
-        String[] str = null;
-        try {
-            Process pro = Runtime.getRuntime().exec(code);
-            BufferedReader br;
-            br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
-            String msg;
-            int index = 0;
-            while ((msg = br.readLine()) != null) {
-                if (index == 0) str = new String[0];
-                str = Arrays.copyOf(str, str.length + 1);
-                str[str.length - 1] = msg;
-                index++;
-                jTextArea.append(msg+"\n");
-                jTextArea.selectAll();
-                if (jTextArea.getSelectedText() != null && jTextArea != null) {
-                    jTextArea.setCaretPosition(jTextArea.getSelectedText().length());
-                    jTextArea.requestFocus();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            jTextArea.append(e.toString()+"\n");
-        }
-        return str;
-    }
-
 
 
     /**
@@ -467,30 +420,96 @@ public class WindosUtils {
             SaveCrash.save(e.toString());
             TooltipUtil.errTooltip("获取指定进程PID失败" + process);
         }
-        int [] getPID=new int[0];
+        int[] getPID = new int[0];
         for (String s : processArrays) {
             if (s.startsWith(process)) {
                 String str;
                 try {
-                    if(!s.contains("Console"))continue;
+                    if (!s.contains("Console")) continue;
                     str = s.substring(0, s.indexOf("Console")).trim();
                     str = str.substring(str.lastIndexOf(" "), str.length()).trim();
-                    if (str.matches("\\d+")){
-                        getPID = Arrays.copyOf(getPID,getPID.length+1);
-                        getPID[getPID.length-1] =Integer.parseInt(str);
-                    }else{
+                    if (str.matches("\\d+")) {
+                        getPID = Arrays.copyOf(getPID, getPID.length + 1);
+                        getPID[getPID.length - 1] = Integer.parseInt(str);
+                    } else {
                         TooltipUtil.errTooltip("获取进行pid发生错误，请务必联系管理员，谢谢");
-                        SaveCrash.save("获取进行pid发生错误，请联系管理员"+s);
+                        SaveCrash.save("获取进行pid发生错误，请联系管理员" + s);
                     }
                 } catch (StringIndexOutOfBoundsException e) {
                     e.printStackTrace();
-                    SaveCrash.save("截取pid错误:"+s+"   "+e.toString());
+                    SaveCrash.save("截取pid错误:" + s + "   " + e.toString());
                     return getPID;
                 }
 
             }
         }
         return getPID;
+    }
+
+    public static List<String> dosExecute(String code) {
+        return dosExecute(code, null, false, true, true);
+    }
+
+    public static List<String> dosExecute(String code, JTextArea jTextArea, boolean isWait, boolean isInputStream, boolean isErrorStream) {
+        List<String> list = new ArrayList<>();
+        Process pro = null;
+        BufferedReader br = null;
+        try {
+            pro = Runtime.getRuntime().exec(code);
+            if (isWait) pro.waitFor();
+            if (isInputStream) {
+                br = new BufferedReader(new InputStreamReader(pro.getInputStream(), StandardCharsets.UTF_8));
+                list.addAll(getBufferedReader(br, jTextArea));
+            }
+            if (isErrorStream) {
+                //获取错误流
+                br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), StandardCharsets.UTF_8));
+                list.addAll(getBufferedReader(br, jTextArea));
+            }
+            pro.waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (jTextArea != null) JTextAreadUtil.append(jTextArea, e);
+        } finally {
+            close(br, pro);
+        }
+        return list;
+    }
+
+    /**
+     * 读取adb缓冲流
+     *
+     * @return
+     */
+    public static List<String> getBufferedReader(BufferedReader br) throws IOException {
+        return getBufferedReader(br, null);
+    }
+
+
+    /**
+     * 读取adb缓冲流
+     *
+     * @return
+     */
+    public static List<String> getBufferedReader(BufferedReader br, JTextArea jTextArea) throws IOException {
+        String msg;
+        List<String> list = new ArrayList<>();
+        while ((msg = br.readLine()) != null) {
+            list.add(msg);
+            if (jTextArea != null) JTextAreadUtil.append(jTextArea, msg);
+        }
+        return list;
+    }
+
+    public static void close(BufferedReader bufferedReader, Process process) {
+        if (bufferedReader != null) {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (process != null) process.destroy();
     }
 
     /**
@@ -504,22 +523,21 @@ public class WindosUtils {
         int[] closePID = getProcessPID(process);
         if (closePID.length == 0) return true;
         try {
-            for(int pid: closePID){
-                if(Arrays.toString(
+            for (int pid : closePID) {
+                if (Arrays.toString(
                         //taskkill /im 通过名称关闭  /f
-                        cmd("taskkill /pid "+pid+"  /f")).contains("错误:"))return false;
-                System.out.println(Arrays.toString(AdbUtils.operationAdb("devices")));
+                        cmd("taskkill /pid " + pid + "  /f")).contains("错误:")) return false;
 
             }
         } catch (IOException e) {
             e.printStackTrace();
-            TooltipUtil.errTooltip("关闭进程发生错误,进程名称:"+process);
-            SaveCrash.save("关闭进程发生错误,进程名称:"+process+"     "+e.toString());
+            TooltipUtil.errTooltip("关闭进程发生错误,进程名称:" + process);
+            SaveCrash.save("关闭进程发生错误,进程名称:" + process + "     " + e.toString());
         }
-        if(getProcessPID(process).length!=0){
+        if (getProcessPID(process).length != 0) {
             System.out.println(Arrays.toString(getProcessPID(process)));
             return false;
-        }else{
+        } else {
             return true;
         }
 

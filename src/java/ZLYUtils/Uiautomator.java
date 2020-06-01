@@ -1,10 +1,13 @@
 package ZLYUtils;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 通过adb命令执行UI操作
@@ -17,17 +20,17 @@ public class Uiautomator {
      */
     public static String getElement() {
         String xmlName = System.currentTimeMillis() + ".xml";
-        String[] uiautomator = AdbUtils.runAdb(
+        List<String> uiautomator = AdbUtils.runAdb(
                 " shell uiautomator dump /data/local/tmp/" + xmlName);
         if (uiautomator == null ||
-                !Arrays.toString(uiautomator).contains(
+                !uiautomator.contains(
                         "UI hierchary dumped to: /data/local/tmp/" + xmlName)) {
             return "没有获取到手机XML元素文件";
         }
         uiautomator = AdbUtils.runAdb(
                 " pull /data/local/tmp/" + xmlName + " " + xmlName);
         if (uiautomator == null ||
-                !Arrays.toString(uiautomator).contains(
+                !uiautomator.contains(
                         "/data/local/tmp/" + xmlName + ": 1 file pulled.")) {
             return "拉取XML文件失败";
         }
@@ -60,9 +63,9 @@ public class Uiautomator {
      * 点击事件
      */
     public static String inputTap(int x, int y) {
-        String[] s = AdbUtils.runAdb("shell input tap " + x + " " + y);
-        if (s != null) {
-            return "坐标点击失败[" + x + "," + y + "]" + Arrays.toString(s);
+        List<String> s = AdbUtils.runAdb("shell input tap " + x + " " + y);
+        if (s.size() != 0) {
+            return "坐标点击失败[" + x + "," + y + "]" + ArrayUtils.toString(s);
         }
         return "success";
     }
@@ -72,9 +75,9 @@ public class Uiautomator {
      */
     public static String inputText(String str) {
         if (str == null) return "str为空";
-        String[] s = AdbUtils.runAdb("shell input text \"" + str + "\"");
-        if (s != null) {
-            return "文本输入失败[" + str + "]不支持中文:" + Arrays.toString(s);
+        List<String> s = AdbUtils.runAdb("shell input text \"" + str + "\"");
+        if (s.size() != 0) {
+            return "文本输入失败[" + str + "]不支持中文:" + ArrayUtils.toString(s);
         }
         return "success";
     }
@@ -89,7 +92,7 @@ public class Uiautomator {
     public static String startApp(String packageName, String mainActivity) {
         if (packageName == null) return "包名为空";
         if (mainActivity == null) return "mainActivity为空";
-        return Arrays.toString(AdbUtils.runAdb("shell am start " + packageName + "/" + mainActivity));
+        return AdbUtils.runAdb("shell am start " + packageName + "/" + mainActivity).toString();
     }
 
     /**
@@ -100,23 +103,20 @@ public class Uiautomator {
      */
     public static boolean installApk(File apk) {
         if (!apk.exists()) return false;
-        String[] s = AdbUtils.runAdb(" install -r " + apk.getPath());
+        List<String> s = AdbUtils.runAdb(" install -r " + apk.getPath());
         if (s == null) return false;
-        if ("succeed".equals(Arrays.toString(s).
-                replace("[", "").
-                replace("]", "").toLowerCase().trim())) {
-            return true;
-        }
-        return false;
+        return "succeed".equals(s.get(s.size() - 1).trim().toLowerCase());
     }
 
     /**
      * 点击home键
+     *
      * @return
      */
-    public static boolean inputHome(){
+    public static boolean inputHome() {
         return inputKeyevent(3);
     }
+
     public static boolean inputKeyevent(int keyevent) {
         if (AdbUtils.runAdb("shell input keyevent  " + keyevent) == null) {
             return true;

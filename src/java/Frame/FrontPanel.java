@@ -73,6 +73,26 @@ public abstract class FrontPanel extends JFrame {
         if (center) setLocationRelativeTo(null);//设置窗体位置
     }
 
+
+    /**
+     * 设置全屏显示
+     */
+    public void setFullScreed(){
+        /*
+         * true无边框 全屏显示
+         * false有边框 全屏显示
+         */
+        setUndecorated(false);
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setBounds(0, 0, d.width, d.height);
+    }
+
+    public Font newCustomFont(int size, int isStyle) {
+        return new Font("标楷体", isStyle, size);
+    }
+
+
     /**
      * 设置关闭
      */
@@ -179,9 +199,9 @@ public abstract class FrontPanel extends JFrame {
      */
     public JRadioButton newJRadioButton(String title, int height) {
         JRadioButton jRadioButton = new JRadioButton(title);
-        if(title.length()<4){
+        if (title.length() < 4) {
             jRadioButton.setSize(4 * 23, height);
-        }else {
+        } else {
             jRadioButton.setSize(title.length() * 23, height);
         }
         jRadioButton.setFont(DEFAULT_FONT);

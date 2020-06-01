@@ -96,22 +96,26 @@ public class ClearIphone {
 
                 }
             }
-            String[] adb;
+            List<String> adb;
             for (String r : rm) {
                 adb = AdbUtils.operationAdb("shell rm -r " + r);
-                if (adb == null) return;
-                if (Arrays.toString(adb).contains("Is a directory")) {
-                    TooltipUtil.errTooltip("本地目录删除失败了:" + Arrays.toString(adb));
+                if (adb == null) {
+                    TooltipUtil.errTooltip("没有找到连接的手机");
+                    return;
+                }
+                if (adb.contains("Is a directory")) {
+                    TooltipUtil.errTooltip("本地目录删除失败了:" + adb);
                     return;
                 }
             }
         } else {
-            String[] adb = AdbUtils.operationAdb("shell pm clear " + code);
-            if (adb == null) return;
-            if (!Arrays.toString(
-                    adb).contains("Success")
-            ) {
-                TooltipUtil.errTooltip("应用缓存删除失败:" + Arrays.toString(adb));
+            List<String> adb = AdbUtils.operationAdb("shell pm clear " + code);
+            if (adb == null) {
+                TooltipUtil.errTooltip("没有找到连接的手机");
+                return;
+            }
+            if (!adb.contains("Success")) {
+                TooltipUtil.errTooltip("应用缓存删除失败:" + adb);
                 return;
             }
         }
@@ -125,7 +129,7 @@ public class ClearIphone {
      */
     public boolean checkIphoneAppPackageExist(String packageName) {
         boolean exist = false;
-        String[] arr = AdbUtils.operationAdb("shell pm list package");
+        List<String> arr = AdbUtils.operationAdb("shell pm list package");
         if (arr == null) return false;
         for (String p : arr) {
             if (p.contains(packageName)) {

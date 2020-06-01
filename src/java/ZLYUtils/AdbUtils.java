@@ -1,11 +1,19 @@
 package ZLYUtils;
 
-import SquirrelFrame.HomePage;
+import java.util.ArrayList;
 
+import SquirrelFrame.HomePage;
+import org.apache.commons.lang3.ArrayUtils;
+
+import javax.swing.*;
 import java.io.*;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.List;
+
+import static ZLYUtils.WindosUtils.close;
 
 public class AdbUtils {
     /**
@@ -21,80 +29,16 @@ public class AdbUtils {
         killNetStatAdb = -1;
     }
 
-    /**
-     * 获取错误
-     *
-     * @param code
-     * @return
-     */
-    private static String[] errRunAdb(String code) {
-        String[] str = null;
-        Process pro = null;
-        BufferedReader br = null;
-        try {
-            String dev = " ";
-            if (devices != null) dev = " -s " + devices + " ";
-            pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
-            br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), Charset.forName("utf-8")));
-            str = adbBufferedReader(br);
-            pro.waitFor();
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            close(br, pro);
-        }
-        return str;
+    public static List<String> runAdb(String code) {
+        return runAdb(code, null, false, true, true);
     }
 
-
-    public static String[] runAdb(String code) {
-        String[] str = null;
-        Process pro = null;
-        BufferedReader br = null;
-        try {
-            String dev = " ";
-            if (devices != null) dev = " -s " + devices + " ";
-            pro = Runtime.getRuntime().exec("platform-tools" + File.separator + "adb.exe" + dev + code);
-            br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("utf-8")));
-            str = adbBufferedReader(br);
-            if (str == null) str = errRunAdb(code);
-            pro.waitFor();
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            close(br, pro);
-        }
-        return str;
+    public static List<String> runAdb(String code, JTextArea jTextArea, boolean isWait, boolean isInputStream, boolean isErrorStream) {
+        String dev = " ";
+        if (devices != null) dev = " -s " + devices + " ";
+        return WindosUtils.dosExecute("platform-tools" + File.separator + "adb.exe" + dev + code, jTextArea, isWait, isInputStream, isErrorStream);
     }
 
-    static void close(BufferedReader bufferedReader, Process process) {
-        if (bufferedReader != null) {
-            try {
-                bufferedReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        if (process != null) process.destroy();
-    }
-
-    /**
-     * 读取adb缓冲流
-     *
-     * @return
-     */
-    public static String[] adbBufferedReader(BufferedReader br) throws IOException {
-        String msg;
-        String[] str = new String[0];
-        while ((msg = br.readLine()) != null) {
-            str = Arrays.copyOf(str, str.length + 1);
-            str[str.length - 1] = msg;
-        }
-        if (str.length == 0) return null;
-        return str;
-    }
 
     /**
      * 杀死占用5037端口应用
@@ -177,7 +121,7 @@ public class AdbUtils {
      * @param code 执行命令
      * @return
      */
-    public static String[] operationAdb(String code) {
+    public static List<String> operationAdb(String code) {
         //检查是否连接设备
         if (!checkDevices()) {
             return null;

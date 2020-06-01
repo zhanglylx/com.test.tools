@@ -1,18 +1,21 @@
 package SquirrelFrame;
 
+import java.util.ArrayList;
+
 import Frame.FrontPanel;
 import ZLYUtils.WindosUtils;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.List;
 
 import static SquirrelFrame.SquirrelConfig.FFMPEGPATH;
 
 /**
  * 视频转换
  */
-public class VideoSwitch  extends FrontPanel {
+public class VideoSwitch extends FrontPanel {
     private File file;
     private String convertedFormat;
     private JTextArea jTextArea;
@@ -21,22 +24,24 @@ public class VideoSwitch  extends FrontPanel {
     private JButton selectFileButton;
     private JPanel jPanel1;
     private JPanel outLogJPane;
+
     public static void main(String[] args) {
         new VideoSwitch();
     }
-    public VideoSwitch(){
+
+    public VideoSwitch() {
         super("视频压缩");
-        this.setLayout(newGridLayout(2,1));
+        this.setLayout(newGridLayout(2, 1));
         setJPnel1();
-        setSize(600,600);
-        this.setLocation(100,20);
+        setSize(600, 600);
+        this.setLocation(100, 20);
         this.selectFileButton = newJButton("选择视频文件");
 
         setVisible(true);
 
     }
 
-    private void setJPnel1(){
+    private void setJPnel1() {
         this.jPanel1 = newJPanel();
     }
 
@@ -97,7 +102,6 @@ public class VideoSwitch  extends FrontPanel {
     public int setClose() {
         return 2;
     }
-
 
 
     @Override
@@ -180,18 +184,19 @@ public class VideoSwitch  extends FrontPanel {
                 e.printStackTrace();
             }
             if (jTextArea != null) {
-                WindosUtils.runLocalhostExe(FFMPEGPATH + " -i " +
+               WindosUtils.dosExecute(FFMPEGPATH + " -i " +
                         file.getPath() + " -s " +
-                        "272x480 -b:v 200k " + savePath, jTextArea);
+                        "272x480 -b:v 200k " + savePath, jTextArea, false, false, true);
                 if (new File(savePath).exists()) {
                     jTextArea.append("转换成功:" + savePath);
-                }else{
+                } else {
                     jTextArea.append("转换失败");
                 }
+                System.out.println();
             } else {
-                WindosUtils.runLocalhostExe(FFMPEGPATH + " -i " +
+                WindosUtils.dosExecute(FFMPEGPATH + " -i " +
                         file.getPath() + " -s " +
-                        "272x480 -b:v 200k " + savePath);
+                        "272x480 -b:v 200k " + savePath, null, false, false, true);
             }
 
         }

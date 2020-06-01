@@ -3,6 +3,7 @@ package TestTools;
 import Frame.FrontPanel;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
+import ZLYUtils.JTextAreadUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +38,7 @@ public class GetADLogs extends FrontPanel {
         AD = new String[0];
         for (int i = 1; i < 87; i++) {
             AD = Arrays.copyOf(AD, AD.length + 1);
-            AD[AD.length - 1] = "GG-" + i;
+            AD[AD.length - 1] = i + "";
         }
     }
 
@@ -45,28 +46,33 @@ public class GetADLogs extends FrontPanel {
         super(buttonText);
         this.jButton = jButton;
         this.jButton.setEnabled(false);
-        setLayout(new GridLayout(2, 10));
+        setLayout(new GridLayout(2, 1));
+        setFullScreed();
         JPanel jPa = newJPanel();
         jPa.setLayout(new GridLayout(10, 20));
         JButton jb;
         this.jButtonsAd = new ArrayList<>();
         for (int i = 0; i < AD.length; i++) {
-            jb = newJButton(AD[i], true, false,null);
+            jb = newJButton(AD[i], true, false, null);
             jPa.add(jb);
             this.jButtonsAd.add(jb);
         }
-        jPa.add(this.mianfeiaJButton = newJButton("免电"));
-        jPa.add(this.mianzhuiJButton = newJButton("免追"));
-        jPa.add(this.aikanshuJButton = newJButton("爱看书"));
+        jPa.add(this.mianfeiaJButton = newJButton("CXB", true, false, null));
+        jPa.add(this.mianzhuiJButton = newJButton("MZ", true, false, null));
+        jPa.add(this.aikanshuJButton = newJButton("AKS", true, false, null));
         this.mianfeiaJButton.setBackground(Color.orange);
         this.mianzhuiJButton.setBackground(Color.orange);
         this.aikanshuJButton.setBackground(Color.orange);
-        this.clear = newJButton("清空", true, true,null);
+        this.mianfeiaJButton.setFont(newCustomFont(12, Font.BOLD));
+        this.mianzhuiJButton.setFont(newCustomFont(12, Font.BOLD));
+        this.aikanshuJButton.setFont(newCustomFont(12, Font.BOLD));
+        this.clear = newJButton("清空", true, true, null);
         jPa.add(this.clear);
         add(jPa);
         setJDialog();
         this.log = new Log();
         threadAdLog = new Thread(log);
+        setVisible(true);
     }
 
     @Override
@@ -90,8 +96,7 @@ public class GetADLogs extends FrontPanel {
                 setDefaultCloseOperation(2);
             }
         });
-        setSize(1000, 700);
-        setLocation(400, 200);
+
         setLocationRelativeTo(null);
         logPaint = new JTextArea();
         logPaint.setLineWrap(true);
@@ -100,8 +105,6 @@ public class GetADLogs extends FrontPanel {
         JScrollPane jsc = new JScrollPane(logPaint);
         logPaint.setFont(new Font("标楷体", Font.BOLD, 20));
         add(jsc);
-        setVisible(true);
-
     }
 
     /**
@@ -183,7 +186,7 @@ public class GetADLogs extends FrontPanel {
         if (this.jButtonsAd.contains(f)) {
             f.setBackground(Color.magenta);
             log.setjButton(f);
-            log.setAdIdRecord(f.getText());
+            log.setAdIdRecord("GG-" + f.getText());
         }
         log.clearStringBuffer();
         if (!threadAdLog.isAlive()) {
@@ -281,12 +284,12 @@ public class GetADLogs extends FrontPanel {
             boolean errSucceed = false;
             boolean b = false; //用于在每次正在刷新打印-时，有新结果换行显示
             String ggStr = this.adIdRecord;
-            String[] GG;
+            List<String> GG;
             while (this.stopLog) {
                 logPaintAppend("==");
                 GG = AdbUtils.runAdb(" shell cat /sdcard/Android/data/" + this.packageName + "/files/logs/ad/" + date + "/" + adIdRecord + ".txt");
                 System.out.println(" shell cat /sdcard/Android/data/" + this.packageName + "/files/logs/ad/" + date + "/" + adIdRecord + ".txt");
-                if (GG == null) {
+                if (GG.size() == 0) {
                     if (!err) addText(this.getErrText);
                     logPaintAppend(".");
                     err = true;
@@ -297,9 +300,9 @@ public class GetADLogs extends FrontPanel {
                 if (errSucceed) addText("重试成功");
                 errSucceed = false;
                 b = true;
-                for (int i = 0; i < GG.length; i++) {
+                for (String s : GG) {
                     //判断显示台是否已经显示当前信息
-                    if (!stringBuffer.toString().contains(date + "  " + GG[i])) {
+                    if (!stringBuffer.toString().contains(date + "  " + s)) {
                         //判断是否切换广告，如果切换，当前取消打印
                         if (ggStr.equals(this.adIdRecord)) {
                             if (b) {
@@ -307,13 +310,13 @@ public class GetADLogs extends FrontPanel {
                                 b = false;
                             }
                             //判断是否已经显示过错误信息，如果没有，则将显示信息添加
-                            if (GG[i].contains("No such file or directory")) {
+                            if (s.contains("No such file or directory")) {
                                 if (!stringBuffer.toString().contains(date)) {
-                                    stringBuffer.append(date + "  " + GG[i]);
+                                    stringBuffer.append(date).append("  ").append(s);
                                 }
                             }
-                            stringBuffer.append(date + "  " + GG[i]);
-                            addText(date + "  " + GG[i]);
+                            stringBuffer.append(date).append("  ").append(s);
+                            addText(date + "  " + s);
                         } else {
                             break;
                         }
@@ -340,13 +343,7 @@ public class GetADLogs extends FrontPanel {
      */
     public synchronized void addText(String text) {
         if (text.contains("=")) text += "     " + log.getAdIdRecord();
-        logPaint.append(text + "\n");
-//        //下面的代码就是移动到文本域的最后面
-        logPaint.selectAll();
-        if (logPaint.getSelectedText() != null && logPaint != null) {
-            logPaint.setCaretPosition(logPaint.getSelectedText().length());
-            logPaint.requestFocus();
-        }
+        JTextAreadUtil.append(logPaint, text);
     }
 
     /**

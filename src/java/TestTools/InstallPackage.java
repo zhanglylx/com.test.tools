@@ -1,5 +1,7 @@
 package TestTools;
 
+import java.util.ArrayList;
+
 import ZLYUtils.AdbUtils;
 import ZLYUtils.SwingUtils;
 import ZLYUtils.TooltipUtil;
@@ -11,6 +13,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 安装apk包
@@ -196,7 +199,7 @@ public class InstallPackage extends FrontPanel implements ActionListener {
             synchronized (this) {
                 String jButtonText = this.jButton.getText();
                 this.jButton.setText("正在安装");
-                String[] adb = AdbUtils.operationAdb("install -r " + textField.getText());
+                List<String> adb = AdbUtils.operationAdb("install -r " + textField.getText());
                 if (adb == null) {
                     TooltipUtil.errTooltip("安装失败");
                     this.jButton.setEnabled(true);
@@ -205,21 +208,21 @@ public class InstallPackage extends FrontPanel implements ActionListener {
                 }
 
                 boolean success = false;
-                for (int i = 0; i < adb.length; i++) {
-                    if ("success".equals(adb[i].trim().toLowerCase())) {
+                for (String value : adb) {
+                    if ("success".equals(value.trim().toLowerCase())) {
                         TooltipUtil.generalTooltip("安装成功");
                         success = true;
                         break;
                     }
                 }
                 if (!success) {
-                    if (Arrays.toString(adb).toLowerCase().contains("failed to stat")) {
-                        TooltipUtil.errTooltip("文件名称不支持:" + Arrays.toString(adb));
+                    if (adb.toString().toLowerCase().contains("failed to stat")) {
+                        TooltipUtil.errTooltip("文件名称不支持:" + adb);
                     } else {
-                        if (Arrays.toString(adb).length() < 200) {
-                            TooltipUtil.errTooltip("安装失败:" + Arrays.toString(adb));
+                        if (adb.size() < 200) {
+                            TooltipUtil.errTooltip("安装失败:" + adb);
                         } else {
-                            String s = Arrays.toString(adb);
+                            String s = adb.toString();
                             s = s.substring(0, 100) + "..." + s.substring(s.length() - 99, s.length());
                             TooltipUtil.errTooltip("安装失败:" + s);
                         }

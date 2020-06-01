@@ -11,9 +11,23 @@ jenkis用户名密码:admin      uFiV8TDvhKNOMNPg
 
 WIFI密码:Iwanvi.Iyuedu
 
+三星测试机云测试：http://106.38.42.22:3001/device?page=1     用户名：zhongwenwanwei      密码:      zwww1234
+
 
 
 http://keepass-sys.cread.com/qa/    张连宇的用户名:zhangly@cread.com     Jia60951327
 http://ldap-sys.cread.com/self-service-password/ 重置密码链接
 
 http://personal-center-bookstore-qa.cread.com/swagger-ui.html#/  中文书城接口说明地址
+
+postman 共享连接：https://app.getpostman.com/join-team?invite_code=87b441534454552bcc161e01d3490a48
+
+广告lualog地址：/data/dockerdata/freebook-qa/iwanvi-freebook-ad-job/ADScheduleJob.log
+广告定时任务执行命令：/bin/sh /data/dockerdata/freebook-qa/iwanvi-freebook-ad-job/bin/ADSchedulerJob.sh /data/dockerdata/freebook-qa/iwanvi-freebook-ad-job
+
+
+
+1.白盒测试，经过代码走读，实现逻辑为:将相同的appname的所有渠道放在一个map中排除0，然后在所有渠道的allMap.size - 当前广告的渠道curMap.size(使用别名：number), 当前渠道的map.size大于number，则使用黑名单，最后使用将allMap中包含curMap的渠道删除后插入到缓存中，这时lua判断不在allMap中的渠道返回此广告
+2.白名单：当前渠道的map.size小于number,则使用白名单，lua判断在当前渠道中，返回广告
+3.number等于0的情况会进入到黑名单逻辑，等于则代表这个app下的所有渠道和当前渠道相等，代表全部投放，这时，因为黑名单逻辑会在全部渠道中删除当前广告位的渠道，所以插入到缓存中的渠道为空字符串，当lua执行黑名单时，空字串找不到请求的渠道，则返回此条广告
+4.渠道为0处理，因本次定时任务修改，如果一个广告位既配置的其他渠道，又配置了0，则将去除0渠道，0渠道需单独配置，不能包含其他渠道，渠道为0时，直接为白名单不做其他逻辑插入到缓存中，lua在第一次获取为空时，会将渠道直为0，获取配置的打底广告

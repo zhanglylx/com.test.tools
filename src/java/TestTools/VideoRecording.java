@@ -3,6 +3,7 @@ package TestTools;
 import SquirrelFrame.SquirrelConfig;
 import ZLYUtils.AdbUtils;
 import ZLYUtils.TooltipUtil;
+import ZLYUtils.WindosUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class VideoRecording {
     }
 
     public void start() {
-        if(!AdbUtils.checkDevices())return;
+        if (!AdbUtils.checkDevices()) return;
         this.thread.start();
         TooltipUtil.generalTooltip(
                 "录制开始，关闭提示框后录制结束。\n视频保存地址:" +
@@ -30,11 +31,11 @@ public class VideoRecording {
             e.printStackTrace();
             e.printStackTrace();
         }
-        String video = Arrays.toString(AdbUtils.runAdb("pull "+VIDEO_PATH
-        +" "+SquirrelConfig.DEFAULT_PATH
-        ));
+        String video = AdbUtils.runAdb("pull " + VIDEO_PATH
+                + " " + SquirrelConfig.DEFAULT_PATH
+        ).toString();
         System.out.println(video);
-        if (null == video || !video.contains("100%")) {
+        if (!video.contains("100%")) {
             TooltipUtil.errTooltip("视频拉取到电脑失败");
         } else {
             TooltipUtil.generalTooltip("视频拉取成功:" +
@@ -50,19 +51,20 @@ public class VideoRecording {
 
         @Override
         public void run() {
-            Process pro = null;
-            try {
-                pro = Runtime.getRuntime()
-                        .exec(
-                                "platform-tools"
-                                        + File.separator +
-                                        "adb.exe shell screenrecord " + VIDEO_PATH);
-                pro.waitFor();
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
-            } finally {
-                if (pro != null) pro.destroy();
-            }
+            AdbUtils.runAdb("shell screenrecord " + VIDEO_PATH, null, true, false, false);
+//            Process pro = null;
+//            try {
+//                pro = Runtime.getRuntime()
+//                        .exec(
+//                                "platform-tools"
+//                                        + File.separator +
+//                                        "adb.exe shell screenrecord " + VIDEO_PATH);
+//                pro.waitFor();
+//            } catch (IOException | InterruptedException e) {
+//                e.printStackTrace();
+//            } finally {
+//                if (pro != null) pro.destroy();
+//            }
         }
     }
 

@@ -5,10 +5,7 @@ import ZLYUtils.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 
@@ -36,7 +33,7 @@ public class GetIphoneData {
 
 
     public void startGetIphoneData() {
-        String[] p = AdbUtils.runAdb(
+        List<String> p = AdbUtils.runAdb(
                 "shell  top -n 1 ");
         int[] memory;
         double cpu;

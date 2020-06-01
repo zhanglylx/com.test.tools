@@ -47,7 +47,7 @@ public class Aapt extends FrontPanel {
         functionalJPanel.setSize(150, this.getHeight() - 30);
         functionalJPanel.add(this.permissionsJButton = newJButton("getPermissions"));
         this.permissionsJButton.setToolTipText("请选择一个apk文件");
-        functionalJPanel.add(this.activityJButton = newJButton("get包名/入口","请选择一个apk文件"));
+        functionalJPanel.add(this.activityJButton = newJButton("get包名/入口", "请选择一个apk文件"));
         // 表头（列名）
         Vector columnNames = new Vector();
         columnNames.add("过滤器展示");
@@ -183,10 +183,10 @@ public class Aapt extends FrontPanel {
     /**
      * 显示内容
      */
-    public void showContent(File filePath, String[] permissions) {
+    public void showContent(File filePath, List<String> permissions) {
         try {
             this.jTextAreaDisplay.setText("");
-            this.jTextAreaDisplay.setText(filePath.getName() + " 共获取到[" + permissions.length + "]条记录\n");
+            this.jTextAreaDisplay.setText(filePath.getName() + " 共获取到[" + permissions.size() + "]条记录\n");
             int i = 0;
             for (String str : permissions) {
                 if (filterJTextAreaDisplayText(str)) {
