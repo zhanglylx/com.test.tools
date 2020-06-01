@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import SquirrelFrame.HomePage;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.io.*;
@@ -35,7 +36,7 @@ public class AdbUtils {
 
     public static List<String> runAdb(String code, JTextArea jTextArea, boolean isWait, boolean isInputStream, boolean isErrorStream) {
         String dev = " ";
-        if (devices != null) dev = " -s " + devices + " ";
+        if (StringUtils.isNotBlank(devices)) dev = " -s " + devices + " ";
         return WindosUtils.dosExecute("platform-tools" + File.separator + "adb.exe" + dev + code, jTextArea, isWait, isInputStream, isErrorStream);
     }
 
