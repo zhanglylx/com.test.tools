@@ -13,10 +13,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.util.Arrays;
-import java.util.Vector;
+import java.util.*;
 
 public class SwingUtils {
+    //用于记录用户选择文件后再次打开时的地址
+    private static Map<String, File> selectFileDirectory = Collections.synchronizedMap(new HashMap<>());
+
     /**
      * 设置Jbutton按钮中的图片
      *
@@ -168,7 +170,11 @@ public class SwingUtils {
                 }
             }
             chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-            chooser.setCurrentDirectory(JavaUtils.getLocalDesktopPath());//默认桌面
+            if (selectFileDirectory.get(ZLYThreadUtils.getMethodName()) == null) {
+                chooser.setCurrentDirectory(JavaUtils.getLocalDesktopPath());//默认桌面
+            } else {
+                chooser.setCurrentDirectory(selectFileDirectory.get(ZLYThreadUtils.getMethodName()));
+            }
             int ch = chooser.showDialog(parent, "选择文件");
             File file = chooser.getSelectedFile();
             if (null == file || JFileChooser.APPROVE_OPTION != ch) return null;
@@ -187,6 +193,7 @@ public class SwingUtils {
                 TooltipUtil.errTooltip("您选择文件的格式不正确，请重新选择");
                 return null;
             }
+            selectFileDirectory.put(ZLYThreadUtils.getMethodName(), file.getParentFile());
             return file;
         } finally {
             setUiDefault();

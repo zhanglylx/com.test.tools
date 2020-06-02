@@ -466,7 +466,6 @@ public class WindosUtils {
                 br = new BufferedReader(new InputStreamReader(pro.getErrorStream(), StandardCharsets.UTF_8));
                 list.addAll(getBufferedReader(br, jTextArea));
             }
-            pro.waitFor();
         } catch (Exception e) {
             e.printStackTrace();
             if (jTextArea != null) JTextAreadUtil.append(jTextArea, e);
