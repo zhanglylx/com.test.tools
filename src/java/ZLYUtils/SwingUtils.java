@@ -170,11 +170,12 @@ public class SwingUtils {
                 }
             }
             chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-            if (selectFileDirectory.get(ZLYThreadUtils.getMethodName()) == null) {
+            File path = selectFileDirectory.get(ZLYThreadUtils.getMethodName());
+            if (path == null || !path.exists()) {
+                path = JavaUtils.getLocalDesktopPath();//默认桌面
                 chooser.setCurrentDirectory(JavaUtils.getLocalDesktopPath());//默认桌面
-            } else {
-                chooser.setCurrentDirectory(selectFileDirectory.get(ZLYThreadUtils.getMethodName()));
             }
+            chooser.setCurrentDirectory(path);
             int ch = chooser.showDialog(parent, "选择文件");
             File file = chooser.getSelectedFile();
             if (null == file || JFileChooser.APPROVE_OPTION != ch) return null;
