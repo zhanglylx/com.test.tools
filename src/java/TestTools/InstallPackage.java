@@ -67,7 +67,7 @@ public class InstallPackage extends FrontPanel implements ActionListener {
      */
     private boolean checkInsatllPath() {
         String text = textField.getText().trim();
-        if (text == null || "".equals(text)) {
+        if ("".equals(text)) {
             TooltipUtil.errTooltip("请选择一个apk包");
             return false;
         }
