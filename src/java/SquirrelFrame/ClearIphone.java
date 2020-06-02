@@ -3,9 +3,7 @@ package SquirrelFrame;
 import ZLYUtils.AdbUtils;
 import ZLYUtils.TooltipUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * 清理手机环境
@@ -82,45 +80,57 @@ public class ClearIphone {
             default:
                 throw new IllegalArgumentException("未找到包名:" + packageName);
         }
-        if (this.clearPackageName.equals(CLEAR_ALL) ||
-                this.clearPackageName.equals(CLEAR_FILE)) {
-            if (this.clearPackageName.equals(CLEAR_ALL)) {
+        try {
+            switch (this.clearPackageName) {
+                case CLEAR_FILE:
+                    clearFile(rm);
+                    break;
+                case CLEAR_ALL:
+                    clearFile(rm);
+                    clearPackage(code);
+                    break;
+                case CLEAR_CACHE:
+                    clearCache(code);
+                    break;
+                default:
+                    TooltipUtil.errTooltip("没有找到要清理的内容，请联系管理员");
+                    return;
+            }
+            TooltipUtil.generalTooltip(packageName + ":完成");
+        } catch (Exception e) {
+            e.printStackTrace();
+            TooltipUtil.errTooltip(e.getLocalizedMessage());
+        }
 
-                if (AdbUtils.operationAdb("uninstall " + code) == null) {
-                    TooltipUtil.errTooltip("包卸载失败了，具体原因您查看下日志，然后自己删吧");
-                    return;
-                }
-                if (checkIphoneAppPackageExist(code)) {
-                    TooltipUtil.errTooltip("包卸载失败了，具体原因您查看下日志，然后自己删吧");
-                    return;
+    }
 
-                }
-            }
-            List<String> adb;
-            for (String r : rm) {
-                adb = AdbUtils.operationAdb("shell rm -r " + r);
-                if (adb == null) {
-                    TooltipUtil.errTooltip("没有找到连接的手机");
-                    return;
-                }
-                if (adb.contains("Is a directory")) {
-                    TooltipUtil.errTooltip("本地目录删除失败了:" + adb);
-                    return;
-                }
-            }
-        } else {
-            List<String> adb = AdbUtils.operationAdb("shell pm clear " + code);
-            if (adb == null) {
-                TooltipUtil.errTooltip("没有找到连接的手机");
-                return;
-            }
-            if (!adb.contains("Success")) {
-                TooltipUtil.errTooltip("应用缓存删除失败:" + adb);
-                return;
+    private void clearPackage(String packageName) {
+        if (!AdbUtils.runAdb("uninstall " + packageName).contains("Success")) {
+            TooltipUtil.errTooltip("包卸载失败了，具体原因您查看下日志，然后自己删吧");
+            throw new RuntimeException("包卸载失败了，具体原因您查看下日志，然后自己删吧");
+        }
+        if (checkIphoneAppPackageExist(packageName)) {
+            throw new RuntimeException("包卸载失败了，具体原因您查看下日志，然后自己删吧");
+        }
+    }
+
+    private void clearFile(List<String> list) {
+        List<String> adb;
+        for (String r : list) {
+            adb = AdbUtils.runAdb("shell rm -r " + r);
+            if (adb.size() != 0 && !adb.toString().contains("No such file or directory")) {
+                throw new RuntimeException("本地目录删除失败了:" + adb);
             }
         }
-        TooltipUtil.generalTooltip(packageName + ":完成");
     }
+
+    private void clearCache(String packageName) {
+        List<String> adb = AdbUtils.runAdb("shell pm clear " + packageName);
+        if (!adb.contains("Success")) {
+            throw new RuntimeException("应用缓存删除失败:" + adb);
+        }
+    }
+
 
     /**
      * 检查手机中是否存在指定的包
