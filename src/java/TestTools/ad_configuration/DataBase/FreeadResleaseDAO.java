@@ -16,8 +16,8 @@ public class FreeadResleaseDAO {
             "?,?,?,?,?," +
             "?,?,?,?,?," +
             "?,?,?,?,?," +
-            "?,?,?,?,?" +
-            ")";
+            "?,?,?,?,?," +
+            "?)";
     private static final String AD_MAX = "SELECT MAX(id) as i FROM freeadrelease";
 
     public FreeadResleaseDAO() {
@@ -47,36 +47,37 @@ public class FreeadResleaseDAO {
         preparedStatement.setInt(19, freeadReslease.getIscirclead());
         preparedStatement.setLong(20, freeadReslease.getSingleClickNum());
         preparedStatement.setLong(21, freeadReslease.getSingleExposureNum());
-        preparedStatement.setLong(22, freeadReslease.getTotalClickNum());
-        preparedStatement.setLong(23, freeadReslease.getTotalExposureNum());
-        preparedStatement.setInt(24, freeadReslease.getWifiState());
-        preparedStatement.setLong(25, freeadReslease.getDayTotalClickNum());
-        preparedStatement.setLong(26, freeadReslease.getDayTotalExoisureNum());
-        preparedStatement.setInt(27, freeadReslease.getCyynum());
-        preparedStatement.setInt(28, freeadReslease.getVideoAdSet());
-        preparedStatement.setInt(29, freeadReslease.getVideoAdRate());
-        preparedStatement.setInt(30, freeadReslease.getBookLocation());
-        preparedStatement.setInt(31, freeadReslease.getStartCha());
-        preparedStatement.setInt(32, freeadReslease.getShieldAdTime());
-        preparedStatement.setInt(33, freeadReslease.getAdStatus());
-        preparedStatement.setInt(34, freeadReslease.getNetState());
+        preparedStatement.setInt(22, freeadReslease.getSingleReqNum());
+        preparedStatement.setLong(23, freeadReslease.getTotalClickNum());
+        preparedStatement.setLong(24, freeadReslease.getTotalExposureNum());
+        preparedStatement.setInt(25, freeadReslease.getWifiState());
+        preparedStatement.setLong(26, freeadReslease.getDayTotalClickNum());
+        preparedStatement.setLong(27, freeadReslease.getDayTotalExoisureNum());
+        preparedStatement.setInt(28, freeadReslease.getCyynum());
+        preparedStatement.setInt(29, freeadReslease.getVideoAdSet());
+        preparedStatement.setInt(30, freeadReslease.getVideoAdRate());
+        preparedStatement.setInt(31, freeadReslease.getBookLocation());
+        preparedStatement.setInt(32, freeadReslease.getStartCha());
+        preparedStatement.setInt(33, freeadReslease.getShieldAdTime());
+        preparedStatement.setInt(34, freeadReslease.getAdStatus());
+        preparedStatement.setInt(35, freeadReslease.getNetState());
 //        35是描述:description字段
-        preparedStatement.setString(35, "松鼠工具创建:" + WindosUtils.getDate());
-        preparedStatement.setString(36, freeadReslease.getPopupdesc());
-        preparedStatement.setString(37, freeadReslease.getShieldAdStation());
-        setIntVluesOrNull(preparedStatement, 38, freeadReslease.getJlvideoAdRate());
-        setIntVluesOrNull(preparedStatement, 39, freeadReslease.getChapterEnd());
-        setIntVluesOrNull(preparedStatement, 40, freeadReslease.getInset());
-        setIntVluesOrNull(preparedStatement, 41, freeadReslease.getAntimisoperation());
-        setIntVluesOrNull(preparedStatement, 42, freeadReslease.getUpanddown());
-        setIntVluesOrNull(preparedStatement, 43, freeadReslease.getUsergroup());
-        setIntVluesOrNull(preparedStatement, 44, freeadReslease.getGuideBt());
-        preparedStatement.setString(45, freeadReslease.getImgUrl());
-        setIntVluesOrNull(preparedStatement, 46, freeadReslease.getBottom());
-        setIntVluesOrNull(preparedStatement, 47, freeadReslease.getRegStartTime());
-        setIntVluesOrNull(preparedStatement, 48, freeadReslease.getRegEndTime());
-        setIntVluesOrNull(preparedStatement, 49, freeadReslease.getAcs());
-        setIntVluesOrNull(preparedStatement, 50, freeadReslease.getAcr());
+        preparedStatement.setString(36, "松鼠工具创建:" + WindosUtils.getDate());
+        preparedStatement.setString(37, freeadReslease.getPopupdesc());
+        preparedStatement.setString(38, freeadReslease.getShieldAdStation());
+        setIntVluesOrNull(preparedStatement, 39, freeadReslease.getJlvideoAdRate());
+        setIntVluesOrNull(preparedStatement, 40, freeadReslease.getChapterEnd());
+        setIntVluesOrNull(preparedStatement, 41, freeadReslease.getInset());
+        setIntVluesOrNull(preparedStatement, 42, freeadReslease.getAntimisoperation());
+        setIntVluesOrNull(preparedStatement, 43, freeadReslease.getUpanddown());
+        setIntVluesOrNull(preparedStatement, 44, freeadReslease.getUsergroup());
+        setIntVluesOrNull(preparedStatement, 45, freeadReslease.getGuideBt());
+        preparedStatement.setString(46, freeadReslease.getImgUrl());
+        setIntVluesOrNull(preparedStatement, 47, freeadReslease.getBottom());
+        setIntVluesOrNull(preparedStatement, 48, freeadReslease.getRegStartTime());
+        setIntVluesOrNull(preparedStatement, 49, freeadReslease.getRegEndTime());
+        setIntVluesOrNull(preparedStatement, 50, freeadReslease.getAcs());
+        setIntVluesOrNull(preparedStatement, 51, freeadReslease.getAcr());
         System.out.println(preparedStatement.toString());
         boolean b = false;
         if (preparedStatement.executeUpdate() == 1) b = true;

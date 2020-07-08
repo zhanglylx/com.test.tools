@@ -6,7 +6,6 @@ import ZLYUtils.TooltipUtil;
 import com.eltima.components.ui.DatePicker;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -31,6 +30,7 @@ public class AdUi extends FrontPanel {
     private JTextField appVersion;//app版本
     private JTextField lbTime;//轮播时间
     private JTextField qz;//权重
+    private JTextField singReadNum;//用户请求次数
     private JTextField singleExposureNum;//单人曝光
     private JTextField singleClickNum;//单人点击
     private JTextField totalExposureNum;//总曝光
@@ -157,7 +157,7 @@ public class AdUi extends FrontPanel {
         //设置输出台
         setOutput();
         //设置环境
-        setTable();
+        setEnvironment();
     }
 
     public void setQuicklyShelves() {
@@ -239,9 +239,9 @@ public class AdUi extends FrontPanel {
 
 
     /**
-     * 设置空表格，为了美观
+     * 设置环境
      */
-    public void setTable() {
+    public void setEnvironment() {
         setJPanel();
         this.devTextEnvironment = newJRadioButton("开发环境");
         this.devTextEnvironment.setLocation(this.listLeftMargin, this.listUpBoundary);
@@ -273,7 +273,6 @@ public class AdUi extends FrontPanel {
      */
     public void setDisplayTime() {
         setJPanel();
-
         this.displayTime = setJTextField();
 //        this.jPanel.add(setJLabel("显示时间:"));
 //        this.jPanel.add(setJScrollPane(this.displayTime = setJTextField()));
@@ -399,9 +398,18 @@ public class AdUi extends FrontPanel {
     public void setQz() {
         setJPanel();
         this.jPanel.add(setJLabel("权重占比:"));
-        this.jPanel.add(setJScrollPane(this.qz = setJTextField()));
-        this.qz.setText(AdSendConfig.QZ_HINT);
+        JScrollPane qzJP = setJScrollPane(this.qz = setJTextField());
+        qzJP.setSize(50, this.jTextFieldHight);
+        this.jPanel.add(qzJP);
         this.qz.setToolTipText(AdSendConfig.QZ_HINT);
+        JLabel jLabel = setJLabel("用户请求数:");
+        jLabel.setLocation(125, this.listUpBoundary);
+        JScrollPane singReadNumJS = setJScrollPane(this.singReadNum = setJTextField());
+        singReadNumJS.setSize(50, this.jTextFieldHight);
+        singReadNumJS.setLocation(210, this.jTextFieldYMargin);
+        this.singReadNum.setText("0");
+        this.jPanel.add(singReadNumJS);
+        this.jPanel.add(jLabel);
         this.adConfigJPanel.add(this.jPanel);
     }
 
@@ -727,7 +735,6 @@ public class AdUi extends FrontPanel {
 
     public void setAdValues() {
         checkValues();
-
         this.sendAdConfiguration.setAppname(
                 AdSendConfig.getAppNameCode(this.appName.getSelectedItem().toString()));
         if (AdSendConfig.IKS.equals(this.appName.getSelectedItem().toString()))
@@ -760,6 +767,10 @@ public class AdUi extends FrontPanel {
         } else {
             this.sendAdConfiguration.setQz(Integer.parseInt(this.qz.getText()));
         }
+        if (this.singReadNum.getText() == null || !this.singReadNum.getText().matches("\\d+")) {
+            throw new IllegalArgumentException("用户请求数格式不正确:" + this.singReadNum.getText());
+        }
+        this.sendAdConfiguration.setSingReadNum(Integer.parseInt(this.singReadNum.getText()));
         this.sendAdConfiguration.setVersionShelves(this.versionShelves.getSelectedIndex());
         this.sendAdConfiguration.setChannelidShelves(this.channelidShelves.getSelectedIndex());
         this.sendAdConfiguration.setLbtimeShelves(this.lbtimeShelves.getSelectedIndex());
@@ -775,7 +786,7 @@ public class AdUi extends FrontPanel {
             sendAd(f);
         } catch (Exception e) {
             e.printStackTrace();
-            this.output.setText("发生异常,提交失败:" + e.toString());
+            this.output.setText("失败:" + e.getLocalizedMessage());
             this.output.setForeground(this.colorErr);
         }
 
@@ -858,7 +869,7 @@ public class AdUi extends FrontPanel {
      * 检查参数合法性
      */
     public void checkValues() {
-        if (this.qz.getText().equals("")) this.qz.setText("10");
+        if (!this.qz.getText().matches("\\d+")) this.qz.setText("10");
         if (this.lbTime.getText().equals("")) this.lbTime.setText("0");
         if (this.displayTime.getText().equals("")) this.displayTime.setText("0");
         checkBgDj();

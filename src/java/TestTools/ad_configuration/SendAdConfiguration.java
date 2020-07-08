@@ -49,6 +49,15 @@ public class SendAdConfiguration {
     private int bgdjShelves;//曝光点击下架
     private String createDate;//创建时间
     private int sendAdIndex;//新建了多少个广告
+    private int singReadNum;//用户请求次数
+
+    public int getSingReadNum() {
+        return singReadNum;
+    }
+
+    public void setSingReadNum(int singReadNum) {
+        this.singReadNum = singReadNum;
+    }
 
     public int getUsergroup() {
         return usergroup;
@@ -255,6 +264,7 @@ public class SendAdConfiguration {
             freeadReslease.setSxdisnum(this.sxdisNum);
             freeadReslease.setIscirclead(this.iscirclead);
             freeadReslease.setUsergroup(this.usergroup);
+            freeadReslease.setSingleReqNum(this.singReadNum);
             if (!freeadResleaseDAO.insertAD(freeadReslease)) {
                 sendBoolean = false;
             } else {

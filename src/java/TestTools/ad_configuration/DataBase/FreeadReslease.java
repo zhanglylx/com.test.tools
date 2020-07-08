@@ -52,6 +52,17 @@ public class FreeadReslease implements Serializable {
     private Integer bottom;
     private Integer regStartTime;
     private Integer regEndTime;
+    //控制用户请求次数
+    private Integer singleReqNum;
+
+    public Integer getSingleReqNum() {
+        return singleReqNum;
+    }
+
+    public void setSingleReqNum(Integer singleReqNum) {
+        this.singleReqNum = singleReqNum;
+    }
+
     //    自动误点击开关，0 关闭， 1开启
     private Integer acs;
     //    误点比例，整数，例如 10 为十分之一
@@ -156,6 +167,7 @@ public class FreeadReslease implements Serializable {
         this.upanddown = 0;
         this.acs = 0;
         this.acr = 0;
+        this.singleReqNum = 0;
     }
 
 
