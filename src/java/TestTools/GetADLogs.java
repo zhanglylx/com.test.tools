@@ -22,8 +22,6 @@ public class GetADLogs extends FrontPanel {
     Thread threadAdLog;
     JTextArea logPaint = null;
     private JButton clear;
-    //判断线程是否在运行
-    private boolean runT = false;
     private Log log;
     private List<JButton> jButtonsAd;
     private JButton jButton;
@@ -36,7 +34,7 @@ public class GetADLogs extends FrontPanel {
      */
     static {
         AD = new String[0];
-        for (int i = 1; i < 87; i++) {
+        for (int i = 1; i < 100; i++) {
             AD = Arrays.copyOf(AD, AD.length + 1);
             AD[AD.length - 1] = i + "";
         }
