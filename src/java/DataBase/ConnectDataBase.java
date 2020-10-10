@@ -42,7 +42,7 @@ public class ConnectDataBase {
         if (!url.matches("^.+/.+$"))
             throw new IllegalArgumentException("url格式不正确:" + url);
         try {
-            this.con = DriverManager.getConnection("jdbc:mysql://" + url, username, password);
+            this.con = DriverManager.getConnection("jdbc:mysql://" + url+"?useSSL=false&autoReconnect=true", username, password);
         }catch (Exception e){
             e.printStackTrace();
         }
