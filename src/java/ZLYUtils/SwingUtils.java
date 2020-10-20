@@ -87,11 +87,16 @@ public class SwingUtils {
             fileChooser.setDialogTitle("请选择要保存的路径");
             fileChooser.setApproveButtonText("确定");
             fileChooser.setSelectedFile(fileName);
-            fileChooser.setCurrentDirectory(fsv.getHomeDirectory());//默认桌面
+            File path = selectFileDirectory.get(ZLYThreadUtils.getMethodName());
+            if (path == null || !path.exists()) {
+                path = JavaUtils.getLocalDesktopPath();//默认桌面
+            }
+            fileChooser.setCurrentDirectory(path);//默认桌面
 //        fileChooser.setAcceptAllFileFilterUsed(false);//去掉所有文件选项
             int ch = fileChooser.showDialog(parent, "保存文件");
             if (JFileChooser.APPROVE_OPTION == ch) {
 //            path = path.substring(0,path.lastIndexOf(File.separator)+1);
+                selectFileDirectory.put(ZLYThreadUtils.getMethodName(), fileChooser.getSelectedFile());
                 return fileChooser.getSelectedFile().getPath();
             }
         } finally {
@@ -173,8 +178,8 @@ public class SwingUtils {
             File path = selectFileDirectory.get(ZLYThreadUtils.getMethodName());
             if (path == null || !path.exists()) {
                 path = JavaUtils.getLocalDesktopPath();//默认桌面
-                chooser.setCurrentDirectory(JavaUtils.getLocalDesktopPath());//默认桌面
             }
+
             chooser.setCurrentDirectory(path);
             int ch = chooser.showDialog(parent, "选择文件");
             File file = chooser.getSelectedFile();
