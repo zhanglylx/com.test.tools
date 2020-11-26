@@ -17,7 +17,8 @@ public class FreeadResleaseDAO {
             "?,?,?,?,?," +
             "?,?,?,?,?," +
             "?,?,?,?,?," +
-            "?)";
+            "?,?,?,?,?," +
+            "?,?)";
     private static final String AD_MAX = "SELECT MAX(id) as i FROM freeadrelease";
 
     public FreeadResleaseDAO() {
@@ -71,13 +72,19 @@ public class FreeadResleaseDAO {
         setIntVluesOrNull(preparedStatement, 42, freeadReslease.getAntimisoperation());
         setIntVluesOrNull(preparedStatement, 43, freeadReslease.getUpanddown());
         setIntVluesOrNull(preparedStatement, 44, freeadReslease.getUsergroup());
-        setIntVluesOrNull(preparedStatement, 45, freeadReslease.getGuideBt());
-        preparedStatement.setString(46, freeadReslease.getImgUrl());
-        setIntVluesOrNull(preparedStatement, 47, freeadReslease.getBottom());
-        setIntVluesOrNull(preparedStatement, 48, freeadReslease.getRegStartTime());
-        setIntVluesOrNull(preparedStatement, 49, freeadReslease.getRegEndTime());
-        setIntVluesOrNull(preparedStatement, 50, freeadReslease.getAcs());
-        setIntVluesOrNull(preparedStatement, 51, freeadReslease.getAcr());
+        setIntVluesOrNull(preparedStatement, 45, freeadReslease.getDmpGroupId());
+        setIntVluesOrNull(preparedStatement, 46, freeadReslease.getGuideBt());
+        preparedStatement.setString(47, freeadReslease.getImgUrl());
+        setIntVluesOrNull(preparedStatement, 48, freeadReslease.getBottom());
+        setIntVluesOrNull(preparedStatement, 49, freeadReslease.getRegStartTime());
+        setIntVluesOrNull(preparedStatement, 50, freeadReslease.getRegEndTime());
+        setIntVluesOrNull(preparedStatement, 51, freeadReslease.getAcs());
+        setIntVluesOrNull(preparedStatement, 52, freeadReslease.getAcr());
+        setIntVluesOrNull(preparedStatement, 53, freeadReslease.getPrice());
+        setIntVluesOrNull(preparedStatement, 54, freeadReslease.getClickDmpGroupId());
+        setIntVluesOrNull(preparedStatement, 55, freeadReslease.getClickMaxCount());
+        setIntVluesOrNull(preparedStatement, 56, freeadReslease.getClickPrize());
+        preparedStatement.setString(57, freeadReslease.getClickText());
         System.out.println(preparedStatement.toString());
         boolean b = false;
         if (preparedStatement.executeUpdate() == 1) b = true;
