@@ -5,8 +5,14 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -129,37 +135,50 @@ public class WindosUtils {
 
             copyPath = sb.toString();
         }
-        InputStream ips = null;
-        OutputStream ops = null;
-        try {
-            ips = new FileInputStream(fe);
-            byte[] ipsBuffer = new byte[ips.available()];
-            ips.read(ipsBuffer);
-            ops = new FileOutputStream(copyPath);
-            ops.write(ipsBuffer);
-            ops.flush();
+
+        try (FileChannel fileChannel = FileChannel.open(Paths.get(filePath), StandardOpenOption.READ);
+             FileChannel outfFileChannel = FileChannel.open(Paths.get(copyPath), StandardOpenOption.WRITE)) {
+            MappedByteBuffer readmap = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
+            MappedByteBuffer outmap = outfFileChannel.map(FileChannel.MapMode.READ_WRITE, 0, fileChannel.size());
+            byte[] buf = new byte[readmap.limit()];
+            readmap.get(buf);
+            outmap.put(buf);
             TooltipUtil.generalTooltip("保存成功:" + copyPath);
             return true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (ops != null) {
-                try {
-                    ops.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (ips != null) {
-                try {
-                    ips.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
+//        InputStream ips = null;
+//        OutputStream ops = null;
+//        try {
+//            ips = new FileInputStream(fe);
+//            byte[] ipsBuffer = new byte[ips.available()];
+//            ips.read(ipsBuffer);
+//            ops = new FileOutputStream(copyPath);
+//            ops.write(ipsBuffer);
+//            ops.flush();
+//            TooltipUtil.generalTooltip("保存成功:" + copyPath);
+//            return true;
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (ops != null) {
+//                try {
+//                    ops.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            if (ips != null) {
+//                try {
+//                    ips.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
         return false;
     }
 
