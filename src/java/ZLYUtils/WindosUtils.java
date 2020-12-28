@@ -5,8 +5,10 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.channels.WritableByteChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -138,11 +140,7 @@ public class WindosUtils {
 
         try (FileChannel fileChannel = FileChannel.open(Paths.get(filePath), StandardOpenOption.READ);
              FileChannel outfFileChannel = FileChannel.open(Paths.get(copyPath), StandardOpenOption.WRITE)) {
-            MappedByteBuffer readmap = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
-            MappedByteBuffer outmap = outfFileChannel.map(FileChannel.MapMode.READ_WRITE, 0, fileChannel.size());
-            byte[] buf = new byte[readmap.limit()];
-            readmap.get(buf);
-            outmap.put(buf);
+            zeroCopy(fileChannel, outfFileChannel);
             TooltipUtil.generalTooltip("保存成功:" + copyPath);
             return true;
         } catch (IOException e) {
@@ -242,37 +240,34 @@ public class WindosUtils {
         if (savePath == null || copyPath == null)
             throw new IllegalArgumentException("复制或保存地址为空");
         if (!copyPath.exists()) TooltipUtil.errTooltip("没有找到复制文件地址");
-        InputStream ips = null;
-        OutputStream ops = null;
-        try {
-            ips = new FileInputStream(copyPath);
-            byte[] ipsBuffer = new byte[ips.available()];
-            ips.read(ipsBuffer);
-            ops = new FileOutputStream(savePath);
-            ops.write(ipsBuffer);
-            ops.flush();
+        try (FileChannel inFileChannel = FileChannel.open(Paths.get(copyPath.getPath()), StandardOpenOption.READ);
+             FileChannel outFileChannel = FileChannel.open(Paths.get(savePath), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.READ)) {
+            zeroCopy(inFileChannel, outFileChannel);
             return true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+//            MappedByteBuffer 只有在GC回收时才会被释放资源,
+//            MappedByteBuffer inMappedByteBuffer = inFileChannel.map(FileChannel.MapMode.READ_ONLY, 0, inFileChannel.size());
+//            MappedByteBuffer outMappedByteBuffer = outFileChannel.map(FileChannel.MapMode.READ_WRITE, 0, inFileChannel.size());
+//            outMappedByteBuffer.put(inMappedByteBuffer);
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (ops != null) {
-                try {
-                    ops.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (ips != null) {
-                try {
-                    ips.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return false;
+    }
+
+    private static void zeroCopy(FileChannel fileChannel, WritableByteChannel target) throws IOException {
+        long size = fileChannel.size();
+        long position = 0;
+        while (size > 0) {
+            long tf = fileChannel.transferTo(position, size, target);
+            if (tf > 0) {
+                position += tf;
+                size -= tf;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        copyFile("G:/MUSIC_copy.zip", new File("G:/music.zip"));
     }
 
 
