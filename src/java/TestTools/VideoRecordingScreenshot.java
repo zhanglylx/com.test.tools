@@ -111,11 +111,13 @@ public class VideoRecordingScreenshot extends FrontPanel {
                 WindosUtils.copyFile(new File(saveFile),
                         new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING));
             }
-            this.lock.lock();
-            this.condition.signalAll();
-            this.lock.unlock();
-            this.refreshTheImage.setInterrupt(false);
-
+            try {
+                this.lock.lock();
+                this.condition.signalAll();
+                this.refreshTheImage.setInterrupt(false);
+            } finally {
+                this.lock.unlock();
+            }
         } else if (videoSwitch == f) {
             new VideoRecording().start();
 
@@ -196,9 +198,13 @@ public class VideoRecordingScreenshot extends FrontPanel {
                             WindosUtils.copyFile(SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_LEADING,
                                     new File(SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_SQUIRREL));
                         } else {
-                            lock.lock();
-                            condition.await();
-                            lock.unlock();
+                            try {
+                                lock.lock();
+                                condition.await();
+                            } finally {
+                                lock.unlock();
+                            }
+
                         }
                         image = new ImageIcon(SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_LEADING);
                     }
