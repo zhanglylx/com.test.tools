@@ -14,6 +14,9 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
@@ -28,7 +31,8 @@ public class VideoRecordingScreenshot extends FrontPanel {
     public static final String VIDEOSWITCH = "VS";
     private final JButton picture;
     private final RefreshTheImage refreshTheImage;
-    private final Object lock = new Object();
+    private final Lock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
 
     public VideoRecordingScreenshot(String title) {
         super(title);
@@ -107,9 +111,11 @@ public class VideoRecordingScreenshot extends FrontPanel {
                 WindosUtils.copyFile(new File(saveFile),
                         new File(SquirrelConfig.Screenshot_save_path + SCREENSHOT_LEADING));
             }
-            synchronized (lock) {
-                this.lock.notifyAll();
-            }
+            this.lock.lock();
+            this.condition.signalAll();
+            this.lock.unlock();
+            this.refreshTheImage.setInterrupt(false);
+
         } else if (videoSwitch == f) {
             new VideoRecording().start();
 
@@ -190,10 +196,9 @@ public class VideoRecordingScreenshot extends FrontPanel {
                             WindosUtils.copyFile(SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_LEADING,
                                     new File(SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_SQUIRREL));
                         } else {
-                            synchronized (lock) {
-                                lock.wait();
-                                interrupt = false;
-                            }
+                            lock.lock();
+                            condition.await();
+                            lock.unlock();
                         }
                         image = new ImageIcon(SquirrelConfig.Screenshot_save_path + VideoRecordingScreenshot.SCREENSHOT_LEADING);
                     }
