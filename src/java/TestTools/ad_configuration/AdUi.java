@@ -543,7 +543,7 @@ public class AdUi extends FrontPanel {
         this.jPanel.add(setJLabel("所属应用:"));
         this.jPanel.add(this.appName = setJComboBox(
                 new String[]{
-                        AdSendConfig.MFDZS, AdSendConfig.MFZS, AdSendConfig.IKS, AdSendConfig.MFXS}, this.listLeftMargin, appTypeWidth));
+                        AdSendConfig.MFDZS, AdSendConfig.MFZS, AdSendConfig.IKS, AdSendConfig.MFXS,AdSendConfig.IKS_IOS}, this.listLeftMargin, appTypeWidth));
         this.adConfigJPanel.add(this.jPanel);
     }
 

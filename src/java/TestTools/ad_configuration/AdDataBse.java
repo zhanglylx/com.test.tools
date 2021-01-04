@@ -93,8 +93,10 @@ public class AdDataBse {
             sql = sqlEqualAdd(sql, AdSendConfig.REL_END_DATE);
             sql = sqlEqualAdd(sql, AdSendConfig.IS_CIRCLEAD);
         } else {
-            sql = sqlLikeAdd(sql, AdSendConfig.RES_START_DATE);
-            sql = sqlLikeAdd(sql, AdSendConfig.REL_END_DATE);
+//            sql = sqlLikeAdd(sql, AdSendConfig.RES_START_DATE);
+//            sql = sqlLikeAdd(sql, AdSendConfig.REL_END_DATE);
+            sql = sqlLikeAdd(sql, "1");
+            sql = sqlLikeAdd(sql, "1");
             sql = sqlLikeAdd(sql, AdSendConfig.IS_CIRCLEAD);
 
         }
@@ -155,8 +157,8 @@ public class AdDataBse {
                 preparedStatement.setString(6, relEndDate);
                 preparedStatement.setInt(7, iscirclead);
             } else {
-                preparedStatement.setString(5, "%");
-                preparedStatement.setString(6, "%");
+                preparedStatement.setString(5, "1");
+                preparedStatement.setString(6, "1");
                 preparedStatement.setString(7, "%");
             }
             if (lbtimeShelves == 1) {

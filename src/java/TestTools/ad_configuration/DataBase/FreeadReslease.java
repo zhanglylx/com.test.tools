@@ -54,6 +54,110 @@ public class FreeadReslease implements Serializable {
     private Integer regEndTime;
     //控制用户请求次数
     private Integer singleReqNum;
+    private Integer dmpGroupId;
+    private Integer price;
+    //    自动误点击开关，0 关闭， 1开启
+    private Integer acs;
+    //    误点比例，整数，例如 10 为十分之一
+    private Integer acr;
+
+    private Integer clickDmpGroupId;
+    private Integer clickMaxCount;
+    private Integer clickPrize;
+    private String clickText;
+
+    public FreeadReslease() {
+        this.tktime = 0;
+        this.cycpnum = 0;
+        this.sxdisnum = 0;
+        this.isdel = 0;
+        this.updateDate = WindosUtils.getDate();
+        this.createDate = WindosUtils.getDate();
+        this.isspecial = 0;
+        this.iscirclead = 0;
+        this.singleClickNum = 0;
+        this.singleExposureNum = 0;
+        this.totalClickNum = 0;
+        this.totalExposureNum = 0;
+        this.dayTotalClickNum = 0;
+        this.dayTotalExoisureNum = 0;
+        this.cyynum = 0;
+        this.videoAdSet = 0;
+        this.videoAdRate = 0;
+        this.bookLocation = 0;
+        this.startCha = 0;
+        this.shieldAdTime = 0;
+        this.adStatus = 0;
+        this.netState = 0;
+        this.antimisoperation = 0;
+        this.guideBt = 1;
+        this.imgUrl = "";
+        this.bottom = 0;
+        this.regStartTime = 0;
+        this.regEndTime = 0;
+        this.chapterEnd = 0;
+        this.inset = 0;
+        this.jlvideoAdRate = 0;
+        this.upanddown = 0;
+        this.acs = 0;
+        this.acr = 0;
+        this.singleReqNum = 0;
+        this.dmpGroupId = -1;
+        this.price = 100;
+        this.clickDmpGroupId = -1;
+        this.clickMaxCount = 1;
+        this.clickPrize = 1;
+        this.clickText = "";
+    }
+
+
+    public Integer getClickDmpGroupId() {
+        return clickDmpGroupId;
+    }
+
+    public void setClickDmpGroupId(Integer clickDmpGroupId) {
+        this.clickDmpGroupId = clickDmpGroupId;
+    }
+
+    public Integer getClickMaxCount() {
+        return clickMaxCount;
+    }
+
+    public void setClickMaxCount(Integer clickMaxCount) {
+        this.clickMaxCount = clickMaxCount;
+    }
+
+    public Integer getClickPrize() {
+        return clickPrize;
+    }
+
+    public void setClickPrize(Integer clickPrize) {
+        this.clickPrize = clickPrize;
+    }
+
+    public String getClickText() {
+        return clickText;
+    }
+
+    public void setClickText(String clickText) {
+        this.clickText = clickText;
+    }
+
+    public Integer getDmpGroupId() {
+        return dmpGroupId;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setDmpGroupId(Integer dmpGroupId) {
+        this.dmpGroupId = dmpGroupId;
+    }
 
     public Integer getSingleReqNum() {
         return singleReqNum;
@@ -63,10 +167,6 @@ public class FreeadReslease implements Serializable {
         this.singleReqNum = singleReqNum;
     }
 
-    //    自动误点击开关，0 关闭， 1开启
-    private Integer acs;
-    //    误点比例，整数，例如 10 为十分之一
-    private Integer acr;
 
     public Integer getAcs() {
         return acs;
@@ -130,44 +230,6 @@ public class FreeadReslease implements Serializable {
 
     public void setUsergroup(Integer usergroup) {
         this.usergroup = usergroup;
-    }
-
-    public FreeadReslease() {
-        this.tktime = 0;
-        this.cycpnum = 0;
-        this.sxdisnum = 0;
-        this.isdel = 0;
-        this.updateDate = WindosUtils.getDate();
-        this.createDate = WindosUtils.getDate();
-        this.isspecial = 0;
-        this.iscirclead = 0;
-        this.singleClickNum = 0;
-        this.singleExposureNum = 0;
-        this.totalClickNum = 0;
-        this.totalExposureNum = 0;
-        this.dayTotalClickNum = 0;
-        this.dayTotalExoisureNum = 0;
-        this.cyynum = 0;
-        this.videoAdSet = 0;
-        this.videoAdRate = 0;
-        this.bookLocation = 0;
-        this.startCha = 0;
-        this.shieldAdTime = 0;
-        this.adStatus = 0;
-        this.netState = 0;
-        this.antimisoperation = 0;
-        this.guideBt = 1;
-        this.imgUrl = "";
-        this.bottom = 0;
-        this.regStartTime = 0;
-        this.regEndTime = 0;
-        this.chapterEnd = 0;
-        this.inset = 0;
-        this.jlvideoAdRate = 0;
-        this.upanddown = 0;
-        this.acs = 0;
-        this.acr = 0;
-        this.singleReqNum = 0;
     }
 
 
